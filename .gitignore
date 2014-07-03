@@ -1,0 +1,6 @@
+*.log
+components/
+node_modules/
+test_reports/
+coverage/
+src/js/config/config.js
