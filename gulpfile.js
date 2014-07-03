@@ -102,24 +102,6 @@
       });
   });
 
-  // gulp.task('concat-fontpicker', ['config'], function () {
-  //   return gulp.src(['./src/js/config/config.js', './src/templates/font-picker-template.js', './src/js/font-picker/font-loader.js', './src/js/font-picker/font-picker.js'])
-  //   .pipe(concat('bootstrap-font-picker.js'))
-  //   .pipe(gulp.dest('./dist/js'));
-  // });
-  //
-  // gulp.task('concat-angular', ['config'], function () {
-  //   return gulp.src(['./src/js/angular/*.js'])
-  //   .pipe(concat('bootstrap-font-picker-angular-directive.js'))
-  //   .pipe(gulp.dest('./dist/js/angular'));
-  // });
-  //
-  // gulp.task('concat-font-size-picker', ['config'], function () {
-  //   return gulp.src(['./src/js/config/config.js', './src/js/font-size-picker/font-size-picker.js'])
-  //     .pipe(concat('bootstrap-font-size-picker.js'))
-  //     .pipe(gulp.dest('./dist/js'));
-  // });
-
   gulp.task('concat', ['config'], function () {
     //TODO: add concatenation scripts once code for components is available
   });
