@@ -3,5 +3,5 @@ components/
 node_modules/
 test_reports/
 coverage/
-src/js/config/config.js
-src/templates/
+src/config/config.js
+tmp
