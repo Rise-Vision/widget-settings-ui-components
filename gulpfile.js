@@ -8,11 +8,23 @@
   var html2string = require("gulp-html2string");
   var path = require("path");
   var rename = require("gulp-rename");
+  var clean = require("gulp-clean");
   var concat = require("gulp-concat");
-  var bump = require("gulp-bump");
-  var sass = require("gulp-sass");
-  var minifyCSS = require("gulp-minify-css");
+  var bump = require('gulp-bump');
+  var sass = require('gulp-sass');
+  var minifyCSS = require('gulp-minify-css');
+  var fs = require("fs");
+  var runSequence = require('gulp-run-sequence');
+  var es = require('event-stream');
+  var path = require("path");
+  var uglify = require('gulp-uglify');
   var httpServer;
+  var subcomponents = fs.readdirSync('src')
+    .filter(function(file) {
+      return file[0] !== '_' && //exclude folders prefixed with "_"
+        fs.statSync(path.join('src', file)).isDirectory();
+    });
+
 
   var sassFiles = [
       "src/scss/**/*.scss"
@@ -22,13 +34,25 @@
       "src/css/**/*.css"
     ];
 
-  gulp.task("config", function() {
-    var env = process.env.NODE_ENV || "dev";
-    gutil.log("Environment is", env);
+  gulp.task('clean-dist', function () {
+    return gulp.src('dist', {read: false})
+      .pipe(clean());
+  });
 
-    return gulp.src(["./src/js/config/" + env + ".js"])
-      .pipe(rename("config.js"))
-      .pipe(gulp.dest("./src/js/config"));
+  gulp.task('clean-tmp', function () {
+    return gulp.src('tmp', {read: false})
+      .pipe(clean());
+  });
+
+  gulp.task('clean', ['clean-dist', 'clean-tmp']);
+
+  gulp.task('config', function() {
+    var env = process.env.NODE_ENV || 'dev';
+    gutil.log('Environment is', env);
+
+    return gulp.src(['./src/_config/' + env + '.js'])
+      .pipe(rename('config.js'))
+      .pipe(gulp.dest('./src/_config'));
   });
 
   // Defined method of updating:
@@ -48,27 +72,91 @@
     return httpServer;
   });
 
-  gulp.task("sass", function () {
-    return gulp.src(sassFiles)
+  gulp.task('concat-js-subcomponents', ["clean", 'config'], function () {
+    var tasks = subcomponents.map(function(folder) {
+      return gulp.src([
+        'src/config/config.js',
+        path.join('src', folder, '**/*.js')])
+
+        .pipe(concat(folder + ".js"))
+        .pipe(gulp.dest("dist/js"));
+    });
+   return es.concat.apply(null, tasks);
+  });
+
+  gulp.task('sass-concat-subcomponents', function () {
+    var tasks = subcomponents.map(function(folder) {
+      return gulp.src(path.join('src', folder, '**/*.scss'))
+        .pipe(concat(folder + ".scss"))
+        .pipe(gulp.dest("tmp/scss/"));
+    });
+   return es.concat.apply(null, tasks);
+  });
+
+  gulp.task("sass-subcomponents", ['sass-concat-subcomponents'], function () {
+    return gulp.src('tmp/scss/*.scss')
       .pipe(sass())
-      .pipe(gulp.dest("src/css"));
+      .pipe(gulp.dest("dist/css/"));
   });
 
-  gulp.task("css", ["sass"], function () {
-    return gulp.src(cssFiles)
-      .pipe(concat("all.css"))
+  gulp.task("css-concat", ["sass-subcomponents"], function () {
+    return gulp.src("dist/css/*.css")
+      .pipe(concat("widget-settings-ui-components.css"))
       .pipe(gulp.dest("dist/css"));
   });
 
-  gulp.task("css-min", ["css"], function () {
-    return gulp.src("dist/css/all.css")
-      .pipe(minifyCSS({keepBreaks:true}))
-      .pipe(rename("all.min.css"))
-      .pipe(gulp.dest("dist/css"));
+  gulp.task("css-min", ["css-concat"], function () {
+    return gulp.src("dist/css/*.css")
+    .pipe(minifyCSS({keepBreaks:true}))
+    .pipe(rename(function (path) {
+      path.basename += ".min";
+    }))
+    .pipe(gulp.dest("dist/css"));
+  });
+
+  gulp.task('html2js-subcomponents', function () {
+    var tasks = subcomponents.map(function(folder) {
+      return gulp.src(path.join('src', folder, '**/*.html'))
+        .pipe(html2string({ createObj: true, base: path.join(__dirname, 'src', folder), objName: 'TEMPLATES' }))
+        .pipe(rename({extname: '.js'}))
+        .pipe(gulp.dest(path.join('tmp', 'templates', folder)));
+    });
+  });
+
+  gulp.task('js-concat-subcomponents', ["html2js-subcomponents"], function () {
+    var tasks = subcomponents.map(function(folder) {
+      return gulp.src([
+        path.join('src', folder, '**/*.js'),
+        path.join('tmp', "templates", folder, "**/*.js") //template js files
+        ])
+        .pipe(concat(folder + ".js"))
+        .pipe(gulp.dest("dist/js"));
+    });
+   return es.concat.apply(null, tasks);
+  });
+
+  gulp.task("js-concat", ["js-concat-subcomponents"], function () {
+    return gulp.src("dist/*.js")
+      .pipe(concat("widget-settings-ui-components.js"))
+      .pipe(gulp.dest("dist/js"));
+  });
+
+  gulp.task("angular", function () { //copy angular files
+    return gulp.src('src/_angular/**/*')
+    .pipe(gulp.dest("dist/js/angular"));
+  });
+
+  gulp.task("js-uglify", ["angular", "js-concat"], function () {
+    gulp.src('dist/js/**/*.js')
+      .pipe(uglify())
+      .pipe(rename(function (path) {
+        path.basename += ".min";
+      }))
+      .pipe(gulp.dest("dist/js"));
   });
 
   gulp.task("e2e:test", ["build", "e2e:server"], function () {
-      var tests = ["test/e2e/url-input-scenarios.js"];
+      var tests = ["test/e2e/alignment-scenarios.js", "test/e2e/url-field-scenarios.js"];
 
       var casperChild = spawn("casperjs", ["test"].concat(tests));
 
@@ -83,13 +171,6 @@
       });
   });
 
-  gulp.task("html2js", function () {
-    return gulp.src("src/html/*.html")
-      .pipe(html2string({ createObj: true, base: path.join(__dirname, "src/html"), objName: "TEMPLATES" }))
-      .pipe(rename({extname: ".js"}))
-      .pipe(gulp.dest("src/templates/"));
-  });
-
   gulp.task("e2e:test-ng", ["webdriver_update", "e2e:server"], function () {
     return gulp.src(["./test/e2e/test-ng.js"])
       .pipe(protractor({
@@ -102,11 +183,10 @@
       });
   });
 
-  gulp.task("concat", ["config"], function () {
-    //TODO: add concatenation scripts once code for components is available
-  });
 
-  gulp.task("build", ["css-min", "html2js", "concat"]);
+  gulp.task('build', function (cb) {
+      runSequence('clean', ['js-uglify', 'css-min'], cb);
+  });
 
   gulp.task("test", ["e2e:test"]);
 
