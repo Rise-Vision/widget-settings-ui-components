@@ -1,11 +1,25 @@
-.wysiwyg-align-left {
+/* Style the component */
+.alignment .dropdown-menu {
+  /* Display & Box Model */
+  min-width: 169px;
+  padding: 5px; }
+.alignment .glyphicon::before {
+  font-size: 18px; }
+
+.btn-alignment {
+  /* Display & Box Model */
+  min-width: 50px;
+  padding: 4px; }
+
+/* Alignment classes */
+.align-left {
   text-align: left; }
 
-.wysiwyg-align-center {
+.align-center {
   text-align: center; }
 
-.wysiwyg-align-right {
+.align-right {
   text-align: right; }
 
-.wysiwyg-justify {
+.justify {
   text-align: justify; }
