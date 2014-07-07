@@ -21,6 +21,8 @@
       $element.append(TEMPLATES["alignment.html"]);
       $btnAlignment = $(".btn-alignment");
 
+      setAlignment(options.alignment);
+
       $element.find(".dropdown-menu button").on("click", function() {
         setAlignment($(this).data("wysihtml5-command-value"));
       });
