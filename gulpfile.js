@@ -24,7 +24,10 @@
       return file[0] !== '_' && //exclude folders prefixed with "_"
         fs.statSync(path.join('src', file)).isDirectory();
     });
-
+  var views = fs.readdirSync('src/_angular')
+    .filter(function(file) {
+      return fs.statSync(path.join('src/_angular', file)).isDirectory();
+    });
 
   var sassFiles = [
       "src/scss/**/*.scss"
@@ -72,18 +75,6 @@
     return httpServer;
   });
 
-  gulp.task('concat-js-subcomponents', ["clean", 'config'], function () {
-    var tasks = subcomponents.map(function(folder) {
-      return gulp.src([
-        'src/config/config.js',
-        path.join('src', folder, '**/*.js')])
-
-        .pipe(concat(folder + ".js"))
-        .pipe(gulp.dest("dist/js"));
-    });
-   return es.concat.apply(null, tasks);
-  });
-
   gulp.task('sass-concat-subcomponents', function () {
     var tasks = subcomponents.map(function(folder) {
       return gulp.src(path.join('src', folder, '**/*.scss'))
@@ -121,13 +112,15 @@
         .pipe(rename({extname: '.js'}))
         .pipe(gulp.dest(path.join('tmp', 'templates', folder)));
     });
+    return es.concat.apply(null, tasks);
   });
 
   gulp.task('js-concat-subcomponents', ["html2js-subcomponents"], function () {
     var tasks = subcomponents.map(function(folder) {
       return gulp.src([
         path.join('src', folder, '**/*.js'),
-        path.join('tmp', "templates", folder, "**/*.js") //template js files
+        path.join('tmp', "templates", folder, "**/*.js"), //template js files
+        'src/_config/config.js'
         ])
         .pipe(concat(folder + ".js"))
         .pipe(gulp.dest("dist/js"));
@@ -136,14 +129,31 @@
   });
 
   gulp.task("js-concat", ["js-concat-subcomponents"], function () {
-    return gulp.src("dist/*.js")
+    return gulp.src("dist/js/*.js")
       .pipe(concat("widget-settings-ui-components.js"))
       .pipe(gulp.dest("dist/js"));
   });
 
-  gulp.task("angular", function () { //copy angular files
-    return gulp.src('src/_angular/**/*')
-    .pipe(gulp.dest("dist/js/angular"));
+  gulp.task('html2js-views', function () {
+    var tasks = views.map(function(folder) {
+      return gulp.src(path.join('src/_angular', folder, '**/*.html'))
+        .pipe(html2string({ createObj: true, base: path.join(__dirname, 'src/_angular'), objName: 'VIEWS' }))
+        .pipe(rename({extname: '.js'}))
+        .pipe(gulp.dest(path.join('tmp', 'views', folder)));
+    });
+    return es.concat.apply(null, tasks);
+  });
+
+  gulp.task("angular", ['html2js-views'], function () { //copy angular files
+    var tasks = views.map(function(folder) {
+      return gulp.src([
+        path.join('src/_angular', folder, '**/*.js'),
+        path.join('tmp/views/', folder, '**/*.js')
+      ])
+      .pipe(concat(folder + '.js'))
+      .pipe(gulp.dest("dist/js/angular"));
+    });
+    return es.concat.apply(null, tasks);
   });
 
   gulp.task("js-uglify", ["angular", "js-concat"], function () {
@@ -185,7 +195,7 @@
 
 
   gulp.task('build', function (cb) {
-      runSequence('clean', ['js-uglify', 'css-min'], cb);
+      runSequence(['clean', 'config'], ['js-uglify', 'css-min'], cb);
   });
 
   gulp.task("test", ["e2e:test"]);
