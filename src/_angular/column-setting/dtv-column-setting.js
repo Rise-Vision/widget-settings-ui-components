@@ -5,7 +5,7 @@ angular.module('risevision.widget.common')
       scope: {
         column: '='
       },
-      templateUrl: 'dist/html/column-setting.html',
+      template: VIEWS['column-setting/column-setting.html'],
       transclude: false,
       link: function($scope, $element) {
         var defaultSetting = {

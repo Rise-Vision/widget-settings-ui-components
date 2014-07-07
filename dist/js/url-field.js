@@ -26,3 +26,12 @@
     });
   };
 })(jQuery, window, document, WIDGET_SETTINGS_UI_CONFIG);
+
+if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
+TEMPLATES['url-field-template.html'] = "<div></div>\n" +
+    ""; 
+if(typeof WIDGET_SETTINGS_UI_CONFIG === 'undefined'){
+  var WIDGET_SETTINGS_UI_CONFIG = {
+    //put variables here
+  };
+};
