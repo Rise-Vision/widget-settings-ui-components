@@ -1,19 +1,19 @@
-angular.module('risevision.widget.common')
-  .directive('scrollSetting', ['i18nLoader', '$log', function (i18nLoader, $log) {
+angular.module("risevision.widget.common")
+  .directive("scrollSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
     return {
-      restrict: 'E',
+      restrict: "E",
       scope: {
-        scroll: '='
+        scroll: "="
       },
-      template: VIEWS['scroll-setting/scroll-setting.html'],
+      template: VIEWS["scroll-setting/scroll-setting.html"],
       transclude: false,
       link: function($scope, $element) {
         $scope.defaultSetting = {
           enabled: false,
-          //direction: 'up',
-          by: 'continuous',
-          speed: 'medium',
-          resumes: '5'
+          //direction: "up",
+          by: "continuous",
+          speed: "medium",
+          resumes: "5"
         };
 
         $scope.defaults = function(obj) {
@@ -28,7 +28,7 @@ angular.module('risevision.widget.common')
           return obj;
         };
 
-        $scope.$watch('scroll', function(scroll) {
+        $scope.$watch("scroll", function(scroll) {
           $scope.defaults(scroll, $scope.defaultSetting);
         });
 

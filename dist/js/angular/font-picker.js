@@ -1,16 +1,16 @@
-angular.module('risevision.widget.common')
-  .directive('fontPicker', ['i18nLoader', '$log', function (i18nLoader, $log) {
+angular.module("risevision.widget.common")
+  .directive("fontPicker", ["i18nLoader", "$log", function (i18nLoader, $log) {
     return {
-      restrict: 'A',
+      restrict: "A",
       scope: {
-        prefix: '=',
-        i18nPrefix: '=',
-        fontData: '=',
-        fontVisible: '=',
-        fontSizeVisible: '=',
-        textVisible: '='
+        prefix: "=",
+        i18nPrefix: "=",
+        fontData: "=",
+        fontVisible: "=",
+        fontSizeVisible: "=",
+        textVisible: "="
       },
-      template: VIEWS['font-picker/font-picker.html'],
+      template: VIEWS["font-picker/font-picker.html"],
       transclude: false,
       link: function ($scope, elm, attrs) {
         var stripLast = function (str, strToStrip) {
@@ -30,26 +30,26 @@ angular.module('risevision.widget.common')
           }
         };
         var $elm = $(elm);
-        var prefix = $scope.prefix || stripLast(attrs.id, '-font');
-        var picker = $elm.data('font-picker');
+        var prefix = $scope.prefix || stripLast(attrs.id, "-font");
+        var picker = $elm.data("font-picker");
 
-        $scope.$watch('fontData', function(fontData) {
+        $scope.$watch("fontData", function(fontData) {
           if (fontData) {
             $elm.fontPicker({
-              'i18n-prefix': $scope.i18nPrefix || attrs.id,
-              'defaults' : {
-                'font' : $scope.fontData.font,
-                'font-url' : $scope.fontData.fontUrl,
-                'font-size' : $scope.fontData.fontSize,
-                'is-bold' : $scope.fontData.isBold,
-                'is-italic' : $scope.fontData.isItalic,
-                'color' : $scope.fontData.color
+              "i18n-prefix": $scope.i18nPrefix || attrs.id,
+              "defaults" : {
+                "font" : $scope.fontData.font,
+                "font-url" : $scope.fontData.fontUrl,
+                "font-size" : $scope.fontData.fontSize,
+                "is-bold" : $scope.fontData.isBold,
+                "is-italic" : $scope.fontData.isItalic,
+                "color" : $scope.fontData.color
               },
-              'visibility': {
-                'font' : valOrDefault($scope.fontVisible, true),
-                'font-size' : valOrDefault($scope.fontSizeVisible, true),
-                'variants' : valOrDefault($scope.fontSizeVisible, true),
-                'text' : valOrDefault($scope.textVisible, true)
+              "visibility": {
+                "font" : valOrDefault($scope.fontVisible, true),
+                "font-size" : valOrDefault($scope.fontSizeVisible, true),
+                "variants" : valOrDefault($scope.fontSizeVisible, true),
+                "text" : valOrDefault($scope.textVisible, true)
               }
             });
 
@@ -58,8 +58,8 @@ angular.module('risevision.widget.common')
           }
         });
 
-        $scope.$parent.$on('collectAdditionalParams', function () {
-          $log.debug('Collecting params from', prefix, picker);
+        $scope.$parent.$on("collectAdditionalParams", function () {
+          $log.debug("Collecting params from", prefix, picker);
           $scope.fontData.font = picker.getFont();
           //$scope.fontData.fontStyle = picker.getFontStyle();
           $scope.fontData.fontUrl = picker.getfontURL();

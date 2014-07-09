@@ -17,7 +17,8 @@
   var runSequence = require("gulp-run-sequence");
   var es = require("event-stream");
   var path = require("path");
-  var uglify = require("gulp-uglify");
+  var uglify = require('gulp-uglify');
+  var jshint = require("gulp-jshint");
   var httpServer;
   var subcomponents = fs.readdirSync("src")
     .filter(function(file) {
@@ -115,7 +116,14 @@
     return es.concat.apply(null, tasks);
   });
 
-  gulp.task("js-concat-subcomponents", ["html2js-subcomponents"], function () {
+  gulp.task("lint", function() {
+    return gulp.src('src/**/*.js')
+      .pipe(jshint())
+      .pipe(jshint.reporter("jshint-stylish"));
+      // .pipe(jshint.reporter("fail"));
+  });
+
+  gulp.task('js-concat-subcomponents', ["html2js-subcomponents", "lint"], function () {
     var tasks = subcomponents.map(function(folder) {
       return gulp.src([
         path.join("src", folder, "**/*.js"),
