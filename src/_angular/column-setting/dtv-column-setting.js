@@ -1,19 +1,19 @@
-angular.module('risevision.widget.common')
-  .directive('columnSetting', ['i18nLoader', '$log', function (i18nLoader, $log) {
+angular.module("risevision.widget.common")
+  .directive("columnSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
     return {
-      restrict: 'E',
+      restrict: "E",
       scope: {
-        column: '='
+        column: "="
       },
-      template: VIEWS['column-setting/column-setting.html'],
+      template: VIEWS["column-setting/column-setting.html"],
       transclude: false,
       link: function($scope, $element) {
         var defaultSetting = {
-          alignment: 'left',
+          alignment: "left",
           width: 0,
           decimals: 0,
-          sign: 'arrow',
-          colorCondition: 'none'
+          sign: "arrow",
+          colorCondition: "none"
         };
 
         $scope.defaults = function(obj) {
