@@ -5,6 +5,11 @@ Various UI components shared across Angular-based widget settings
 
 ### Components
 
+JQuery components:
 - URL input with validation
-- Column Styling
 - Column Alignment
+
+Angular components:
+- Column Styling
+- Scroll Setting
+- Font Picker
