@@ -61,7 +61,7 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<!--\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +
-    "<div ng-show=\"scroll.enabled\">\n" +
+    "<div ng-show=\"scroll.enabled\" class=\"more-scroll-options\">\n" +
     "  <div class=\"row\">\n" +
     "    <div class=\"col-xs-6 col-md-4\">\n" +
     "      <div class=\"form-group\">\n" +
