@@ -2,13 +2,11 @@
 <div class="row">
   <div class="col-md-3">
     <div class="form-group">
-      <label for="scroll.direction" data-i18n="scroll.direction.label">
-        {{'scroll.direction.label' | translate}}
-      </label>
-      <select id="scroll.direction" name="scroll.direction" ng-model="scroll.direction" class="form-control">
-        <option value="none" data-i18n="scroll.direction.none">{{'scroll.direction.none' | translate}}</option>
-        <option value="up" data-i18n="scroll.direction.up">{{'scroll.direction.up' | translate}}</option>
-        <!--<option value="down" data-i18n="scroll.direction.down">{{'scroll.direction.down' | translate}}</option>->
+      <label for="scroll.direction">{{'scroll.direction.label' | translate}}</label>
+      <select id="scroll.direction" ng-model="scroll.direction" class="form-control">
+        <option value="none">{{'scroll.direction.none' | translate}}</option>
+        <option value="up">{{'scroll.direction.up' | translate}}</option>
+        <!--<option value="down">{{'scroll.direction.down' | translate}}</option>->
       </select>
     </div>
   </div>
@@ -17,8 +15,8 @@
 <div class="row">
   <div class="col-md-3">
     <div class="checkbox">
-      <label for="scroll-enabled" data-i18n="scroll.enabled">{{'scroll.enabled' | translate}}</label>
-      <input id="scroll-enabled" name="scroll-enabled" type="checkbox" ng-model="scroll.enabled">
+      <label for="scroll-enabled">{{'scroll.enabled' | translate}}</label>
+      <input id="scroll-enabled" type="checkbox" ng-model="scroll.enabled">
     </div>
   </div>
 </div>
@@ -26,13 +24,11 @@
   <div class="row">
     <div class="col-xs-6 col-md-4">
       <div class="form-group">
-        <label for="scroll.by" data-i18n="scroll.by.label">
-          {{'scroll.by.label' | translate}}
-        </label>
-        <select id="scroll.by" name="scroll.by" ng-model="scroll.by" class="form-control">
-          <option value="continuous" data-i18n="scroll.by.continuous">{{'scroll.by.continuous' | translate}}</option>
-          <!--<option value="item" data-i18n="scroll.by.item">{{'scroll.by.item' | translate}}Row</option>-->
-          <option value="page" data-i18n="scroll.by.page">{{'scroll.by.page' | translate}}</option>
+        <label for="scroll.by">{{'scroll.by.label' | translate}}</label>
+        <select id="scroll.by" ng-model="scroll.by" class="form-control">
+          <option value="continuous">{{'scroll.by.continuous' | translate}}</option>
+          <!--<option value="item">{{'scroll.by.item' | translate}}Row</option>-->
+          <option value="page">{{'scroll.by.page' | translate}}</option>
         </select>
       </div>
     </div>
@@ -41,10 +37,8 @@
   <div class="row" ng-show="scrollBy != 'continuous'">
     <div class="col-md-3">
       <div class="form-group">
-        <label for="scroll.hold" data-i18n="scroll.hold">
-          {{'scroll.hold' | translate}}
-        </label>
-        <input id="scroll.hold" name="scroll.hold" type="text" class="text-field form-control" value="10" />
+        <label for="scroll.hold">{{'scroll.hold' | translate}}</label>
+        <input id="scroll.hold" type="text" class="form-control" value="10" />
       </div>
     </div>
   </div>
@@ -52,15 +46,13 @@
   <div class="row">
     <div class="col-xs-6 col-md-4">
       <div class="form-group">
-        <label for="scroll.speed" data-i18n="scroll.speed">
-          {{'scroll.speed.label' | translate}}
-        </label>
-        <select id="scroll.speed" name="scroll.speed" ng-model="scroll.speed" class="form-control">
-          <option value="slowest" data-i18n="scroll.speed.slowest">{{'scroll.speed.slowest' | translate}}</option>
-          <option value="slow" data-i18n="scroll.speed.slow">{{'scroll.speed.slow' | translate}}</option>
-          <option value="medium" data-i18n="scroll.speed.medium">{{'scroll.speed.medium' | translate}}</option>
-          <option value="fast" data-i18n="scroll.speed.fast">{{'scroll.speed.fast' | translate}}</option>
-          <option value="fastest" data-i18n="scroll.speed.fastest">{{'scroll.speed.fastest' | translate}}</option>
+        <label for="scroll.speed">{{'scroll.speed.label' | translate}}</label>
+        <select id="scroll.speed" ng-model="scroll.speed" class="form-control">
+          <option value="slowest">{{'scroll.speed.slowest' | translate}}</option>
+          <option value="slow">{{'scroll.speed.slow' | translate}}</option>
+          <option value="medium">{{'scroll.speed.medium' | translate}}</option>
+          <option value="fast">{{'scroll.speed.fast' | translate}}</option>
+          <option value="fastest">{{'scroll.speed.fastest' | translate}}</option>
         </select>
       </div>
     </div>
@@ -68,10 +60,10 @@
   <div class="row">
     <div class="col-xs-6 col-md-4">
       <div class="form-group">
-        <label for="scroll.resumes" data-i18n="scroll.resumes">
+        <label for="scroll.resumes">
           {{'scroll.resumes' | translate}}
         </label>
-        <input id="scroll.resumes" name="scroll.resumes" type="text" ng-model="scroll.resumes" class="form-control" />
+        <input id="scroll.resumes" type="text" ng-model="scroll.resumes" class="form-control" />
       </div>
     </div>
   </div>

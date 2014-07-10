@@ -1,5 +1,5 @@
-angular.module("risevision.widget.common")
-  .directive("scrollSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
+angular.module("risevision.widget.common.scrollSetting", [])
+  .directive("scrollSetting", ["$log", function ($log) {
     return {
       restrict: "E",
       scope: {
