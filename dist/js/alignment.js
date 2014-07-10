@@ -2,7 +2,7 @@
  *  Use of this software is governed by the GPLv3 license
  *  (reproduced in the LICENSE file).
  */
-;(function ($, window, document, CONFIG, undefined) {
+;(function ($, window, document, TEMPLATES, undefined) {
   "use strict";
 
   var _pluginName = "alignment";
@@ -11,7 +11,7 @@
     var $element = $(element);
     var $btnAlignment = null;
 
-    options = $.extend({}, { "alignment": "left" }, options);
+    options = $.extend({}, { "align": "left" }, options);
 
     /*
      *  Private Methods
@@ -19,9 +19,9 @@
     function _init() {
       // Get the HTML markup from the template.
       $element.append(TEMPLATES["alignment.html"]);
-      $btnAlignment = $(".btn-alignment");
+      $btnAlignment = $element.find(".btn-alignment");
 
-      setAlignment(options.alignment);
+      setAlignment(options.align);
 
       $element.find(".dropdown-menu button").on("click", function() {
         setAlignment($(this).data("wysihtml5-command-value"));
@@ -36,7 +36,7 @@
     }
 
     function setAlignment(alignment) {
-      var $primaryIcon = $(".btn-alignment .glyphicon");
+      var $primaryIcon = $element.find(".btn-alignment .glyphicon");
       var currentClass = $primaryIcon.attr("class").match(/glyphicon-align-[a-z]+/g);
       var newClass = "glyphicon-align-" + alignment;
 
@@ -48,6 +48,8 @@
       // Add new alignment icon.
       $primaryIcon.addClass(newClass);
       $btnAlignment.data("wysihtml5-command-value", alignment);
+
+      $element.trigger("alignmentChanged", alignment);
     }
 
     _init();
@@ -69,7 +71,7 @@
       }
     });
   };
-})(jQuery, window, document, CONFIG);
+})(jQuery, window, document, TEMPLATES);
 
 if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
 TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
