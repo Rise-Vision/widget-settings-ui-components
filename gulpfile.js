@@ -17,8 +17,10 @@
   var runSequence = require("gulp-run-sequence");
   var es = require("event-stream");
   var path = require("path");
-  var uglify = require('gulp-uglify');
   var jshint = require("gulp-jshint");
+  var uglify = require('gulp-uglify');
+  var protractor = require('gulp-protractor').protractor;
+  var webdriver_update = require('gulp-protractor').webdriver_update;
   var httpServer;
   var subcomponents = fs.readdirSync("src")
     .filter(function(file) {
@@ -65,15 +67,6 @@
     return gulp.src(["./package.json", "./bower.json"])
     .pipe(bump({type:"patch"}))
     .pipe(gulp.dest("./"));
-  });
-
-  gulp.task("e2e:server", ["build"], function() {
-    httpServer = connect.server({
-      root: "./",
-      port: 8099,
-      livereload: false
-    });
-    return httpServer;
   });
 
   gulp.task("sass-concat-subcomponents", function () {
@@ -173,7 +166,20 @@
       .pipe(gulp.dest("dist/js"));
   });
 
-  gulp.task("e2e:test", ["build", "e2e:server"], function () {
+  gulp.task("e2e:server", function() {
+    httpServer = connect.server({
+      root: "./",
+      port: 8099,
+      livereload: false
+    });
+    return httpServer;
+  });
+
+  gulp.task("e2e:server-close", function() {
+    connect.serverClose();
+  });
+
+  gulp.task("e2e:test", function () {
       var tests = ["test/e2e/alignment-scenarios.js", "test/e2e/url-field-scenarios.js"];
 
       var casperChild = spawn("casperjs", ["test"].concat(tests));
@@ -184,29 +190,33 @@
 
       casperChild.on("close", function (code) {
           var success = code === 0; // Will be 1 in the event of failure
-          connect.serverClose();
+          //connect.serverClose();
           // Do something with success here
       });
   });
 
-  gulp.task("e2e:test-ng", ["webdriver_update", "e2e:server"], function () {
-    return gulp.src(["./test/e2e/test-ng.js"])
+  gulp.task('webdriver_update', webdriver_update);
+
+  gulp.task("e2e:test-ng", ["webdriver_update"], function () {
+    return gulp.src(["test/e2e/test-ng.js"])
       .pipe(protractor({
-          configFile: "./test/protractor.conf.js",
-          args: ["--baseUrl", "http://127.0.0.1:" + e2ePort + "/test/e2e/test-ng.html"]
+          configFile: "test/protractor.conf.js",
+          args: ["--baseUrl", "http://127.0.0.1:8099/test/e2e/test-ng.html"]
       }))
       .on("error", function (e) { console.log(e); throw e; })
       .on("end", function () {
-        connect.serverClose();
+        //connect.serverClose();
       });
   });
 
 
   gulp.task("build", function (cb) {
-      runSequence(["clean", "config"], ["js-uglify", "css-min"], cb);
+    runSequence(["clean", "config"], ["js-uglify", "css-min"], cb);
   });
 
-  gulp.task("test", ["e2e:test"]);
+  gulp.task("test", function(cb) {
+    runSequence("build", "e2e:server", ["e2e:test", "e2e:test-ng"], "e2e:server-close");
+  });
 
   gulp.task("default", ["build"]);
 
