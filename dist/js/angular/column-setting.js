@@ -1,5 +1,5 @@
-angular.module("risevision.widget.common")
-  .directive("columnSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
+angular.module("risevision.widget.common.columnSetting", [])
+  .directive("columnSetting", ["$log", function ($log) {
     return {
       restrict: "E",
       scope: {
@@ -8,7 +8,7 @@ angular.module("risevision.widget.common")
       template: VIEWS["column-setting/column-setting.html"],
       transclude: false,
       link: function($scope, $element) {
-        var defaultSetting = {
+        $scope.defaultSetting = {
           alignment: "left",
           width: 0,
           decimals: 0,
@@ -17,16 +17,20 @@ angular.module("risevision.widget.common")
         };
 
         $scope.defaults = function(obj) {
-          for (var i = 1, length = arguments.length; i < length; i++) {
-            var source = arguments[i];
-            for (var prop in source) {
-              if (obj[prop] === void 0) obj[prop] = source[prop];
+          if (obj) {
+            for (var i = 1, length = arguments.length; i < length; i++) {
+              var source = arguments[i];
+              for (var prop in source) {
+                if (obj[prop] === void 0) obj[prop] = source[prop];
+              }
             }
           }
           return obj;
         };
 
-        $scope.defaults($scope.column, defaultSetting);
+        $scope.$watch("column", function(column) {
+          $scope.defaults(column, $scope.defaultSetting);
+        });
       }
     };
   }]);
@@ -38,13 +42,13 @@ VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-3\">\n" +
     "        <div class=\"form-group\">\n" +
-    "          <label for=\"column-alignment\" data-i18n=\"column.alignment.label\">\n" +
+    "          <label for=\"column-alignment\">\n" +
     "            {{'column.alignment.label' | translate}}\n" +
     "          </label>\n" +
-    "          <select id=\"column-alignment\" name=\"column-alignment\" ng-model=\"column.alignment\" class=\"form-control\">\n" +
-    "            <option value=\"left\" data-i18n=\"column.alignment.left\">{{'column.alignment.left' | translate}}</option>\n" +
-    "            <option value=\"center\" data-i18n=\"column.alignment.center\">{{'column.alignment.center' | translate}}</option>\n" +
-    "            <option value=\"right\" data-i18n=\"column.alignment.right\">{{'column.alignment.right' | translate}}</option>\n" +
+    "          <select id=\"column-alignment\" ng-model=\"column.alignment\" class=\"form-control\">\n" +
+    "            <option value=\"left\">{{'column.alignment.left' | translate}}</option>\n" +
+    "            <option value=\"center\">{{'column.alignment.center' | translate}}</option>\n" +
+    "            <option value=\"right\">{{'column.alignment.right' | translate}}</option>\n" +
     "          </select>\n" +
     "        </div>\n" +
     "      </div>\n" +
@@ -52,20 +56,20 @@ VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-3\">\n" +
     "        <div class=\"form-group\">\n" +
-    "          <label for=\"column-width\" data-i18n=\"column.width\">\n" +
+    "          <label for=\"column-width\">\n" +
     "            {{'column.width' | translate}}\n" +
     "          </label>\n" +
-    "          <input id=\"column-width\" name=\"column-width\" type=\"text\" ng-model=\"column.width\" class=\"text-field form-control\" />\n" +
+    "          <input id=\"column-width\" type=\"text\" ng-model=\"column.width\" class=\"form-control\" />\n" +
     "        </div>\n" +
     "      </div>\n" +
     "    </div>\n" +
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-3\">\n" +
     "        <div class=\"form-group\">\n" +
-    "          <label for=\"column-decimals\" data-i18n=\"column.decimals.label\">\n" +
+    "          <label for=\"column-decimals\">\n" +
     "            {{'column.decimals.label' | translate}}\n" +
     "          </label>\n" +
-    "          <select id=\"column-decimals\" name=\"column-decimals\" ng-model=\"column.decimals\" class=\"form-control\">\n" +
+    "          <select id=\"column-decimals\" ng-model=\"column.decimals\" class=\"form-control\">\n" +
     "            <option value=\"0\">0</option>\n" +
     "            <option value=\"1\">1</option>\n" +
     "            <option value=\"2\">2</option>\n" +
@@ -78,10 +82,10 @@ VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-3\">\n" +
     "        <div class=\"form-group\">\n" +
-    "          <label for=\"column-sign\" data-i18n=\"column.sign.label\">\n" +
+    "          <label for=\"column-sign\">\n" +
     "            {{'column.sign.label' | translate}}\n" +
     "          </label>\n" +
-    "          <select id=\"column-sign\" name=\"column-sign\" ng-model=\"column.sign\" class=\"form-control\">\n" +
+    "          <select id=\"column-sign\" ng-model=\"column.sign\" class=\"form-control\">\n" +
     "            <option value=\"neg\">-</option>\n" +
     "            <option value=\"pos-neg\">+/-</option>\n" +
     "            <option value=\"bracket\">()</option>\n" +
@@ -93,15 +97,15 @@ VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-3\">\n" +
     "        <div class=\"form-group\">\n" +
-    "          <label for=\"column-color-condition\" data-i18n=\"column.color-condition.label\">\n" +
+    "          <label for=\"column-color-condition\">\n" +
     "            {{'column.color-condition.label' | translate}}\n" +
     "          </label>\n" +
-    "          <select id=\"column-color-condition\" name=\"column-color-condition\" ng-model=\"column.colorCondition\" class=\"form-control\">\n" +
-    "            <option value=\"none\" data-i18n=\"column.color-condition.none\">{{'column.color-condition.none' | translate}}</option>\n" +
-    "            <option value=\"up-green\" data-i18n=\"column.color-condition.up-green\">{{'column.color-condition.up-green' | translate}}</option>\n" +
-    "            <option value=\"up-red\" data-i18n=\"column.color-condition.up-red\">{{'column.color-condition.up-red' | translate}}</option>\n" +
-    "            <option value=\"positive-green\" data-i18n=\"column.color-condition.positive-green\">{{'column.color-condition.positive-green' | translate}}</option>\n" +
-    "            <option value=\"positive-red\" data-i18n=\"column.color-condition.positive-red\">{{'column.color-condition.positive-red' | translate}}</option>\n" +
+    "          <select id=\"column-color-condition\" ng-model=\"column.colorCondition\" class=\"form-control\">\n" +
+    "            <option value=\"none\">{{'column.color-condition.none' | translate}}</option>\n" +
+    "            <option value=\"up-green\">{{'column.color-condition.up-green' | translate}}</option>\n" +
+    "            <option value=\"up-red\">{{'column.color-condition.up-red' | translate}}</option>\n" +
+    "            <option value=\"positive-green\">{{'column.color-condition.positive-green' | translate}}</option>\n" +
+    "            <option value=\"positive-red\">{{'column.color-condition.positive-red' | translate}}</option>\n" +
     "          </select>\n" +
     "        </div>\n" +
     "      </div>\n" +
@@ -109,10 +113,10 @@ VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-3\">\n" +
     "        <div class=\"form-group\">\n" +
-    "          <label for=\"column-header-text\" data-i18n=\"column.header-text\">\n" +
+    "          <label for=\"column-header-text\">\n" +
     "            {{'column.header-text' | translate}}\n" +
     "          </label>\n" +
-    "          <input id=\"column-header-text\" name=\"column-header-text\" type=\"text\" ng-model=\"column.headerText\" class=\"text-field form-control\" />\n" +
+    "          <input id=\"column-header-text\" type=\"text\" ng-model=\"column.headerText\" class=\"form-control\" />\n" +
     "        </div>\n" +
     "      </div>\n" +
     "    </div>\n" +
