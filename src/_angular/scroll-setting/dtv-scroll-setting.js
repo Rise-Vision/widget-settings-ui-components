@@ -31,7 +31,6 @@ angular.module("risevision.widget.common.scrollSetting", [])
         $scope.$watch("scroll", function(scroll) {
           $scope.defaults(scroll, $scope.defaultSetting);
         });
-
       }
     };
   }]);

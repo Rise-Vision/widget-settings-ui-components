@@ -31,7 +31,6 @@ angular.module("risevision.widget.common.scrollSetting", [])
         $scope.$watch("scroll", function(scroll) {
           $scope.defaults(scroll, $scope.defaultSetting);
         });
-
       }
     };
   }]);
@@ -41,8 +40,8 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<!--\n" +
     "<div class=\"row\">\n" +
     "  <div class=\"col-md-3\">\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"scroll.direction\">{{'scroll.direction.label' | translate}}</label>\n" +
-    "      <select id=\"scroll.direction\" ng-model=\"scroll.direction\" class=\"form-control\">\n" +
+    "      <label for=\"scroll-direction\">{{'scroll.direction.label' | translate}}</label>\n" +
+    "      <select id=\"scroll-direction\" ng-model=\"scroll.direction\" class=\"form-control\">\n" +
     "        <option value=\"none\">{{'scroll.direction.none' | translate}}</option>\n" +
     "        <option value=\"up\">{{'scroll.direction.up' | translate}}</option>\n" +
     "        <!--<option value=\"down\">{{'scroll.direction.down' | translate}}</option>->\n" +
@@ -63,8 +62,8 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<!--\n" +
     "  <div class=\"row\">\n" +
     "    <div class=\"col-xs-6 col-md-4\">\n" +
     "      <div class=\"form-group\">\n" +
-    "        <label for=\"scroll.by\">{{'scroll.by.label' | translate}}</label>\n" +
-    "        <select id=\"scroll.by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
+    "        <label for=\"scroll-by\">{{'scroll.by.label' | translate}}</label>\n" +
+    "        <select id=\"scroll-by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
     "          <option value=\"continuous\">{{'scroll.by.continuous' | translate}}</option>\n" +
     "          <!--<option value=\"item\">{{'scroll.by.item' | translate}}Row</option>-->\n" +
     "          <option value=\"page\">{{'scroll.by.page' | translate}}</option>\n" +
@@ -76,8 +75,8 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<!--\n" +
     "  <div class=\"row\" ng-show=\"scrollBy != 'continuous'\">\n" +
     "    <div class=\"col-md-3\">\n" +
     "      <div class=\"form-group\">\n" +
-    "        <label for=\"scroll.hold\">{{'scroll.hold' | translate}}</label>\n" +
-    "        <input id=\"scroll.hold\" type=\"text\" class=\"form-control\" value=\"10\" />\n" +
+    "        <label for=\"scroll-hold\">{{'scroll.hold' | translate}}</label>\n" +
+    "        <input id=\"scroll-hold\" type=\"text\" class=\"form-control\" value=\"10\" />\n" +
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
@@ -85,8 +84,8 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<!--\n" +
     "  <div class=\"row\">\n" +
     "    <div class=\"col-xs-6 col-md-4\">\n" +
     "      <div class=\"form-group\">\n" +
-    "        <label for=\"scroll.speed\">{{'scroll.speed.label' | translate}}</label>\n" +
-    "        <select id=\"scroll.speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
+    "        <label for=\"scroll-speed\">{{'scroll.speed.label' | translate}}</label>\n" +
+    "        <select id=\"scroll-speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
     "          <option value=\"slowest\">{{'scroll.speed.slowest' | translate}}</option>\n" +
     "          <option value=\"slow\">{{'scroll.speed.slow' | translate}}</option>\n" +
     "          <option value=\"medium\">{{'scroll.speed.medium' | translate}}</option>\n" +
@@ -100,9 +99,9 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<!--\n" +
     "    <div class=\"col-xs-6 col-md-4\">\n" +
     "      <div class=\"form-group\">\n" +
     "        <label for=\"scroll.resumes\">\n" +
-    "          {{'scroll.resumes' | translate}}\n" +
+    "          {{'scroll-resumes' | translate}}\n" +
     "        </label>\n" +
-    "        <input id=\"scroll.resumes\" type=\"text\" ng-model=\"scroll.resumes\" class=\"form-control\" />\n" +
+    "        <input id=\"scroll-resumes\" type=\"text\" ng-model=\"scroll.resumes\" class=\"form-control\" />\n" +
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +

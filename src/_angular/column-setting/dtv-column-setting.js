@@ -1,5 +1,5 @@
-angular.module("risevision.widget.common")
-  .directive("columnSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
+angular.module("risevision.widget.common.columnSetting", [])
+  .directive("columnSetting", ["$log", function ($log) {
     return {
       restrict: "E",
       scope: {
@@ -8,7 +8,7 @@ angular.module("risevision.widget.common")
       template: VIEWS["column-setting/column-setting.html"],
       transclude: false,
       link: function($scope, $element) {
-        var defaultSetting = {
+        $scope.defaultSetting = {
           alignment: "left",
           width: 0,
           decimals: 0,
@@ -17,16 +17,20 @@ angular.module("risevision.widget.common")
         };
 
         $scope.defaults = function(obj) {
-          for (var i = 1, length = arguments.length; i < length; i++) {
-            var source = arguments[i];
-            for (var prop in source) {
-              if (obj[prop] === void 0) obj[prop] = source[prop];
+          if (obj) {
+            for (var i = 1, length = arguments.length; i < length; i++) {
+              var source = arguments[i];
+              for (var prop in source) {
+                if (obj[prop] === void 0) obj[prop] = source[prop];
+              }
             }
           }
           return obj;
         };
 
-        $scope.defaults($scope.column, defaultSetting);
+        $scope.$watch("column", function(column) {
+          $scope.defaults(column, $scope.defaultSetting);
+        });
       }
     };
   }]);

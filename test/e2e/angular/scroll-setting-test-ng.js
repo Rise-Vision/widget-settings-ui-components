@@ -16,7 +16,7 @@
 
   describe("Scroll Setting component", function() {
     beforeEach(function (){
-      browser.get("/test/e2e/test-ng.html");
+      browser.get("/test/e2e/angular/scroll-setting-test-ng.html");
     });
 
     it("Should correctly load default defaults", function () {
@@ -30,10 +30,21 @@
     it("Should display scroll settings when scroll is enabled", function () {
       expect(element(by.id("scroll-enabled")).getAttribute("checked")).
         to.eventually.not.be.ok;
-      expect(element(by.css(".more-scroll-options")).isDisplayed()).to.eventually.be.false;
+      expect(element(by.css(".more-scroll-options")).isDisplayed()).
+      to.eventually.be.false;
       //click on option, additional options appear
       element(by.id("scroll-enabled")).click();
-      expect(element(by.css(".more-scroll-options")).isDisplayed()).to.eventually.be.true;
+      expect(element(by.css(".more-scroll-options")).isDisplayed()).
+      to.eventually.be.true;
+
+      expect(element(by.id("scroll-by")).getAttribute("value")).
+      to.eventually.equal("continuous");
+
+      expect(element(by.id("scroll-speed")).getAttribute("value")).
+      to.eventually.equal("medium");
+
+      expect(element(by.id("scroll-resumes")).getAttribute("value")).
+      to.eventually.equal("5");
     });
 
     xit("Should correctly save settings", function (done) {
