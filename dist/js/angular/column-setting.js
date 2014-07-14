@@ -1,4 +1,4 @@
-angular.module("risevision.widget.common.columnSetting", [])
+angular.module("risevision.widget.common")
   .directive("columnSetting", ["$log", function ($log) {
     return {
       restrict: "E",
