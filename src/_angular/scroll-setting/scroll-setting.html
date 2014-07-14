@@ -1,48 +1,23 @@
-<!--
 <div class="row">
   <div class="col-md-3">
     <div class="form-group">
-      <label for="scroll-direction">{{'scroll.direction.label' | translate}}</label>
-      <select id="scroll-direction" ng-model="scroll.direction" class="form-control">
-        <option value="none">{{'scroll.direction.none' | translate}}</option>
-        <option value="up">{{'scroll.direction.up' | translate}}</option>
-        <!--<option value="down">{{'scroll.direction.down' | translate}}</option>->
-      </select>
-    </div>
-  </div>
-</div>
--->
-<div class="row">
-  <div class="col-md-3">
-    <div class="checkbox">
-      <label for="scroll-enabled">{{'scroll.enabled' | translate}}</label>
-      <input id="scroll-enabled" type="checkbox" ng-model="scroll.enabled">
-    </div>
-  </div>
-</div>
-<div ng-show="scroll.enabled" class="more-scroll-options">
-  <div class="row">
-    <div class="col-xs-6 col-md-4">
-      <div class="form-group">
-        <label for="scroll-by">{{'scroll.by.label' | translate}}</label>
-        <select id="scroll-by" ng-model="scroll.by" class="form-control">
-          <option value="continuous">{{'scroll.by.continuous' | translate}}</option>
-          <!--<option value="item">{{'scroll.by.item' | translate}}Row</option>-->
-          <option value="page">{{'scroll.by.page' | translate}}</option>
-        </select>
+      <label for="scroll-enabled">{{'scroll.by.label' | translate}}</label>
+      <div class"radio">
+        <label for="scroll-by-none">{{'scroll.by.none' | translate}}</label>
+        <input type="radio" id="scroll-by-none" name="scroll-by" ng-model="scroll.by" value="none">
+      </div>
+      <div class"radio">
+        <label for="scroll-by-continuous">{{'scroll.by.continuous' | translate}}</label>
+        <input type="radio" id="scroll-by-continuous" name="scroll-by" ng-model="scroll.by" value="continuous">
+      </div>
+      <div class"radio">
+        <label for="scroll-by-page">{{'scroll.by.page' | translate}}</label>
+        <input type="radio" id="scroll-by-page" name="scroll-by" ng-model="scroll.by" value="page">
       </div>
     </div>
   </div>
-  <!--
-  <div class="row" ng-show="scrollBy != 'continuous'">
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="scroll-hold">{{'scroll.hold' | translate}}</label>
-        <input id="scroll-hold" type="text" class="form-control" value="10" />
-      </div>
-    </div>
-  </div>
--->
+</div>
+<div ng-show="scroll.by != 'none'" class="more-scroll-options">
   <div class="row">
     <div class="col-xs-6 col-md-4">
       <div class="form-group">
@@ -60,10 +35,10 @@
   <div class="row">
     <div class="col-xs-6 col-md-4">
       <div class="form-group">
-        <label for="scroll.resumes">
-          {{'scroll-resumes' | translate}}
+        <label for="scroll-pause">
+          {{'scroll.pause' | translate}}
         </label>
-        <input id="scroll-resumes" type="text" ng-model="scroll.resumes" class="form-control" />
+        <input id="scroll-pause" type="text" ng-model="scroll.pause" class="form-control" />
       </div>
     </div>
   </div>

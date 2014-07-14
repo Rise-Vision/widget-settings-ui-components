@@ -1,4 +1,4 @@
-angular.module("risevision.widget.common.scrollSetting", [])
+angular.module("risevision.widget.common")
   .directive("scrollSetting", ["$log", function ($log) {
     return {
       restrict: "E",
@@ -9,11 +9,9 @@ angular.module("risevision.widget.common.scrollSetting", [])
       transclude: false,
       link: function($scope, $element) {
         $scope.defaultSetting = {
-          enabled: false,
-          //direction: "up",
-          by: "continuous",
+          by: "none",
           speed: "medium",
-          resumes: "5"
+          pause: "5"
         };
 
         $scope.defaults = function(obj) {
