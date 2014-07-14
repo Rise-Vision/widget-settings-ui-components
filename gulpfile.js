@@ -16,9 +16,9 @@
   var fs = require("fs");
   var runSequence = require("gulp-run-sequence");
   var es = require("event-stream");
-  var path = require("path");
   var jshint = require("gulp-jshint");
-  var uglify = require('gulp-uglify');
+  var uglify = require("gulp-uglify");
+  var express = require("express");
   var protractor = require('gulp-protractor').protractor;
   var webdriver_update = require('gulp-protractor').webdriver_update;
   var httpServer;
@@ -166,20 +166,18 @@
       .pipe(gulp.dest("dist/js"));
   });
 
-  gulp.task("e2e:server", function() {
-    httpServer = connect.server({
-      root: "./",
-      port: 8099,
-      livereload: false
-    });
+  gulp.task("e2e:server", ["config"], function() {
+    var server = express();
+    server.use(express.static(__dirname));
+    httpServer = server.listen(8099);
     return httpServer;
   });
 
   gulp.task("e2e:server-close", function() {
-    connect.serverClose();
+    httpServer.close();
   });
 
-  gulp.task("e2e:test", function () {
+  gulp.task("e2e:test", function (cb) {
       var tests = ["test/e2e/alignment-scenarios.js", "test/e2e/url-field-scenarios.js"];
 
       var casperChild = spawn("casperjs", ["test"].concat(tests));
@@ -188,10 +186,16 @@
           gutil.log("CasperJS:", data.toString().slice(0, -1)); // Remove \n
       });
 
-      casperChild.on("close", function (code) {
-          var success = code === 0; // Will be 1 in the event of failure
-          //connect.serverClose();
-          // Do something with success here
+      casperChild.on('close', function (code) {
+        var success = code === 0; // Will be 1 in the event of failure
+        // Do something with success here
+        if(!success) {
+          gulp.run("e2e:server-close");
+          cb("CasperJS returned error.");
+        }
+      else {
+        cb();
+      }
       });
   });
 
@@ -201,7 +205,7 @@
     return gulp.src(["test/e2e/angular/scroll-setting-test-ng.js",
     "test/e2e/angular/column-setting-test-ng.js"])
       .pipe(protractor({
-          configFile: "test/protractor.conf.js",
+          configFile: './node_modules/widget-tester/protractor.conf.js',
           args: ["--baseUrl", "http://127.0.0.1:8099/test/e2e/test-ng.html"]
       }))
       .on("error", function (e) { console.log(e); throw e; })
