@@ -31,7 +31,6 @@ angular.module("risevision.widget.common")
         };
         var $elm = $(elm);
         var prefix = $scope.prefix || stripLast(attrs.id, "-font");
-        var picker = $elm.data("font-picker");
 
         $scope.$watch("fontData", function(fontData) {
           if (fontData) {
@@ -58,11 +57,13 @@ angular.module("risevision.widget.common")
           }
         });
 
-        $scope.$parent.$on("collectAdditionalParams", function () {
+        $scope.$on("collectAdditionalParams", function () {
+          var picker = $elm.data("font-picker");
+
           $log.debug("Collecting params from", prefix, picker);
           $scope.fontData.font = picker.getFont();
           //$scope.fontData.fontStyle = picker.getFontStyle();
-          $scope.fontData.fontUrl = picker.getfontURL();
+          $scope.fontData.fontUrl = picker.getFontURL();
           $scope.fontData.fontSize = picker.getFontSize();
           $scope.fontData.isBold = picker.getBold();
           $scope.fontData.isItalic = picker.getItalic();

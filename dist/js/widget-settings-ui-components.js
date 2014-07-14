@@ -1,3 +1,32 @@
+if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
+TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
+    "  <button type=\"button\" class=\"btn btn-default btn-alignment dropdown-toggle\"\n" +
+    "    data-toggle=\"dropdown\" data-wysihtml5-command-value=\"left\">\n" +
+    "    <i class=\"glyphicon glyphicon-align-left\"></i>\n" +
+    "    <span class=\"caret\"></span>\n" +
+    "  </button>\n" +
+    "  <div class=\"dropdown-menu\" role=\"menu\">\n" +
+    "    <div class=\"btn-group\">\n" +
+    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
+    "        data-wysihtml5-command-value=\"left\" tabindex=\"-1\">\n" +
+    "        <i class=\"glyphicon glyphicon-align-left\"></i>\n" +
+    "      </button>\n" +
+    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
+    "        data-wysihtml5-command-value=\"center\" tabindex=\"-1\">\n" +
+    "        <i class=\"glyphicon glyphicon-align-center\"></i>\n" +
+    "      </button>\n" +
+    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
+    "        data-wysihtml5-command-value=\"right\" tabindex=\"-1\">\n" +
+    "        <i class=\"glyphicon glyphicon-align-right\"></i>\n" +
+    "      </button>\n" +
+    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
+    "        data-wysihtml5-command-value=\"justify\" tabindex=\"-1\">\n" +
+    "        <i class=\"glyphicon glyphicon-align-justify\"></i>\n" +
+    "      </button>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    ""; 
 /*  Copyright © 2014 Rise Vision Incorporated.
  *  Use of this software is governed by the GPLv3 license
  *  (reproduced in the LICENSE file).
@@ -73,41 +102,15 @@
   };
 })(jQuery, window, document, TEMPLATES);
 
-if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
-TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
-    "  <button type=\"button\" class=\"btn btn-default btn-alignment dropdown-toggle\"\n" +
-    "    data-toggle=\"dropdown\" data-wysihtml5-command-value=\"left\">\n" +
-    "    <i class=\"glyphicon glyphicon-align-left\"></i>\n" +
-    "    <span class=\"caret\"></span>\n" +
-    "  </button>\n" +
-    "  <div class=\"dropdown-menu\" role=\"menu\">\n" +
-    "    <div class=\"btn-group\">\n" +
-    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
-    "        data-wysihtml5-command-value=\"left\" tabindex=\"-1\">\n" +
-    "        <i class=\"glyphicon glyphicon-align-left\"></i>\n" +
-    "      </button>\n" +
-    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
-    "        data-wysihtml5-command-value=\"center\" tabindex=\"-1\">\n" +
-    "        <i class=\"glyphicon glyphicon-align-center\"></i>\n" +
-    "      </button>\n" +
-    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
-    "        data-wysihtml5-command-value=\"right\" tabindex=\"-1\">\n" +
-    "        <i class=\"glyphicon glyphicon-align-right\"></i>\n" +
-    "      </button>\n" +
-    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
-    "        data-wysihtml5-command-value=\"justify\" tabindex=\"-1\">\n" +
-    "        <i class=\"glyphicon glyphicon-align-justify\"></i>\n" +
-    "      </button>\n" +
-    "    </div>\n" +
-    "  </div>\n" +
-    "</div>\n" +
-    ""; 
 if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
   var WIDGET_SETTINGS_UI_CONFIG = {
     //put variables here
   };
 }
 
+if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
+TEMPLATES['url-field-template.html'] = "<div></div>\n" +
+    ""; 
 /*  Copyright © 2014 Rise Vision Incorporated.
  *  Use of this software is governed by the GPLv3 license
  *  (reproduced in the LICENSE file).
@@ -137,9 +140,6 @@ if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
   };
 })(jQuery, window, document, WIDGET_SETTINGS_UI_CONFIG);
 
-if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
-TEMPLATES['url-field-template.html'] = "<div></div>\n" +
-    ""; 
 if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
   var WIDGET_SETTINGS_UI_CONFIG = {
     //put variables here

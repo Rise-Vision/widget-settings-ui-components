@@ -45,11 +45,14 @@ VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\
     "          <label for=\"column-alignment\">\n" +
     "            {{'column.alignment.label' | translate}}\n" +
     "          </label>\n" +
+    "          <alignment align=\"column.alignment\"></alignment>\n" +
+    "<!--\n" +
     "          <select id=\"column-alignment\" ng-model=\"column.alignment\" class=\"form-control\">\n" +
     "            <option value=\"left\">{{'column.alignment.left' | translate}}</option>\n" +
     "            <option value=\"center\">{{'column.alignment.center' | translate}}</option>\n" +
     "            <option value=\"right\">{{'column.alignment.right' | translate}}</option>\n" +
     "          </select>\n" +
+    "-->\n" +
     "        </div>\n" +
     "      </div>\n" +
     "    </div>\n" +

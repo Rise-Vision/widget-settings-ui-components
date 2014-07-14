@@ -119,8 +119,8 @@
   gulp.task('js-concat-subcomponents', ["html2js-subcomponents", "lint"], function () {
     var tasks = subcomponents.map(function(folder) {
       return gulp.src([
-        path.join("src", folder, "**/*.js"),
         path.join("tmp", "templates", folder, "**/*.js"), //template js files
+        path.join("src", folder, "**/*.js"),
         "src/_config/config.js"
         ])
         .pipe(concat(folder + ".js"))
