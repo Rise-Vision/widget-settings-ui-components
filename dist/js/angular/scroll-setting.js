@@ -38,15 +38,15 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<div class=\"row\">\n" +
     "  <div class=\"col-md-3\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label for=\"scroll-enabled\">{{'scroll.by.label' | translate}}</label>\n" +
-    "      <div class\"radio\">\n" +
+    "      <div class=\"radio\">\n" +
     "        <label for=\"scroll-by-none\">{{'scroll.by.none' | translate}}</label>\n" +
     "        <input type=\"radio\" id=\"scroll-by-none\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"none\">\n" +
     "      </div>\n" +
-    "      <div class\"radio\">\n" +
+    "      <div class=\"radio\">\n" +
     "        <label for=\"scroll-by-continuous\">{{'scroll.by.continuous' | translate}}</label>\n" +
     "        <input type=\"radio\" id=\"scroll-by-continuous\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"continuous\">\n" +
     "      </div>\n" +
-    "      <div class\"radio\">\n" +
+    "      <div class=\"radio\">\n" +
     "        <label for=\"scroll-by-page\">{{'scroll.by.page' | translate}}</label>\n" +
     "        <input type=\"radio\" id=\"scroll-by-page\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"page\">\n" +
     "      </div>\n" +

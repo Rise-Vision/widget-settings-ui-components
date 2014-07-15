@@ -1,15 +1,25 @@
 angular.module("risevision.widget.common")
   .directive("alignment", function () {
-    function link(scope, element, attrs) {
-      attrs.align = attrs.align || "left";
-
-      element.alignment({
-        "align": attrs.align
-      });
-    }
-
     return {
       restrict: "E",
-      link: link
+      scope: {
+        align: "="
+      },
+      transclude: false,
+      link: function ($scope, element, attrs) {
+        var $element = $(element);
+
+        $scope.$watch("align", function(align) {
+          if (align) {
+            $element.alignment({
+              "align": $scope.align
+            });
+          }
+        });
+
+        $scope.$on("collectAdditionalParams", function () {
+          $scope.align = $element.getAlignment();
+        });
+      }
     };
   });

@@ -20,9 +20,8 @@
     });
 
     it("Should correctly load default defaults", function () {
-      //scroll enabled
-      expect(element(by.id("column-alignment")).getAttribute("value")).
-        to.eventually.equal("left");
+//      expect(element(by.id("column-alignment")).getAttribute("value")).
+//        to.eventually.equal("left");
 
       expect(element(by.id("column-width")).getAttribute("value")).
       to.eventually.equal("0");
