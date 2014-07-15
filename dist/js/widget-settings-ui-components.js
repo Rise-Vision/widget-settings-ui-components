@@ -135,6 +135,7 @@ if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
     function _init() {
       // Get the HTML markup from the template.
       $element.append(TEMPLATES["font-style.html"]);
+
       $bold = $element.find(".bold");
       $italic = $element.find(".italic");
       $underline = $element.find(".underline");
@@ -156,16 +157,16 @@ if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
       return $styleElem.hasClass("active");
     }
 
-    function _setStyle($styleElem, style) {
-      if (style) {
+    function _setStyle($styleElem, value) {
+      if (value) {
         $styleElem.addClass("active");
       }
       else {
         $styleElem.removeClass("active");
       }
 
-      $element.trigger("styleChanged", [$styleElem.attr("data-wysihtml5-command"),
-        style]);
+      $element.trigger("styleChanged",
+        [$styleElem.attr("data-wysihtml5-command"), value]);
     }
 
     /*
