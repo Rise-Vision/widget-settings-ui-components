@@ -25,67 +25,76 @@
     function _init() {
       // Get the HTML markup from the template.
       $element.append(TEMPLATES["font-style.html"]);
+
       $bold = $element.find(".bold");
       $italic = $element.find(".italic");
       $underline = $element.find(".underline");
 
       // Initialize all styles.
-      toggleStyles({
+      setStyles({
         "bold": options.bold,
         "italic": options.italic,
         "underline": options.underline,
       });
 
-      // $element.find(".dropdown-menu button").on("click", function() {
-      //   setAlignment($(this).data("wysihtml5-command-value"));
-      // });
+      // Handle clicking on any of the style buttons.
+      $(".btn").on("click", function() {
+        _setStyle($(this), !$(this).hasClass("active"));
+      });
     }
 
-    function _getStyle($elem) {
-      return $elem.hasClass("active");
+    function _getStyle($styleElem) {
+      return $styleElem.hasClass("active");
     }
 
-    function _setStyle($elem, style) {
-      $elem.toggleClass("active");
-      $element.trigger(style + "Changed", $elem.hasClass("active"));
+    function _setStyle($styleElem, value) {
+      if (value) {
+        $styleElem.addClass("active");
+      }
+      else {
+        $styleElem.removeClass("active");
+      }
+
+      $element.trigger("styleChanged",
+        [$styleElem.attr("data-wysihtml5-command"), value]);
     }
 
     /*
      *  Public Methods
      */
-    function getBold() {
+    function isBold() {
       return _getStyle($bold);
     }
 
-    function toggleBold() {
-      _setStyle($bold, "bold");
+    function setBold(value) {
+      _setStyle($bold, value);
     }
 
-    function getItalic() {
+    function isItalic() {
      return _getStyle($italic);
     }
 
-    function toggleItalic() {
-      _setStyle($italic, "italic");
+    function setItalic(value) {
+      _setStyle($italic, value);
     }
 
-    function getUnderline() {
+    function isUnderline() {
      return _getStyle($underline);
     }
 
-    function toggleUnderline() {
-      _setStyle($underline, "underline");
+    function setUnderline(value) {
+      _setStyle($underline, value);
     }
 
     function getStyles() {
       return  {
-        "bold": _getStyle($bold),
-        "italic": _getStyle($italic),
-        "underline": _getStyle($underline),
+        "bold": isBold(),
+        "italic": isItalic(),
+        "underline": isUnderline(),
       };
     }
 
-    function toggleStyles(styles) {
+    function setStyles(styles) {
       _setStyle($bold, styles.bold);
       _setStyle($italic, styles.italic);
       _setStyle($underline, styles.underline);
@@ -94,14 +103,14 @@
     _init();
 
     return {
-      getBold:          getBold,
-      getItalic:        getItalic,
-      getUnderline:     getUnderline,
-      getStyles:        getStyles,
-      toggleBold:       toggleBold,
-      toggleItalic:     toggleItalic,
-      toggleUnderline:  toggleUnderline,
-      toggleStyles:     toggleStyles,
+      isBold:         isBold,
+      isItalic:       isItalic,
+      isUnderline:    isUnderline,
+      setBold:        setBold,
+      setItalic:      setItalic,
+      setUnderline:   setUnderline,
+      getStyles:      getStyles,
+      setStyles:      setStyles,
     };
   }
 

@@ -108,12 +108,6 @@ if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
   };
 }
 
-if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
-  var WIDGET_SETTINGS_UI_CONFIG = {
-    //put variables here
-  };
-}
-
 /*  Copyright © 2014 Rise Vision Incorporated.
  *  Use of this software is governed by the GPLv3 license
  *  (reproduced in the LICENSE file).
@@ -125,7 +119,9 @@ if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
 
   function Plugin(element, options) {
     var $element = $(element);
-    var $btnAlignment = null;
+    var $bold = null;
+    var $italic = null;
+    var $underline = null;
 
     options = $.extend({}, {
       "bold": false,
@@ -139,37 +135,91 @@ if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
     function _init() {
       // Get the HTML markup from the template.
       $element.append(TEMPLATES["font-style.html"]);
-      // $btnAlignment = $element.find(".btn-alignment");
+      $bold = $element.find(".bold");
+      $italic = $element.find(".italic");
+      $underline = $element.find(".underline");
 
-      // Set them all at once.
-      //setStyle();
+      // Initialize all styles.
+      setStyles({
+        "bold": options.bold,
+        "italic": options.italic,
+        "underline": options.underline,
+      });
 
-      // $element.find(".dropdown-menu button").on("click", function() {
-      //   setAlignment($(this).data("wysihtml5-command-value"));
-      // });
+      // Handle clicking on any of the style buttons.
+      $(".btn").on("click", function() {
+        _setStyle($(this), !$(this).hasClass("active"));
+      });
+    }
+
+    function _getStyle($styleElem) {
+      return $styleElem.hasClass("active");
+    }
+
+    function _setStyle($styleElem, style) {
+      if (style) {
+        $styleElem.addClass("active");
+      }
+      else {
+        $styleElem.removeClass("active");
+      }
+
+      $element.trigger("styleChanged", [$styleElem.attr("data-wysihtml5-command"),
+        style]);
     }
 
     /*
      *  Public Methods
      */
-    function setStyle(style) {
-
+    function isBold() {
+      return _getStyle($bold);
     }
 
-    function getBold() {
-     return $btnAlignment.data("wysihtml5-command-value");
+    function setBold(value) {
+      _setStyle($bold, value);
     }
 
-    function setBold(isBold) {
-      $element.find(".bold").toggleClass("bold");
-      $element.trigger("boldChanged", isBold);
+    function isItalic() {
+     return _getStyle($italic);
+    }
+
+    function setItalic(value) {
+      _setStyle($italic, value);
+    }
+
+    function isUnderline() {
+     return _getStyle($underline);
+    }
+
+    function setUnderline(value) {
+      _setStyle($underline, value);
+    }
+
+    function getStyles() {
+      return  {
+        "bold": isBold(),
+        "italic": isItalic(),
+        "underline": isUnderline(),
+      };
+    }
+
+    function setStyles(styles) {
+      _setStyle($bold, styles.bold);
+      _setStyle($italic, styles.italic);
+      _setStyle($underline, styles.underline);
     }
 
     _init();
 
     return {
-      getBold: getBold,
-      setBold: setBold,
+      isBold:         isBold,
+      isItalic:       isItalic,
+      isUnderline:    isUnderline,
+      setBold:        setBold,
+      setItalic:      setItalic,
+      setUnderline:   setUnderline,
+      getStyles:      getStyles,
+      setStyles:      setStyles,
     };
   }
 

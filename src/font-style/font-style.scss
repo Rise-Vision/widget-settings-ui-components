@@ -1,14 +1,20 @@
 /* Style the component */
-.bold {
-  font-weight: bold;
+a[data-wysihtml5-command=bold],
+a[data-wysihtml5-command=italic],
+a[data-wysihtml5-command=underline] {
+  min-width: 50px;
 }
 
-.italic {
-  font-style: italic;
+a[data-wysihtml5-command=bold].btn {
+  @extend .bold;
 }
 
-.underline {
-  text-decoration: underline;
+a[data-wysihtml5-command=italic].btn {
+  @extend .italic;
+}
+
+a[data-wysihtml5-command=underline].btn {
+  @extend .underline;
 }
 
 a.btn.active {
@@ -21,4 +27,24 @@ a.btn.active {
   outline: 0;
 }
 
+.btn-default,
+.btn-default:hover {
+  background-color: #fff;
+}
+
+.btn-default:hover {
+  border-color: #ccc;
+}
+
 /* Font style classes */
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
