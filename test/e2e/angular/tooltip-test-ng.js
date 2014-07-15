@@ -48,10 +48,6 @@
       expect(element(by.css("div.popover.fade")).isPresent()).
       to.eventually.be.false;
     });
-
-    xit("Should correctly save settings", function (done) {
-      //TODO
-    });
   });
 
 })();
