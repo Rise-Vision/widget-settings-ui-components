@@ -72,8 +72,11 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<div class=\"row\">\n" +
     "    <div class=\"col-xs-6 col-md-4\">\n" +
     "      <div class=\"form-group\">\n" +
     "        <label for=\"scroll-pause\">\n" +
-    "          {{'scroll.pause' | translate}}\n" +
+    "          {{'scroll.pause.label' | translate}}\n" +
     "        </label>\n" +
+    "        <tooltip data-toggle=\"popover\" data-placement=\"right\"\n" +
+    "          data-content=\"{{'scroll.pause.tooltip' | translate}}\">\n" +
+    "        </tooltip>\n" +
     "        <input id=\"scroll-pause\" type=\"text\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
     "      </div>\n" +
     "    </div>\n" +

@@ -20,8 +20,8 @@
     });
 
     it("Should correctly load default defaults", function () {
-//      expect(element(by.id("column-alignment")).getAttribute("value")).
-//        to.eventually.equal("left");
+      expect(element(by.css(".btn-alignment[data-wysihtml5-command-value='left']"))).
+      to.eventually.not.be.null;
 
       expect(element(by.id("column-width")).getAttribute("value")).
       to.eventually.equal("0");

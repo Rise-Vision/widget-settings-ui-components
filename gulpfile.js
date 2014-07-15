@@ -202,8 +202,7 @@
   gulp.task('webdriver_update', webdriver_update);
 
   gulp.task("e2e:test-ng", ["webdriver_update"], function () {
-    return gulp.src(["test/e2e/angular/scroll-setting-test-ng.js",
-    "test/e2e/angular/column-setting-test-ng.js"])
+    return gulp.src(["test/e2e/angular/*test-ng.js"])
       .pipe(protractor({
           configFile: './node_modules/widget-tester/protractor.conf.js',
           args: ["--baseUrl", "http://127.0.0.1:8099/test/e2e/test-ng.html"]
