@@ -1,30 +1,4 @@
 /* Style the component */
-.alignment .dropdown-menu {
-  /* Display & Box Model */
-  min-width: 169px;
-  padding: 5px; }
-.alignment .glyphicon::before {
-  font-size: 18px; }
-
-.btn-alignment {
-  /* Display & Box Model */
-  min-width: 50px;
-  padding: 4px; }
-
-/* Alignment classes */
-.align-left {
-  text-align: left; }
-
-.align-center {
-  text-align: center; }
-
-.align-right {
-  text-align: right; }
-
-.justify {
-  text-align: justify; }
-
-/* Style the component */
 a[data-wysihtml5-command=bold], a[data-wysihtml5-command=italic], a[data-wysihtml5-command=underline] {
   min-width: 50px; }
 
