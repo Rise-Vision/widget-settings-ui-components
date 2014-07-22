@@ -21,6 +21,7 @@
   var express = require("express");
   var protractor = require('gulp-protractor').protractor;
   var webdriver_update = require('gulp-protractor').webdriver_update;
+  var factory = require("widget-tester").gulpTaskFactory;
   var httpServer;
   var subcomponents = fs.readdirSync("src")
     .filter(function(file) {
@@ -202,13 +203,22 @@
 
   gulp.task('webdriver_update', webdriver_update);
 
-  gulp.task("e2e:test-ng", ["webdriver_update"], function () {
+  gulp.task("test:ensure-directory", factory.ensureReportDirectory());
+
+  gulp.task("e2e:test-ng", ["test:ensure-directory", "webdriver_update"], function () {
     return gulp.src(["test/e2e/angular/*test-ng.js"])
       .pipe(protractor({
           configFile: './node_modules/widget-tester/protractor.conf.js',
           args: ["--baseUrl", "http://127.0.0.1:8099/test/e2e/test-ng.html"]
       }))
-      .on("error", function (e) { console.log(e); throw e; })
+      .on("error", function (e) {
+        console.log(e);
+        if(fs.statSync("./reports/angular-xunit.xml")) {
+          //output test result to console
+          gutil.log("Test report", fs.readFileSync("./reports/angular-xunit.xml", {encoding: "utf8"}));
+        }
+        throw e;
+      })
       .on("end", function () {
         //connect.serverClose();
       });
