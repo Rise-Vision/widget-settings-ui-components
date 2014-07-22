@@ -178,7 +178,8 @@
   });
 
   gulp.task("e2e:test", function (cb) {
-      var tests = ["test/e2e/alignment-scenarios.js", "test/e2e/url-field-scenarios.js"];
+      var tests = ["test/e2e/alignment-scenarios.js",
+        "test/e2e/font-style-scenarios.js", "test/e2e/url-field-scenarios.js"];
 
       var casperChild = spawn("casperjs", ["test"].concat(tests));
 
