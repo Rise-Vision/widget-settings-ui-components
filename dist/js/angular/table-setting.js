@@ -1,30 +1,30 @@
 angular.module("risevision.widget.common")
-  .directive("tableFormat", ["$log", function ($log) {
+  .directive("tableSetting", ["$log", function ($log) {
     return {
       restrict: "E",
       scope: {
         table: "="
       },
-      template: VIEWS["table-format/table-format.html"],
+      template: VIEWS["table-setting/table-setting.html"],
       transclude: false,
       link: function($scope, $element) {
         $scope.defaultSetting = {
           colHeaderFont: {
-            font: 'Verdana',
-            fontSize: '20',
-            isBold: 'false',
-            isItalic: 'false'
+            font: "Verdana",
+            fontSize: "20",
+            isBold: "false",
+            isItalic: "false"
           },
           dataFont: {
-            font: 'Verdana',
-            fontSize: '20',
-            isBold: 'false',
-            isItalic: 'false'
+            font: "Verdana",
+            fontSize: "20",
+            isBold: "false",
+            isItalic: "false"
           },
-          rowColor: 'transparent',
-          altRowColor: 'transparent',
-          rowPadding:'0',
-          colPadding:'0'
+          rowColor: "transparent",
+          altRowColor: "transparent",
+          rowPadding:"0",
+          colPadding:"0"
         };
 
         $scope.defaults = function(obj) {
@@ -47,7 +47,7 @@ angular.module("risevision.widget.common")
   }]);
 
 if(typeof VIEWS === 'undefined') {var VIEWS = {};}
-VIEWS['table-format/table-format.html'] = "<div class=\"row\">\n" +
+VIEWS['table-setting/table-setting.html'] = "<div class=\"row\">\n" +
     "	<div class=\"col-md-3\">\n" +
     "		<div class=\"form-group\">\n" +
     "	    <label for=\"row-padding\">{{'table.row-padding' | translate}}</label>\n" +
@@ -66,13 +66,13 @@ VIEWS['table-format/table-format.html'] = "<div class=\"row\">\n" +
     "	</div>\n" +
     "</div>\n" +
     "<div id=\"col-header-font\" class=\"current\"\n" +
-    "    font-picker\n" +
+    "    font-setting\n" +
     "		font-data=\"table.colHeaderFont\"\n" +
     "		i18n-prefix=\"'table.col-header-font'\"\n" +
     "		prefix=\"'col-header'\">\n" +
     "</div>\n" +
     "<div id=\"data-font\" class=\"current\"\n" +
-    "    font-picker\n" +
+    "    font-setting\n" +
     "		font-data=\"table.dataFont\"\n" +
     "    i18n-prefix=\"table.data-font\"\n" +
     "  	prefix=\"data\">\n" +

@@ -1,5 +1,5 @@
 angular.module("risevision.widget.common")
-  .directive("fontPicker", ["i18nLoader", "$log", function (i18nLoader, $log) {
+  .directive("fontSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
     return {
       restrict: "A",
       scope: {
@@ -10,7 +10,7 @@ angular.module("risevision.widget.common")
         fontSizeVisible: "=",
         textVisible: "="
       },
-      template: VIEWS["font-picker/font-picker.html"],
+      template: VIEWS["font-setting/font-setting.html"],
       transclude: false,
       link: function ($scope, elm, attrs) {
         var stripLast = function (str, strToStrip) {
@@ -74,7 +74,7 @@ angular.module("risevision.widget.common")
   }]);
 
 if(typeof VIEWS === 'undefined') {var VIEWS = {};}
-VIEWS['font-picker/font-picker.html'] = "<div class=\"row\">\n" +
+VIEWS['font-setting/font-setting.html'] = "<div class=\"row\">\n" +
     "  <div class=\"col-md-3\">\n" +
     "    <div class=\"font-picker-font form-group\"></div>\n" +
     "  </div>\n" +
