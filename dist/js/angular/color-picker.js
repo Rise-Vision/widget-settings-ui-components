@@ -6,19 +6,20 @@ angular.module("risevision.widget.common")
         color: "="
       },
       transclude: false,
-      link: function ($scope, elm, attrs) {
+      link: function ($scope, elm) {
         var $elm = $(elm);
 
         $scope.$watch("color", function(color) {
           if (color) {
             i18nLoader.get().then(function () {
               var options = {
+                cancelText: i18n.t("common.buttons.cancel"),
+                chooseText: i18n.t("common.buttons.apply"),
                 color: color,
                 preferredFormat: "hex",
+                showAlpha: true,
                 showInput: true,
                 type: "background",
-                chooseText: i18n.t("common.buttons.apply"),
-                cancelText: i18n.t("common.buttons.cancel")
               };
 
               $elm.spectrum(options);
