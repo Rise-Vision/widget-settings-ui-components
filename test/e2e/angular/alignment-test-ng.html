@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>Alignment - Angular Test Page</title>
+  <link rel="stylesheet" href="../../../components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../../../dist/css/alignment.css" />
+  <style>
+    alignment {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+  </style>
+</head>
+
+<body ng-app="testApp" ng-controller="mainController">
+  <alignment align="align"></alignment>
+
+  <script src="/components/angular/angular.js"></script>
+  <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="/components/bootstrap/dist/js/bootstrap.js"></script>
+  <script type="text/javascript" src="common.js"></script>
+  <script type="text/javascript" src="/tmp/templates/alignment/alignment.js"></script>
+  <script type="text/javascript" src="/src/alignment/alignment.js"></script>
+  <script type="text/javascript" src="/src/_angular/alignment/dtv-alignment.js"></script>
+
+  <script type="text/javascript">
+    angular.module("testApp", ["risevision.widget.common"])
+      .controller("mainController", ["$scope", function ($scope) {
+        $scope.align = "left";
+      }]);
+  </script>
+</body>
+</html>
