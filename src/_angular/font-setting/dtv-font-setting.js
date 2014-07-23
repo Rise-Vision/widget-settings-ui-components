@@ -1,5 +1,5 @@
 angular.module("risevision.widget.common")
-  .directive("fontPicker", ["i18nLoader", "$log", function (i18nLoader, $log) {
+  .directive("fontSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
     return {
       restrict: "A",
       scope: {
@@ -10,7 +10,7 @@ angular.module("risevision.widget.common")
         fontSizeVisible: "=",
         textVisible: "="
       },
-      template: VIEWS["font-picker/font-picker.html"],
+      template: VIEWS["font-setting/font-setting.html"],
       transclude: false,
       link: function ($scope, elm, attrs) {
         var stripLast = function (str, strToStrip) {

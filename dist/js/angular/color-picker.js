@@ -23,14 +23,10 @@ angular.module("risevision.widget.common")
 
               $elm.spectrum(options);
             });
-
-            //load i18n text translations after ensuring i18n has been initialized
-            // i18nLoader.get().then(function () {$elm.i18n();});
           }
         });
 
         $scope.$on("collectAdditionalParams", function () {
-          $log.debug("Collecting params from", prefix, picker);
           $scope.color = $elm.spectrum("get").toHexString();
         });
       }

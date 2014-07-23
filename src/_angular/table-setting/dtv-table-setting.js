@@ -1,30 +1,30 @@
 angular.module("risevision.widget.common")
-  .directive("tableFormat", ["$log", function ($log) {
+  .directive("tableSetting", ["$log", function ($log) {
     return {
       restrict: "E",
       scope: {
         table: "="
       },
-      template: VIEWS["table-format/table-format.html"],
+      template: VIEWS["table-setting/table-setting.html"],
       transclude: false,
       link: function($scope, $element) {
         $scope.defaultSetting = {
           colHeaderFont: {
-            font: 'Verdana',
-            fontSize: '20',
-            isBold: 'false',
-            isItalic: 'false'
+            font: "Verdana",
+            fontSize: "20",
+            isBold: "false",
+            isItalic: "false"
           },
           dataFont: {
-            font: 'Verdana',
-            fontSize: '20',
-            isBold: 'false',
-            isItalic: 'false'
+            font: "Verdana",
+            fontSize: "20",
+            isBold: "false",
+            isItalic: "false"
           },
-          rowColor: 'transparent',
-          altRowColor: 'transparent',
-          rowPadding:'0',
-          colPadding:'0'
+          rowColor: "transparent",
+          altRowColor: "transparent",
+          rowPadding:"0",
+          colPadding:"0"
         };
 
         $scope.defaults = function(obj) {

@@ -16,7 +16,7 @@
 
   describe("Table Format component", function() {
     beforeEach(function (){
-      browser.get("/test/e2e/angular/table-format-test-ng.html");
+      browser.get("/test/e2e/angular/table-setting-test-ng.html");
     });
 
     it("Should correctly load default defaults", function () {
