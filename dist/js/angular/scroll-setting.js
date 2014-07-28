@@ -1,37 +1,45 @@
-angular.module("risevision.widget.common")
-  .directive("scrollSetting", ["$log", function ($log) {
-    return {
-      restrict: "E",
-      scope: {
-        scroll: "="
-      },
-      template: VIEWS["scroll-setting/scroll-setting.html"],
-      transclude: false,
-      link: function($scope, $element) {
-        $scope.defaultSetting = {
-          by: "none",
-          speed: "medium",
-          pause: "5"
-        };
+/* global VIEWS */
+(function () {
+  "use strict";
 
-        $scope.defaults = function(obj) {
-          if (obj) {
-            for (var i = 1, length = arguments.length; i < length; i++) {
-              var source = arguments[i];
-              for (var prop in source) {
-                if (obj[prop] === void 0) obj[prop] = source[prop];
+  angular.module("risevision.widget.common")
+    .directive("scrollSetting", function () {
+      return {
+        restrict: "E",
+        scope: {
+          scroll: "="
+        },
+        template: VIEWS["scroll-setting/scroll-setting.html"],
+        transclude: false,
+        link: function($scope) {
+          $scope.defaultSetting = {
+            by: "none",
+            speed: "medium",
+            pause: "5"
+          };
+
+          $scope.defaults = function(obj) {
+            if (obj) {
+              for (var i = 1, length = arguments.length; i < length; i++) {
+                var source = arguments[i];
+
+                for (var prop in source) {
+                  if (obj[prop] === void 0) {
+                    obj[prop] = source[prop];
+                  }
+                }
               }
             }
-          }
-          return obj;
-        };
+            return obj;
+          };
 
-        $scope.$watch("scroll", function(scroll) {
-          $scope.defaults(scroll, $scope.defaultSetting);
-        });
-      }
-    };
-  }]);
+          $scope.$watch("scroll", function(scroll) {
+            $scope.defaults(scroll, $scope.defaultSetting);
+          });
+        }
+      };
+    });
+}());
 
 if(typeof VIEWS === 'undefined') {var VIEWS = {};}
 VIEWS['scroll-setting/scroll-setting.html'] = "<div class=\"row\">\n" +

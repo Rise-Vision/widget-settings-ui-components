@@ -2,6 +2,8 @@
  *  Use of this software is governed by the GPLv3 license
  *  (reproduced in the LICENSE file).
  */
+
+/* global TEMPLATES */
 ;(function ($, window, document, TEMPLATES, undefined) {
   "use strict";
 

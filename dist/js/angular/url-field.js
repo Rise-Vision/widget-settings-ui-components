@@ -1,34 +1,37 @@
-angular.module("risevision.widget.common")
-  .directive("urlField", ["$log", function ($log) {
-    return {
-      restrict: "E",
-      scope: {
-        url: "="
-      },
-      link: function (scope, $element, attrs) {
-        var urlField;
+(function () {
+  "use strict";
 
-        //initialize only if not yet initialized
-        if(!$element.data("plugin_urlField")) {
-          $element.urlField({
-            url : attrs.url || "http://"
+  angular.module("risevision.widget.common")
+    .directive("urlField", function () {
+      return {
+        restrict: "E",
+        scope: {
+          url: "="
+        },
+        link: function (scope, $element, attrs) {
+          var urlField;
+
+          //initialize only if not yet initialized
+          if (!$element.data("plugin_urlField")) {
+            $element.urlField({
+              url : attrs.url || "http://"
+            });
+
+            urlField = $element.data("plugin_urlField");
+          }
+
+          scope.$watch("url", function (url) {
+            if (url) {
+              urlField.setUrl(url);
+            }
           });
 
-          urlField = $element.data("plugin_urlField");
+          scope.$on("collectAdditionalParams", function () {
+            if (urlField.validateUrl()) {
+              scope.url = urlField.getUrl();
+            }
+          });
         }
-
-        scope.$watch("url", function (url) {
-          if (url) {
-            urlField.setUrl(url);
-          }
-        });
-
-        scope.$on("collectAdditionalParams", function () {
-          $log.debug("Collecting params from", attrs.id);
-          if (urlField.validateUrl()) {
-            scope.url = urlField.getUrl();
-          }
-        });
-      }
-    };
-  }]);
+      };
+    });
+}());

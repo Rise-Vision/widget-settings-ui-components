@@ -1,39 +1,47 @@
-angular.module("risevision.widget.common")
-  .directive("columnSetting", ["$log", function ($log) {
-    return {
-      restrict: "E",
-      scope: {
-        column: "="
-      },
-      template: VIEWS["column-setting/column-setting.html"],
-      transclude: false,
-      link: function($scope, $element) {
-        $scope.defaultSetting = {
-          alignment: "left",
-          width: 0,
-          decimals: 0,
-          sign: "arrow",
-          colorCondition: "none"
-        };
+/* global VIEWS */
+(function () {
+  "use strict";
 
-        $scope.defaults = function(obj) {
-          if (obj) {
-            for (var i = 1, length = arguments.length; i < length; i++) {
-              var source = arguments[i];
-              for (var prop in source) {
-                if (obj[prop] === void 0) obj[prop] = source[prop];
+  angular.module("risevision.widget.common")
+    .directive("columnSetting", function () {
+      return {
+        restrict: "E",
+        scope: {
+          column: "="
+        },
+        template: VIEWS["column-setting/column-setting.html"],
+        transclude: false,
+        link: function($scope) {
+          $scope.defaultSetting = {
+            alignment: "left",
+            width: 0,
+            decimals: 0,
+            sign: "arrow",
+            colorCondition: "none"
+          };
+
+          $scope.defaults = function(obj) {
+            if (obj) {
+              for (var i = 1, length = arguments.length; i < length; i++) {
+                var source = arguments[i];
+                for (var prop in source) {
+
+                  if (obj[prop] === void 0) {
+                    obj[prop] = source[prop];
+                  }
+                }
               }
             }
-          }
-          return obj;
-        };
+            return obj;
+          };
 
-        $scope.$watch("column", function(column) {
-          $scope.defaults(column, $scope.defaultSetting);
-        });
-      }
-    };
-  }]);
+          $scope.$watch("column", function(column) {
+            $scope.defaults(column, $scope.defaultSetting);
+          });
+        }
+      };
+    });
+}());
 
 if(typeof VIEWS === 'undefined') {var VIEWS = {};}
 VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\">\n" +

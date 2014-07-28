@@ -2,68 +2,67 @@
 <html>
 <head>
   <title>URL Field - Test Page</title>
-  <link rel="stylesheet" href="../../components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
-<div class="container">
-  <h2 class="text-center">URL Field jQuery Plugin - e2e Testing</h2>
-  <hr>
-  <div id="url-field"></div>
-  <hr>
-  <button id="setValidUrl" type="button" class="btn btn-default">Set Valid URL</button>
-  <button id="setInvalidUrl" type="button" class="btn btn-default">Set Invalid URL</button>
-  <button id="getUrl" type="button" class="btn btn-default">Get URL</button>
-  <button id="validate" type="button" class="btn btn-default">Validate URL</button>
-  <br><br>
-  <div class="alert alert-danger" role="alert"></div>
-</div>
+  <div class="container">
+    <h2 class="text-center">URL Field jQuery Plugin - e2e Testing</h2>
+    <hr>
+    <div id="url-field"></div>
+    <hr>
+    <button id="setValidUrl" type="button" class="btn btn-default">Set Valid URL</button>
+    <button id="setInvalidUrl" type="button" class="btn btn-default">Set Invalid URL</button>
+    <button id="getUrl" type="button" class="btn btn-default">Get URL</button>
+    <button id="validate" type="button" class="btn btn-default">Validate URL</button>
+    <br><br>
+    <div class="alert alert-danger" role="alert"></div>
+  </div>
 
-<script type="text/javascript" src="../../components/jquery/dist/jquery.js"></script>
-<!--<script type="text/javascript" src="../../dist/js/url-field.js"></script>-->
-<script type="text/javascript" src="../../src/_config/config.js"></script>
-<script type="text/javascript" src="../../tmp/templates/url-field/url-field-template.js"></script>
-<script type="text/javascript" src="../../src/url-field/url-field.js"></script>
-<script type="text/javascript">
-  var $urlField = $("#url-field"),
-    $alert = $(".alert"),
-    validUrl = "https://www.example.com/foo/?bar=baz&inga=42&quux",
-    invalidUrl = "http://a.b--c.de/";
+  <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="/src/_config/config.js"></script>
+  <script type="text/javascript" src="/tmp/templates/url-field/url-field-template.js"></script>
+  <script type="text/javascript" src="/src/url-field/url-field.js"></script>
 
-  // instantiate
-  $urlField.urlField();
+  <script type="text/javascript">
+    var $urlField = $("#url-field"),
+      $alert = $(".alert"),
+      validUrl = "https://www.example.com/foo/?bar=baz&inga=42&quux",
+      invalidUrl = "http://a.b--c.de/";
 
-  $alert.hide();
+    // instantiate
+    $urlField.urlField();
 
-  $("#validate").on("click", function () {
-    $alert.show().removeClass();
+    $alert.hide();
 
-    if (!$urlField.data("plugin_urlField").validateUrl()) {
-      $alert.addClass("alert alert-danger")
+    $("#validate").on("click", function () {
+      $alert.show().removeClass();
+
+      if (!$urlField.data("plugin_urlField").validateUrl()) {
+        $alert.addClass("alert alert-danger")
         .html("URL is invalid.");
-    } else {
-      $alert.addClass("alert alert-success")
+      }
+      else {
+        $alert.addClass("alert alert-success")
         .html("URL is valid!");
-    }
-  });
+      }
+    });
 
-  $("#setValidUrl").on("click", function () {
-    $alert.hide();
-    $urlField.data("plugin_urlField").setUrl(validUrl);
-  });
+    $("#setValidUrl").on("click", function () {
+      $alert.hide();
+      $urlField.data("plugin_urlField").setUrl(validUrl);
+    });
 
-  $("#setInvalidUrl").on("click", function () {
-    $alert.hide();
-    $urlField.data("plugin_urlField").setUrl(invalidUrl);
-  });
+    $("#setInvalidUrl").on("click", function () {
+      $alert.hide();
+      $urlField.data("plugin_urlField").setUrl(invalidUrl);
+    });
 
-  $("#getUrl").on("click", function () {
-    $alert.show()
-      .removeClass()
-      .addClass("alert alert-info")
-      .html("URL value is: " + $urlField.data("plugin_urlField").getUrl());
-  });
-
-</script>
-
+    $("#getUrl").on("click", function () {
+      $alert.show()
+        .removeClass()
+        .addClass("alert alert-info")
+        .html("URL value is: " + $urlField.data("plugin_urlField").getUrl());
+      });
+  </script>
 </body>
 </html>

@@ -20,28 +20,28 @@
     });
 
     it("Check Color Picker is loaded", function () {
-      expect(element(by.id('color-picker')).getCssValue("display")).
-        to.eventually.equal('none');
+      expect(element(by.id("color-picker")).getCssValue("display")).
+        to.eventually.equal("none");
 
-      expect(element(by.css('.sp-replacer.sp-light')).isPresent()).
+      expect(element(by.css(".sp-replacer.sp-light")).isPresent()).
         to.eventually.be.true;
     });
 
     it("Should show Color Picker default color when clicked", function () {
-      element(by.css('.sp-replacer.sp-light')).click();
+      element(by.css(".sp-replacer.sp-light")).click();
 
-      expect(element(by.css('.sp-replacer.sp-light.sp-active')).isPresent()).
+      expect(element(by.css(".sp-replacer.sp-light.sp-active")).isPresent()).
         to.eventually.be.true;
 
-      expect(element(by.css('.sp-preview-inner')).getCssValue("background-color")).
+      expect(element(by.css(".sp-preview-inner")).getCssValue("background-color")).
         to.eventually.equal("rgba(0, 0, 0, 0)");
     });
 
     it("Should close dialogue when Close is clicked", function() {
-      element(by.css('.sp-replacer.sp-light')).click();
-      element(by.css('.sp-cancel')).click();
+      element(by.css(".sp-replacer.sp-light")).click();
+      element(by.css(".sp-cancel")).click();
 
-      expect(element(by.css('.sp-replacer.sp-light.sp-active')).isPresent()).
+      expect(element(by.css(".sp-replacer.sp-light.sp-active")).isPresent()).
         to.eventually.be.false;
     });
 
