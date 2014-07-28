@@ -23,10 +23,10 @@ angular.module("risevision.widget.common")
           }
         });
 
-        $scope.$on("collectAdditionalParams", function () {
+        scope.$on("collectAdditionalParams", function () {
           $log.debug("Collecting params from", attrs.id);
           if (urlField.validateUrl()) {
-            $scope.url = urlField.getUrl();
+            scope.url = urlField.getUrl();
           }
         });
       }
