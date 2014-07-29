@@ -1,4 +1,6 @@
 (function () {
+  "use strict";
+
   angular.module("risevision.widget.common")
     .directive("fontStyle", function () {
       function link(scope, element) {

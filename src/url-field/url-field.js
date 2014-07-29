@@ -2,6 +2,9 @@
  *  Use of this software is governed by the GPLv3 license
  *  (reproduced in the LICENSE file).
  */
+
+/* global TEMPLATES */
+/* jshint maxlen: 500 */
 ;(function ($, window, document, TEMPLATES, undefined) {
   "use strict";
 

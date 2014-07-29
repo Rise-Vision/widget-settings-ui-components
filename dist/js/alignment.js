@@ -31,6 +31,8 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
  *  Use of this software is governed by the GPLv3 license
  *  (reproduced in the LICENSE file).
  */
+
+/* global TEMPLATES */
 ;(function ($, window, document, TEMPLATES, undefined) {
   "use strict";
 
@@ -102,6 +104,8 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
   };
 })(jQuery, window, document, TEMPLATES);
 
+/* global WIDGET_SETTINGS_UI_CONFIG: true */
+/* exported WIDGET_SETTINGS_UI_CONFIG */
 if (typeof WIDGET_SETTINGS_UI_CONFIG === "undefined") {
   var WIDGET_SETTINGS_UI_CONFIG = {
     //put variables here
