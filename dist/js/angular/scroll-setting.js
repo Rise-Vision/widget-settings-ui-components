@@ -47,16 +47,19 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<div class=\"row\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label for=\"scroll-enabled\">{{'scroll.by.label' | translate}}</label>\n" +
     "      <div class=\"radio\">\n" +
-    "        <label for=\"scroll-by-none\">{{'scroll.by.none' | translate}}</label>\n" +
-    "        <input type=\"radio\" id=\"scroll-by-none\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"none\">\n" +
+    "        <label for=\"scroll-by-none\">\n" +
+    "          <input type=\"radio\" id=\"scroll-by-none\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"none\"> {{'scroll.by.none' | translate}}\n" +
+    "        </label>\n" +
     "      </div>\n" +
     "      <div class=\"radio\">\n" +
-    "        <label for=\"scroll-by-continuous\">{{'scroll.by.continuous' | translate}}</label>\n" +
-    "        <input type=\"radio\" id=\"scroll-by-continuous\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"continuous\">\n" +
+    "        <label for=\"scroll-by-continuous\">\n" +
+    "          <input type=\"radio\" id=\"scroll-by-continuous\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"continuous\"> {{'scroll.by.continuous' | translate}}\n" +
+    "        </label>\n" +
     "      </div>\n" +
     "      <div class=\"radio\">\n" +
-    "        <label for=\"scroll-by-page\">{{'scroll.by.page' | translate}}</label>\n" +
-    "        <input type=\"radio\" id=\"scroll-by-page\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"page\">\n" +
+    "        <label for=\"scroll-by-page\">\n" +
+    "          <input type=\"radio\" id=\"scroll-by-page\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"page\"> {{'scroll.by.page' | translate}}\n" +
+    "        </label>\n" +
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
@@ -91,4 +94,4 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<div class=\"row\">\n" +
     "  </div>\n" +
     "</div>\n" +
     "<hr>\n" +
-    ""; 
+    "";

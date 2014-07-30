@@ -1,9 +1,9 @@
 if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
 TEMPLATES['url-field-template.html'] = "<div class=\"form-group validate-url\">\n" +
     "  <div class=\"checkbox\">\n" +
-    "    <label>Validate URL</label>\n" +
-    "    <input name=\"validate-url\" type=\"checkbox\" value=\"validate-url\"\n" +
-    "           checked=\"checked\">\n" +
+    "    <label>\n" +
+    "      <input name=\"validate-url\" type=\"checkbox\" value=\"validate-url\" checked=\"checked\"> Validate URL\n" +
+    "    </label>\n" +
     "  </div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
