@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common")
+  angular.module("risevision.widget.common.tooltip", [])
     .directive("tooltip", function () {
       return {
         restrict: "E",

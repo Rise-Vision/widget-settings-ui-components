@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common")
+  angular.module("risevision.widget.common.scroll-setting", ["risevision.widget.common.translate"])
     .directive("scrollSetting", function () {
       return {
         restrict: "E",

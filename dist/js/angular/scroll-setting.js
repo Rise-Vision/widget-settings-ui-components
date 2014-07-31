@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common")
+  angular.module("risevision.widget.common.scroll-setting", ["risevision.widget.common.translate"])
     .directive("scrollSetting", function () {
       return {
         restrict: "E",
@@ -94,4 +94,4 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<div class=\"row\">\n" +
     "  </div>\n" +
     "</div>\n" +
     "<hr>\n" +
-    "";
+    ""; 
