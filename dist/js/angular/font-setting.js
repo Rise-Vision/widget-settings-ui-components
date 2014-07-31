@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common")
+  angular.module("risevision.widget.common.font-setting", ["risevision.widget.common.translate"])
     .directive("fontSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
       return {
         restrict: "A",

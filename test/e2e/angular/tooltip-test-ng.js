@@ -39,10 +39,6 @@
 
     it("Should hide tooltip when clicked twice", function () {
       element(by.id("tooltip")).click();
-
-      expect(element(by.css("div.popover.fade")).isPresent()).
-      to.eventually.be.true;
-
       element(by.id("tooltip")).click();
 
       expect(element(by.css("div.popover.fade")).isPresent()).

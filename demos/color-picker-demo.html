@@ -1,0 +1,49 @@
+<div class="component">
+  <div class="page-header">
+    <h1 class="page">Color Picker</h1>
+  </div>
+
+  <p class="lead">An Angular directive that allows color selection</p>
+
+  <p><strong>Dependencies</strong> <span class="label label-info">spectrum</span></p>
+
+	<h3 class="add-top">Usage</h3>
+	<hljs include="'color-picker-usage'"></hljs>
+
+	<h3>Script Includes</h3>
+	<p>Make sure you include the following files in <code>index.html</code></p>
+	<hljs include="'script-includes'"></hljs>
+
+	<!-- Dynamic Example -->
+  <div class="examples">
+  	<h3>Example</h3>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="picker">Sample Color</label>
+          <input color-picker id="picker" color="color"
+            type="text" />
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
+
+<script type="text/ng-template" id="script-includes">
+bower_components/spectrum/spectrum.js
+bower_components/widget-settings-ui-components/dist/js/angular/color-picker.js
+</script>
+
+    <!-- Code Snippet -->
+<script type="text/ng-template" id="color-picker-usage">
+<form role="form">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="picker">Sample Color</label>
+        <input color-picker id="picker" type="text" color="settings.params.color" />
+      </div>
+    </div>
+  </div>
+</form>
+</script>

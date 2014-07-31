@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common")
+  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.translate"])
     .directive("columnSetting", function () {
       return {
         restrict: "E",
