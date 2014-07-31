@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common")
+  angular.module("risevision.widget.common.table-setting", ["risevision.widget.common.translate"])
     .directive("tableSetting", function () {
       return {
         restrict: "E",
