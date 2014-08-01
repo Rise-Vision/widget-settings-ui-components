@@ -1,9 +1,8 @@
-/* global VIEWS */
 (function () {
   "use strict";
 
   angular.module("risevision.widget.common.font-setting", ["risevision.widget.common.translate"])
-    .directive("fontSetting", ["i18nLoader", "$log", function (i18nLoader, $log) {
+    .directive("fontSetting", ["i18nLoader", "$log", "$templateCache", function (i18nLoader, $log, $templateCache) {
       return {
         restrict: "A",
         scope: {
@@ -14,7 +13,7 @@
           fontSizeVisible: "=",
           textVisible: "="
         },
-        template: VIEWS["font-setting/font-setting.html"],
+        template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
         link: function ($scope, elm, attrs) {
           var stripLast = function (str, strToStrip) {

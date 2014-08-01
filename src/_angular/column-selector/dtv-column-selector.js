@@ -9,7 +9,7 @@
           columns: "=",
           columnNames: "="
         },
-        template: $templateCache.get("column-selector/column-selector.html"),
+        template: $templateCache.get("_angular/column-selector/column-selector.html"),
         transclude: false,
         link: function($scope) {
 

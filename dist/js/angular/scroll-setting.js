@@ -8,7 +8,7 @@
         scope: {
           scroll: "="
         },
-        template: $templateCache.get("scroll-setting/scroll-setting.html"),
+        template: $templateCache.get("_angular/scroll-setting/scroll-setting.html"),
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {
