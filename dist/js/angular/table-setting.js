@@ -8,7 +8,7 @@
         scope: {
           table: "="
         },
-        template: $templateCache.get("table-setting/table-setting.html"),
+        template: $templateCache.get("_angular/table-setting/table-setting.html"),
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {

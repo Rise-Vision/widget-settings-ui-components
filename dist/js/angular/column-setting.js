@@ -8,7 +8,7 @@
         scope: {
           column: "="
         },
-        template: $templateCache.get("column-setting/column-setting.html"),
+        template: $templateCache.get("_angular/column-setting/column-setting.html"),
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {
