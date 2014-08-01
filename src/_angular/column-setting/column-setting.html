@@ -1,87 +1,87 @@
 <div class="panel panel-default">
-  <div class="panel-heading">{{'columns.' + column.name | translate}}</div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="column-alignment">
-            {{'column.alignment.label' | translate}}
-          </label>
-          <alignment align="column.alignment"></alignment>
-<!--
-          <select id="column-alignment" ng-model="column.alignment" class="form-control">
-            <option value="left">{{'column.alignment.left' | translate}}</option>
-            <option value="center">{{'column.alignment.center' | translate}}</option>
-            <option value="right">{{'column.alignment.right' | translate}}</option>
-          </select>
--->
+  <div class="collapse-panel panel-heading">
+    <a class="panel-title collapsed" data-toggle="collapse" data-target="#collapse-{{column.name}}"
+       href="#collapse-{{column.name}}">
+       {{'columns.' + column.name | translate}}
+    </a>
+  </div>
+  <div id="collapse-{{column.name}}" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="column-alignment">
+              {{'column.alignment.label' | translate}}
+            </label>
+            <alignment align="column.alignment"></alignment>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="column-width">
-            {{'column.width' | translate}}
-          </label>
-          <input id="column-width" type="text" ng-model="column.width" class="form-control" />
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="column-width">
+              {{'column.width' | translate}}
+            </label>
+            <input id="column-width" type="text" ng-model="column.width" class="form-control" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="column-decimals">
-            {{'column.decimals.label' | translate}}
-          </label>
-          <select id="column-decimals" ng-model="column.decimals" class="form-control">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="column-decimals">
+              {{'column.decimals.label' | translate}}
+            </label>
+            <select id="column-decimals" ng-model="column.decimals" class="form-control">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="column-sign">
-            {{'column.sign.label' | translate}}
-          </label>
-          <select id="column-sign" ng-model="column.sign" class="form-control">
-            <option value="neg">-</option>
-            <option value="pos-neg">+/-</option>
-            <option value="bracket">()</option>
-            <option value="arrow">Arrow</option>
-          </select>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="column-sign">
+              {{'column.sign.label' | translate}}
+            </label>
+            <select id="column-sign" ng-model="column.sign" class="form-control">
+              <option value="neg">-</option>
+              <option value="pos-neg">+/-</option>
+              <option value="bracket">()</option>
+              <option value="arrow">Arrow</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="column-color-condition">
-            {{'column.color-condition.label' | translate}}
-          </label>
-          <select id="column-color-condition" ng-model="column.colorCondition" class="form-control">
-            <option value="none">{{'column.color-condition.none' | translate}}</option>
-            <option value="up-green">{{'column.color-condition.up-green' | translate}}</option>
-            <option value="up-red">{{'column.color-condition.up-red' | translate}}</option>
-            <option value="positive-green">{{'column.color-condition.positive-green' | translate}}</option>
-            <option value="positive-red">{{'column.color-condition.positive-red' | translate}}</option>
-          </select>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="column-color-condition">
+              {{'column.color-condition.label' | translate}}
+            </label>
+            <select id="column-color-condition" ng-model="column.colorCondition" class="form-control">
+              <option value="none">{{'column.color-condition.none' | translate}}</option>
+              <option value="up-green">{{'column.color-condition.up-green' | translate}}</option>
+              <option value="up-red">{{'column.color-condition.up-red' | translate}}</option>
+              <option value="positive-green">{{'column.color-condition.positive-green' | translate}}</option>
+              <option value="positive-red">{{'column.color-condition.positive-red' | translate}}</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="column-header-text">
-            {{'column.header-text' | translate}}
-          </label>
-          <input id="column-header-text" type="text" ng-model="column.headerText" class="form-control" />
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="column-header-text">
+              {{'column.header-text' | translate}}
+            </label>
+            <input id="column-header-text" type="text" ng-model="column.headerText" class="form-control" />
+          </div>
         </div>
       </div>
     </div>

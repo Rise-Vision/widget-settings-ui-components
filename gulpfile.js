@@ -24,23 +24,17 @@
   var webdriver_update = require('gulp-protractor').webdriver_update;
   var factory = require("widget-tester").gulpTaskFactory;
   var httpServer;
+
   var subcomponents = fs.readdirSync("src")
     .filter(function(file) {
       return file[0] !== "_" && //exclude folders prefixed with "_"
         fs.statSync(path.join("src", file)).isDirectory();
     });
+
   var views = fs.readdirSync("src/_angular")
     .filter(function(file) {
       return fs.statSync(path.join("src/_angular", file)).isDirectory();
     });
-
-  var sassFiles = [
-      "src/scss/**/*.scss"
-    ],
-
-    cssFiles = [
-      "src/css/**/*.css"
-    ];
 
   gulp.task("clean-dist", function () {
     return gulp.src("dist", {read: false})
@@ -80,7 +74,16 @@
    return es.concat.apply(null, tasks);
   });
 
-  gulp.task("sass-subcomponents", ["sass-concat-subcomponents"], function () {
+  gulp.task("sass-concat-angular", function () {
+    var tasks = views.map(function(folder) {
+      return gulp.src(path.join("src/_angular", folder, "**/*.scss"))
+        .pipe(concat(folder + ".scss"))
+        .pipe(gulp.dest("tmp/scss/"));
+    });
+   return es.concat.apply(null, tasks);
+  });
+
+  gulp.task("sass-subcomponents", ["sass-concat-subcomponents", "sass-concat-angular"], function () {
     return gulp.src("tmp/scss/*.scss")
       .pipe(sass())
       .pipe(gulp.dest("dist/css/"));

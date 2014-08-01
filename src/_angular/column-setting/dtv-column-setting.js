@@ -6,7 +6,8 @@
       return {
         restrict: "E",
         scope: {
-          column: "="
+          column: "=",
+          expand: "="
         },
         template: $templateCache.get("_angular/column-setting/column-setting.html"),
         transclude: false,
