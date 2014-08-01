@@ -1,15 +1,14 @@
-/* global VIEWS */
 (function () {
   "use strict";
 
   angular.module("risevision.widget.common.scroll-setting", ["risevision.widget.common.translate"])
-    .directive("scrollSetting", function () {
+    .directive("scrollSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
         scope: {
           scroll: "="
         },
-        template: VIEWS["scroll-setting/scroll-setting.html"],
+        template: $templateCache.get("scroll-setting/scroll-setting.html"),
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {
@@ -38,5 +37,5 @@
           });
         }
       };
-    });
+    }]);
 }());

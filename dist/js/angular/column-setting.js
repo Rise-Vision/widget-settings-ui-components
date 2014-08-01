@@ -1,15 +1,14 @@
-/* global VIEWS */
 (function () {
   "use strict";
 
   angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.translate"])
-    .directive("columnSetting", function () {
+    .directive("columnSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
         scope: {
           column: "="
         },
-        template: VIEWS["column-setting/column-setting.html"],
+        template: $templateCache.get("column-setting/column-setting.html"),
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {
@@ -40,11 +39,16 @@
           });
         }
       };
-    });
+    }]);
 }());
 
-if(typeof VIEWS === 'undefined') {var VIEWS = {};}
-VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\">\n" +
+(function(module) {
+try { app = angular.module("risevision.widget.common.column-setting"); }
+catch(err) { app = angular.module("risevision.widget.common.column-setting", []); }
+app.run(["$templateCache", function($templateCache) {
+  "use strict";
+  $templateCache.put("_angular/column-setting/column-setting.html",
+    "<div class=\"panel panel-default\">\n" +
     "  <div class=\"panel-heading\">{{'columns.' + column.name | translate}}</div>\n" +
     "  <div class=\"panel-body\">\n" +
     "    <div class=\"row\">\n" +
@@ -133,4 +137,6 @@ VIEWS['column-setting/column-setting.html'] = "<div class=\"panel panel-default\
     "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +
-    ""; 
+    "");
+}]);
+})();

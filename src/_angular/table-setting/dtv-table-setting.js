@@ -1,15 +1,14 @@
-/* global VIEWS */
 (function () {
   "use strict";
 
   angular.module("risevision.widget.common.table-setting", ["risevision.widget.common.translate"])
-    .directive("tableSetting", function () {
+    .directive("tableSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
         scope: {
           table: "="
         },
-        template: VIEWS["table-setting/table-setting.html"],
+        template: $templateCache.get("table-setting/table-setting.html"),
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {
@@ -51,5 +50,5 @@
           });
         }
       };
-    });
+    }]);
 }());
