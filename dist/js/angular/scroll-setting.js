@@ -1,15 +1,14 @@
-/* global VIEWS */
 (function () {
   "use strict";
 
   angular.module("risevision.widget.common.scroll-setting", ["risevision.widget.common.translate"])
-    .directive("scrollSetting", function () {
+    .directive("scrollSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
         scope: {
           scroll: "="
         },
-        template: VIEWS["scroll-setting/scroll-setting.html"],
+        template: $templateCache.get("scroll-setting/scroll-setting.html"),
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {
@@ -38,11 +37,16 @@
           });
         }
       };
-    });
+    }]);
 }());
 
-if(typeof VIEWS === 'undefined') {var VIEWS = {};}
-VIEWS['scroll-setting/scroll-setting.html'] = "<div class=\"row\">\n" +
+(function(module) {
+try { app = angular.module("risevision.widget.common.scroll-setting"); }
+catch(err) { app = angular.module("risevision.widget.common.scroll-setting", []); }
+app.run(["$templateCache", function($templateCache) {
+  "use strict";
+  $templateCache.put("_angular/scroll-setting/scroll-setting.html",
+    "<div class=\"row\">\n" +
     "  <div class=\"col-md-3\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label for=\"scroll-enabled\">{{'scroll.by.label' | translate}}</label>\n" +
@@ -94,4 +98,6 @@ VIEWS['scroll-setting/scroll-setting.html'] = "<div class=\"row\">\n" +
     "  </div>\n" +
     "</div>\n" +
     "<hr>\n" +
-    ""; 
+    "");
+}]);
+})();

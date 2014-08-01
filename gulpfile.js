@@ -6,6 +6,7 @@
   var gutil = require("gulp-util");
   var connect = require("gulp-connect");
   var html2string = require("gulp-html2string");
+  var html2js = require("gulp-html2js");
   var path = require("path");
   var rename = require("gulp-rename");
   var clean = require("gulp-clean");
@@ -136,21 +137,25 @@
       .pipe(gulp.dest("dist/js"));
   });
 
-  gulp.task("html2js-views", function () {
+  gulp.task("html2js-angular", function() {
     var tasks = views.map(function(folder) {
       return gulp.src(path.join("src/_angular", folder, "**/*.html"))
-        .pipe(html2string({ createObj: true, base: path.join(__dirname, "src/_angular"), objName: "VIEWS" }))
-        .pipe(rename({extname: ".js"}))
-        .pipe(gulp.dest(path.join("tmp", "views", folder)));
+        .pipe(html2js({
+        outputModuleName: "risevision.widget.common." + folder,
+        useStrict: true,
+        base: "src"
+      }))
+      .pipe(rename({extname: ".js"}))
+      .pipe(gulp.dest(path.join("tmp/ng-templates/", folder)));
     });
-    return es.concat.apply(null, tasks);
+      return es.concat.apply(null, tasks);
   });
 
-  gulp.task("angular", ["html2js-views"], function () { //copy angular files
+  gulp.task("angular", ["html2js-angular"], function () { //copy angular files
     var tasks = views.map(function(folder) {
       return gulp.src([
         path.join("src/_angular", folder, "**/*.js"),
-        path.join("tmp/views/", folder, "**/*.js")
+        path.join("tmp/ng-templates/", folder, "**/*.js")
       ])
       .pipe(concat(folder + ".js"))
       .pipe(gulp.dest("dist/js/angular"));
