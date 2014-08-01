@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="form-group">
+		    <label for="columns-to-display">{{'columns.label' | translate}}</label>
+		    <button type="button"
+				class="btn btn-link btn-help"
+				data-toggle="popover" data-placement="right">
+				<span class="glyphicons circle_question_mark"></span>
+			</button>
+			<div class="row">
+				<div class="col-md-3" ng-repeat="column in columnNames">
+					<div class="checkbox">
+						<label for="columns-{{column.name}}">
+							<input id="columns-{{column.name}}" name="columns-{{column.name}}" type="checkbox"
+							ng-change="onColumnClick(column)" ng-model="column.show" />
+							{{'columns.' + column.name | translate}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row" ng-repeat="column in columns">
+	<div class="col-md-12">
+		<column-setting column="column"></column-setting>
+	</div>
+</div>
