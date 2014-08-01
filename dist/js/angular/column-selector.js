@@ -18,8 +18,8 @@
               for (var i = 0; i < $scope.columns.length; i++) {
                 for (var j = 0; j < $scope.columnNames.length; j++) {
                   if ($scope.columns[i].name === $scope.columnNames[j].name) {
-                    $scope.columnNames[j].show = true;
                     $scope.columns[i].type = $scope.columnNames[j].type;
+                    $scope.columnNames[i].show = true;
                   }
                 }
               }
@@ -30,7 +30,8 @@
           });
 
           $scope.onColumnClick = function(column) {
-            if (column.show) {
+            column.show = !column.show;
+            if (column.show !== true) {
               var newColumn = {
                 name: column.name,
                 type: column.type
@@ -38,13 +39,17 @@
               $scope.columns.push(newColumn);
             }
             else {
-              for(var i = 0; i < $scope.columns.length; i++) {
-                if ($scope.columns[i].name === column.name) {
-                  $scope.columns.splice(i, 1);
-                }
-              }
+              removeColumn($scope.columns, column.name);
             }
           };
+
+          function removeColumn(columnsList, name) {
+            for(var i = 0; i < columnsList.length; i++) {
+              if (columnsList[i].name === name) {
+                columnsList.splice(i, 1);
+              }
+            }
+          }
 
         }
       };
@@ -67,13 +72,13 @@ app.run(["$templateCache", function($templateCache) {
     "				<span class=\"glyphicons circle_question_mark\"></span>\n" +
     "			</button>\n" +
     "			<div class=\"row\">\n" +
-    "				<div class=\"col-md-3\" ng-repeat=\"column in columnNames\">\n" +
-    "					<div class=\"checkbox\">\n" +
-    "						<label for=\"columns-{{column.name}}\">\n" +
-    "							<input id=\"columns-{{column.name}}\" name=\"columns-{{column.name}}\" type=\"checkbox\"\n" +
-    "							ng-change=\"onColumnClick(column)\" ng-model=\"column.show\" />\n" +
+    "				<div class=\"col-md-8\">\n" +
+    "					<div class=\"tag-manager tags\">\n" +
+    "						<span ng-repeat=\"column in columnNames\"\n" +
+    "						ng-class=\"{label:true, 'label-primary':!column.show, 'label-default':column.show}\"\n" +
+    "						ng-click=\"onColumnClick(column)\">\n" +
     "							{{'columns.' + column.name | translate}}\n" +
-    "						</label>\n" +
+    "						</span>\n" +
     "					</div>\n" +
     "				</div>\n" +
     "			</div>\n" +
@@ -82,7 +87,9 @@ app.run(["$templateCache", function($templateCache) {
     "</div>\n" +
     "<div class=\"row\" ng-repeat=\"column in columns\">\n" +
     "	<div class=\"col-md-12\">\n" +
-    "		<column-setting column=\"column\"></column-setting>\n" +
+    "		<div class=\"panel-group\">\n" +
+    "			<column-setting column=\"column\"></column-setting>\n" +
+    "		</div>\n" +
     "	</div>\n" +
     "</div>\n" +
     "");

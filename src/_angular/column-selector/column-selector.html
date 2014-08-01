@@ -8,13 +8,13 @@
 				<span class="glyphicons circle_question_mark"></span>
 			</button>
 			<div class="row">
-				<div class="col-md-3" ng-repeat="column in columnNames">
-					<div class="checkbox">
-						<label for="columns-{{column.name}}">
-							<input id="columns-{{column.name}}" name="columns-{{column.name}}" type="checkbox"
-							ng-change="onColumnClick(column)" ng-model="column.show" />
+				<div class="col-md-8">
+					<div class="tag-manager tags">
+						<span ng-repeat="column in columnNames"
+						ng-class="{label:true, 'label-primary':!column.show, 'label-default':column.show}"
+						ng-click="onColumnClick(column)">
 							{{'columns.' + column.name | translate}}
-						</label>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -23,6 +23,8 @@
 </div>
 <div class="row" ng-repeat="column in columns">
 	<div class="col-md-12">
-		<column-setting column="column"></column-setting>
+		<div class="panel-group">
+			<column-setting column="column"></column-setting>
+		</div>
 	</div>
 </div>
