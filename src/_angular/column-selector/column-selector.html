@@ -10,10 +10,10 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="tag-manager tags">
-						<span ng-repeat="column in columnNames"
-						ng-class="{label:true, 'label-primary':!column.show, 'label-default':column.show}"
-						ng-click="onColumnClick(column)">
+						<span ng-repeat="column in columnNames" ng-hide="column.show" class="label label-primary"
+						ng-click="add(column)">
 							{{'columns.' + column.name | translate}}
+							<span class="glyphicon glyphicon-plus"></span>
 						</span>
 					</div>
 				</div>

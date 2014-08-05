@@ -38,6 +38,10 @@
           $scope.$watch("column", function(column) {
             $scope.defaults(column, $scope.defaultSetting);
           });
+
+          $scope.remove = function() {
+            $scope.$parent.remove($scope.column);
+          };
         }
       };
     }]);
@@ -51,12 +55,12 @@ app.run(["$templateCache", function($templateCache) {
   $templateCache.put("_angular/column-setting/column-setting.html",
     "<div class=\"panel panel-default\">\n" +
     "  <div class=\"collapse-panel panel-heading\">\n" +
-    "    <a class=\"panel-title collapsed\" data-toggle=\"collapse\" data-target=\"#collapse-{{column.name}}\"\n" +
-    "       href=\"#collapse-{{column.name}}\">\n" +
+    "    <a href=\"#\" ng-class=\"{'panel-title':true, collapsed:!collapse}\" ng-click=\"collapse=!collapse\">\n" +
     "       {{'columns.' + column.name | translate}}\n" +
     "    </a>\n" +
+    "    <a href=\"#\" class=\"glyphicon glyphicon-trash\" ng-click=\"remove()\"></a>\n" +
     "  </div>\n" +
-    "  <div id=\"collapse-{{column.name}}\" class=\"panel-collapse collapse\">\n" +
+    "  <div ng-class=\"{'panel-collapse':true, collapse:true, in:collapse}\">\n" +
     "    <div class=\"panel-body\">\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-3\">\n" +
