@@ -1,66 +1,56 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">Font Style</h1>
-  </div>
+<h1>Font Style</h1>
 
-  <p class="lead">Bold, italic and underline font styling</p>
+<p class="lead">Bold, italic and underline font styling</p>
 
-  <p>
-    <strong>Dependencies</strong>
-    <span class="label label-info">Angular</span>
-    <span class="label label-info">jQuery</span>
-  </p>
+<p>
+  <strong>Dependencies</strong>
+  <span class="label label-info">Angular</span>
+  <span class="label label-info">jQuery</span>
+</p>
 
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Usage</h3>
-      <!-- Code Snippet -->
-      <strong>Angular</strong>
-      <ul>
-        <li>Include the following files:
-          <hljs include="'angular-script-includes'"></hljs>
-        </li>
-        <li>Add the directive:
-          <hljs>
-            <font-style bold="true" italic="true" underline="true"></font-style>
-          </hljs>
-        </li>
-      </ul>
+<h3>Usage</h3>
+<strong>Angular</strong>
+<ul>
+  <li>Include the following files:
+    <hljs include="'angular-script-includes'"></hljs>
+  </li>
+  <li>Add the directive:
+    <hljs>
+<font-style bold="true" italic="true" underline="true"></font-style>
+    </hljs>
+  </li>
+</ul>
 
-      <strong>jQuery</strong>
-      <ul>
-        <li>Include the following files:
-          <hljs include="'jquery-script-includes'"></hljs>
-        </li>
-        <li>Add the HTML:
-          <hljs>
-            <div id="font-style"></div>
-          </hljs>
-        </li>
-        <li>Call the plugin:
-          <hljs include="'jquery-usage'"></hljs>
-        </li>
-      </ul>
-      <!-- END Code Snippet -->
-    </div>
-  </div>
+<strong>jQuery</strong>
+<ul>
+  <li>Include the following files:
+    <hljs include="'jquery-script-includes'"></hljs>
+  </li>
+  <li>Add the HTML:
+    <hljs>
+<div id="font-style"></div>
+    </hljs>
+  </li>
+  <li>Call the plugin:
+    <hljs include="'jquery-usage'"></hljs>
+  </li>
+</ul>
 
-  <!-- Dynamic Example -->
-  <div class="row examples">
-    <h3>Example</h3>
-    <font-style bold="true" italic="true" underline="true"></font-style>
-  </div>
+<!-- Dynamic Example -->
+<div class="examples">
+  <h3>Example</h3>
+  <font-style bold="false" italic="false" underline="false"></font-style>
 </div>
 
 <script type="text/ng-template" id="angular-script-includes">
-  <link rel="stylesheet" href="/bower_components/widget-settings-ui-components/dist/css/widget-settings-ui-components.min.css" />
-  <script type="text/javascript" src="/bower_components/widget-settings-ui-components/dist/js/font-style.min.js"></ script>
-  <script type="text/javascript" src="/bower_components/widget-settings-ui-components/dist/js/angular/font-style.min.js"></ script>
+/bower_components/widget-settings-ui-components/dist/css/widget-settings-ui-components.min.css
+/bower_components/widget-settings-ui-components/dist/js/font-style.min.js
+/bower_components/widget-settings-ui-components/dist/js/angular/font-style.min.js
 </script>
 
 <script type="text/ng-template" id="jquery-script-includes">
-  <link rel="stylesheet" href="/bower_components/widget-settings-ui-components/dist/css/widget-settings-ui-components.min.css" />
-  <script type="text/javascript" src="/bower_components/widget-settings-ui-components/dist/js/font-style.min.js"></ script>
+/bower_components/widget-settings-ui-components/dist/css/widget-settings-ui-components.min.css
+/bower_components/widget-settings-ui-components/dist/js/font-style.min.js
 </script>
 
 <script type="text/ng-template" id="jquery-usage">
