@@ -1,0 +1,59 @@
+<div class="component">
+  <div class="page-header">
+    <h1 class="page">URL Field</h1>
+  </div>
+
+  <p class="lead">An Angular directive or jQuery plugin that allows a user to enter a URL into an input field and perform validation, with the further option to turn off validation</p>
+
+  <p><strong>Dependencies</strong> N/A</p>
+
+  <h3>Usage</h3>
+  <strong>Angular</strong>
+  <ul>
+    <li>Include the following files:
+      <hljs include="'angular-script-includes'"></hljs>
+    </li>
+    <li>Add the directive:
+      <hljs>
+        <url-field url="http://www.risevision.com"></url-field>
+      </hljs>
+    </li>
+  </ul>
+
+  <strong>jQuery</strong>
+  <ul>
+    <li>Include the following files:
+      <hljs include="'jquery-script-includes'"></hljs>
+    </li>
+    <li>Add the HTML:
+      <hljs>
+        <div id="url-field"></div>
+      </hljs>
+    </li>
+    <li>Call the plugin:
+      <hljs include="'jquery-usage'"></hljs>
+    </li>
+  </ul>
+
+  <!-- Dynamic Example -->
+  <div class="examples">
+    <h3>Example</h3>
+    <url-field url="http://www.risevision.com"></url-field>
+  </div>
+</div>
+
+<script type="text/ng-template" id="angular-script-includes">
+  /components/widget-settings-ui-components/dist/js/angular/url-field.min.js
+</script>
+
+<script type="text/ng-template" id="jquery-script-includes">
+  /components/widget-settings-ui-components/dist/js/jquery/url-field.min.js
+</script>
+
+<script type="text/ng-template" id="jquery-usage">
+  <script type="text/javascript">
+    $urlField.urlField({
+      url: "http://www.risevision.com"
+    });
+  < /script>
+</script>
