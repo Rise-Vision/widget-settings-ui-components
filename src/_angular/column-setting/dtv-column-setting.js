@@ -13,8 +13,9 @@
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {
+            type: "int",
             alignment: "left",
-            width: 0,
+            width: "100px",
             decimals: 0,
             sign: "arrow",
             colorCondition: "none"

@@ -1,12 +1,10 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="form-group">
-		    <label for="columns-to-display">{{'columns.label' | translate}}</label>
-		    <button type="button"
-				class="btn btn-link btn-help"
-				data-toggle="popover" data-placement="right">
-				<span class="glyphicons circle_question_mark"></span>
-			</button>
+		  <label for="columns-to-display">{{'columns.label' | translate}}</label>
+			<tooltip data-toggle="popover" data-placement="right"
+				data-content="{{'columns.tooltip' | translate}}">
+			</tooltip>
 			<div class="row">
 				<div class="col-md-8">
 					<div class="tag-manager tags">

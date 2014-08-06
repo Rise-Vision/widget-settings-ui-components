@@ -70,12 +70,10 @@ app.run(["$templateCache", function($templateCache) {
     "<div class=\"row\">\n" +
     "	<div class=\"col-md-12\">\n" +
     "		<div class=\"form-group\">\n" +
-    "		    <label for=\"columns-to-display\">{{'columns.label' | translate}}</label>\n" +
-    "		    <button type=\"button\"\n" +
-    "				class=\"btn btn-link btn-help\"\n" +
-    "				data-toggle=\"popover\" data-placement=\"right\">\n" +
-    "				<span class=\"glyphicons circle_question_mark\"></span>\n" +
-    "			</button>\n" +
+    "		  <label for=\"columns-to-display\">{{'columns.label' | translate}}</label>\n" +
+    "			<tooltip data-toggle=\"popover\" data-placement=\"right\"\n" +
+    "				data-content=\"{{'columns.tooltip' | translate}}\">\n" +
+    "			</tooltip>\n" +
     "			<div class=\"row\">\n" +
     "				<div class=\"col-md-8\">\n" +
     "					<div class=\"tag-manager tags\">\n" +
