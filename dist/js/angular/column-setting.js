@@ -13,8 +13,9 @@
         transclude: false,
         link: function($scope) {
           $scope.defaultSetting = {
+            type: "int",
             alignment: "left",
-            width: 0,
+            width: "100px",
             decimals: 0,
             sign: "arrow",
             colorCondition: "none"
@@ -76,13 +77,16 @@ app.run(["$templateCache", function($templateCache) {
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-width\">\n" +
-    "              {{'column.width' | translate}}\n" +
+    "              {{'column.width.label' | translate}}\n" +
     "            </label>\n" +
+    "            <tooltip data-toggle=\"popover\" data-placement=\"right\"\n" +
+    "              data-content=\"{{'column.width.tooltip' | translate}}\">\n" +
+    "            </tooltip>\n" +
     "            <input id=\"column-width\" type=\"text\" ng-model=\"column.width\" class=\"form-control\" />\n" +
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
-    "      <div class=\"row\">\n" +
+    "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-decimals\">\n" +
@@ -98,7 +102,7 @@ app.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
-    "      <div class=\"row\">\n" +
+    "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-sign\">\n" +
@@ -113,7 +117,7 @@ app.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
-    "      <div class=\"row\">\n" +
+    "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-color-condition\">\n" +
@@ -133,8 +137,11 @@ app.run(["$templateCache", function($templateCache) {
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-header-text\">\n" +
-    "              {{'column.header-text' | translate}}\n" +
+    "              {{'column.header-text.label' | translate}}\n" +
     "            </label>\n" +
+    "            <tooltip data-toggle=\"popover\" data-placement=\"right\"\n" +
+    "              data-content=\"{{'column.header-text.tooltip' | translate}}\">\n" +
+    "            </tooltip>\n" +
     "            <input id=\"column-header-text\" type=\"text\" ng-model=\"column.headerText\" class=\"form-control\" />\n" +
     "          </div>\n" +
     "        </div>\n" +

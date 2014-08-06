@@ -21,13 +21,16 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="column-width">
-              {{'column.width' | translate}}
+              {{'column.width.label' | translate}}
             </label>
+            <tooltip data-toggle="popover" data-placement="right"
+              data-content="{{'column.width.tooltip' | translate}}">
+            </tooltip>
             <input id="column-width" type="text" ng-model="column.width" class="form-control" />
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" ng-if="column.type === 'int'">
         <div class="col-md-3">
           <div class="form-group">
             <label for="column-decimals">
@@ -43,7 +46,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" ng-if="column.type === 'int'">
         <div class="col-md-3">
           <div class="form-group">
             <label for="column-sign">
@@ -58,7 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" ng-if="column.type === 'int'">
         <div class="col-md-3">
           <div class="form-group">
             <label for="column-color-condition">
@@ -78,8 +81,11 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="column-header-text">
-              {{'column.header-text' | translate}}
+              {{'column.header-text.label' | translate}}
             </label>
+            <tooltip data-toggle="popover" data-placement="right"
+              data-content="{{'column.header-text.tooltip' | translate}}">
+            </tooltip>
             <input id="column-header-text" type="text" ng-model="column.headerText" class="form-control" />
           </div>
         </div>
