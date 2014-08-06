@@ -19,7 +19,13 @@
       browser.get("/test/e2e/angular/column-setting-test-ng.html");
     });
 
-    it("Should correctly load default defaults", function () {
+    it("Should correctly load default settings", function () {
+      expect(element(by.css(".panel a.panel-title.collapsed")).isPresent()).
+        to.eventually.be.true;
+
+      expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
+        .to.eventually.equal("none");
+
       expect(element(by.css(".btn-alignment[data-wysihtml5-command-value='left']"))).
       to.eventually.not.be.null;
 
@@ -34,6 +40,27 @@
 
       expect(element(by.id("column-color-condition")).getAttribute("value")).
       to.eventually.equal("none");
+    });
+
+    it("Should show panel when clicked", function () {
+      element(by.css(".panel a.panel-title.collapsed")).click();
+
+      expect(element(by.css(".panel a.panel-title.collapsed")).isPresent()).
+        to.eventually.be.false;
+
+      expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
+        .to.eventually.equal("block");
+    });
+
+    it("Should hide panel when clicked", function () {
+      element(by.css(".panel a.panel-title")).click();
+      element(by.css(".panel a.panel-title")).click();
+
+      expect(element(by.css(".panel a.panel-title.collapsed")).isPresent())
+        .to.eventually.be.true;
+
+      expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
+        .to.eventually.equal("none");
     });
 
     xit("Should correctly save settings", function (done) {

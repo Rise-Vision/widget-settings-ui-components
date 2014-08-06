@@ -90,10 +90,10 @@ app.run(["$templateCache", function($templateCache) {
     "		</div>\n" +
     "	</div>\n" +
     "</div>\n" +
-    "<div class=\"row\" ng-repeat=\"column in columns\">\n" +
+    "<div class=\"row\">\n" +
     "	<div class=\"col-md-12\">\n" +
     "		<div class=\"panel-group\">\n" +
-    "			<column-setting column=\"column\"></column-setting>\n" +
+    "			<column-setting column=\"column\" ng-repeat=\"column in columns\"></column-setting>\n" +
     "		</div>\n" +
     "	</div>\n" +
     "</div>\n" +
