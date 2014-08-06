@@ -7,19 +7,19 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
     "  </button>\n" +
     "  <div class=\"dropdown-menu\" role=\"menu\">\n" +
     "    <div class=\"btn-group\">\n" +
-    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
+    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"alignment\"\n" +
     "        data-wysihtml5-command-value=\"left\" tabindex=\"-1\">\n" +
     "        <i class=\"glyphicon glyphicon-align-left\"></i>\n" +
     "      </button>\n" +
-    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
+    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"alignment\"\n" +
     "        data-wysihtml5-command-value=\"center\" tabindex=\"-1\">\n" +
     "        <i class=\"glyphicon glyphicon-align-center\"></i>\n" +
     "      </button>\n" +
-    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
+    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"alignment\"\n" +
     "        data-wysihtml5-command-value=\"right\" tabindex=\"-1\">\n" +
     "        <i class=\"glyphicon glyphicon-align-right\"></i>\n" +
     "      </button>\n" +
-    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"align\"\n" +
+    "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"alignment\"\n" +
     "        data-wysihtml5-command-value=\"justify\" tabindex=\"-1\">\n" +
     "        <i class=\"glyphicon glyphicon-align-justify\"></i>\n" +
     "      </button>\n" +
