@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.column-selector", [])
+  angular.module("risevision.widget.common.column-selector", ["risevision.widget.common.column-setting",
+          "risevision.widget.common.translate"])
     .directive("columnSelector", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
