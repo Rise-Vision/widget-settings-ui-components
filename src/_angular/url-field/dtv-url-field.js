@@ -1,28 +1,30 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common")
+  angular.module("risevision.widget.common.url-field", [])
     .directive("urlField", function () {
       return {
         restrict: "E",
         scope: {
           url: "="
         },
-        link: function (scope, $element, attrs) {
-          var urlField;
-
-          //initialize only if not yet initialized
-          if (!$element.data("plugin_urlField")) {
-            $element.urlField({
-              url : attrs.url || "http://"
-            });
-
-            urlField = $element.data("plugin_urlField");
-          }
+        link: function (scope, element) {
+          var $element = $(element),
+            urlField;
 
           scope.$watch("url", function (url) {
-            if (url) {
-              urlField.setUrl(url);
+
+            if (!urlField) {
+              if (typeof url !== "string" || url === "") {
+                $element.urlField();
+              } else {
+                $element.urlField({ url: url });
+              }
+              urlField = $element.data("plugin_urlField");
+            } else {
+              if (typeof url === "string") {
+                urlField.setUrl(url);
+              }
             }
           });
 

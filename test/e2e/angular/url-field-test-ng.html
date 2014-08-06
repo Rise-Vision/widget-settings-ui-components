@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>URL Field - Test Page</title>
+
+  <link rel="stylesheet" href="/components/rv-style-guide/dist/css/rise.min.css">
+</head>
+<body ng-app="testapp" ng-controller="mainController">
+<div class="container">
+  <h2 class="text-center">URL Field [Angular Directive] - e2e Testing</h2>
+  <hr>
+  <url-field url="settings.additionalParams.url"></url-field>
+  <hr>
+  <button id="setValidUrl" type="button" class="btn btn-default" ng-click="setValidUrl()">Set Valid URL</button>
+  <button id="setInvalidUrl" type="button" class="btn btn-default" ng-click="setInvalidUrl()">Set Invalid URL</button>
+</div>
+
+<script type="text/javascript" src="/components/angular/angular.js"></script>
+<script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/node_modules/widget-tester/mocks/common-mock.js"></script>
+<script type="text/javascript" src="/dist/js/url-field.js"></script>
+<script type="text/javascript" src="/dist/js/angular/url-field.js"></script>
+<!--<script type="text/javascript" src="/src/_config/config.js"></script>
+<script type="text/javascript" src="/tmp/templates/url-field/url-field-template.js"></script>
+<script type="text/javascript" src="/src/url-field/url-field.js"></script>
+<script type="text/javascript" src="/src/_angular/url-field/dtv-url-field.js"></script>-->
+<script>
+  angular.module("testapp", ["risevision.widget.common.url-field"])
+    .controller("mainController", ["$scope", function ($scope) {
+
+      $scope.settings = {
+        additionalParams: {}
+      };
+
+      $scope.setValidUrl = function () {
+        $scope.settings.additionalParams.url = "https://www.example.com/foo/?bar=baz&inga=42&quux";
+      };
+
+      $scope.setInvalidUrl = function () {
+        $scope.settings.additionalParams.url = "http://a.b--c.de/";
+      }
+
+      $scope.getAdditionalParams = function (val, defaultVal) {
+        //always return defaultVal for now
+        return defaultVal;
+      }
+
+    }]);
+</script>
+
+</body>
+</html>
