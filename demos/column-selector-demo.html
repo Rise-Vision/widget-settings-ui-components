@@ -1,0 +1,92 @@
+<div class="component">
+  <div class="page-header">
+    <h1 class="page">Column Selector</h1>
+  </div>
+
+  <p class="lead">An Angular directive used to select and configure columns</p>
+
+  <p><strong>Dependencies</strong> <span class="label label-info">alignment</span> <span class="label label-info">column-setting</span>
+   <span class="label label-info">tooltip</span>
+  </p>
+
+  <p>Directive requires 2 parameters: a list of all the columns available, and a list of columns selected by default. Columns can be of two types:
+    text and int columns, with slightly different fields available for configuration.
+  </p>
+
+  <h3 class="add-top">Directive HTML:</h3>
+  <hljs include="'html-usage'"></hljs>
+
+  <h3 class="add-top">Directive Angular initialization:</h3>
+  <hljs include="'angular-usage'"></hljs>
+
+
+  <h3>Script Includes</h3>
+  <p>Make sure you include the following files in <code>index.html</code></p>
+  <hljs include="'script-includes'"></hljs>
+
+  <!-- Dynamic Example -->
+  <div class="examples">
+    <h3>Example</h3>
+      <column-selector columns="columns" column-names="columnNames"></column-selector>
+  </div>
+</div>
+
+<script type="text/ng-template" id="script-includes">
+bower_components/widget-settings-ui-components/dist/js/angular/column-selector.js
+bower_components/widget-settings-ui-components/dist/js/angular/column-setting.js
+bower_components/widget-settings-ui-components/dist/js/angular/alignment.js
+bower_components/widget-settings-ui-components/dist/js/alignment.js
+bower_components/widget-settings-ui-components/dist/js/angular.tooltip.js
+</script>
+
+    <!-- Code Snippet -->
+<script type="text/ng-template" id="html-usage">
+<form role="form">
+  <column-selector columns="settings.additionalParams.columns" column-names="columnNames"></column-selector>
+</form>
+</script>
+
+<script type="text/ng-template" id="angular-usage">
+  // Define all column names
+  $scope.columnNames = [
+    {
+      name: "instrument",
+      type: "text"
+    },
+    {
+      name: "instrument-logo",
+      type: "text"
+    },
+    {
+      name: "last-price",
+      type: "int"
+    },
+    {
+      name: "change",
+      type: "int"
+    },
+    {
+      name: "percent-change",
+      type: "int"
+    },
+    {
+      name: "day-high",
+      type: "int"
+    },
+    {
+      name: "day-low",
+      type: "int"
+    }
+  ];
+
+  // Define selected columns
+  $scope.settings.additionalParams.columns = [
+    {
+      name: "instrument",
+      alignment: "right"
+    },
+    {
+      name: "instrument-logo"
+    }
+  ];
+</script>
