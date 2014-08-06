@@ -38,6 +38,10 @@
           $scope.$watch("column", function(column) {
             $scope.defaults(column, $scope.defaultSetting);
           });
+
+          $scope.remove = function() {
+            $scope.$parent.remove($scope.column);
+          };
         }
       };
     }]);

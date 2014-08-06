@@ -29,17 +29,21 @@
             }
           });
 
-          $scope.onColumnClick = function(column) {
-            column.show = !column.show;
-            if (column.show !== true) {
-              var newColumn = {
-                name: column.name,
-                type: column.type
-              };
-              $scope.columns.push(newColumn);
-            }
-            else {
+          $scope.add = function(column) {
+            column.show = true;
+            $scope.columns.push(column);
+          };
+
+          $scope.remove = function (column) {
+            if (column) {
               removeColumn($scope.columns, column.name);
+
+              for (var i = 0; i < $scope.columnNames.length; i++) {
+                if (column.name === $scope.columnNames[i].name) {
+                  $scope.columnNames[i].show = false;
+                  break;
+                }
+              }
             }
           };
 
@@ -47,6 +51,7 @@
             for(var i = 0; i < columnsList.length; i++) {
               if (columnsList[i].name === name) {
                 columnsList.splice(i, 1);
+                break;
               }
             }
           }
