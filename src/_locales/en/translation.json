@@ -1,0 +1,90 @@
+{
+	"common": {
+		"buttons" : {
+			"save": "Save",
+			"apply": "Apply",
+			"cancel": "Cancel",
+			"help": "Help"
+		},
+		"font-variants": {
+			"label": "Font Variants",
+			"bold": "Bold",
+			"italic": "Italic"
+		}
+	},
+	"scroll": {
+		"by": {
+			"label": "Scrolling",
+			"none": "None",
+			"continuous": "Continuous",
+			"page": "Page"
+		},
+		"speed": {
+			"label": "Scroll Speed",
+			"slowest": "Slowest",
+			"slow": "Slow",
+			"medium": "Medium",
+			"fast": "Fast",
+			"fastest": "Fastest"
+		},
+		"pause": {
+			"label": "Scroll Pause (seconds)",
+			"tooltip": "Number of seconds to pause after touch or the end of the list is reached"
+		}
+	},
+	"table": {
+		"row-padding": "Row Padding (pixels)",
+		"col-padding": "Column Padding (pixels)",
+		"col-header-font": {
+			"font": "Column Header Font",
+			"font-url": "Column Header Font URL",
+			"font-size": "Column Header Font Size",
+			"modal-title": "Fonts",
+			"font-variants": "Font Variants",
+			"color": "Column Header Color",
+			"text": "Column Header Sample Text"
+		},
+		"data-font": {
+			"font": "Data Font",
+			"font-url": "Data Font URL",
+			"font-size": "Data Font Size",
+			"modal-title": "Fonts",
+			"font-variants": "Font Variants",
+			"color": "Data Color",
+			"text": "Data Sample Text"
+		},
+		"row-color": "Row Color",
+		"alt-row-color": "Alternate Row Color"
+	},
+	"column": {
+		"alignment": {
+			"label": "Alignment",
+			"left": "Left",
+			"center": "Center",
+			"right": "Right"
+		},
+		"width": {
+			"label": "Width",
+			"tooltip": "Width of the column"
+		},
+		"decimals": {
+			"label": "Decimals"
+		},
+		"sign": {
+			"label": "Sign",
+			"arrow": "Arrow"
+		},
+		"color-condition": {
+			"label": "Color Condition",
+			"none": "None",
+			"up-green": "Change up green change down red",
+			"up-red": "Change down green change up red",
+			"positive-green": "Positive value green negative red",
+			"positive-red": "Positive value red negative green"
+		},
+		"header-text": {
+			"label": "Header Text",
+			"tooltip": "If header text is entered here then it will override the header in the spreadsheet"
+		}
+	}
+}
