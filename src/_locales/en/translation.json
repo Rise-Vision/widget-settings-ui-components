@@ -86,5 +86,9 @@
 			"label": "Header Text",
 			"tooltip": "If header text is entered here then it will override the header in the spreadsheet"
 		}
-	}
+	},
+  "url": {
+    "label": "URL",
+    "validate": "Validate URL"
+  }
 }
