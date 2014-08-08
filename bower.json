@@ -31,6 +31,7 @@
   "dependencies": {
     "angular": "1.2.18",
     "rv-style-guide": "git://github.com/Rise-Vision/style-guide",
+    "bootstrap-sass-official": "~3.2.0",
     "spectrum": "git://github.com/Rise-Vision/spectrum"
   }
 }
