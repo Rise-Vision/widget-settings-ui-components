@@ -6,14 +6,14 @@
     .directive("columnSelector", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
+        require: "ngModel",
         scope: {
           columns: "=",
           columnNames: "="
         },
         template: $templateCache.get("_angular/column-selector/column-selector.html"),
         transclude: false,
-        link: function($scope) {
-
+        link: function($scope, elm, attrs, ctrl) {
           var watcher = $scope.$watch("columns", function() {
             if ($scope.columns && $scope.columnNames) {
               for (var i = 0; i < $scope.columns.length; i++) {
@@ -25,6 +25,8 @@
                 }
               }
 
+              setValidity();
+
               // Destroy watch
               watcher();
             }
@@ -33,6 +35,8 @@
           $scope.add = function(column) {
             column.show = true;
             $scope.columns.push(column);
+
+            setValidity();
           };
 
           $scope.remove = function (column) {
@@ -45,6 +49,8 @@
                   break;
                 }
               }
+
+              setValidity();
             }
           };
 
@@ -55,6 +61,10 @@
                 break;
               }
             }
+          }
+
+          function setValidity() {
+            ctrl.$setValidity("required", $scope.columns.length);
           }
 
         }
@@ -68,33 +78,17 @@ catch(err) { app = angular.module("risevision.widget.common.column-selector", []
 app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/column-selector/column-selector.html",
-    "<div class=\"row\">\n" +
-    "	<div class=\"col-md-12\">\n" +
-    "		<div class=\"form-group\">\n" +
-    "		  <label for=\"columns-to-display\">{{'columns.label' | translate}}</label>\n" +
-    "			<tooltip data-toggle=\"popover\" data-placement=\"right\"\n" +
-    "				data-content=\"{{'columns.tooltip' | translate}}\">\n" +
-    "			</tooltip>\n" +
-    "			<div class=\"row\">\n" +
-    "				<div class=\"col-md-8\">\n" +
-    "					<div class=\"tag-manager tags\">\n" +
-    "						<span ng-repeat=\"column in columnNames\" ng-hide=\"column.show\" class=\"label label-primary\"\n" +
-    "						ng-click=\"add(column)\">\n" +
-    "							{{'columns.' + column.name | translate}}\n" +
-    "							<span class=\"glyphicon glyphicon-plus\"></span>\n" +
-    "						</span>\n" +
-    "					</div>\n" +
-    "				</div>\n" +
-    "			</div>\n" +
-    "		</div>\n" +
+    "<div class=\"tag-manager\">\n" +
+    "	<div class=\"tags\">\n" +
+    "		<span ng-repeat=\"column in columnNames\" ng-hide=\"column.show\" class=\"label label-primary\"\n" +
+    "		ng-click=\"add(column)\">\n" +
+    "			{{'columns.' + column.name | translate}}\n" +
+    "			<span class=\"glyphicon glyphicon-plus\"></span>\n" +
+    "		</span>\n" +
     "	</div>\n" +
     "</div>\n" +
-    "<div class=\"row\">\n" +
-    "	<div class=\"col-md-12\">\n" +
-    "		<div class=\"panel-group\">\n" +
-    "			<column-setting column=\"column\" ng-repeat=\"column in columns\"></column-setting>\n" +
-    "		</div>\n" +
-    "	</div>\n" +
+    "<div class=\"panel-group\">\n" +
+    "	<column-setting column=\"column\" ng-repeat=\"column in columns\"></column-setting>\n" +
     "</div>\n" +
     "");
 }]);

@@ -6,14 +6,14 @@
     .directive("columnSelector", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
+        require: "ngModel",
         scope: {
           columns: "=",
           columnNames: "="
         },
         template: $templateCache.get("_angular/column-selector/column-selector.html"),
         transclude: false,
-        link: function($scope) {
-
+        link: function($scope, elm, attrs, ctrl) {
           var watcher = $scope.$watch("columns", function() {
             if ($scope.columns && $scope.columnNames) {
               for (var i = 0; i < $scope.columns.length; i++) {
@@ -25,6 +25,8 @@
                 }
               }
 
+              setValidity();
+
               // Destroy watch
               watcher();
             }
@@ -33,6 +35,8 @@
           $scope.add = function(column) {
             column.show = true;
             $scope.columns.push(column);
+
+            setValidity();
           };
 
           $scope.remove = function (column) {
@@ -45,6 +49,8 @@
                   break;
                 }
               }
+
+              setValidity();
             }
           };
 
@@ -55,6 +61,10 @@
                 break;
               }
             }
+          }
+
+          function setValidity() {
+            ctrl.$setValidity("required", $scope.columns.length);
           }
 
         }

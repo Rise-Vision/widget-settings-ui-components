@@ -1,28 +1,12 @@
-<div class="row">
-	<div class="col-md-12">
-		<div class="form-group">
-		  <label for="columns-to-display">{{'columns.label' | translate}}</label>
-			<tooltip data-toggle="popover" data-placement="right"
-				data-content="{{'columns.tooltip' | translate}}">
-			</tooltip>
-			<div class="row">
-				<div class="col-md-8">
-					<div class="tag-manager tags">
-						<span ng-repeat="column in columnNames" ng-hide="column.show" class="label label-primary"
-						ng-click="add(column)">
-							{{'columns.' + column.name | translate}}
-							<span class="glyphicon glyphicon-plus"></span>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="tag-manager">
+	<div class="tags">
+		<span ng-repeat="column in columnNames" ng-hide="column.show" class="label label-primary"
+		ng-click="add(column)">
+			{{'columns.' + column.name | translate}}
+			<span class="glyphicon glyphicon-plus"></span>
+		</span>
 	</div>
 </div>
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel-group">
-			<column-setting column="column" ng-repeat="column in columns"></column-setting>
-		</div>
-	</div>
+<div class="panel-group">
+	<column-setting column="column" ng-repeat="column in columns"></column-setting>
 </div>
