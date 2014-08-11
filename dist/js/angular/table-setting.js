@@ -59,53 +59,56 @@ catch(err) { app = angular.module("risevision.widget.common.table-setting", []);
 app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/table-setting/table-setting.html",
-    "<div class=\"row\">\n" +
-    "	<div class=\"col-md-3\">\n" +
-    "		<div class=\"form-group\">\n" +
-    "	    <label for=\"row-padding\">{{'table.row-padding' | translate}}</label>\n" +
-    "	    <input id=\"row-padding\" type=\"text\"\n" +
-    "			ng-model=\"table.rowPadding\" class=\"form-control\" value=\"0\" />\n" +
-    "		</div>\n" +
-    "	</div>\n" +
+    "<div class=\"section\">\n" +
+    "  <h5>{{\"table.col-row.heading\"}}</h5>\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <label for=\"row-padding\">{{'table.row-padding' | translate}}</label>\n" +
+    "    <div class=\"row\">\n" +
+    "      <div class=\"col-md-3\">\n" +
+    "        <input id=\"row-padding\" type=\"text\"\n" +
+    "        ng-model=\"table.rowPadding\" class=\"form-control\" value=\"0\" />\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <label for=\"col-padding\">{{'table.col-padding' | translate}}</label>\n" +
+    "    <div class=\"row\">\n" +
+    "      <div class=\"col-md-3\">\n" +
+    "        <input id=\"col-padding\" type=\"text\"\n" +
+    "        ng-model=\"table.colPadding\" class=\"form-control\" value=\"0\" />\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <label for=\"row-color\">{{'table.row-color' | translate}}</label>\n" +
+    "    <div>\n" +
+    "      <input color-picker id=\"row-color\" color=\"table.rowColor\" type=\"text\">\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <label for=\"alt-row-color\">{{'table.alt-row-color' | translate}}</label>\n" +
+    "    <div>\n" +
+    "      <input color-picker id=\"alt-row-color\" color=\"table.altRowColor\" type=\"text\">\n" +
+    "    </div>\n" +
+    "  </div>\n" +
     "</div>\n" +
-    "<div class=\"row\">\n" +
-    "	<div class=\"col-md-3\">\n" +
-    "		<div class=\"form-group\">\n" +
-    "			<label for=\"col-padding\">{{'table.col-padding' | translate}}</label>\n" +
-    "	    <input id=\"col-padding\" type=\"text\"\n" +
-    "			ng-model=\"table.colPadding\" class=\"form-control\" value=\"0\" />\n" +
-    "		</div>\n" +
-    "	</div>\n" +
+    "<div class=\"section\">\n" +
+    "  <h5>{{\"table.col-header-font.heading\"}}</h5>\n" +
+    "  <div id=\"col-header-font\" class=\"current\"\n" +
+    "      font-setting\n" +
+    "      font-data=\"table.colHeaderFont\"\n" +
+    "      i18n-prefix=\"'table.col-header-font'\"\n" +
+    "      prefix=\"'col-header'\">\n" +
+    "  </div>\n" +
     "</div>\n" +
-    "<div id=\"col-header-font\" class=\"current\"\n" +
-    "    font-setting\n" +
-    "		font-data=\"table.colHeaderFont\"\n" +
-    "		i18n-prefix=\"'table.col-header-font'\"\n" +
-    "		prefix=\"'col-header'\">\n" +
-    "</div>\n" +
-    "<div id=\"data-font\" class=\"current\"\n" +
-    "    font-setting\n" +
-    "		font-data=\"table.dataFont\"\n" +
-    "    i18n-prefix=\"table.data-font\"\n" +
-    "  	prefix=\"data\">\n" +
-    "</div>\n" +
-    "<div class=\"row\">\n" +
-    "	<div class=\"col-md-3\">\n" +
-    "		<div class=\"form-group\">\n" +
-    "	    <label for=\"row-color\">{{'table.row-color' | translate}}</label>\n" +
-    "			<input color-picker id=\"row-color\" color=\"table.rowColor\"\n" +
-    "				type=\"text\" />\n" +
-    "		</div>\n" +
-    "	</div>\n" +
-    "</div>\n" +
-    "<div class=\"row\">\n" +
-    "	<div class=\"col-md-3\">\n" +
-    "		<div class=\"form-group\">\n" +
-    "	    <label for=\"alt-row-color\">{{'table.alt-row-color' | translate}}</label>\n" +
-    "			<input color-picker id=\"alt-row-color\" color=\"table.altRowColor\"\n" +
-    "				type=\"text\" />\n" +
-    "		</div>\n" +
-    "	</div>\n" +
+    "<div class=\"section\">\n" +
+    "  <h5>{{\"table.data-font.heading\"}}</h5>\n" +
+    "  <div id=\"data-font\" class=\"current\"\n" +
+    "      font-setting\n" +
+    "      font-data=\"table.dataFont\"\n" +
+    "      i18n-prefix=\"table.data-font\"\n" +
+    "      prefix=\"data\">\n" +
+    "  </div>\n" +
     "</div>\n" +
     "");
 }]);

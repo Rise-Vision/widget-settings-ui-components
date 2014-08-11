@@ -1,52 +1,49 @@
-<div class="row">
-  <div class="col-md-3">
-    <div class="form-group">
-      <label for="scroll-enabled">{{'scroll.by.label' | translate}}</label>
-      <div class="radio">
-        <label for="scroll-by-none">
-          <input type="radio" id="scroll-by-none" name="scroll-by" ng-model="scroll.by" value="none"> {{'scroll.by.none' | translate}}
-        </label>
+<div class="section">
+  <h5>{{"scroll.heading"}}</h5>
+  <div class="form-group">
+    <div class="radio">
+      <label for="scroll-by-none">
+        <input type="radio" id="scroll-by-none" name="scroll-by" ng-model="scroll.by" value="none"> {{'scroll.by.none' | translate}}
+      </label>
+    </div>
+    <div class="radio">
+      <label for="scroll-by-continuous">
+        <input type="radio" id="scroll-by-continuous" name="scroll-by" ng-model="scroll.by" value="continuous"> {{'scroll.by.continuous' | translate}}
+      </label>
+    </div>
+    <div class="radio">
+      <label for="scroll-by-page">
+        <input type="radio" id="scroll-by-page" name="scroll-by" ng-model="scroll.by" value="page"> {{'scroll.by.page' | translate}}
+      </label>
+    </div>
+  </div>
+  <div ng-show="scroll.by != 'none'" class="more-scroll-options">
+    <div class="row">
+      <div class="col-xs-6 col-md-4">
+        <div class="form-group">
+          <label for="scroll-speed">{{'scroll.speed.label' | translate}}</label>
+          <select id="scroll-speed" ng-model="scroll.speed" class="form-control">
+            <option value="slowest">{{'scroll.speed.slowest' | translate}}</option>
+            <option value="slow">{{'scroll.speed.slow' | translate}}</option>
+            <option value="medium">{{'scroll.speed.medium' | translate}}</option>
+            <option value="fast">{{'scroll.speed.fast' | translate}}</option>
+            <option value="fastest">{{'scroll.speed.fastest' | translate}}</option>
+          </select>
+        </div>
       </div>
-      <div class="radio">
-        <label for="scroll-by-continuous">
-          <input type="radio" id="scroll-by-continuous" name="scroll-by" ng-model="scroll.by" value="continuous"> {{'scroll.by.continuous' | translate}}
-        </label>
-      </div>
-      <div class="radio">
-        <label for="scroll-by-page">
-          <input type="radio" id="scroll-by-page" name="scroll-by" ng-model="scroll.by" value="page"> {{'scroll.by.page' | translate}}
-        </label>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-4">
+        <div class="form-group">
+          <label for="scroll-pause">
+            {{'scroll.pause.label' | translate}}
+          </label>
+          <tooltip data-toggle="popover" data-placement="right"
+            data-content="{{'scroll.pause.tooltip' | translate}}">
+          </tooltip>
+          <input id="scroll-pause" type="text" ng-model="scroll.pause" class="form-control" />
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div ng-show="scroll.by != 'none'" class="more-scroll-options">
-  <div class="row">
-    <div class="col-xs-6 col-md-4">
-      <div class="form-group">
-        <label for="scroll-speed">{{'scroll.speed.label' | translate}}</label>
-        <select id="scroll-speed" ng-model="scroll.speed" class="form-control">
-          <option value="slowest">{{'scroll.speed.slowest' | translate}}</option>
-          <option value="slow">{{'scroll.speed.slow' | translate}}</option>
-          <option value="medium">{{'scroll.speed.medium' | translate}}</option>
-          <option value="fast">{{'scroll.speed.fast' | translate}}</option>
-          <option value="fastest">{{'scroll.speed.fastest' | translate}}</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-md-4">
-      <div class="form-group">
-        <label for="scroll-pause">
-          {{'scroll.pause.label' | translate}}
-        </label>
-        <tooltip data-toggle="popover" data-placement="right"
-          data-content="{{'scroll.pause.tooltip' | translate}}">
-        </tooltip>
-        <input id="scroll-pause" type="text" ng-model="scroll.pause" class="form-control" />
-      </div>
-    </div>
-  </div>
-</div>
-<hr>

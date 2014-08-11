@@ -1,48 +1,51 @@
-<div class="row">
-	<div class="col-md-3">
-		<div class="form-group">
-	    <label for="row-padding">{{'table.row-padding' | translate}}</label>
-	    <input id="row-padding" type="text"
-			ng-model="table.rowPadding" class="form-control" value="0" />
-		</div>
-	</div>
+<div class="section">
+  <h5>{{"table.col-row.heading"}}</h5>
+  <div class="form-group">
+    <label for="row-padding">{{'table.row-padding' | translate}}</label>
+    <div class="row">
+      <div class="col-md-3">
+        <input id="row-padding" type="text"
+        ng-model="table.rowPadding" class="form-control" value="0" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="col-padding">{{'table.col-padding' | translate}}</label>
+    <div class="row">
+      <div class="col-md-3">
+        <input id="col-padding" type="text"
+        ng-model="table.colPadding" class="form-control" value="0" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="row-color">{{'table.row-color' | translate}}</label>
+    <div>
+      <input color-picker id="row-color" color="table.rowColor" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="alt-row-color">{{'table.alt-row-color' | translate}}</label>
+    <div>
+      <input color-picker id="alt-row-color" color="table.altRowColor" type="text">
+    </div>
+  </div>
 </div>
-<div class="row">
-	<div class="col-md-3">
-		<div class="form-group">
-			<label for="col-padding">{{'table.col-padding' | translate}}</label>
-	    <input id="col-padding" type="text"
-			ng-model="table.colPadding" class="form-control" value="0" />
-		</div>
-	</div>
+<div class="section">
+  <h5>{{"table.col-header-font.heading"}}</h5>
+  <div id="col-header-font" class="current"
+      font-setting
+      font-data="table.colHeaderFont"
+      i18n-prefix="'table.col-header-font'"
+      prefix="'col-header'">
+  </div>
 </div>
-<div id="col-header-font" class="current"
-    font-setting
-		font-data="table.colHeaderFont"
-		i18n-prefix="'table.col-header-font'"
-		prefix="'col-header'">
-</div>
-<div id="data-font" class="current"
-    font-setting
-		font-data="table.dataFont"
-    i18n-prefix="table.data-font"
-  	prefix="data">
-</div>
-<div class="row">
-	<div class="col-md-3">
-		<div class="form-group">
-	    <label for="row-color">{{'table.row-color' | translate}}</label>
-			<input color-picker id="row-color" color="table.rowColor"
-				type="text" />
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-3">
-		<div class="form-group">
-	    <label for="alt-row-color">{{'table.alt-row-color' | translate}}</label>
-			<input color-picker id="alt-row-color" color="table.altRowColor"
-				type="text" />
-		</div>
-	</div>
+<div class="section">
+  <h5>{{"table.data-font.heading"}}</h5>
+  <div id="data-font" class="current"
+      font-setting
+      font-data="table.dataFont"
+      i18n-prefix="table.data-font"
+      prefix="data">
+  </div>
 </div>
