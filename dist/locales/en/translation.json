@@ -13,8 +13,8 @@
 		}
 	},
 	"scroll": {
+    "heading": "Scrolling",
 		"by": {
-			"label": "Scrolling",
 			"none": "None",
 			"continuous": "Continuous",
 			"page": "Page"
@@ -33,9 +33,11 @@
 		}
 	},
 	"table": {
+    "col-row-heading": "Column / Row Format",
 		"row-padding": "Row Padding (pixels)",
 		"col-padding": "Column Padding (pixels)",
 		"col-header-font": {
+      "heading": "Header Format",
 			"font": "Column Header Font",
 			"font-url": "Column Header Font URL",
 			"font-size": "Column Header Font Size",
@@ -45,6 +47,7 @@
 			"text": "Column Header Sample Text"
 		},
 		"data-font": {
+      "heading": "Data Format",
 			"font": "Data Font",
 			"font-url": "Data Font URL",
 			"font-size": "Data Font Size",
