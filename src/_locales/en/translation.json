@@ -93,5 +93,11 @@
   "url": {
     "label": "URL",
     "validate": "Validate URL"
+  },
+  "background": {
+    "heading": "Background",
+    "color": {
+      "label": "Color"
+    }
   }
 }
