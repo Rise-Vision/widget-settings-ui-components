@@ -1,6 +1,6 @@
 if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
 TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
-    "  <button type=\"button\" class=\"btn btn-default btn-alignment dropdown-toggle\"\n" +
+    "  <button type=\"button\" class=\"btn btn-default btn-sm btn-alignment dropdown-toggle\"\n" +
     "    data-toggle=\"dropdown\" data-wysihtml5-command-value=\"left\">\n" +
     "    <i class=\"glyphicon glyphicon-align-left\"></i>\n" +
     "    <span class=\"caret\"></span>\n" +
