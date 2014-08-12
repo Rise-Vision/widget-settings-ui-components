@@ -1,0 +1,36 @@
+<div class="component">
+  <div class="page-header">
+    <h1 class="page">Background Setting</h1>
+  </div>
+
+  <p class="lead">An Angular directive that allows a user to format the background of a widget</p>
+
+  <p><strong>Dependencies</strong> <span class="label label-info">color-picker</span> <span class="label label-info">spectrum</span></p>
+
+  <h3 class="add-top">Usage</h3>
+  <hljs include="'background-setting-usage'"></hljs>
+
+  <h3>Script Includes</h3>
+  <p>Make sure you include the following files in <code>index.html</code></p>
+  <hljs include="'script-includes'"></hljs>
+
+  <!-- Dynamic Example -->
+  <div class="examples">
+    <h3>Example</h3>
+    <background-setting background="background"></background-setting>
+  </div>
+
+</div>
+
+<script type="text/ng-template" id="script-includes">
+  components/spectrum/spectrum.js
+  components/widget-settings-ui-components/dist/js/angular/color-picker.js
+  components/widget-settings-ui-components/dist/js/angular/background-setting.js
+</script>
+
+<!-- Code Snippet -->
+<script type="text/ng-template" id="background-setting-usage">
+  <form role="form">
+    <background-setting background="settings.additionalParams.background"></background-setting>
+  </form>
+</script>
