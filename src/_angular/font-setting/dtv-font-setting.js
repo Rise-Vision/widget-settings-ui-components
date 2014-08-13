@@ -1,7 +1,9 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.font-setting", ["risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.font-setting", ["risevision.widget.common.translate",
+    "risevision.widget.common.font-style","risevision.widget.common.fontsizepicker",
+    "risevision.widget.common.fontpicker"])
     .directive("fontSetting", ["i18nLoader", "$log", "$templateCache", function (i18nLoader, $log, $templateCache) {
       return {
         restrict: "A",
@@ -15,64 +17,35 @@
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
-        link: function ($scope, elm, attrs) {
-          var stripLast = function (str, strToStrip) {
-            var index = str.indexOf(strToStrip);
-
-            if (index >= 0) {
-              str = str.substring(0, str.lastIndexOf(strToStrip));
-            }
-            return str;
+        link: function ($scope) {
+          $scope.defaultFont = {
+            font: "Verdana",
+            size: "20",
+            bold: "false",
+            italic: "false",
+            color: "black",
+            align: "left"
           };
 
-          var valOrDefault = function (val, defaultVal) {
-            if (angular.isUndefined(val) || val === null) {
-              return defaultVal;
+          $scope.defaults = function(obj) {
+            if (obj) {
+              for (var i = 1, length = arguments.length; i < length; i++) {
+                var source = arguments[i];
+
+                for (var prop in source) {
+                  if (obj[prop] === void 0) {
+                    obj[prop] = source[prop];
+                  }
+                }
+              }
             }
-            else {
-              return val;
-            }
+            return obj;
           };
-          var $elm = $(elm);
-          var prefix = $scope.prefix || stripLast(attrs.id, "-font");
 
           $scope.$watch("fontData", function(fontData) {
-            if (fontData) {
-              $elm.fontPicker({
-                "i18n-prefix": $scope.i18nPrefix || attrs.id,
-                "defaults" : {
-                  "font" : $scope.fontData.font,
-                  "font-url" : $scope.fontData.fontUrl,
-                  "font-size" : $scope.fontData.fontSize,
-                  "is-bold" : $scope.fontData.isBold,
-                  "is-italic" : $scope.fontData.isItalic,
-                  "color" : $scope.fontData.color
-                },
-                "visibility": {
-                  "font" : valOrDefault($scope.fontVisible, true),
-                  "font-size" : valOrDefault($scope.fontSizeVisible, true),
-                  "variants" : valOrDefault($scope.fontSizeVisible, true),
-                  "text" : valOrDefault($scope.textVisible, true)
-                }
-              });
-
-              //load i18n text translations after ensuring i18n has been initialized
-              i18nLoader.get().then(function () {$elm.i18n();});
-            }
+            $scope.defaults(fontData, $scope.defaultFont);
           });
 
-          $scope.$on("collectAdditionalParams", function () {
-            var picker = $elm.data("font-picker");
-
-            $log.debug("Collecting params from", prefix, picker);
-            $scope.fontData.font = picker.getFont();
-            //$scope.fontData.fontStyle = picker.getFontStyle();
-            $scope.fontData.fontUrl = picker.getFontURL();
-            $scope.fontData.fontSize = picker.getFontSize();
-            $scope.fontData.isBold = picker.getBold();
-            $scope.fontData.isItalic = picker.getItalic();
-            $scope.fontData.color = picker.getColor();
-          });
         }
       };
     }]);
