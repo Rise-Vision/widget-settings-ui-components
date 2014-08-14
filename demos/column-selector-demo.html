@@ -11,6 +11,7 @@
 
   <p>Directive requires 2 parameters: a list of all the columns available, and a list of columns selected by default. Columns can be of two types:
     text and int columns, with slightly different fields available for configuration.
+    Optionally add ng-model variable for validation
   </p>
 
   <h3 class="add-top">Directive HTML:</h3>
@@ -42,7 +43,8 @@ bower_components/widget-settings-ui-components/dist/js/angular.tooltip.js
     <!-- Code Snippet -->
 <script type="text/ng-template" id="html-usage">
 <form role="form">
-  <column-selector columns="settings.additionalParams.columns" column-names="columnNames"></column-selector>
+  <column-selector columns="settings.additionalParams.columns" column-names="columnNames"
+  ng-model"columnselectormodel"></column-selector>
 </form>
 </script>
 

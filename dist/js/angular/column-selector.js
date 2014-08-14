@@ -6,7 +6,7 @@
     .directive("columnSelector", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
-        require: "ngModel",
+        require: "?ngModel",
         scope: {
           columns: "=",
           columnNames: "="
@@ -64,7 +64,9 @@
           }
 
           function setValidity() {
-            ctrl.$setValidity("required", $scope.columns.length);
+            if (ctrl) {
+              ctrl.$setValidity("required", $scope.columns.length);
+            }
           }
 
         }
