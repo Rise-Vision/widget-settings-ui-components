@@ -6,11 +6,14 @@
       return {
         restrict: "A",
         scope: {
-          color: "="
+          color: "=",
+          type: "@"
         },
         transclude: false,
         link: function ($scope, elem) {
           var $elem = $(elem);
+
+          $scope.type = $scope.type ? $scope.type : "background";
 
           $scope.$watch("color", function(color) {
             if (color) {
@@ -26,7 +29,7 @@
                     preferredFormat: "hex",
                     showAlpha: true,
                     showInput: true,
-                    type: "background",
+                    type: $scope.type,
                   };
 
                   $elem.spectrum(options);
