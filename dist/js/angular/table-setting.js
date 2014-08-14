@@ -82,13 +82,13 @@ app.run(["$templateCache", function($templateCache) {
     "  <div class=\"form-group\">\n" +
     "    <label for=\"row-color\">{{'table.row-color' | translate}}</label>\n" +
     "    <div>\n" +
-    "      <input color-picker id=\"row-color\" color=\"table.rowColor\" type=\"text\">\n" +
+    "      <input color-picker id=\"row-color\" color=\"table.rowColor\" type=\"background\">\n" +
     "    </div>\n" +
     "  </div>\n" +
     "  <div class=\"form-group\">\n" +
     "    <label for=\"alt-row-color\">{{'table.alt-row-color' | translate}}</label>\n" +
     "    <div>\n" +
-    "      <input color-picker id=\"alt-row-color\" color=\"table.altRowColor\" type=\"text\">\n" +
+    "      <input color-picker id=\"alt-row-color\" color=\"table.altRowColor\" type=\"background\">\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +
