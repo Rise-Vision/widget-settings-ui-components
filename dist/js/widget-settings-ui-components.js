@@ -161,7 +161,7 @@ TEMPLATES['font-style.html'] = "<div class=\"btn-group\">\n" +
       });
 
       // Handle clicking on any of the style buttons.
-      $(".btn").on("click", function() {
+      $element.find(".btn").on("click", function() {
         _setStyle($(this), !$(this).hasClass("active"));
       });
     }
