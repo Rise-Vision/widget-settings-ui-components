@@ -55,7 +55,10 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
       setAlignment(options.align);
 
       $element.find(".dropdown-menu button").on("click", function() {
-        setAlignment($(this).data("wysihtml5-command-value"));
+        var alignment = $(this).data("wysihtml5-command-value");
+
+        setAlignment(alignment);
+        $element.trigger("alignmentChanged", alignment);
       });
     }
 
@@ -79,8 +82,6 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
       // Add new alignment icon.
       $primaryIcon.addClass(newClass);
       $btnAlignment.data("wysihtml5-command-value", alignment);
-
-      $element.trigger("alignmentChanged", alignment);
     }
 
     _init();

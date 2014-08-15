@@ -17,13 +17,17 @@
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
-        link: function ($scope) {
+        link: function ($scope, element) {
+          var $element = $(element);
+
           $scope.defaultFont = {
             font: "Verdana",
             size: "20",
-            bold: "false",
-            italic: "false",
+            bold: false,
+            italic: false,
+            underline: false,
             color: "black",
+            backgroundColor: "transparent",
             align: "left"
           };
 
@@ -42,10 +46,29 @@
             return obj;
           };
 
-          $scope.$watch("fontData", function(fontData) {
-            $scope.defaults(fontData, $scope.defaultFont);
+          var watch = $scope.$watch("fontData", function(fontData) {
+            if (fontData) {
+              $scope.defaults(fontData, $scope.defaultFont);
+              updatePreview(fontData);
+              watch();
+
+              $scope.$watch("fontData", updatePreview, true);
+            }
           });
 
+          function updatePreview(fontData) {
+            if (fontData) {
+              var previewEl = $element.find(".font-picker-text");
+              previewEl.css("font-family", fontData.font);
+              previewEl.css("font-size", fontData.size + "pt");
+              previewEl.css("font-weight", fontData.bold ? "bold" : "normal");
+              previewEl.css("font-style", fontData.italic ? "italic" : "normal");
+              previewEl.css("text-decoration", fontData.underline ? "underline" : "none");
+              previewEl.css("text-align", fontData.align);
+              previewEl.css("color", fontData.color);
+              previewEl.css("background-color", fontData.backgroundColor);
+            }
+          }
         }
       };
     }]);
@@ -57,26 +80,29 @@ catch(err) { app = angular.module("risevision.widget.common.font-setting", []); 
 app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/font-setting/font-setting.html",
-    "<div class=\"row\">\n" +
-    "  <div class=\"col-md-2\">\n" +
+    "<ul class=\"list-inline\">\n" +
+    "  <li class=\"pull-left\">\n" +
     "    <font-style bold=\"fontData.bold\" italic=\"fontData.italic\" underline=\"fontData.underline\"></font-style>\n" +
-    "  </div>\n" +
-    "  <div class=\"col-md-2\">\n" +
+    "  </li>\n" +
+    "  <li class=\"pull-left\">\n" +
     "    <alignment align=\"fontData.align\"></alignment>\n" +
-    "  </div>\n" +
-    "  <div class=\"col-md-2\">\n" +
+    "  </li>\n" +
+    "  <li class=\"pull-left\">\n" +
     "    <font-picker ng-model=\"fontData.font\"></font-picker>\n" +
-    "  </div>\n" +
-    "  <div class=\"col-md-2\">\n" +
+    "  </li>\n" +
+    "  <li class=\"pull-left\">\n" +
     "    <font-size-picker ng-model=\"fontData.size\"></font-size-picker>\n" +
-    "  </div>\n" +
-    "  <div class=\"col-md-2\">\n" +
-    "    <input color-picker color=\"fontData.color\" type=\"text\" />\n" +
-    "  </div>\n" +
-    "</div>\n" +
-    "<div class=\"row\">\n" +
+    "  </li>\n" +
+    "  <li class=\"pull-left\">\n" +
+    "    <input color-picker type=\"text\" color=\"fontData.color\" />\n" +
+    "  </li>\n" +
+    "  <li class=\"pull-left\">\n" +
+    "    <input color-picker type=\"background\" color=\"fontData.backgroundColor\" />\n" +
+    "  </li>\n" +
+    "</ul>\n" +
+    "<div class=\"row\" style=\"\">\n" +
     "  <div class=\"col-md-12\">\n" +
-    "    <div class=\"font-picker-text form-group\"></div>\n" +
+    "    <div class=\"font-picker-text form-group\">Font Picker Text</div>\n" +
     "  </div>\n" +
     "</div>\n" +
     "");

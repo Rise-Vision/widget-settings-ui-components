@@ -15,6 +15,12 @@
 
           $scope.type = $scope.type ? $scope.type : "background";
 
+          function onChange(color) {
+            $scope.$apply(function() {
+              $scope.color = color.toHexString();
+            });
+          }
+
           $scope.$watch("color", function(color) {
             if (color) {
               if ($elem.next().hasClass(".sp-replacer.sp-light")) {
@@ -30,16 +36,13 @@
                     showAlpha: true,
                     showInput: true,
                     type: $scope.type,
+                    change: onChange
                   };
 
                   $elem.spectrum(options);
                 });
               }
             }
-          });
-
-          $scope.$on("collectAdditionalParams", function () {
-            $scope.color = $elem.spectrum("get").toHexString();
           });
         }
       };

@@ -17,13 +17,17 @@
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
-        link: function ($scope) {
+        link: function ($scope, element) {
+          var $element = $(element);
+
           $scope.defaultFont = {
             font: "Verdana",
             size: "20",
-            bold: "false",
-            italic: "false",
+            bold: false,
+            italic: false,
+            underline: false,
             color: "black",
+            backgroundColor: "transparent",
             align: "left"
           };
 
@@ -42,10 +46,29 @@
             return obj;
           };
 
-          $scope.$watch("fontData", function(fontData) {
-            $scope.defaults(fontData, $scope.defaultFont);
+          var watch = $scope.$watch("fontData", function(fontData) {
+            if (fontData) {
+              $scope.defaults(fontData, $scope.defaultFont);
+              updatePreview(fontData);
+              watch();
+
+              $scope.$watch("fontData", updatePreview, true);
+            }
           });
 
+          function updatePreview(fontData) {
+            if (fontData) {
+              var previewEl = $element.find(".font-picker-text");
+              previewEl.css("font-family", fontData.font);
+              previewEl.css("font-size", fontData.size + "pt");
+              previewEl.css("font-weight", fontData.bold ? "bold" : "normal");
+              previewEl.css("font-style", fontData.italic ? "italic" : "normal");
+              previewEl.css("text-decoration", fontData.underline ? "underline" : "none");
+              previewEl.css("text-align", fontData.align);
+              previewEl.css("color", fontData.color);
+              previewEl.css("background-color", fontData.backgroundColor);
+            }
+          }
         }
       };
     }]);

@@ -26,10 +26,18 @@
           }
         });
 
-        scope.$on("collectAdditionalParams", function () {
-          scope.bold = $element.data("plugin_fontStyle").isBold();
-          scope.italic = $element.data("plugin_fontStyle").isItalic();
-          scope.underline = $element.data("plugin_fontStyle").isUnderline();
+        $element.on("styleChanged", function(event, type, value) {
+          scope.$apply(function() {
+            if (type === "bold") {
+              scope.bold = value;
+            }
+            else if (type === "italic") {
+              scope.italic = value;
+            }
+            else if (type === "underline") {
+              scope.underline = value;
+            }
+          });
         });
       }
 
