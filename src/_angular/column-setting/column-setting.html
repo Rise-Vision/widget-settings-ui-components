@@ -3,7 +3,7 @@
     <a href="" ng-class="{'panel-title':true, collapsed:!collapse}" ng-click="collapse=!collapse">
        {{'columns.' + column.name | translate}}
     </a>
-    <a href="" class="glyphicon glyphicon-trash" ng-click="remove()"></a>
+    <a href="" class="glyphicon glyphicon-minus remove-column-button" ng-click="remove()"></a>
   </div>
   <div ng-class="{'panel-collapse':true, collapse:true, in:collapse}">
     <div class="panel-body">

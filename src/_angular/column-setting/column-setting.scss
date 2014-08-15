@@ -7,3 +7,7 @@
 .collapse-panel.panel-heading a.panel-title.collapsed:after {
     content: "\e080";
 }
+.collapse-panel .remove-column-button{
+  float: right;
+  padding-top: 3.5px;
+}
