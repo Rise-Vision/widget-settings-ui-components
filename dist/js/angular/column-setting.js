@@ -64,16 +64,21 @@ app.run(["$templateCache", function($templateCache) {
     "  </div>\n" +
     "  <div ng-class=\"{'panel-collapse':true, collapse:true, in:collapse}\">\n" +
     "    <div class=\"panel-body\">\n" +
+    "     <!-- header -->\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
-    "            <label for=\"column-alignment\">\n" +
-    "              {{'column.alignment.label' | translate}}\n" +
+    "            <label for=\"column-header-text\">\n" +
+    "              {{'column.header-text.label' | translate}}\n" +
     "            </label>\n" +
-    "            <alignment align=\"column.alignment\"></alignment>\n" +
+    "            <tooltip data-toggle=\"popover\" data-placement=\"right\"\n" +
+    "              data-content=\"{{'column.header-text.tooltip' | translate}}\">\n" +
+    "            </tooltip>\n" +
+    "            <input id=\"column-header-text\" type=\"text\" ng-model=\"column.headerText\" class=\"form-control\" />\n" +
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
+    "      <!-- width -->\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
@@ -87,6 +92,18 @@ app.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
+    "      <!-- alignment -->\n" +
+    "      <div class=\"row\">\n" +
+    "        <div class=\"col-md-3\">\n" +
+    "          <div class=\"form-group\">\n" +
+    "            <label for=\"column-alignment\">\n" +
+    "              {{'column.alignment.label' | translate}}\n" +
+    "            </label> <br/>\n" +
+    "            <alignment align=\"column.alignment\"></alignment>\n" +
+    "          </div>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "      <!-- decimal -->\n" +
     "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
@@ -103,6 +120,7 @@ app.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
+    "      <!-- sign -->\n" +
     "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
@@ -118,6 +136,7 @@ app.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
+    "      <!-- color-condition -->\n" +
     "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
@@ -134,19 +153,7 @@ app.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
-    "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-3\">\n" +
-    "          <div class=\"form-group\">\n" +
-    "            <label for=\"column-header-text\">\n" +
-    "              {{'column.header-text.label' | translate}}\n" +
-    "            </label>\n" +
-    "            <tooltip data-toggle=\"popover\" data-placement=\"right\"\n" +
-    "              data-content=\"{{'column.header-text.tooltip' | translate}}\">\n" +
-    "            </tooltip>\n" +
-    "            <input id=\"column-header-text\" type=\"text\" ng-model=\"column.headerText\" class=\"form-control\" />\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
+    "      <!-- END options -->\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +
