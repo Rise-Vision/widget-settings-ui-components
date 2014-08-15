@@ -7,16 +7,21 @@
   </div>
   <div ng-class="{'panel-collapse':true, collapse:true, in:collapse}">
     <div class="panel-body">
+     <!-- header -->
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label for="column-alignment">
-              {{'column.alignment.label' | translate}}
+            <label for="column-header-text">
+              {{'column.header-text.label' | translate}}
             </label>
-            <alignment align="column.alignment"></alignment>
+            <tooltip data-toggle="popover" data-placement="right"
+              data-content="{{'column.header-text.tooltip' | translate}}">
+            </tooltip>
+            <input id="column-header-text" type="text" ng-model="column.headerText" class="form-control" />
           </div>
         </div>
       </div>
+      <!-- width -->
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
@@ -30,6 +35,18 @@
           </div>
         </div>
       </div>
+      <!-- alignment -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="column-alignment">
+              {{'column.alignment.label' | translate}}
+            </label> <br/>
+            <alignment align="column.alignment"></alignment>
+          </div>
+        </div>
+      </div>
+      <!-- decimal -->
       <div class="row" ng-if="column.type === 'int'">
         <div class="col-md-3">
           <div class="form-group">
@@ -46,6 +63,7 @@
           </div>
         </div>
       </div>
+      <!-- sign -->
       <div class="row" ng-if="column.type === 'int'">
         <div class="col-md-3">
           <div class="form-group">
@@ -61,6 +79,7 @@
           </div>
         </div>
       </div>
+      <!-- color-condition -->
       <div class="row" ng-if="column.type === 'int'">
         <div class="col-md-3">
           <div class="form-group">
@@ -77,19 +96,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="column-header-text">
-              {{'column.header-text.label' | translate}}
-            </label>
-            <tooltip data-toggle="popover" data-placement="right"
-              data-content="{{'column.header-text.tooltip' | translate}}">
-            </tooltip>
-            <input id="column-header-text" type="text" ng-model="column.headerText" class="form-control" />
-          </div>
-        </div>
-      </div>
+      <!-- END options -->
     </div>
   </div>
 </div>
