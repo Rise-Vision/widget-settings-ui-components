@@ -22,6 +22,7 @@
 
           $scope.defaultFont = {
             font: {
+              type: "standard",
               name: "Verdana",
               family: "Verdana"
             },
@@ -85,22 +86,22 @@ app.run(["$templateCache", function($templateCache) {
   $templateCache.put("_angular/font-setting/font-setting.html",
     "<ul class=\"list-inline\">\n" +
     "  <li class=\"pull-left\">\n" +
-    "    <font-style bold=\"fontData.bold\" italic=\"fontData.italic\" underline=\"fontData.underline\"></font-style>\n" +
-    "  </li>\n" +
-    "  <li class=\"pull-left\">\n" +
-    "    <alignment align=\"fontData.align\"></alignment>\n" +
-    "  </li>\n" +
-    "  <li class=\"pull-left\">\n" +
     "    <font-picker font=\"fontData.font\"></font-picker>\n" +
     "  </li>\n" +
     "  <li class=\"pull-left\">\n" +
     "    <font-size-picker ng-model=\"fontData.size\"></font-size-picker>\n" +
     "  </li>\n" +
     "  <li class=\"pull-left\">\n" +
+    "    <font-style bold=\"fontData.bold\" italic=\"fontData.italic\" underline=\"fontData.underline\"></font-style>\n" +
+    "  </li>\n" +
+    "  <li class=\"pull-left\">\n" +
     "    <input color-picker type=\"text\" color=\"fontData.color\" />\n" +
     "  </li>\n" +
     "  <li class=\"pull-left\">\n" +
     "    <input color-picker type=\"background\" color=\"fontData.backgroundColor\" />\n" +
+    "  </li>\n" +
+    "  <li class=\"pull-left\">\n" +
+    "    <alignment align=\"fontData.align\"></alignment>\n" +
     "  </li>\n" +
     "</ul>\n" +
     "<div class=\"row\" style=\"\">\n" +
