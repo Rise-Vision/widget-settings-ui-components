@@ -47,7 +47,7 @@ app.run(["$templateCache", function($templateCache) {
     "<div class=\"section\">\n" +
     "  <h5>{{\"background.heading\" | translate}}</h5>\n" +
     "  <div class=\"form-group\">\n" +
-    "    <label>{{\"background.color\" | translate}}  &nbsp;</label>\n" +
+    "    <label>{{\"background.color.label\" | translate}}  &nbsp;</label>\n" +
     "    <input color-picker color=\"background.color\" type=\"background\">\n" +
     "  </div>\n" +
     "</div>\n" +
