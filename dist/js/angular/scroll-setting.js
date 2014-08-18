@@ -47,22 +47,18 @@ app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/scroll-setting/scroll-setting.html",
     "<div class=\"section\">\n" +
-    "  <h5>{{\"scroll.heading\"}}</h5>\n" +
+    "  <h5>{{'scroll.heading' | translate}}</h5>\n" +
     "  <div class=\"form-group\">\n" +
-    "    <div class=\"radio\">\n" +
-    "      <label for=\"scroll-by-none\">\n" +
-    "        <input type=\"radio\" id=\"scroll-by-none\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"none\"> {{'scroll.by.none' | translate}}\n" +
-    "      </label>\n" +
-    "    </div>\n" +
-    "    <div class=\"radio\">\n" +
-    "      <label for=\"scroll-by-continuous\">\n" +
-    "        <input type=\"radio\" id=\"scroll-by-continuous\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"continuous\"> {{'scroll.by.continuous' | translate}}\n" +
-    "      </label>\n" +
-    "    </div>\n" +
-    "    <div class=\"radio\">\n" +
-    "      <label for=\"scroll-by-page\">\n" +
-    "        <input type=\"radio\" id=\"scroll-by-page\" name=\"scroll-by\" ng-model=\"scroll.by\" value=\"page\"> {{'scroll.by.page' | translate}}\n" +
-    "      </label>\n" +
+    "    <div class=\"row\">\n" +
+    "      <div class=\"col-xs-6 col-md-4\">\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <select id=\"scroll-by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
+    "            <option value=\"none\">{{'scroll.by.none' | translate}}</option>\n" +
+    "            <option value=\"continuous\">{{'scroll.by.continuous' | translate}}</option>\n" +
+    "            <option value=\"page\">{{'scroll.by.page' | translate}}</option>\n" +
+    "          </select>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
     "  <div ng-show=\"scroll.by != 'none'\" class=\"more-scroll-options\">\n" +
