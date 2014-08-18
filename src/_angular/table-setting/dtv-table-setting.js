@@ -13,13 +13,17 @@
         link: function($scope) {
           $scope.defaultSetting = {
             colHeaderFont: {
-              font: "Verdana",
+              font: {
+                family: "Verdana"
+              },
               fontSize: "20",
               isBold: "false",
               isItalic: "false"
             },
             dataFont: {
-              font: "Verdana",
+              font: {
+                family: "Verdana"
+              },
               fontSize: "20",
               isBold: "false",
               isItalic: "false"

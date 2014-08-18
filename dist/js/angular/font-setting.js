@@ -21,7 +21,10 @@
           var $element = $(element);
 
           $scope.defaultFont = {
-            font: "Verdana",
+            font: {
+              name: "Verdana",
+              family: "Verdana"
+            },
             size: "20",
             bold: false,
             italic: false,
@@ -59,7 +62,7 @@
           function updatePreview(fontData) {
             if (fontData) {
               var previewEl = $element.find(".font-picker-text");
-              previewEl.css("font-family", fontData.font);
+              previewEl.css("font-family", fontData.font.family);
               previewEl.css("font-size", fontData.size + "pt");
               previewEl.css("font-weight", fontData.bold ? "bold" : "normal");
               previewEl.css("font-style", fontData.italic ? "italic" : "normal");
@@ -88,7 +91,7 @@ app.run(["$templateCache", function($templateCache) {
     "    <alignment align=\"fontData.align\"></alignment>\n" +
     "  </li>\n" +
     "  <li class=\"pull-left\">\n" +
-    "    <font-picker ng-model=\"fontData.font\"></font-picker>\n" +
+    "    <font-picker font=\"fontData.font\"></font-picker>\n" +
     "  </li>\n" +
     "  <li class=\"pull-left\">\n" +
     "    <font-size-picker ng-model=\"fontData.size\"></font-size-picker>\n" +

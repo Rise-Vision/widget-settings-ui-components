@@ -21,7 +21,11 @@
           var $element = $(element);
 
           $scope.defaultFont = {
-            font: "Verdana",
+            font: {
+              type: "standard"
+              name: "Verdana",
+              family: "Verdana"
+            },
             size: "20",
             bold: false,
             italic: false,
@@ -59,7 +63,7 @@
           function updatePreview(fontData) {
             if (fontData) {
               var previewEl = $element.find(".font-picker-text");
-              previewEl.css("font-family", fontData.font);
+              previewEl.css("font-family", fontData.font.family);
               previewEl.css("font-size", fontData.size + "pt");
               previewEl.css("font-weight", fontData.bold ? "bold" : "normal");
               previewEl.css("font-style", fontData.italic ? "italic" : "normal");
