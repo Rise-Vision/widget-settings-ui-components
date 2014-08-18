@@ -22,7 +22,7 @@
 
           $scope.defaultFont = {
             font: {
-              type: "standard"
+              type: "standard",
               name: "Verdana",
               family: "Verdana"
             },
