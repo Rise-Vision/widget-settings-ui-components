@@ -23,8 +23,10 @@
             }
           });
 
-          scope.$on("collectAdditionalParams", function () {
-            scope.align = $element.data("plugin_alignment").getAlignment();
+          $element.on("alignmentChanged", function(event, alignment) {
+            scope.$apply(function() {
+              scope.align = alignment;
+            });
           });
         }
       };

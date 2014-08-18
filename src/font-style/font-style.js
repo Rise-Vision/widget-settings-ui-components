@@ -41,7 +41,11 @@
 
       // Handle clicking on any of the style buttons.
       $element.find(".btn").on("click", function() {
-        _setStyle($(this), !$(this).hasClass("active"));
+        var value = !$(this).hasClass("active");
+        _setStyle($(this), value);
+
+        $element.trigger("styleChanged",
+          [$(this).attr("data-wysihtml5-command"), value]);
       });
     }
 
@@ -56,9 +60,6 @@
       else {
         $styleElem.removeClass("active");
       }
-
-      $element.trigger("styleChanged",
-        [$styleElem.attr("data-wysihtml5-command"), value]);
     }
 
     /*

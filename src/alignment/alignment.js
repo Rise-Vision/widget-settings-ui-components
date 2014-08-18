@@ -26,7 +26,10 @@
       setAlignment(options.align);
 
       $element.find(".dropdown-menu button").on("click", function() {
-        setAlignment($(this).data("wysihtml5-command-value"));
+        var alignment = $(this).data("wysihtml5-command-value");
+
+        setAlignment(alignment);
+        $element.trigger("alignmentChanged", alignment);
       });
     }
 
@@ -50,8 +53,6 @@
       // Add new alignment icon.
       $primaryIcon.addClass(newClass);
       $btnAlignment.data("wysihtml5-command-value", alignment);
-
-      $element.trigger("alignmentChanged", alignment);
     }
 
     _init();

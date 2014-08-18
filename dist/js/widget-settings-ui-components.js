@@ -55,7 +55,10 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
       setAlignment(options.align);
 
       $element.find(".dropdown-menu button").on("click", function() {
-        setAlignment($(this).data("wysihtml5-command-value"));
+        var alignment = $(this).data("wysihtml5-command-value");
+
+        setAlignment(alignment);
+        $element.trigger("alignmentChanged", alignment);
       });
     }
 
@@ -79,8 +82,6 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
       // Add new alignment icon.
       $primaryIcon.addClass(newClass);
       $btnAlignment.data("wysihtml5-command-value", alignment);
-
-      $element.trigger("alignmentChanged", alignment);
     }
 
     _init();
@@ -162,7 +163,11 @@ TEMPLATES['font-style.html'] = "<div class=\"btn-group\">\n" +
 
       // Handle clicking on any of the style buttons.
       $element.find(".btn").on("click", function() {
-        _setStyle($(this), !$(this).hasClass("active"));
+        var value = !$(this).hasClass("active");
+        _setStyle($(this), value);
+
+        $element.trigger("styleChanged",
+          [$(this).attr("data-wysihtml5-command"), value]);
       });
     }
 
@@ -177,9 +182,6 @@ TEMPLATES['font-style.html'] = "<div class=\"btn-group\">\n" +
       else {
         $styleElem.removeClass("active");
       }
-
-      $element.trigger("styleChanged",
-        [$styleElem.attr("data-wysihtml5-command"), value]);
     }
 
     /*
