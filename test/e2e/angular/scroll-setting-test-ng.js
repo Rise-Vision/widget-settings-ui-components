@@ -21,30 +21,30 @@
 
     it("Should correctly load default defaults", function () {
       //scroll enabled
-      expect(element(by.css("input[name=scroll-by]:checked")).getAttribute("value")).
+      expect(element(by.id("scroll-by")).getAttribute("value")).
         to.eventually.equal("none");
 
       expect(element(by.css(".more-scroll-options")).isDisplayed()).to.eventually.be.false;
     });
 
     it("Should display scroll settings when scroll is enabled", function () {
-      expect(element(by.css("input[name=scroll-by]:checked")).getAttribute("value")).
+      expect(element(by.id("scroll-by")).getAttribute("value")).
         to.eventually.equal("none");
       expect(element(by.css(".more-scroll-options")).isDisplayed()).
       to.eventually.be.false;
-      //click on option, additional options appear
-      element(by.id("scroll-by-continuous")).click();
-      expect(element(by.css(".more-scroll-options")).isDisplayed()).
-      to.eventually.be.true;
 
-      expect(element(by.css("input[name=scroll-by]:checked")).getAttribute("value")).
-      to.eventually.equal("continuous");
+      element(by.cssContainingText('option', 'continuous')).click();
+      expect(element(by.css(".more-scroll-options")).isDisplayed())
+      .to.eventually.be.true;
 
-      expect(element(by.id("scroll-speed")).getAttribute("value")).
-      to.eventually.equal("medium");
+      expect(element(by.id("scroll-by")).getAttribute("value"))
+      .to.eventually.equal("continuous");
 
-      expect(element(by.id("scroll-pause")).getAttribute("value")).
-      to.eventually.equal("5");
+      expect(element(by.id("scroll-speed")).getAttribute("value"))
+      .to.eventually.equal("medium");
+
+      expect(element(by.id("scroll-pause")).getAttribute("value"))
+      .to.eventually.equal("5");
     });
 
     xit("Should correctly save settings", function (done) {
