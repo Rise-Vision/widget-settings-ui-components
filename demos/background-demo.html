@@ -17,20 +17,10 @@
   <!-- Dynamic Example -->
   <div class="examples">
     <h3>Example</h3>
-    <div class="widget">
-      <div class="overlay"></div>
-      <div class="settings">
-        <div class="settings-center">
-          <div class="wrapper container-fluid modal-content">
-            <form role="form">
-              <background-setting background="background"></background-setting>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form role="form">
+      <background-setting background="background"></background-setting>
+    </form>
   </div>
-
 </div>
 
 <script type="text/ng-template" id="script-includes">
@@ -41,16 +31,7 @@
 
 <!-- Code Snippet -->
 <script type="text/ng-template" id="background-setting-usage">
-  <div class="widget">
-    <div class="overlay"></div>
-    <div class="settings">
-      <div class="settings-center">
-        <div class="wrapper container-fluid modal-content">
-          <form role="form">
-            <background-setting background="settings.additionalParams.background"></background-setting>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+<form role="form">
+  <background-setting background="settings.additionalParams.background"></background-setting>
+</form>
 </script>
