@@ -65,7 +65,7 @@ app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/table-setting/table-setting.html",
     "<div class=\"section\">\n" +
-    "  <h5>{{'table.col-row.heading' | translate}}</h5>\n" +
+    "  <h5>{{'table.col-row-heading' | translate}}</h5>\n" +
     "  <div class=\"form-group\">\n" +
     "    <label for=\"row-padding\">{{'table.row-padding' | translate}}</label>\n" +
     "    <div class=\"row\">\n" +
