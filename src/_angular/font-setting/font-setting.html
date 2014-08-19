@@ -1,25 +1,31 @@
-<ul class="list-inline">
-  <li class="pull-left">
-    <font-picker font="fontData.font"></font-picker>
-  </li>
-  <li class="pull-left">
-    <font-size-picker ng-model="fontData.size"></font-size-picker>
-  </li>
-  <li class="pull-left">
-    <font-style bold="fontData.bold" italic="fontData.italic" underline="fontData.underline"></font-style>
-  </li>
-  <li class="pull-left">
-    <input color-picker type="text" color="fontData.color" />
-  </li>
-  <li class="pull-left">
-    <input color-picker type="background" color="fontData.backgroundColor" />
-  </li>
-  <li class="pull-left">
-    <alignment align="fontData.align"></alignment>
-  </li>
-</ul>
-<div class="row" style="">
+<div class="row">
+  <div class="col-md-8">
+    <ul class="list-inline">
+      <li class="pull-left">
+        <font-picker font="fontData.font"></font-picker>
+      </li>
+      <li class="pull-left">
+        <font-size-picker ng-model="fontData.size"></font-size-picker>
+      </li>
+      <li class="pull-left">
+        <font-style bold="fontData.bold" italic="fontData.italic" underline="fontData.underline"></font-style>
+      </li>
+      <li class="pull-left">
+        <input color-picker type="text" color="fontData.color" />
+      </li>
+      <li class="pull-left">
+        <input color-picker type="background" color="fontData.backgroundColor" />
+      </li>
+      <li class="pull-left">
+        <alignment align="fontData.align"></alignment>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row" ng-if="previewText">
   <div class="col-md-12">
-    <div class="font-picker-text form-group">Font Picker Text</div>
+    <div class="font-picker-text form-group">
+      <span>{{previewText}}</span>
+    </div>
   </div>
 </div>

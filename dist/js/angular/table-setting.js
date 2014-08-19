@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.table-setting", ["risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.table-setting", ["risevision.widget.common.translate",
+    "risevision.widget.common.color-picker", "risevision.widget.common.font-setting"])
     .directive("tableSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
@@ -64,7 +65,7 @@ app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/table-setting/table-setting.html",
     "<div class=\"section\">\n" +
-    "  <h5>{{\"table.col-row.heading\"}}</h5>\n" +
+    "  <h5>{{'table.col-row.heading' | translate}}</h5>\n" +
     "  <div class=\"form-group\">\n" +
     "    <label for=\"row-padding\">{{'table.row-padding' | translate}}</label>\n" +
     "    <div class=\"row\">\n" +
@@ -97,22 +98,16 @@ app.run(["$templateCache", function($templateCache) {
     "  </div>\n" +
     "</div>\n" +
     "<div class=\"section\">\n" +
-    "  <h5>{{\"table.col-header-font.heading\"}}</h5>\n" +
-    "  <div id=\"col-header-font\" class=\"current\"\n" +
-    "      font-setting\n" +
-    "      font-data=\"table.colHeaderFont\"\n" +
-    "      i18n-prefix=\"'table.col-header-font'\"\n" +
-    "      prefix=\"'col-header'\">\n" +
-    "  </div>\n" +
+    "  <h5>{{'table.col-header-font.heading' | translate}}</h5>\n" +
+    "  <font-setting font-data=\"table.colHeaderFont\"\n" +
+    "      preview-text=\"{{'table.col-header-font.text' | translate}}\">\n" +
+    "  </font-setting>\n" +
     "</div>\n" +
     "<div class=\"section\">\n" +
-    "  <h5>{{\"table.data-font.heading\"}}</h5>\n" +
-    "  <div id=\"data-font\" class=\"current\"\n" +
-    "      font-setting\n" +
-    "      font-data=\"table.dataFont\"\n" +
-    "      i18n-prefix=\"table.data-font\"\n" +
-    "      prefix=\"data\">\n" +
-    "  </div>\n" +
+    "  <h5>{{'table.data-font.heading' | translate}}</h5>\n" +
+    "  <font-setting font-data=\"table.dataFont\"\n" +
+    "      preview-text=\"{{'table.data-font.text' | translate}}\">\n" +
+    "  </font-setting>\n" +
     "</div>\n" +
     "");
 }]);
