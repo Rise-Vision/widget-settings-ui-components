@@ -2,10 +2,10 @@
 <head>
   <title>Table Setting - Test Page</title>
   <link rel="stylesheet" href="/components/common-style/dist/css/rise.min.css">
-  <link rel="stylesheet" href="/dist/css/alignment.css">
-  <link rel="stylesheet" href="/components/spectrum/spectrum.css">
-  <style>
-</style>
+  <link rel="stylesheet" href="/dist/css/font-style.css" />
+  <link rel="stylesheet" href="/components/spectrum/spectrum.css" />
+  <link rel="stylesheet" href="/components/bootstrap-select/bootstrap-select.css">
+  <link rel="stylesheet" href="/components/rv-bootstrap-formhelpers/dist/css/rv-bootstrap-formhelpers.css">
 </head>
 
 <body ng-app="testapp" ng-controller="mainController">
@@ -24,29 +24,43 @@
     </div>
   </div>
 
-  <script type="text/javascript" src="/components/angular/angular.js"></script>
-  <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="/components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-  <script type="text/javascript" src="/node_modules/widget-tester/mocks/common-mock.js"></script>
-  <script type="text/javascript" src="/components/spectrum/spectrum.js"></script>
-  <script type="text/javascript" src="/src/_angular/color-picker/dtv-color-picker.js"></script>
-  <script type="text/javascript" src="/src/_angular/table-setting/dtv-table-setting.js"></script>
-  <script type="text/javascript" src="/tmp/ng-templates/table-setting/table-setting.js"></script>
-  <script type="text/javascript" src="/src/_config/config.js"></script>
+  <script src="/components/angular/angular.js"></script>
+	<script src="/components/angular-translate/angular-translate.js"></script>
+	<script src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+
+  <script src="/components/jquery/dist/jquery.js"></script>
+  <script src="/components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="/node_modules/widget-tester/mocks/common-mock.js"></script>
+
+  <script src="/components/bootstrap-select/bootstrap-select.js"></script>
+  <script src="/dist/js/url-field.js"></script>
+
+  <script src="/components/rv-bootstrap-formhelpers/dist/js/rv-bootstrap-formhelpers.js"></script>
+  <script src="/components/bootstrap-form-components/dist/js/bootstrap-font-picker.js"></script>
+  <script src="/components/bootstrap-form-components/dist/js/angular/bootstrap-font-picker.js"></script>
+  <script src="/components/bootstrap-form-components/dist/js/bootstrap-font-size-picker.js"></script>
+  <script src="/components/bootstrap-form-components/dist/js/angular/bootstrap-font-size-picker.js"></script>
+  <script src="/components/spectrum/spectrum.js"></script>
+
+  <script src="/dist/js/angular/color-picker.js"></script>
+  <script src="/dist/js/alignment.js"></script>
+  <script src="/dist/js/angular/alignment.js"></script>
+  <script src="/dist/js/font-style.js"></script>
+  <script src="/dist/js/angular/font-style.js"></script>
+  <script src="/dist/js/angular/font-setting.js"></script>
+  <script src="/src/_angular/table-setting/dtv-table-setting.js"></script>
+  <script src="/tmp/ng-templates/table-setting/table-setting.js"></script>
+  <script src="/src/_config/config.js"></script>
 
   <script type="text/javascript">
     angular.module("testapp", ["risevision.widget.common.table-setting"])
       .controller("mainController", ["$scope", function ($scope) {
         $scope.settings = {
           additionalParams: {
-            table: {}
+            table: {
+            }
           }
         };
-
-        $scope.getAdditionalParams = function (val, defaultVal) {
-          //always return defaultVal for now
-          return defaultVal;
-        }
       }]);
   </script>
 </body>

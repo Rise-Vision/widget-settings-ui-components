@@ -1,5 +1,5 @@
 <div class="section">
-  <h5>{{"table.col-row.heading"}}</h5>
+  <h5>{{'table.col-row.heading' | translate}}</h5>
   <div class="form-group">
     <label for="row-padding">{{'table.row-padding' | translate}}</label>
     <div class="row">
@@ -32,20 +32,14 @@
   </div>
 </div>
 <div class="section">
-  <h5>{{"table.col-header-font.heading"}}</h5>
-  <div id="col-header-font" class="current"
-      font-setting
-      font-data="table.colHeaderFont"
-      i18n-prefix="'table.col-header-font'"
-      prefix="'col-header'">
-  </div>
+  <h5>{{'table.col-header-font.heading' | translate}}</h5>
+  <font-setting font-data="table.colHeaderFont"
+      preview-text="{{'table.col-header-font.text' | translate}}">
+  </font-setting>
 </div>
 <div class="section">
-  <h5>{{"table.data-font.heading"}}</h5>
-  <div id="data-font" class="current"
-      font-setting
-      font-data="table.dataFont"
-      i18n-prefix="table.data-font"
-      prefix="data">
-  </div>
+  <h5>{{'table.data-font.heading' | translate}}</h5>
+  <font-setting font-data="table.dataFont"
+      preview-text="{{'table.data-font.text' | translate}}">
+  </font-setting>
 </div>

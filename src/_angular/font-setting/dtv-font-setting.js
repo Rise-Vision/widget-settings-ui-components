@@ -2,18 +2,15 @@
   "use strict";
 
   angular.module("risevision.widget.common.font-setting", ["risevision.widget.common.translate",
-    "risevision.widget.common.font-style","risevision.widget.common.fontsizepicker",
+    "risevision.widget.common.font-style", "risevision.widget.common.alignment",
+    "risevision.widget.common.color-picker", "risevision.widget.common.fontsizepicker",
     "risevision.widget.common.fontpicker"])
-    .directive("fontSetting", ["i18nLoader", "$log", "$templateCache", function (i18nLoader, $log, $templateCache) {
+    .directive("fontSetting", ["$templateCache", function ($templateCache) {
       return {
-        restrict: "A",
+        restrict: "AE",
         scope: {
-          prefix: "=",
-          i18nPrefix: "=",
           fontData: "=",
-          fontVisible: "=",
-          fontSizeVisible: "=",
-          textVisible: "="
+          previewText: "@"
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
@@ -56,21 +53,25 @@
               updatePreview(fontData);
               watch();
 
-              $scope.$watch("fontData", updatePreview, true);
+              if ($scope.previewText) {
+                $scope.$watch("fontData", updatePreview, true);
+              }
             }
           });
 
           function updatePreview(fontData) {
-            if (fontData) {
-              var previewEl = $element.find(".font-picker-text");
+            if ($scope.previewText && fontData) {
+              var parentEl = $element.find(".font-picker-text");
+              var previewEl = $element.find(".font-picker-text span");
               previewEl.css("font-family", fontData.font.family);
               previewEl.css("font-size", fontData.size + "pt");
               previewEl.css("font-weight", fontData.bold ? "bold" : "normal");
               previewEl.css("font-style", fontData.italic ? "italic" : "normal");
               previewEl.css("text-decoration", fontData.underline ? "underline" : "none");
-              previewEl.css("text-align", fontData.align);
               previewEl.css("color", fontData.color);
               previewEl.css("background-color", fontData.backgroundColor);
+
+              parentEl.css("text-align", fontData.align);
             }
           }
         }
