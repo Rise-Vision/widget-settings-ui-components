@@ -1,0 +1,57 @@
+<h1>Font Setting</h1>
+
+<p class="lead">Directive that allows font configuration</p>
+
+<p>
+  <strong>Dependencies</strong>
+  <span class="label label-info">Angular</span>
+  <span class="label label-info">jQuery</span>
+  <span class="label label-info">font-picker</span>
+  <span class="label label-info">font-size-picker</span>
+  <span class="label label-info">font-setting</span>
+  <span class="label label-info">color-picker</span>
+  <span class="label label-info">alignment</span>
+</p>
+
+<h3>Usage</h3>
+<ul>
+  <li>Include the following files:
+    <hljs include="'angular-script-includes'"></hljs>
+  </li>
+  <li>Add the directive:
+    <hljs>
+<font-setting font-data="font" preview-text="Sample Text"></font-setting>
+    </hljs>
+  </li>
+</ul>
+
+<!-- Dynamic Example -->
+<div class="examples">
+  <h3>Example</h3>
+  <font-setting font-data="font" preview-text="Sample Text"></font-setting>
+</div>
+
+<script type="text/ng-template" id="angular-script-includes">
+/bower_components/widget-settings-ui-components/dist/css/widget-settings-ui-components.min.css
+/bower_components/spectrum/spectrum.css
+/bower_components/bootstrap-select/bootstrap-select.css
+/bower_components/rv-bootstrap-formhelpers/dist/css/rv-bootstrap-formhelpers.css
+
+/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js
+/bower_components/bootstrap-select/bootstrap-select.js
+/bower_components/spectrum/spectrum.js
+
+/bower_components/rv-bootstrap-formhelpers/dist/js/rv-bootstrap-formhelpers.js
+/bower_components/bootstrap-form-components/dist/js/bootstrap-font-picker.js
+/bower_components/bootstrap-form-components/dist/js/angular/bootstrap-font-picker.js
+/bower_components/bootstrap-form-components/dist/js/bootstrap-font-size-picker.js
+/bower_components/bootstrap-form-components/dist/js/angular/bootstrap-font-size-picker.js
+
+/bower_components/widget-settings-ui-components/dist/js/alignment.min.js
+/bower_components/widget-settings-ui-components/dist/js/angular/alignment.min.js
+/bower_components/widget-settings-ui-components/dist/js/url-field.min.js
+/bower_components/widget-settings-ui-components/dist/js/angular/color-picker.min.js
+/bower_components/widget-settings-ui-components/dist/js/font-style.min.js
+/bower_components/widget-settings-ui-components/dist/js/angular/font-style.min.js
+/bower_components/widget-settings-ui-components/dist/js/angular/font-setting.min.js
+</script>
