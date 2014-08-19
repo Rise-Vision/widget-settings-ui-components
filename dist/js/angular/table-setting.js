@@ -17,17 +17,17 @@
               font: {
                 family: "Verdana"
               },
-              fontSize: "20",
-              isBold: "false",
-              isItalic: "false"
+              size: "20",
+              bold: false,
+              italic: false
             },
             dataFont: {
               font: {
                 family: "Verdana"
               },
-              fontSize: "20",
-              isBold: "false",
-              isItalic: "false"
+              size: "20",
+              bold: false,
+              italic: false
             },
             rowColor: "transparent",
             altRowColor: "transparent",
