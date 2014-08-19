@@ -13,11 +13,11 @@
 		}
 	},
 	"scroll": {
-    "heading": "Scrolling",
+    "heading": "Scroll",
 		"by": {
-			"none": "None",
-			"continuous": "Continuous",
-			"page": "Page"
+			"none": "No",
+			"continuous": "Continuously",
+			"page": "By Page"
 		},
 		"speed": {
 			"label": "Scroll Speed",
