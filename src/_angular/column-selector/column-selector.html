@@ -1,10 +1,8 @@
 <div class="tag-manager">
 	<div class="tags">
-		<span ng-repeat="column in columnNames" ng-hide="column.show" class="label label-primary"
-		ng-click="add(column)">
-			{{'columns.' + column.name | translate}}
-			<span class="glyphicon glyphicon-plus"></span>
-		</span>
+    <h4>{{'column.select-title' | translate}}</h4>
+    <select ng-model="selectedColumn" ng-options="column.name|translate for column in columnNames|filter:show" ng-change="addColumn()" class="form-control"></select>
+
 	</div>
 </div>
 <div class="panel-group">
