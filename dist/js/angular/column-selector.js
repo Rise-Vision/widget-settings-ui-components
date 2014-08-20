@@ -32,6 +32,14 @@
             }
           });
 
+          $scope.show = function(v){return !v.show;};
+
+          $scope.addColumn = function(){
+            console.log($scope.selectedColumn);
+            $scope.add($scope.selectedColumn);
+            $scope.selectedColumn = null;
+          };
+
           $scope.add = function(column) {
             column.show = true;
             $scope.columns.push(column);
@@ -82,11 +90,9 @@ app.run(["$templateCache", function($templateCache) {
   $templateCache.put("_angular/column-selector/column-selector.html",
     "<div class=\"tag-manager\">\n" +
     "	<div class=\"tags\">\n" +
-    "		<span ng-repeat=\"column in columnNames\" ng-hide=\"column.show\" class=\"label label-primary\"\n" +
-    "		ng-click=\"add(column)\">\n" +
-    "			{{'columns.' + column.name | translate}}\n" +
-    "			<span class=\"glyphicon glyphicon-plus\"></span>\n" +
-    "		</span>\n" +
+    "    <h4>{{'column.select-title' | translate}}</h4>\n" +
+    "    <select ng-model=\"selectedColumn\" ng-options=\"column.name|translate for column in columnNames|filter:show\" ng-change=\"addColumn()\" class=\"form-control\"></select>\n" +
+    "\n" +
     "	</div>\n" +
     "</div>\n" +
     "<div class=\"panel-group\">\n" +

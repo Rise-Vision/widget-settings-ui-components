@@ -15,17 +15,20 @@
   browser.driver.manage().window().setSize(1024, 768);
 
   describe("Column Selector component", function() {
+    var ADDABLE_COLUMNS;
+
     beforeEach(function (){
       browser.get("/test/e2e/angular/column-selector-test-ng.html");
+      ADDABLE_COLUMNS = 6;
     });
 
     it("Should correctly load default settings", function () {
-      element.all(by.css(".tags span.label")).then(function (elements) {
-        expect(elements.length).to.equal(7);
+      element.all(by.css(".tags option")).then(function (elements) {
+        expect(elements.length).to.equal(ADDABLE_COLUMNS);
 
-        expect(elements[1].getCssValue("display")).to.eventually.equal("none");
+        //expect(elements[1].getCssValue("display")).to.eventually.equal("none");
 
-        expect(elements[2].getText()).to.eventually.equal("columns.last-price");
+        //expect(elements[2].getText()).to.eventually.equal("columns.last-price");
       });
 
       element.all(by.css(".panel-group div.panel.panel-default")).then(function (elements) {
@@ -34,10 +37,13 @@
     });
 
     it("Should add an item when clicked", function () {
-      element.all(by.css(".tags span.label")).then(function (elements) {
+      element.all(by.css(".tags option")).then(function (elements) {
         elements[2].click();
-
-        expect(elements[2].getCssValue("display")).to.eventually.equal("none");
+        return element.all(by.css(".tags option"));
+      })
+      .then(function (elements) {
+        expect(elements.length).to.equal(ADDABLE_COLUMNS - 1);
+        //expect(elements[2].getCssValue("display")).to.eventually.equal("none");
 
         element.all(by.css(".panel-group div.panel.panel-default")).then(function (elements) {
           expect(elements.length).to.equal(3);
@@ -53,8 +59,8 @@
           expect(elements1.length).to.equal(1);
         });
 
-        element.all(by.css(".tags span.label")).then(function(elements1) {
-          expect(elements1[0].getCssValue("display")).to.eventually.equal("inline-block");
+        element.all(by.css(".tags option")).then(function(elements1) {
+          expect(elements1.length).to.equal(ADDABLE_COLUMNS + 1);
         });
       });
 

@@ -32,6 +32,14 @@
             }
           });
 
+          $scope.show = function(v){return !v.show;};
+
+          $scope.addColumn = function(){
+            console.log($scope.selectedColumn);
+            $scope.add($scope.selectedColumn);
+            $scope.selectedColumn = null;
+          };
+
           $scope.add = function(column) {
             column.show = true;
             $scope.columns.push(column);
