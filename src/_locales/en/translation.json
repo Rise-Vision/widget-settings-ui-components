@@ -54,10 +54,7 @@
 			"center": "Center",
 			"right": "Right"
 		},
-		"width": {
-			"label": "Width",
-			"tooltip": "Width of the column"
-		},
+		"width": "Width",
 		"decimals": {
 			"label": "Decimals"
 		},
@@ -74,8 +71,7 @@
 			"positive-red": "Positive value red negative green"
 		},
 		"header-text": {
-			"label": "Header Text",
-			"tooltip": "If header text is entered here then it will override the header in the spreadsheet"
+			"label": "Header Text"
 		}
 	},
   "url": {

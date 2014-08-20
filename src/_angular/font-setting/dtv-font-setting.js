@@ -28,7 +28,7 @@
             italic: false,
             underline: false,
             color: "black",
-            backgroundColor: "transparent",
+            highlightColor: "transparent",
             align: "left"
           };
 
@@ -69,7 +69,7 @@
               previewEl.css("font-style", fontData.italic ? "italic" : "normal");
               previewEl.css("text-decoration", fontData.underline ? "underline" : "none");
               previewEl.css("color", fontData.color);
-              previewEl.css("background-color", fontData.backgroundColor);
+              previewEl.css("background-color", fontData.highlightColor);
 
               parentEl.css("text-align", fontData.align);
             }
