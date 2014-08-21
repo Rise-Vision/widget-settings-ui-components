@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" class="font-settings">
   <div class="col-md-8">
     <ul class="list-inline">
       <li class="pull-left">
@@ -7,17 +7,17 @@
       <li class="pull-left">
         <font-size-picker ng-model="fontData.size"></font-size-picker>
       </li>
-      <li class="pull-left">
-        <font-style bold="fontData.bold" italic="fontData.italic" underline="fontData.underline"></font-style>
+      <li class="pull-left font-setting-button">
+        <font-style bold="fontData.bold" italic="fontData.italic" underline="fontData.underline" c></font-style>
       </li>
-      <li class="pull-left">
+      <li class="pull-left font-setting-button">
         <input color-picker type="text" color="fontData.color" />
       </li>
-      <li class="pull-left">
+      <li class="pull-left font-setting-button">
         <input color-picker type="highlight" color="fontData.highlightColor" />
       </li>
       <li class="pull-left">
-        <alignment align="fontData.align"></alignment>
+        <alignment align="fontData.align" class="font-setting-button"></alignment>
       </li>
     </ul>
   </div>
