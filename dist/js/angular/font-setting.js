@@ -86,7 +86,7 @@ app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/font-setting/font-setting.html",
     "<div class=\"row\" class=\"font-settings\">\n" +
-    "  <div class=\"col-md-8\">\n" +
+    "  <div class=\"col-md-12\">\n" +
     "    <ul class=\"list-inline\">\n" +
     "      <li class=\"pull-left\">\n" +
     "        <font-picker font=\"fontData.font\"></font-picker>\n" +
