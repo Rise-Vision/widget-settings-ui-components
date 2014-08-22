@@ -1,19 +1,13 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.tooltip", [])
-    .directive("tooltip", ["$templateCache", function ($templateCache) {
+  angular.module("risevision.widget.common.tooltip", ["ui.bootstrap"])
+    .directive("rvTooltip", [function () {
       return {
-        restrict: "E",
-        scope: {
-          align: "="
-        },
-        template: $templateCache.get("_angular/tooltip/tooltip.html"),
-        transclude: false,
-        link: function ($scope, element) {
-          var $element = $(element);
-
-          $element.popover({trigger: "click"});
+        restrict: "A",
+        link: function($scope, element) {
+          element.addClass("glyphicons");
+          element.addClass("circle_question_mark");
         }
       };
     }]);

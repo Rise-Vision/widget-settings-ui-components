@@ -1,7 +1,7 @@
 <div class="section">
   <h5>{{'scroll.heading' | translate}}</h5>
   <div class="row">
-    <div class="col-xs-6 col-md-4">
+    <div class="col-md-12">
       <div class="form-group">
         <select id="scroll-by" ng-model="scroll.by" class="form-control">
           <option value="none">{{'scroll.by.none' | translate}}</option>
@@ -13,7 +13,7 @@
   </div>
   <div ng-show="scroll.by != 'none'" class="more-scroll-options">
     <div class="row">
-      <div class="col-xs-6 col-md-4">
+      <div class="col-md-12">
         <div class="form-group">
           <label for="scroll-speed">{{'scroll.speed.label' | translate}}</label>
           <select id="scroll-speed" ng-model="scroll.speed" class="form-control">
@@ -27,14 +27,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-6 col-md-4">
+      <div class="col-md-12">
         <div class="form-group">
           <label for="scroll-pause">
             {{'scroll.pause.label' | translate}}
           </label>
-          <tooltip data-toggle="popover" data-placement="right"
-            data-content="{{'scroll.pause.tooltip' | translate}}">
-          </tooltip>
+          <span popover="{{'scroll.pause.tooltip' | translate}}"
+            popover-trigger="click" popover-placement="right" rv-tooltip>
+          </span>
           <input id="scroll-pause" type="text" ng-model="scroll.pause" class="form-control" />
         </div>
       </div>

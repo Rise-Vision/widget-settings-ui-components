@@ -90,7 +90,7 @@ app.run(["$templateCache", function($templateCache) {
   $templateCache.put("_angular/column-selector/column-selector.html",
     "<div class=\"tag-manager\">\n" +
     "	<div class=\"tags\">\n" +
-    "    <h4>{{'column.select-title' | translate}}</h4>\n" +
+    "		<label for=\"columns\" class=\"control-label\">{{'column.select-title' | translate}}</label>\n" +
     "    <select ng-model=\"selectedColumn\" ng-options=\"column.name|translate for column in columnNames|filter:show\" ng-change=\"addColumn()\" class=\"form-control\"></select>\n" +
     "\n" +
     "	</div>\n" +

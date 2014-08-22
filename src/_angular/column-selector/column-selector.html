@@ -1,6 +1,6 @@
 <div class="tag-manager">
 	<div class="tags">
-    <h4>{{'column.select-title' | translate}}</h4>
+		<label for="columns" class="control-label">{{'column.select-title' | translate}}</label>
     <select ng-model="selectedColumn" ng-options="column.name|translate for column in columnNames|filter:show" ng-change="addColumn()" class="form-control"></select>
 
 	</div>
