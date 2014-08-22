@@ -88,15 +88,23 @@ catch(err) { app = angular.module("risevision.widget.common.column-selector", []
 app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/column-selector/column-selector.html",
-    "<div class=\"tag-manager\">\n" +
-    "	<div class=\"tags\">\n" +
-    "		<label for=\"columns\" class=\"control-label\">{{'column.select-title' | translate}}</label>\n" +
-    "    <select ng-model=\"selectedColumn\" ng-options=\"column.name|translate for column in columnNames|filter:show\" ng-change=\"addColumn()\" class=\"form-control\"></select>\n" +
-    "\n" +
+    "<div class=\"section\">\n" +
+    "	<h5>{{'column.heading' | translate}}</h5>\n" +
+    "	<div class=\"row\">\n" +
+    "		<div class=\"col-md-12\">\n" +
+    "			<div class=\"form-group\">\n" +
+    "				<label for=\"columns\" class=\"control-label\">{{'column.select-title' | translate}}</label>\n" +
+    "		    <select ng-model=\"selectedColumn\" ng-options=\"column.name|translate for column in columnNames|filter:show\"\n" +
+    "				ng-change=\"addColumn()\" id=\"column-selector\" class=\"form-control\"></select>\n" +
+    "			</div>\n" +
+    "		</div>\n" +
     "	</div>\n" +
-    "</div>\n" +
-    "<div class=\"panel-group\">\n" +
-    "	<column-setting column=\"column\" ng-repeat=\"column in columns\"></column-setting>\n" +
+    "	<div class=\"row\">\n" +
+    "		<div class=\"col-md-12\">\n" +
+    "			<div class=\"panel-group\">\n" +
+    "				<column-setting column=\"column\" ng-repeat=\"column in columns\"></column-setting>\n" +
+    "			</div>\n" +
+    "	</div>\n" +
     "</div>\n" +
     "");
 }]);

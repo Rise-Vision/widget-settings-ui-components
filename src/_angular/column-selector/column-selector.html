@@ -1,10 +1,18 @@
-<div class="tag-manager">
-	<div class="tags">
-		<label for="columns" class="control-label">{{'column.select-title' | translate}}</label>
-    <select ng-model="selectedColumn" ng-options="column.name|translate for column in columnNames|filter:show" ng-change="addColumn()" class="form-control"></select>
-
+<div class="section">
+	<h5>{{'column.heading' | translate}}</h5>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label for="columns" class="control-label">{{'column.select-title' | translate}}</label>
+		    <select ng-model="selectedColumn" ng-options="column.name|translate for column in columnNames|filter:show"
+				ng-change="addColumn()" id="column-selector" class="form-control"></select>
+			</div>
+		</div>
 	</div>
-</div>
-<div class="panel-group">
-	<column-setting column="column" ng-repeat="column in columns"></column-setting>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel-group">
+				<column-setting column="column" ng-repeat="column in columns"></column-setting>
+			</div>
+	</div>
 </div>
