@@ -48,6 +48,7 @@
 		}
 	},
 	"column": {
+		"label": "Columns",
 		"select-title" : "Select A Column To Add",
 		"alignment": {
 			"label": "Alignment",
