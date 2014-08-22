@@ -49,7 +49,7 @@ app.run(["$templateCache", function($templateCache) {
     "<div class=\"section\">\n" +
     "  <h5>{{'scroll.heading' | translate}}</h5>\n" +
     "  <div class=\"row\">\n" +
-    "    <div class=\"col-xs-6 col-md-4\">\n" +
+    "    <div class=\"col-md-12\">\n" +
     "      <div class=\"form-group\">\n" +
     "        <select id=\"scroll-by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
     "          <option value=\"none\">{{'scroll.by.none' | translate}}</option>\n" +
@@ -61,7 +61,7 @@ app.run(["$templateCache", function($templateCache) {
     "  </div>\n" +
     "  <div ng-show=\"scroll.by != 'none'\" class=\"more-scroll-options\">\n" +
     "    <div class=\"row\">\n" +
-    "      <div class=\"col-xs-6 col-md-4\">\n" +
+    "      <div class=\"col-md-12\">\n" +
     "        <div class=\"form-group\">\n" +
     "          <label for=\"scroll-speed\">{{'scroll.speed.label' | translate}}</label>\n" +
     "          <select id=\"scroll-speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
@@ -75,14 +75,14 @@ app.run(["$templateCache", function($templateCache) {
     "      </div>\n" +
     "    </div>\n" +
     "    <div class=\"row\">\n" +
-    "      <div class=\"col-xs-6 col-md-4\">\n" +
+    "      <div class=\"col-md-12\">\n" +
     "        <div class=\"form-group\">\n" +
     "          <label for=\"scroll-pause\">\n" +
     "            {{'scroll.pause.label' | translate}}\n" +
     "          </label>\n" +
-    "          <tooltip data-toggle=\"popover\" data-placement=\"right\"\n" +
-    "            data-content=\"{{'scroll.pause.tooltip' | translate}}\">\n" +
-    "          </tooltip>\n" +
+    "          <span popover=\"{{'scroll.pause.tooltip' | translate}}\"\n" +
+    "            popover-trigger=\"click\" popover-placement=\"right\" rv-tooltip>\n" +
+    "          </span>\n" +
     "          <input id=\"scroll-pause\" type=\"text\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
     "        </div>\n" +
     "      </div>\n" +

@@ -1,11 +1,11 @@
 <div class="component">
   <div class="page-header">
-    <h1 class="page">Tooltip (DEPRECATED)</h1>
+    <h1 class="page">Tooltip</h1>
   </div>
 
-  <p class="lead">Please use <a href="http://rise-vision.github.io/style-guide/#/components/ui-popover">UI-Popover</a> moving forward.</p>
+  <p class="lead">For a simple Popover, see <a href="http://rise-vision.github.io/style-guide/#/components/ui-popover">UI-Popover</a>.</p>
 
-  <p><strong>Dependencies</strong> n/a</p>
+  <p><strong>Dependencies</strong> popover</p>
 
 	<h3 class="add-top">Usage</h3>
 	<hljs include="'tooltip-usage'"></hljs>
@@ -18,14 +18,14 @@
   <div class="examples">
   	<h3>Example</h3>
     <div class="row">
-      <div class="col-xs-6 col-md-4">
+      <div class="col-md-12">
         <div class="form-group">
           <label for="example">
             Tooltip Example
           </label>
-          <tooltip data-toggle="popover" data-placement="right"
-            data-content="This is a sample tooltip">
-          </tooltip>
+          <span popover-trigger="click" popover-placement="right"
+            popover="This is a sample tooltip" rv-tooltip>
+          </span>
           <input id="example" type="text" class="form-control" />
         </div>
       </div>
@@ -34,6 +34,7 @@
 </div>
 
 <script type="text/ng-template" id="script-includes">
+bower_components/angular-bootstrap/ui-bootstrap-tpls.js
 bower_components/widget-settings-ui-components/dist/js/angular/tooltip.js
 </script>
 
@@ -41,14 +42,14 @@ bower_components/widget-settings-ui-components/dist/js/angular/tooltip.js
 <script type="text/ng-template" id="tooltip-usage">
 <form role="form">
   <div class="row">
-    <div class="col-xs-6 col-md-4">
+    <div class="col-md-12">
       <div class="form-group">
         <label for="example">
           Tooltip Example
         </label>
-        <tooltip data-toggle="popover" data-placement="right"
-          data-content="This is a sample tooltip">
-        </tooltip>
+        <span popover-trigger="click" popover-placement="right"
+          popover="This is a sample tooltip" rv-tooltip>
+        </span>
         <input id="example" type="text" class="form-control" />
       </div>
     </div>

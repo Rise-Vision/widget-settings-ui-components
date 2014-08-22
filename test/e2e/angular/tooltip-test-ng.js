@@ -20,17 +20,17 @@
     });
 
     it("Should hide Tooltip by default", function () {
-      expect(element(by.id("tooltip")).getAttribute("data-original-title")).
-      to.eventually.not.be.null;
+      expect(element(by.css(".glyphicons.circle_question_mark")).isPresent()).
+      to.eventually.be.true;
 
       expect(element(by.css("div.popover.fade")).isPresent()).
       to.eventually.be.false;
     });
 
     it("Should show tooltip when clicked", function () {
-      element(by.id("tooltip")).click();
+      element(by.css(".glyphicons.circle_question_mark")).click();
 
-      expect(element(by.css("div.popover.fade")).isPresent()).
+      expect(element(by.css("div.popover.right.fade.in")).isPresent()).
       to.eventually.be.true;
 
       expect(element(by.css("div.popover-content")).getText()).
