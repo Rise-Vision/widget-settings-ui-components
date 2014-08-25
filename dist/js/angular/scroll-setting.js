@@ -47,10 +47,10 @@ app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/scroll-setting/scroll-setting.html",
     "<div class=\"section\">\n" +
-    "  <h5>{{'scroll.heading' | translate}}</h5>\n" +
-    "  <div class=\"row\">\n" +
-    "    <div class=\"col-md-12\">\n" +
-    "      <div class=\"form-group\">\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <div class=\"row\">\n" +
+    "      <div class=\"col-md-3\">\n" +
+    "        <label>{{'scroll.heading' | translate}}</label>\n" +
     "        <select id=\"scroll-by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
     "          <option value=\"none\">{{'scroll.by.none' | translate}}</option>\n" +
     "          <option value=\"continuous\">{{'scroll.by.continuous' | translate}}</option>\n" +
@@ -60,10 +60,10 @@ app.run(["$templateCache", function($templateCache) {
     "    </div>\n" +
     "  </div>\n" +
     "  <div ng-show=\"scroll.by != 'none'\" class=\"more-scroll-options\">\n" +
-    "    <div class=\"row\">\n" +
-    "      <div class=\"col-md-12\">\n" +
-    "        <div class=\"form-group\">\n" +
-    "          <label for=\"scroll-speed\">{{'scroll.speed.label' | translate}}</label>\n" +
+    "    <div class=\"form-group\">\n" +
+    "      <label for=\"scroll-speed\">{{'scroll.speed.label' | translate}}</label>\n" +
+    "      <div class=\"row\">\n" +
+    "        <div class=\"col-md-3\">\n" +
     "          <select id=\"scroll-speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
     "            <option value=\"slowest\">{{'scroll.speed.slowest' | translate}}</option>\n" +
     "            <option value=\"slow\">{{'scroll.speed.slow' | translate}}</option>\n" +
@@ -74,15 +74,15 @@ app.run(["$templateCache", function($templateCache) {
     "        </div>\n" +
     "      </div>\n" +
     "    </div>\n" +
-    "    <div class=\"row\">\n" +
-    "      <div class=\"col-md-12\">\n" +
-    "        <div class=\"form-group\">\n" +
-    "          <label for=\"scroll-pause\">\n" +
-    "            {{'scroll.pause.label' | translate}}\n" +
-    "          </label>\n" +
-    "          <span popover=\"{{'scroll.pause.tooltip' | translate}}\"\n" +
+    "    <div class=\"form-group\">\n" +
+    "      <label for=\"scroll-pause\">\n" +
+    "        {{'scroll.pause.label' | translate}}\n" +
+    "        <span popover=\"{{'scroll.pause.tooltip' | translate}}\"\n" +
     "            popover-trigger=\"click\" popover-placement=\"right\" rv-tooltip>\n" +
-    "          </span>\n" +
+    "        </span>\n" +
+    "      </label>\n" +
+    "      <div class=\"row\">\n" +
+    "        <div class=\"col-md-3\">\n" +
     "          <input id=\"scroll-pause\" type=\"text\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
     "        </div>\n" +
     "      </div>\n" +
