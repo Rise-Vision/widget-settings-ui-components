@@ -6,8 +6,9 @@
       return {
         restrict: "A",
         link: function($scope, element) {
-          element.addClass("glyphicons");
-          element.addClass("circle_question_mark");
+          element.addClass("fa");
+          element.addClass("fa-question-circle");
+          element.addClass("fa-lg");
         }
       };
     }]);

@@ -4,8 +4,7 @@
     ng-class="{'panel-heading':true, collapsed:!collapse}" ng-click="collapse=!collapse">
        {{'columns.' + column.name | translate}}
     </a>
-    <a href="" ondragstart="return false;"
-    class="glyphicon glyphicon-minus-sign remove-column-button" ng-click="remove()"></a>
+    <a href="" ondragstart="return false;" class="fa fa-minus-circle fa-lg remove-column-button" ng-click="remove()"></a>
   </div>
   <div ng-class="{'panel-collapse':true, collapse:true, in:collapse}">
     <div class="panel-body">

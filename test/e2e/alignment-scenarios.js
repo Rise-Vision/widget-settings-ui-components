@@ -2,7 +2,7 @@ casper.test.begin("Alignment - Loading", function (test) {
   casper.start("http://localhost:8099/test/e2e/alignment-test.html",
     function () {
       test.assertTitle("Alignment - Test Page", "Test page has loaded");
-      test.assertExists(".btn-alignment .glyphicon-align-left",
+      test.assertExists(".btn-alignment .fa-align-left",
         "Icon is set to left");
       test.assertExists(".btn-alignment[data-wysihtml5-command-value='left']",
         "Data attribute is set to left");
@@ -30,7 +30,7 @@ casper.test.begin("Alignment - Loading", function (test) {
 
     this.click(".dropdown-menu button[data-wysihtml5-command-value='justify']");
 
-    test.assertExists(".btn-alignment .glyphicon-align-justify",
+    test.assertExists(".btn-alignment .fa-align-justify",
       "Icon is set to justify");
     test.assertEval(function () {
       /* Need to use jQuery to get the data attribute since it doesn't update in

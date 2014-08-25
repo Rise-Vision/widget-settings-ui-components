@@ -41,9 +41,9 @@
     }
 
     function setAlignment(alignment) {
-      var $primaryIcon = $element.find(".btn-alignment .glyphicon");
-      var currentClass = $primaryIcon.attr("class").match(/glyphicon-align-[a-z]+/g);
-      var newClass = "glyphicon-align-" + alignment;
+      var $primaryIcon = $element.find(".btn-alignment .fa");
+      var currentClass = $primaryIcon.attr("class").match(/fa-align-[a-z]+/g);
+      var newClass = "fa-align-" + alignment;
 
       // Remove current alignment icon.
       if (currentClass && currentClass.length > 0) {

@@ -52,7 +52,7 @@
     });
 
     it("Should remove an item when clicked", function () {
-      element.all(by.css(".panel-group div.panel a.glyphicon")).then(function (elements) {
+      element.all(by.css(".panel-group div.panel a.remove-column-button")).then(function (elements) {
         elements[0].click();
 
         element.all(by.css(".panel-group column-setting")).then(function (elements1) {
