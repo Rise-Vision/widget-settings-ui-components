@@ -35,7 +35,10 @@
       </label>
       <div class="row">
         <div class="col-md-3">
-          <input id="scroll-pause" type="text" ng-model="scroll.pause" class="form-control" />
+          <div class="input-group">
+            <input id="scroll-pause" type="text" ng-model="scroll.pause" class="form-control" />
+            <span class="input-group-addon">{{'common.units.seconds' | translate}}</span>
+          </div>
         </div>
       </div>
     </div>

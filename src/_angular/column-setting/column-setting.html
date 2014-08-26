@@ -25,7 +25,10 @@
             <label for="column-width">
               {{'column.width' | translate}}
             </label>
-            <input id="column-width" type="text" ng-model="column.width" class="form-control" />
+            <div class="input-group">
+              <input id="column-width" type="text" ng-model="column.width" class="form-control" />
+              <span class="input-group-addon">{{'common.units.pixels' | translate}}</span>
+            </div>
           </div>
         </div>
       </div>

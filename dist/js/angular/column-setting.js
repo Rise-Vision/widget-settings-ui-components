@@ -16,7 +16,7 @@
           $scope.defaultSetting = {
             type: "int",
             alignment: "left",
-            width: "100px",
+            width: "100",
             decimals: 0,
             sign: "arrow",
             colorCondition: "none"
@@ -82,7 +82,10 @@ app.run(["$templateCache", function($templateCache) {
     "            <label for=\"column-width\">\n" +
     "              {{'column.width' | translate}}\n" +
     "            </label>\n" +
-    "            <input id=\"column-width\" type=\"text\" ng-model=\"column.width\" class=\"form-control\" />\n" +
+    "            <div class=\"input-group\">\n" +
+    "              <input id=\"column-width\" type=\"text\" ng-model=\"column.width\" class=\"form-control\" />\n" +
+    "              <span class=\"input-group-addon\">{{'common.units.pixels' | translate}}</span>\n" +
+    "            </div>\n" +
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +

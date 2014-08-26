@@ -30,7 +30,7 @@
       to.eventually.not.be.null;
 
       expect(element(by.id("column-width")).getAttribute("value")).
-      to.eventually.equal("100px");
+      to.eventually.equal("100");
 
       expect(element(by.id("column-decimals")).getAttribute("value")).
       to.eventually.equal("0");

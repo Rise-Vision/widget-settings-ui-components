@@ -16,7 +16,7 @@
           $scope.defaultSetting = {
             type: "int",
             alignment: "left",
-            width: "100px",
+            width: "100",
             decimals: 0,
             sign: "arrow",
             colorCondition: "none"
