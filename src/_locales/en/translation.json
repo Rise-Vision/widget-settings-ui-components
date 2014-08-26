@@ -10,6 +10,10 @@
 			"label": "Font Variants",
 			"bold": "Bold",
 			"italic": "Italic"
+		},
+		"units": {
+			"pixels": "px",
+			"seconds": "sec"
 		}
 	},
 	"scroll": {
@@ -28,14 +32,14 @@
 			"fastest": "Fastest"
 		},
 		"pause": {
-			"label": "Scroll Pause (seconds)",
+			"label": "Scroll Pause",
 			"tooltip": "Number of seconds to pause after touch or the end of the list is reached"
 		}
 	},
 	"table": {
     "col-row-heading": "Column / Row Format",
-		"row-padding": "Row Padding (pixels)",
-		"col-padding": "Column Padding (pixels)",
+		"row-padding": "Row Padding",
+		"col-padding": "Column Padding",
 		"row-color": "Row Color",
 		"alt-row-color": "Alternate Row Color",
 		"col-header-font": {

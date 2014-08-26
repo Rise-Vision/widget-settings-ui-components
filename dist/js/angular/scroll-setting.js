@@ -83,7 +83,10 @@ app.run(["$templateCache", function($templateCache) {
     "      </label>\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-3\">\n" +
-    "          <input id=\"scroll-pause\" type=\"text\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
+    "          <div class=\"input-group\">\n" +
+    "            <input id=\"scroll-pause\" type=\"text\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
+    "            <span class=\"input-group-addon\">{{'common.units.seconds' | translate}}</span>\n" +
+    "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
     "    </div>\n" +

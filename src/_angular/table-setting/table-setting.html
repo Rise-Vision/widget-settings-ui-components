@@ -4,8 +4,11 @@
     <label for="row-padding">{{'table.row-padding' | translate}}</label>
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-6">
-        <input id="row-padding" type="text"
-        ng-model="table.rowPadding" class="form-control" value="0" />
+        <div class="input-group">
+          <input id="row-padding" type="text"
+          ng-model="table.rowPadding" class="form-control" value="0" />
+          <span class="input-group-addon">{{'common.units.pixels' | translate}}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -13,8 +16,11 @@
     <label for="col-padding">{{'table.col-padding' | translate}}</label>
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-6">
-        <input id="col-padding" type="text"
-        ng-model="table.colPadding" class="form-control" value="0" />
+        <div class="input-group">
+          <input id="col-padding" type="text"
+          ng-model="table.colPadding" class="form-control" value="0" />
+          <span class="input-group-addon">{{'common.units.pixels' | translate}}</span>
+        </div>
       </div>
     </div>
   </div>
