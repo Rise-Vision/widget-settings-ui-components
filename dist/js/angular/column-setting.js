@@ -57,7 +57,7 @@ app.run(["$templateCache", function($templateCache) {
   $templateCache.put("_angular/column-setting/column-setting.html",
     "<div class=\"panel panel-default\">\n" +
     "  <div class=\"collapse-panel panel-heading\">\n" +
-    "    <a href=\"\" ng-class=\"{'panel-title':true, collapsed:!collapse}\" ng-click=\"collapse=!collapse\">\n" +
+    "    <a href=\"\" ng-class=\"{'panel-heading':true, collapsed:!collapse}\" ng-click=\"collapse=!collapse\">\n" +
     "       {{'columns.' + column.name | translate}}\n" +
     "    </a>\n" +
     "    <a href=\"\" class=\"glyphicon glyphicon-minus-sign remove-column-button\" ng-click=\"remove()\"></a>\n" +

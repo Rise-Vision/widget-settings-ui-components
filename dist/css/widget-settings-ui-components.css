@@ -1,10 +1,10 @@
-.collapse-panel.panel-heading a.panel-title:after {
+.collapse-panel.panel-heading a.panel-heading:after {
   font-family: 'Glyphicons Halflings';
   content: "\e114";
-  float: right;
+  float: left;
   color: grey; }
 
-.collapse-panel.panel-heading a.panel-title.collapsed:after {
+.collapse-panel.panel-heading a.panel-heading.collapsed:after {
   content: "\e080"; }
 
 .collapse-panel .remove-column-button {

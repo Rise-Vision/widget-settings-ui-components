@@ -20,7 +20,7 @@
     });
 
     it("Should correctly load default settings", function () {
-      expect(element(by.css(".panel a.panel-title.collapsed")).isPresent()).
+      expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent()).
         to.eventually.be.true;
 
       expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
@@ -56,9 +56,9 @@
     });
 
     it("Should show panel when clicked", function () {
-      element(by.css(".panel a.panel-title.collapsed")).click();
+      element(by.css(".panel a.panel-heading.collapsed")).click();
 
-      expect(element(by.css(".panel a.panel-title.collapsed")).isPresent()).
+      expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent()).
         to.eventually.be.false;
 
       expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
@@ -66,10 +66,10 @@
     });
 
     it("Should hide panel when clicked", function () {
-      element(by.css(".panel a.panel-title")).click();
-      element(by.css(".panel a.panel-title")).click();
+      element(by.css(".panel a.panel-heading")).click();
+      element(by.css(".panel a.panel-heading")).click();
 
-      expect(element(by.css(".panel a.panel-title.collapsed")).isPresent())
+      expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent())
         .to.eventually.be.true;
 
       expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
