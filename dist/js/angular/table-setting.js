@@ -69,7 +69,7 @@ app.run(["$templateCache", function($templateCache) {
     "  <div class=\"form-group\">\n" +
     "    <label for=\"row-padding\">{{'table.row-padding' | translate}}</label>\n" +
     "    <div class=\"row\">\n" +
-    "      <div class=\"col-md-3\">\n" +
+    "      <div class=\"col-md-3 col-sm-3 col-xs-6\">\n" +
     "        <input id=\"row-padding\" type=\"text\"\n" +
     "        ng-model=\"table.rowPadding\" class=\"form-control\" value=\"0\" />\n" +
     "      </div>\n" +
@@ -78,7 +78,7 @@ app.run(["$templateCache", function($templateCache) {
     "  <div class=\"form-group\">\n" +
     "    <label for=\"col-padding\">{{'table.col-padding' | translate}}</label>\n" +
     "    <div class=\"row\">\n" +
-    "      <div class=\"col-md-3\">\n" +
+    "      <div class=\"col-md-3 col-sm-3 col-xs-6\">\n" +
     "        <input id=\"col-padding\" type=\"text\"\n" +
     "        ng-model=\"table.colPadding\" class=\"form-control\" value=\"0\" />\n" +
     "      </div>\n" +
