@@ -54,8 +54,8 @@
         to.eventually.be.true;
 
       expect(element(by.css(".sp-replacer.text-color-picker div.sp-preview")).
-        getCssValue("border-color")).
-        to.eventually.equal("rgb(0, 0, 0)");
+        getCssValue("background-color")).
+        to.eventually.equal("rgba(0, 0, 0, 0)");
 
       expect(element(by.css(".sp-replacer.highlight-color-picker")).isPresent()).
         to.eventually.be.true;
@@ -68,7 +68,7 @@
         to.eventually.equal(2);
 
     });
-    
+
     it("Alignment should be present and dialog closed", function() {
 
       expect(element(by.css(".btn-alignment .glyphicon-align-left"))
