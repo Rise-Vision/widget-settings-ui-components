@@ -2,26 +2,26 @@ if(typeof TEMPLATES === 'undefined') {var TEMPLATES = {};}
 TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
     "  <button type=\"button\" class=\"btn btn-default btn-sm btn-alignment dropdown-toggle\"\n" +
     "    data-toggle=\"dropdown\" data-wysihtml5-command-value=\"left\">\n" +
-    "    <i class=\"glyphicon glyphicon-align-left\"></i>\n" +
+    "    <i class=\"fa fa-align-left\"></i>\n" +
     "    <span class=\"caret\"></span>\n" +
     "  </button>\n" +
     "  <div class=\"dropdown-menu\" role=\"menu\">\n" +
     "    <div class=\"btn-group\">\n" +
     "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"alignment\"\n" +
     "        data-wysihtml5-command-value=\"left\" tabindex=\"-1\">\n" +
-    "        <i class=\"glyphicon glyphicon-align-left\"></i>\n" +
+    "        <i class=\"fa fa-align-left\"></i>\n" +
     "      </button>\n" +
     "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"alignment\"\n" +
     "        data-wysihtml5-command-value=\"center\" tabindex=\"-1\">\n" +
-    "        <i class=\"glyphicon glyphicon-align-center\"></i>\n" +
+    "        <i class=\"fa fa-align-center\"></i>\n" +
     "      </button>\n" +
     "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"alignment\"\n" +
     "        data-wysihtml5-command-value=\"right\" tabindex=\"-1\">\n" +
-    "        <i class=\"glyphicon glyphicon-align-right\"></i>\n" +
+    "        <i class=\"fa fa-align-right\"></i>\n" +
     "      </button>\n" +
     "      <button type=\"button\" class=\"btn btn-default btn-sm\" data-wysihtml5-command=\"alignment\"\n" +
     "        data-wysihtml5-command-value=\"justify\" tabindex=\"-1\">\n" +
-    "        <i class=\"glyphicon glyphicon-align-justify\"></i>\n" +
+    "        <i class=\"fa fa-align-justify\"></i>\n" +
     "      </button>\n" +
     "    </div>\n" +
     "  </div>\n" +
@@ -70,9 +70,9 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
     }
 
     function setAlignment(alignment) {
-      var $primaryIcon = $element.find(".btn-alignment .glyphicon");
-      var currentClass = $primaryIcon.attr("class").match(/glyphicon-align-[a-z]+/g);
-      var newClass = "glyphicon-align-" + alignment;
+      var $primaryIcon = $element.find(".btn-alignment .fa");
+      var currentClass = $primaryIcon.attr("class").match(/fa-align-[a-z]+/g);
+      var newClass = "fa-align-" + alignment;
 
       // Remove current alignment icon.
       if (currentClass && currentClass.length > 0) {

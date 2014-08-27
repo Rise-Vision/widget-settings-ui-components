@@ -71,7 +71,7 @@
 
     it("Alignment should be present and dialog closed", function() {
 
-      expect(element(by.css(".btn-alignment .glyphicon-align-left"))
+      expect(element(by.css(".btn-alignment .fa-align-left"))
         .isPresent()).to.eventually.be.true;
       expect(element(by.css(".alignment div.dropdown-menu")).isDisplayed())
         .to.eventually.be.false;

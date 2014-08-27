@@ -20,7 +20,7 @@
     });
 
     it("Should hide Tooltip by default", function () {
-      expect(element(by.css(".glyphicons.circle_question_mark")).isPresent()).
+      expect(element(by.css(".fa.fa-question-circle")).isPresent()).
       to.eventually.be.true;
 
       expect(element(by.css("div.popover.fade")).isPresent()).
@@ -28,7 +28,7 @@
     });
 
     it("Should show tooltip when clicked", function () {
-      element(by.css(".glyphicons.circle_question_mark")).click();
+      element(by.css(".fa.fa-question-circle")).click();
 
       expect(element(by.css("div.popover.right.fade.in")).isPresent()).
       to.eventually.be.true;

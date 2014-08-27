@@ -14,7 +14,7 @@
     });
 
     it("Should load", function () {
-      expect(element(by.css(".btn-alignment .glyphicon-align-left"))
+      expect(element(by.css(".btn-alignment .fa-align-left"))
         .isPresent()).to.eventually.be.true;
 
       expect(element(by.css(
@@ -43,7 +43,7 @@
         ".dropdown-menu button[data-wysihtml5-command-value='justify']"))
         .click();
 
-      expect(element(by.css(".btn-alignment .glyphicon-align-justify"))
+      expect(element(by.css(".btn-alignment .fa-align-justify"))
         .isPresent()).to.eventually.be.true;
 
       expect(element(by.css(".dropdown-menu")).isDisplayed()).
