@@ -8,7 +8,7 @@
         <font-size-picker ng-model="fontData.size"></font-size-picker>
       </li>
       <li class="pull-left font-setting-button">
-        <font-style bold="fontData.bold" italic="fontData.italic" underline="fontData.underline" c></font-style>
+        <font-style bold="fontData.bold" italic="fontData.italic" underline="fontData.underline"></font-style>
       </li>
       <li class="pull-left font-setting-button">
         <input color-picker type="text" color="fontData.color" />
@@ -16,7 +16,7 @@
       <li class="pull-left font-setting-button">
         <input color-picker type="highlight" color="fontData.highlightColor" />
       </li>
-      <li class="pull-left">
+      <li class="pull-left" ng-if="!hideAlignment">
         <alignment align="fontData.align" class="font-setting-button"></alignment>
       </li>
     </ul>

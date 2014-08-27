@@ -1,9 +1,11 @@
 <div class="panel panel-default">
   <div class="collapse-panel panel-heading">
-    <a href="" ng-class="{'panel-heading':true, collapsed:!collapse}" ng-click="collapse=!collapse">
+    <a href="" ondragstart="return false;"
+    ng-class="{'panel-heading':true, collapsed:!collapse}" ng-click="collapse=!collapse">
        {{'columns.' + column.name | translate}}
     </a>
-    <a href="" class="glyphicon glyphicon-minus-sign remove-column-button" ng-click="remove()"></a>
+    <a href="" ondragstart="return false;"
+    class="glyphicon glyphicon-minus-sign remove-column-button" ng-click="remove()"></a>
   </div>
   <div ng-class="{'panel-collapse':true, collapse:true, in:collapse}">
     <div class="panel-body">
