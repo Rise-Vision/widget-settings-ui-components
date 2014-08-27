@@ -10,7 +10,8 @@
         restrict: "AE",
         scope: {
           fontData: "=",
-          previewText: "@"
+          previewText: "@",
+          hideAlignment: "@"
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,

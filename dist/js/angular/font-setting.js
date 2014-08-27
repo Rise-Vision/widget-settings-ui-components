@@ -10,7 +10,8 @@
         restrict: "AE",
         scope: {
           fontData: "=",
-          previewText: "@"
+          previewText: "@",
+          hideAlignment: "@"
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
@@ -95,7 +96,7 @@ app.run(["$templateCache", function($templateCache) {
     "        <font-size-picker ng-model=\"fontData.size\"></font-size-picker>\n" +
     "      </li>\n" +
     "      <li class=\"pull-left font-setting-button\">\n" +
-    "        <font-style bold=\"fontData.bold\" italic=\"fontData.italic\" underline=\"fontData.underline\" c></font-style>\n" +
+    "        <font-style bold=\"fontData.bold\" italic=\"fontData.italic\" underline=\"fontData.underline\"></font-style>\n" +
     "      </li>\n" +
     "      <li class=\"pull-left font-setting-button\">\n" +
     "        <input color-picker type=\"text\" color=\"fontData.color\" />\n" +
@@ -103,7 +104,7 @@ app.run(["$templateCache", function($templateCache) {
     "      <li class=\"pull-left font-setting-button\">\n" +
     "        <input color-picker type=\"highlight\" color=\"fontData.highlightColor\" />\n" +
     "      </li>\n" +
-    "      <li class=\"pull-left\">\n" +
+    "      <li class=\"pull-left\" ng-if=\"!hideAlignment\">\n" +
     "        <alignment align=\"fontData.align\" class=\"font-setting-button\"></alignment>\n" +
     "      </li>\n" +
     "    </ul>\n" +
