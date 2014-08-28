@@ -82,7 +82,8 @@
 	},
   "url": {
     "label": "URL",
-    "validate": "Validate URL"
+    "validate": "Validate URL",
+    "invalid": "URL entered appears to be invalid."
   },
   "background": {
     "heading": "Background",
