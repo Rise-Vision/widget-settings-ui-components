@@ -102,18 +102,26 @@ app.run(["$templateCache", function($templateCache) {
     "      <input color-picker id=\"alt-row-color\" color=\"table.altRowColor\" type=\"background\">\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "</div>\n" +
-    "<div class=\"section\">\n" +
-    "  <h5>{{'table.col-header-font.heading' | translate}}</h5>\n" +
-    "  <font-setting font-data=\"table.colHeaderFont\"\n" +
-    "      preview-text=\"{{'table.col-header-font.text' | translate}}\">\n" +
-    "  </font-setting>\n" +
-    "</div>\n" +
-    "<div class=\"section\">\n" +
-    "  <h5>{{'table.data-font.heading' | translate}}</h5>\n" +
-    "  <font-setting font-data=\"table.dataFont\"\n" +
-    "      preview-text=\"{{'table.data-font.text' | translate}}\">\n" +
-    "  </font-setting>\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <label for=\"col-header-font\">{{'table.col-header-font.heading' | translate}}</label>\n" +
+    "    <div class=\"row\">\n" +
+    "      <div class=\"col-md-12\">\n" +
+    "        <font-setting font-data=\"table.colHeaderFont\"\n" +
+    "            preview-text=\"{{'table.col-header-font.text' | translate}}\">\n" +
+    "        </font-setting>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <label for=\"data-font\">{{'table.data-font.heading' | translate}}</label>\n" +
+    "    <div class=\"row\">\n" +
+    "      <div class=\"col-md-12\">\n" +
+    "        <font-setting font-data=\"table.dataFont\"\n" +
+    "            preview-text=\"{{'table.data-font.text' | translate}}\">\n" +
+    "        </font-setting>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
     "</div>\n" +
     "");
 }]);

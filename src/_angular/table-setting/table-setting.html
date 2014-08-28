@@ -36,16 +36,24 @@
       <input color-picker id="alt-row-color" color="table.altRowColor" type="background">
     </div>
   </div>
-</div>
-<div class="section">
-  <h5>{{'table.col-header-font.heading' | translate}}</h5>
-  <font-setting font-data="table.colHeaderFont"
-      preview-text="{{'table.col-header-font.text' | translate}}">
-  </font-setting>
-</div>
-<div class="section">
-  <h5>{{'table.data-font.heading' | translate}}</h5>
-  <font-setting font-data="table.dataFont"
-      preview-text="{{'table.data-font.text' | translate}}">
-  </font-setting>
+  <div class="form-group">
+    <label for="col-header-font">{{'table.col-header-font.heading' | translate}}</label>
+    <div class="row">
+      <div class="col-md-12">
+        <font-setting font-data="table.colHeaderFont"
+            preview-text="{{'table.col-header-font.text' | translate}}">
+        </font-setting>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="data-font">{{'table.data-font.heading' | translate}}</label>
+    <div class="row">
+      <div class="col-md-12">
+        <font-setting font-data="table.dataFont"
+            preview-text="{{'table.data-font.text' | translate}}">
+        </font-setting>
+      </div>
+    </div>
+  </div>
 </div>
