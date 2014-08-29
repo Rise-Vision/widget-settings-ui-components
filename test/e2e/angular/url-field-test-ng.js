@@ -24,7 +24,7 @@
       expect(element(by.css("input[name=validate-url]:checked")).getAttribute("checked")).
         to.eventually.not.be.null;
       // ensure validate checkbox is not displayed
-      expect(element(by.css(".validate-url")).isDisplayed()).to.eventually.be.false;
+      expect(element(by.css("input[name=validate-url]:checked")).isDisplayed()).to.eventually.be.false;
     });
 
     it("Should update input field via two-way binding", function () {
