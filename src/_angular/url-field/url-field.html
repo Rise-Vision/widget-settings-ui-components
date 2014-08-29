@@ -4,6 +4,8 @@
       <input name="validate-url" ng-click="doValidation = !doValidation" type="checkbox"
              value="validate-url" checked="checked"> {{"url.validate" | translate}}
     </label>
+    <span popover="{{'url.validate.tooltip' | translate}}" popover-trigger="click"
+          popover-placement="top" rv-tooltip></span>
   </div>
   <div ng-if="!valid">
     <span class="text-danger">{{ "url.invalid" | translate }}</span>

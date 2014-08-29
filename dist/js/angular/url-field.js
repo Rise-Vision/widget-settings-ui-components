@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.url-field", ["risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.url-field",
+    ["risevision.widget.common.translate", "risevision.widget.common.tooltip"])
 
     .directive("urlField", ["$templateCache", "$log", function ($templateCache, $log) {
       return {
@@ -85,6 +86,8 @@ app.run(["$templateCache", function($templateCache) {
     "      <input name=\"validate-url\" ng-click=\"doValidation = !doValidation\" type=\"checkbox\"\n" +
     "             value=\"validate-url\" checked=\"checked\"> {{\"url.validate\" | translate}}\n" +
     "    </label>\n" +
+    "    <span popover=\"{{'url.validate.tooltip' | translate}}\" popover-trigger=\"click\"\n" +
+    "          popover-placement=\"top\" rv-tooltip></span>\n" +
     "  </div>\n" +
     "  <div ng-if=\"!valid\">\n" +
     "    <span class=\"text-danger\">{{ \"url.invalid\" | translate }}</span>\n" +

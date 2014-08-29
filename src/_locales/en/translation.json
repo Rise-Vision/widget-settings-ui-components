@@ -82,7 +82,10 @@
 	},
   "url": {
     "label": "URL",
-    "validate": "Validate URL",
+    "validate": {
+      "label": "Validate URL",
+      "tooltip": "Un-check \"Validate URL\" to bypass validation."
+    },
     "invalid": "URL entered appears to be invalid."
   },
   "background": {
