@@ -45,6 +45,12 @@
           // Validation state
           scope.valid = true;
 
+          scope.$watch("url", function (url) {
+            if (url && scope.doValidation) {
+              scope.valid = testUrl(scope.url);
+            }
+          });
+
           scope.$watch("valid", function (valid) {
             if (!valid) {
               scope.failCount += 1;
@@ -63,12 +69,6 @@
               scope.valid = true;
             }
           });
-
-          scope.onChange = function () {
-            if (scope.doValidation) {
-              scope.valid = testUrl(scope.url);
-            }
-          };
         }
       };
     }]);
@@ -95,7 +95,7 @@ app.run(["$templateCache", function($templateCache) {
     "</div>\n" +
     "<div class=\"form-group\">\n" +
     "  <label>{{ \"url.label\" | translate }}</label>\n" +
-    "  <input name=\"url\" type=\"text\" ng-model=\"url\" class=\"form-control\" placeholder=\"http://\" ng-change=\"onChange()\">\n" +
+    "  <input name=\"url\" type=\"text\" ng-model=\"url\" class=\"form-control\" placeholder=\"http://\">\n" +
     "</div>\n" +
     "");
 }]);
