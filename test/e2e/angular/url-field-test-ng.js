@@ -21,10 +21,13 @@
 
     it("Should correctly load", function () {
       // ensure validate checkbox is checked
-      expect(element(by.css("input[name=validate-url]:checked")).getAttribute("checked")).
+      expect(element(by.css("input[name=validate-url]")).getAttribute("checked")).
         to.eventually.not.be.null;
       // ensure validate checkbox is not displayed
-      expect(element(by.css("input[name=validate-url]:checked")).isDisplayed()).to.eventually.be.false;
+      expect(element(by.css("input[name=validate-url]")).isDisplayed()).to.eventually.be.false;
+      // ensure no error message
+      expect(element(by.css(".text-danger")).isPresent()).
+        to.eventually.be.false;
     });
 
     it("Should update input field via two-way binding", function () {
@@ -40,12 +43,79 @@
 
     });
 
-    xit("Should validate URL and provide checkbox to opt in or out of validating", function (done) {
-      // TODO: Need a settings validation scheme
+    it("Should provide checkbox to opt in or out of validating based on invalid URL entry", function () {
+      element(by.id("setInvalidUrl")).click();
+
+      // ensure validate checkbox is displayed
+      expect(element(by.css("input[name=validate-url]")).isDisplayed()).to.eventually.be.true;
     });
 
-    xit("Should correctly save settings", function (done) {
-      //TODO
+    it("Should show and hide error message based on valid and invalid URL entry", function () {
+      element(by.id("setValidUrl")).click();
+
+      // ensure no error message
+      expect(element(by.css(".text-danger")).isPresent()).
+        to.eventually.be.false;
+
+      element(by.id("setInvalidUrl")).click();
+
+      // ensure error message shown
+      expect(element(by.css(".text-danger")).isPresent()).
+        to.eventually.not.be.null;
+
+      element(by.id("setValidUrl")).click();
+
+      // ensure no error message
+      expect(element(by.css(".text-danger")).isPresent()).
+        to.eventually.be.false;
+    });
+
+    it("Should bypass validation when un-checking 'Validate-URL' checkbox ", function () {
+      element(by.id("setInvalidUrl")).click();
+
+      // ensure validate checkbox is displayed
+      expect(element(by.css("input[name=validate-url]")).isDisplayed()).to.eventually.be.true;
+      // ensure validate checkbox is checked
+      expect(element(by.css("input[name=validate-url]")).getAttribute("checked")).
+        to.eventually.not.be.null;
+
+      element(by.css("input[name=validate-url]")).click();
+
+      // ensure the checkbox has been unchecked
+      expect(element(by.css("input[name=validate-url]")).getAttribute("checked")).
+        to.eventually.be.null;
+      // ensure no error message
+      expect(element(by.css(".text-danger")).isPresent()).
+        to.eventually.be.false;
+
+      element(by.id("setValidUrl")).click();
+
+      element(by.id("setInvalidUrl")).click();
+
+      // ensure no error message
+      expect(element(by.css(".text-danger")).isPresent()).
+        to.eventually.be.false;
+
+    });
+
+    it("Should turn validation back on when re-checking 'Validate-URL' checkbox ", function () {
+      element(by.id("setInvalidUrl")).click();
+
+      element(by.css("input[name=validate-url]")).click();
+
+      element(by.id("setValidUrl")).click();
+
+      element(by.id("setInvalidUrl")).click();
+
+      // ensure no error message
+      expect(element(by.css(".text-danger")).isPresent()).
+        to.eventually.be.false;
+
+      element(by.css("input[name=validate-url]")).click();
+
+      // ensure error message shown
+      expect(element(by.css(".text-danger")).isPresent()).
+        to.eventually.not.be.null;
     });
 
   });

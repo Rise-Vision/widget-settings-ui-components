@@ -45,6 +45,12 @@
           // Validation state
           scope.valid = true;
 
+          scope.$watch("url", function (url) {
+            if (url && scope.doValidation) {
+              scope.valid = testUrl(scope.url);
+            }
+          });
+
           scope.$watch("valid", function (valid) {
             if (!valid) {
               scope.failCount += 1;
@@ -63,12 +69,6 @@
               scope.valid = true;
             }
           });
-
-          scope.onChange = function () {
-            if (scope.doValidation) {
-              scope.valid = testUrl(scope.url);
-            }
-          };
         }
       };
     }]);
