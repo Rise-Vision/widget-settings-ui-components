@@ -32,7 +32,7 @@
                     cancelText: "Cancel",
                     chooseText: "Apply",
                     color: color,
-                    preferredFormat: "hex",
+                    preferredFormat: "rgb",
                     showAlpha: true,
                     showInput: true,
                     type: $scope.type,
