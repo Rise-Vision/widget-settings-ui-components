@@ -19,11 +19,7 @@
   var es = require("event-stream");
   var jshint = require("gulp-jshint");
   var uglify = require("gulp-uglify");
-  var express = require("express");
-  var protractor = require('gulp-protractor').protractor;
-  var webdriver_update = require('gulp-protractor').webdriver_update;
   var factory = require("widget-tester").gulpTaskFactory;
-  var httpServer;
 
   var subcomponents = fs.readdirSync("src")
     .filter(function(file) {
@@ -180,70 +176,24 @@
       .pipe(gulp.dest("dist/js"));
   });
 
-  gulp.task("e2e:server", ["config"], function() {
-    var server = express();
-    server.use(express.static(__dirname));
-    httpServer = server.listen(8099);
-    return httpServer;
-  });
-
-  gulp.task("e2e:server-close", function() {
-    httpServer.close();
-  });
-
-  gulp.task("e2e:test", function (cb) {
-      var tests = ["test/e2e/alignment-scenarios.js",
-        "test/e2e/font-style-scenarios.js", "test/e2e/url-field-scenarios.js"];
-
-      var casperChild = spawn("casperjs", ["test"].concat(tests));
-
-      casperChild.stdout.on("data", function (data) {
-          gutil.log("CasperJS:", data.toString().slice(0, -1)); // Remove \n
-      });
-
-      casperChild.on('close', function (code) {
-        var success = code === 0; // Will be 1 in the event of failure
-        // Do something with success here
-        if(!success) {
-          gulp.run("e2e:server-close");
-          cb("CasperJS returned error.");
-        }
-      else {
-        cb();
-      }
-      });
-  });
-
-  gulp.task('webdriver_update', webdriver_update);
-
-  gulp.task("test:ensure-directory", factory.ensureReportDirectory());
-
-  gulp.task("e2e:test-ng", ["test:ensure-directory", "webdriver_update"], function () {
-    return gulp.src(["test/e2e/angular/*test-ng.js"])
-      .pipe(protractor({
-          configFile: './node_modules/widget-tester/protractor.conf.js',
-          args: ["--baseUrl", "http://127.0.0.1:8099/test/e2e/test-ng.html"]
-      }))
-      .on("error", function (e) {
-        console.log(e);
-        if(fs.statSync("./reports/angular-xunit.xml")) {
-          //output test result to console
-          gutil.log("Test report", fs.readFileSync("./reports/angular-xunit.xml", {encoding: "utf8"}));
-        }
-        throw e;
-      })
-      .on("end", function () {
-        //connect.serverClose();
-      });
-  });
-
-
   gulp.task("build", function (cb) {
     runSequence(["clean", "config"], ["js-uglify", "css-min", "i18n"], cb);
   });
 
+  gulp.task("webdriver_update", factory.webdriveUpdate());
+
+  gulp.task("e2e:server", ["config"], factory.testServer());
+  gulp.task("e2e:server-close", factory.testServerClose());
+
+  gulp.task("e2e:test", factory.testE2E());
+  gulp.task("e2e:test-ng", ["webdriver_update"], factory.testE2EAngular({
+    src: ["test/e2e/angular/*test-ng.js"]
+  }));
+
+  gulp.task("test:metrics", factory.metrics());
+
   gulp.task("test", function(cb) {
-    runSequence("build", "e2e:server", "e2e:test", "e2e:test-ng", "e2e:server-close");
+    runSequence("build", "e2e:server", "e2e:test", "e2e:test-ng", "e2e:server-close", "test:metrics", cb);
   });
 
   gulp.task("default", ["build"]);
