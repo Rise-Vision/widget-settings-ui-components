@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.url-field", ["risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.url-field",
+    ["risevision.widget.common.translate", "risevision.widget.common.tooltip"])
 
     .directive("urlField", ["$templateCache", "$log", function ($templateCache, $log) {
       return {
