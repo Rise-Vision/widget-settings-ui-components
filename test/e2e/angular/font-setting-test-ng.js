@@ -88,7 +88,8 @@
 
         expect(elem.getCssValue("font-style")).to.eventually.equal("normal");
 
-        expect(elem.getCssValue("text-decoration")).to.eventually.equal("none");
+        //expect(elem.getCssValue("text-decoration")).to.eventually.equal("none");
+        expect(elem.getCssValue("text-decoration")).to.eventually.match(/^none/);
 
         expect(elem.getCssValue("color")).to.eventually.equal("rgba(0, 0, 0, 1)");
 
