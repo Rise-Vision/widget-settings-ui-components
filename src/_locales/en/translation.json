@@ -37,7 +37,7 @@
 		}
 	},
 	"table": {
-    "col-row-heading": "Column / Row Format",
+		"heading": "Table Format",
 		"row-padding": "Row Padding",
 		"col-padding": "Column Padding",
 		"row-color": "Row Color",
