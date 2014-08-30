@@ -7,14 +7,23 @@
   <link rel="stylesheet" href="/components/common-style/dist/css/rise.min.css">
 </head>
 <body ng-app="testapp" ng-controller="mainController">
-<div class="container">
-  <h2 class="text-center">URL Field [Angular Directive] - e2e Testing</h2>
-  <hr>
-  <url-field url="settings.additionalParams.url"></url-field>
-  <hr>
-  <button id="setValidUrl" type="button" class="btn btn-default" ng-click="setValidUrl()">Set Valid URL</button>
-  <button id="setInvalidUrl" type="button" class="btn btn-default" ng-click="setInvalidUrl()">Set Invalid URL</button>
-</div>
+  <div class="widget">
+    <div class="overlay"></div>
+    <div class="settings">
+      <div class="settings-center">
+        <div class="wrapper container-fluid modal-content">
+          <h2 class="text-center">URL Field [Angular Directive] - e2e Testing</h2>
+          <hr>
+          <form style="margin-top: 10px">
+            <url-field url="settings.additionalParams.url"></url-field>
+          </form>
+          <hr>
+          <button id="setValidUrl" type="button" class="btn btn-default" ng-click="setValidUrl()">Set Valid URL</button>
+          <button id="setInvalidUrl" type="button" class="btn btn-default" ng-click="setInvalidUrl()">Set Invalid URL</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script type="text/javascript" src="/components/angular/angular.js"></script>
 <script type="text/javascript" src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>

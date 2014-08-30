@@ -84,7 +84,7 @@ app.run(["$templateCache", function($templateCache) {
     "  <div class=\"checkbox\">\n" +
     "    <label>\n" +
     "      <input name=\"validate-url\" ng-click=\"doValidation = !doValidation\" type=\"checkbox\"\n" +
-    "             value=\"validate-url\" checked=\"checked\"> {{\"url.validate\" | translate}}\n" +
+    "             value=\"validate-url\" checked=\"checked\"> {{\"url.validate.label\" | translate}}\n" +
     "    </label>\n" +
     "    <span popover=\"{{'url.validate.tooltip' | translate}}\" popover-trigger=\"click\"\n" +
     "          popover-placement=\"top\" rv-tooltip></span>\n" +
