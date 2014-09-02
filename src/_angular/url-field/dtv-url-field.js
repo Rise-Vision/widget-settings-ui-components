@@ -40,8 +40,8 @@
 
           // By default enforce validation
           scope.doValidation = true;
-          // A count of fails to correspond with template on showing validate checkbox
-          scope.failCount = 0;
+          // A flag to set if the user turned off validation
+          scope.forcedValid = false;
           // Validation state
           scope.valid = true;
 
@@ -52,10 +52,6 @@
           });
 
           scope.$watch("valid", function (valid) {
-            if (!valid) {
-              scope.failCount += 1;
-            }
-
             if (ctrl) {
               $log.info("Calling $setValidity() on parent controller");
               ctrl.$setValidity("valid", valid);
@@ -63,10 +59,14 @@
           });
 
           scope.$watch("doValidation", function (doValidation) {
-            if (doValidation && typeof scope.url !== "undefined" ) {
-              scope.valid = testUrl(scope.url);
-            } else {
-              scope.valid = true;
+            if(typeof scope.url !== "undefined") {
+              if (doValidation) {
+                scope.forcedValid = false;
+                scope.valid = testUrl(scope.url);
+              } else {
+                scope.forcedValid = true;
+                scope.valid = true;
+              }
             }
           });
         }

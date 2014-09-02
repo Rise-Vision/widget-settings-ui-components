@@ -1,5 +1,8 @@
-<div class="form-group" ng-show="failCount > 0">
-  <div class="checkbox">
+<div class="form-group" >
+  <label>{{ "url.label" | translate }}</label>
+  <input name="url" type="text" ng-model="url" class="form-control" placeholder="http://">
+  <p ng-if="!valid" class="help-block">{{ "url.invalid" | translate }}</p>
+  <div class="checkbox" ng-show="forcedValid || !valid">
     <label>
       <input name="validate-url" ng-click="doValidation = !doValidation" type="checkbox"
              value="validate-url" checked="checked"> {{"url.validate.label" | translate}}
@@ -7,11 +10,4 @@
     <span popover="{{'url.validate.tooltip' | translate}}" popover-trigger="click"
           popover-placement="top" rv-tooltip></span>
   </div>
-  <div ng-if="!valid">
-    <span class="text-danger">{{ "url.invalid" | translate }}</span>
-  </div>
-</div>
-<div class="form-group">
-  <label>{{ "url.label" | translate }}</label>
-  <input name="url" type="text" ng-model="url" class="form-control" placeholder="http://">
 </div>
