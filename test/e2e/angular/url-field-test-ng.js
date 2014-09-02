@@ -26,7 +26,7 @@
       // ensure validate checkbox is not displayed
       expect(element(by.css("input[name=validate-url]")).isDisplayed()).to.eventually.be.false;
       // ensure no error message
-      expect(element(by.css(".text-danger")).isPresent()).
+      expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
     });
 
@@ -54,19 +54,19 @@
       element(by.id("setValidUrl")).click();
 
       // ensure no error message
-      expect(element(by.css(".text-danger")).isPresent()).
+      expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
 
       element(by.id("setInvalidUrl")).click();
 
       // ensure error message shown
-      expect(element(by.css(".text-danger")).isPresent()).
-        to.eventually.not.be.null;
+      expect(element(by.css(".help-block")).isDisplayed()).
+        to.eventually.be.true;
 
       element(by.id("setValidUrl")).click();
 
       // ensure no error message
-      expect(element(by.css(".text-danger")).isPresent()).
+      expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
     });
 
@@ -85,7 +85,7 @@
       expect(element(by.css("input[name=validate-url]")).getAttribute("checked")).
         to.eventually.be.null;
       // ensure no error message
-      expect(element(by.css(".text-danger")).isPresent()).
+      expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
 
       element(by.id("setValidUrl")).click();
@@ -93,7 +93,7 @@
       element(by.id("setInvalidUrl")).click();
 
       // ensure no error message
-      expect(element(by.css(".text-danger")).isPresent()).
+      expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
 
     });
@@ -108,14 +108,14 @@
       element(by.id("setInvalidUrl")).click();
 
       // ensure no error message
-      expect(element(by.css(".text-danger")).isPresent()).
+      expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
 
       element(by.css("input[name=validate-url]")).click();
 
       // ensure error message shown
-      expect(element(by.css(".text-danger")).isPresent()).
-        to.eventually.not.be.null;
+      expect(element(by.css(".help-block")).isDisplayed()).
+        to.eventually.be.true;
     });
 
   });

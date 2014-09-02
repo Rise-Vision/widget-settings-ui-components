@@ -40,8 +40,8 @@
 
           // By default enforce validation
           scope.doValidation = true;
-          // A count of fails to correspond with template on showing validate checkbox
-          scope.failCount = 0;
+          // A flag to set if the user turned off validation
+          scope.forcedValid = false;
           // Validation state
           scope.valid = true;
 
@@ -52,10 +52,6 @@
           });
 
           scope.$watch("valid", function (valid) {
-            if (!valid) {
-              scope.failCount += 1;
-            }
-
             if (ctrl) {
               $log.info("Calling $setValidity() on parent controller");
               ctrl.$setValidity("valid", valid);
@@ -63,10 +59,14 @@
           });
 
           scope.$watch("doValidation", function (doValidation) {
-            if (doValidation && typeof scope.url !== "undefined" ) {
-              scope.valid = testUrl(scope.url);
-            } else {
-              scope.valid = true;
+            if(typeof scope.url !== "undefined") {
+              if (doValidation) {
+                scope.forcedValid = false;
+                scope.valid = testUrl(scope.url);
+              } else {
+                scope.forcedValid = true;
+                scope.valid = true;
+              }
             }
           });
         }
@@ -80,8 +80,11 @@ catch(err) { app = angular.module("risevision.widget.common.url-field", []); }
 app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/url-field/url-field.html",
-    "<div class=\"form-group\" ng-show=\"failCount > 0\">\n" +
-    "  <div class=\"checkbox\">\n" +
+    "<div class=\"form-group\" >\n" +
+    "  <label>{{ \"url.label\" | translate }}</label>\n" +
+    "  <input name=\"url\" type=\"text\" ng-model=\"url\" class=\"form-control\" placeholder=\"http://\">\n" +
+    "  <p ng-if=\"!valid\" class=\"help-block\">{{ \"url.invalid\" | translate }}</p>\n" +
+    "  <div class=\"checkbox\" ng-show=\"forcedValid || !valid\">\n" +
     "    <label>\n" +
     "      <input name=\"validate-url\" ng-click=\"doValidation = !doValidation\" type=\"checkbox\"\n" +
     "             value=\"validate-url\" checked=\"checked\"> {{\"url.validate.label\" | translate}}\n" +
@@ -89,13 +92,6 @@ app.run(["$templateCache", function($templateCache) {
     "    <span popover=\"{{'url.validate.tooltip' | translate}}\" popover-trigger=\"click\"\n" +
     "          popover-placement=\"top\" rv-tooltip></span>\n" +
     "  </div>\n" +
-    "  <div ng-if=\"!valid\">\n" +
-    "    <span class=\"text-danger\">{{ \"url.invalid\" | translate }}</span>\n" +
-    "  </div>\n" +
-    "</div>\n" +
-    "<div class=\"form-group\">\n" +
-    "  <label>{{ \"url.label\" | translate }}</label>\n" +
-    "  <input name=\"url\" type=\"text\" ng-model=\"url\" class=\"form-control\" placeholder=\"http://\">\n" +
     "</div>\n" +
     "");
 }]);
