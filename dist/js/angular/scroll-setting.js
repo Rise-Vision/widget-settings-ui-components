@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.scroll-setting", ["risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.scroll-setting",
+    ["risevision.widget.common.translate", "risevision.widget.common.tooltip"])
     .directive("scrollSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
@@ -77,10 +78,9 @@ app.run(["$templateCache", function($templateCache) {
     "    <div class=\"form-group\">\n" +
     "      <label for=\"scroll-pause\">\n" +
     "        {{'scroll.pause.label' | translate}}\n" +
-    "        <span popover=\"{{'scroll.pause.tooltip' | translate}}\"\n" +
-    "            popover-trigger=\"click\" popover-placement=\"right\" rv-tooltip>\n" +
-    "        </span>\n" +
     "      </label>\n" +
+    "      <span popover=\"{{'scroll.pause.tooltip' | translate}}\"\n" +
+    "            popover-trigger=\"click\" popover-placement=\"right\" rv-tooltip></span>\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"input-group\">\n" +
