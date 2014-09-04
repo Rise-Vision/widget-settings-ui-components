@@ -4,7 +4,7 @@
 
 <p class="lead">An Angular directive that allows color selection</p>
 
-<p><strong>Dependencies</strong> <span class="label label-info">spectrum</span></p>
+<p><strong>Dependencies</strong> <span class="label label-info">spectrum</span> <span class="label label-info">i18next</span></p>
 
 <h3 class="add-top">Usage</h3>
 <p>Type parameter defines the type of color picker to display.
@@ -12,7 +12,7 @@
 <hljs include="'color-picker-usage'"></hljs>
 
 <h3>Script Includes</h3>
-<p>Make sure you include the following files in <code>index.html</code></p>
+<p>Make sure you include the following files in <code>index.html</code> This component is dependent on <code>i18next</code> for applying localized labels to the buttons. You can import the library from Rise Vision as mentioned below or get the latest version from <a href="http://i18next.com/" target="_blank">i18next</a>.</p>
 <hljs include="'script-includes'"></hljs>
 
 <!-- Dynamic Example -->
@@ -22,6 +22,7 @@
 <script type="text/ng-template" id="script-includes">
 bower_components/spectrum/spectrum.js
 bower_components/widget-settings-ui-components/dist/js/angular/color-picker.js
+//s3.amazonaws.com/rise-common/scripts/i18next/i18next.min.js
 </script>
 
 
