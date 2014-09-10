@@ -4,8 +4,8 @@
 		<div class="col-md-12">
 			<div class="form-group">
 				<label for="columns" class="control-label">{{'column.select-title' | translate}}</label>
-		    <select id="column-selector" class="form-control" ng-model="selectedColumn" 
-				ng-options="'columns.' + column.name | translate for column in columnNames | filter:show track by column.name"
+		    <select id="column-selector" class="form-control" ng-model="selectedColumn"
+				ng-options="column.name | translate for column in columnNames | filter:show track by column.id"
 				ng-change="addColumn()"></select>
 			</div>
 		</div>
