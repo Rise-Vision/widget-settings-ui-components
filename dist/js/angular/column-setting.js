@@ -59,7 +59,7 @@ app.run(["$templateCache", function($templateCache) {
     "  <div class=\"collapse-panel panel-heading\">\n" +
     "    <a href=\"\" ondragstart=\"return false;\"\n" +
     "    ng-class=\"{'panel-heading':true, collapsed:!collapse}\" ng-click=\"collapse=!collapse\">\n" +
-    "       {{'columns.' + column.name | translate}}\n" +
+    "       {{column.name | translate}}\n" +
     "    </a>\n" +
     "    <a href=\"\" ondragstart=\"return false;\" class=\"fa fa-minus-circle fa-lg remove-column-button\" ng-click=\"remove()\"></a>\n" +
     "  </div>\n" +

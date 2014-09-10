@@ -18,8 +18,9 @@
             if ($scope.columns && $scope.columnNames) {
               for (var i = 0; i < $scope.columns.length; i++) {
                 for (var j = 0; j < $scope.columnNames.length; j++) {
-                  if ($scope.columns[i].name === $scope.columnNames[j].name) {
+                  if ($scope.columns[i].id === $scope.columnNames[j].id) {
                     $scope.columns[i].type = $scope.columnNames[j].type;
+                    $scope.columns[i].name = $scope.columnNames[j].name;
                     $scope.columnNames[i].show = true;
                   }
                 }
@@ -49,10 +50,10 @@
 
           $scope.remove = function (column) {
             if (column) {
-              removeColumn($scope.columns, column.name);
+              removeColumn($scope.columns, column.id);
 
               for (var i = 0; i < $scope.columnNames.length; i++) {
-                if (column.name === $scope.columnNames[i].name) {
+                if (column.id === $scope.columnNames[i].id) {
                   $scope.columnNames[i].show = false;
                   break;
                 }
@@ -62,9 +63,9 @@
             }
           };
 
-          function removeColumn(columnsList, name) {
+          function removeColumn(columnsList, id) {
             for(var i = 0; i < columnsList.length; i++) {
-              if (columnsList[i].name === name) {
+              if (columnsList[i].id === id) {
                 columnsList.splice(i, 1);
                 break;
               }
