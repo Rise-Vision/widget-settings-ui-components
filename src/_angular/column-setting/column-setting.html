@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label for="column-alignment">
+            <label>
               {{'column.alignment.label' | translate}}
             </label> <br/>
             <alignment align="column.alignment"></alignment>
@@ -45,7 +45,7 @@
         </div>
       </div>
       <!-- decimal -->
-      <div class="row" ng-if="column.type === 'int'">
+      <div class="row" ng-if="column.type === 'int' || column.type === 'number'">
         <div class="col-md-3">
           <div class="form-group">
             <label for="column-decimals">
@@ -62,7 +62,7 @@
         </div>
       </div>
       <!-- sign -->
-      <div class="row" ng-if="column.type === 'int'">
+      <div class="row" ng-if="column.type === 'int' || column.type === 'number'">
         <div class="col-md-3">
           <div class="form-group">
             <label for="column-sign">
@@ -78,7 +78,7 @@
         </div>
       </div>
       <!-- color-condition -->
-      <div class="row" ng-if="column.type === 'int'">
+      <div class="row" ng-if="column.type === 'int' || column.type === 'number'">
         <div class="col-md-3">
           <div class="form-group">
             <label for="column-color-condition">
@@ -90,6 +90,21 @@
               <option value="up-red">{{'column.color-condition.up-red' | translate}}</option>
               <option value="positive-green">{{'column.color-condition.positive-green' | translate}}</option>
               <option value="positive-red">{{'column.color-condition.positive-red' | translate}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- date -->
+      <div class="row" ng-if="column.type === 'date' || column.type === 'datetime'">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="column-date">
+              {{'column.date.label' | translate}}
+            </label>
+            <select id="column-date" ng-model="column.date" class="form-control">
+              <option value="short">{{'column.date.short' | translate}}</option>
+              <option value="medium">{{'column.date.medium' | translate}}</option>
+              <option value="long">{{'column.date.long' | translate}}</option>
             </select>
           </div>
         </div>

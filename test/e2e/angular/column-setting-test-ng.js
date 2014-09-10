@@ -53,6 +53,9 @@
 
       expect(element(by.id("column-color-condition")).isPresent()).
         to.eventually.be.false;
+
+      expect(element(by.id("column-date")).isPresent()).
+        to.eventually.be.false;
     });
 
     it("Should show panel when clicked", function () {
@@ -76,9 +79,6 @@
         .to.eventually.equal("none");
     });
 
-    xit("Should correctly save settings", function (done) {
-      //TODO
-    });
   });
 
 })();

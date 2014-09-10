@@ -76,6 +76,12 @@
 			"positive-green": "Positive value green negative red",
 			"positive-red": "Positive value red negative green"
 		},
+    "date": {
+      "label": "Date Format",
+      "short": "Short",
+      "medium": "Medium",
+      "long": "Long"
+    },
 		"header-text": {
 			"label": "Header Text"
 		}
