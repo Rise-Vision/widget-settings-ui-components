@@ -19,7 +19,8 @@
             width: "100",
             decimals: 0,
             sign: "arrow",
-            colorCondition: "none"
+            colorCondition: "none",
+            date: "medium"
           };
 
           $scope.defaults = function(obj) {
@@ -94,7 +95,7 @@ app.run(["$templateCache", function($templateCache) {
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
-    "            <label for=\"column-alignment\">\n" +
+    "            <label>\n" +
     "              {{'column.alignment.label' | translate}}\n" +
     "            </label> <br/>\n" +
     "            <alignment align=\"column.alignment\"></alignment>\n" +
@@ -102,7 +103,7 @@ app.run(["$templateCache", function($templateCache) {
     "        </div>\n" +
     "      </div>\n" +
     "      <!-- decimal -->\n" +
-    "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
+    "      <div class=\"row\" ng-if=\"column.type === 'int' || column.type === 'number'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-decimals\">\n" +
@@ -119,7 +120,7 @@ app.run(["$templateCache", function($templateCache) {
     "        </div>\n" +
     "      </div>\n" +
     "      <!-- sign -->\n" +
-    "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
+    "      <div class=\"row\" ng-if=\"column.type === 'int' || column.type === 'number'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-sign\">\n" +
@@ -135,7 +136,7 @@ app.run(["$templateCache", function($templateCache) {
     "        </div>\n" +
     "      </div>\n" +
     "      <!-- color-condition -->\n" +
-    "      <div class=\"row\" ng-if=\"column.type === 'int'\">\n" +
+    "      <div class=\"row\" ng-if=\"column.type === 'int' || column.type === 'number'\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-color-condition\">\n" +
@@ -147,6 +148,21 @@ app.run(["$templateCache", function($templateCache) {
     "              <option value=\"up-red\">{{'column.color-condition.up-red' | translate}}</option>\n" +
     "              <option value=\"positive-green\">{{'column.color-condition.positive-green' | translate}}</option>\n" +
     "              <option value=\"positive-red\">{{'column.color-condition.positive-red' | translate}}</option>\n" +
+    "            </select>\n" +
+    "          </div>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "      <!-- date -->\n" +
+    "      <div class=\"row\" ng-if=\"column.type === 'date' || column.type === 'datetime'\">\n" +
+    "        <div class=\"col-md-3\">\n" +
+    "          <div class=\"form-group\">\n" +
+    "            <label for=\"column-date\">\n" +
+    "              {{'column.date.label' | translate}}\n" +
+    "            </label>\n" +
+    "            <select id=\"column-date\" ng-model=\"column.date\" class=\"form-control\">\n" +
+    "              <option value=\"short\">{{'column.date.short' | translate}}</option>\n" +
+    "              <option value=\"medium\">{{'column.date.medium' | translate}}</option>\n" +
+    "              <option value=\"long\">{{'column.date.long' | translate}}</option>\n" +
     "            </select>\n" +
     "          </div>\n" +
     "        </div>\n" +

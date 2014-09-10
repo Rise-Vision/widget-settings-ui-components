@@ -19,7 +19,8 @@
             width: "100",
             decimals: 0,
             sign: "arrow",
-            colorCondition: "none"
+            colorCondition: "none",
+            date: "medium"
           };
 
           $scope.defaults = function(obj) {
