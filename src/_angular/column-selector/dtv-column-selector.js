@@ -84,7 +84,7 @@
                 if ($scope.columns[i].id === $scope.columnNames[j].id) {
                   $scope.columns[i].type = $scope.columnNames[j].type;
                   $scope.columns[i].name = $scope.columnNames[j].name;
-                  $scope.columnNames[i].show = true;
+                  $scope.columnNames[j].show = true;
                 }
               }
             }
