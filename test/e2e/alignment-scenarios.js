@@ -1,5 +1,7 @@
 casper.test.begin("Alignment - Loading", function (test) {
-  casper.start("http://localhost:8099/test/e2e/alignment-test.html",
+  var system = require('system');
+  var e2ePort = system.env.E2E_PORT || 8099;
+  casper.start("http://localhost:"+e2ePort+"/test/e2e/alignment-test.html",
     function () {
       test.assertTitle("Alignment - Test Page", "Test page has loaded");
       test.assertExists(".btn-alignment .fa-align-left",

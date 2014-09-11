@@ -1,4 +1,6 @@
-var testUrl = "http://localhost:8099/test/e2e/url-field-test.html";
+var system = require('system');
+var e2ePort = system.env.E2E_PORT || 8099;
+var testUrl = "http://localhost:"+e2ePort+"/test/e2e/url-field-test.html";
 
 casper.test.begin("URL Field: Initialize", function (test) {
   casper.start(testUrl, function () {
