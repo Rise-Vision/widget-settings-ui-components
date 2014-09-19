@@ -4,7 +4,8 @@
 			"save": "Save",
 			"apply": "Apply",
 			"cancel": "Cancel",
-			"help": "Help"
+			"help": "Help",
+			"contribute": "Contribute"
 		},
 		"font-variants": {
 			"label": "Font Variants",
