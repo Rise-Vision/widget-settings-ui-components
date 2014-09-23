@@ -31,8 +31,7 @@
             },
             rowColor: "transparent",
             altRowColor: "transparent",
-            rowPadding:"0",
-            colPadding:"0"
+            rowPadding:"0"
           };
 
           $scope.defaults = function(obj) {
@@ -73,18 +72,6 @@ app.run(["$templateCache", function($templateCache) {
     "        <div class=\"input-group\">\n" +
     "          <input id=\"row-padding\" type=\"text\"\n" +
     "          ng-model=\"table.rowPadding\" class=\"form-control\" value=\"0\" />\n" +
-    "          <span class=\"input-group-addon\">{{'common.units.pixels' | translate}}</span>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
-    "    </div>\n" +
-    "  </div>\n" +
-    "  <div class=\"form-group\">\n" +
-    "    <label for=\"col-padding\">{{'table.col-padding' | translate}}</label>\n" +
-    "    <div class=\"row\">\n" +
-    "      <div class=\"col-md-3 col-sm-3 col-xs-6\">\n" +
-    "        <div class=\"input-group\">\n" +
-    "          <input id=\"col-padding\" type=\"text\"\n" +
-    "          ng-model=\"table.colPadding\" class=\"form-control\" value=\"0\" />\n" +
     "          <span class=\"input-group-addon\">{{'common.units.pixels' | translate}}</span>\n" +
     "        </div>\n" +
     "      </div>\n" +
