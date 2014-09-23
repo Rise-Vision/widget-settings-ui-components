@@ -13,13 +13,24 @@
         template: $templateCache.get("_angular/column-setting/column-setting.html"),
         transclude: false,
         link: function($scope) {
-          $scope.defaultSetting = {
+
+          var defaultNumberSettings = {
             type: "int",
             alignment: "left",
             width: "100",
             decimals: 0,
             sign: "arrow",
-            colorCondition: "none",
+            colorCondition: "none"
+          };
+          var defaultStringSettings = {
+            type: "string",
+            alignment: "left",
+            width: "100"
+          };
+          var defaultDateSettings = {
+            type: "date",
+            alignment: "left",
+            width: "100",
             date: "medium"
           };
 
@@ -39,7 +50,30 @@
           };
 
           $scope.$watch("column", function(column) {
-            $scope.defaults(column, $scope.defaultSetting);
+            var defaultSetting;
+
+            if (typeof column.type !== "undefined") {
+              switch (column.type) {
+                case "int":
+                case "number":
+                  defaultSetting = defaultNumberSettings;
+                  break;
+                case "string":
+                case "text":
+                  defaultSetting = defaultStringSettings;
+                  break;
+                case "date":
+                  defaultSetting = defaultDateSettings;
+                  break;
+                default:
+                  defaultSetting = defaultStringSettings;
+              }
+
+              $scope.defaults(column, defaultSetting);
+            }
+            else {
+              $scope.defaults(column, defaultStringSettings);
+            }
           });
 
           $scope.remove = function() {
