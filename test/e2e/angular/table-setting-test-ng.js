@@ -23,14 +23,8 @@
       expect(element(by.id("row-padding")).getAttribute("value")).
       to.eventually.equal("0");
 
-      expect(element(by.id("col-padding")).getAttribute("value")).
-      to.eventually.equal("0");
-
     });
 
-    xit("Should correctly save settings", function (done) {
-      //TODO
-    });
   });
 
 })();

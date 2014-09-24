@@ -1,8 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.alignment",
-      "risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.translate"])
     .directive("columnSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
@@ -16,7 +15,6 @@
 
           var defaultNumberSettings = {
             type: "int",
-            alignment: "left",
             width: "100",
             decimals: 0,
             sign: "arrow",
@@ -24,12 +22,10 @@
           };
           var defaultStringSettings = {
             type: "string",
-            alignment: "left",
             width: "100"
           };
           var defaultDateSettings = {
             type: "date",
-            alignment: "left",
             width: "100",
             date: "medium"
           };
@@ -122,17 +118,6 @@ app.run(["$templateCache", function($templateCache) {
     "              <input id=\"column-width\" type=\"text\" ng-model=\"column.width\" class=\"form-control\" />\n" +
     "              <span class=\"input-group-addon\">{{'common.units.pixels' | translate}}</span>\n" +
     "            </div>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
-    "      <!-- alignment -->\n" +
-    "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-3\">\n" +
-    "          <div class=\"form-group\">\n" +
-    "            <label>\n" +
-    "              {{'column.alignment.label' | translate}}\n" +
-    "            </label> <br/>\n" +
-    "            <alignment align=\"column.alignment\"></alignment>\n" +
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
