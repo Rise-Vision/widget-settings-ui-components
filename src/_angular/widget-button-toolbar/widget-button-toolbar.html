@@ -1,17 +1,17 @@
-<div class="btn-toolbar">
-  <button id="save" class="btn btn-success btn-fixed-width" type="button">
+<div class="btn-toolbar sticky-buttons">
+  <button id="save" class="btn btn-success btn-fixed-width" type="button" ng-click="save()" ng-disabled="disablesave()">
     <span>{{"common.buttons.save" | translate}}</span>
     <i class="fa fa-white fa-check icon-right"></i>
   </button>
-  <button id="cancel" class="btn btn-primary btn-fixed-width" type="button">
+  <button id="cancel" class="btn btn-primary btn-fixed-width" type="button" ng-click="cancel()">
     <span>{{"common.buttons.cancel" | translate}}</span>
     <i class="fa fa-white fa-times icon-right"></i>
   </button>
-  <a type="button" class="btn btn-rv-help btn-fixed-width" href="" target="_blank">
+  <a type="button" class="btn btn-rv-help btn-fixed-width" target="_blank" href={{helpRef}}>
     <span>{{"common.buttons.help" | translate}}</span>
     <i class="fa fa-question-circle icon-right"></i>
   </a>
-  <a type="button" class="btn btn-rv-help btn-fixed-width" href="" target="_blank">
+  <a type="button" class="btn btn-rv-help btn-fixed-width" target="_blank" href={{contributeRef}}>
     <span>{{"common.buttons.contribute" | translate}}</span>
     <i class="fa fa-github fa-lg"></i>
   </a>
