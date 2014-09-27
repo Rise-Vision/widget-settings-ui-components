@@ -6,11 +6,19 @@
       return {
         restrict: "E",
         scope: {
-          // TODO: to be determined
+          help: "@",
+          contribute: "@",
+          save: "&",
+          cancel: "&",
+          disablesave: "&"
         },
         template: $templateCache.get("_angular/widget-button-toolbar/widget-button-toolbar.html"),
-        link: function () {
-          // TODO: functionality to come
+        link: function ($scope, elem, attrs) {
+          var defaultHelpRef = "http://www.risevision.com/help/users/",
+            defaultContributeRef = "https://github.com/Rise-Vision/";
+
+          $scope.helpRef = attrs.help || defaultHelpRef;
+          $scope.contributeRef = attrs.contribute || defaultContributeRef;
         }
       };
     }]);
