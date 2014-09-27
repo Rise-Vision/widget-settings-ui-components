@@ -15,8 +15,17 @@
           <div class="modal-header">
             <h2 class="text-center">Widget Button Toolbar - e2e Testing</h2>
             <hr>
-            <widget-button-toolbar></widget-button-toolbar>
+            <widget-button-toolbar
+              save="saveSettings()" cancel="closeSettings()" disablesave="inValidState"
+              help="http://www.test-help.com"
+              contribute="http://www.test-contribute.com">
+              </widget-button-toolbar>
           </div>
+          <hr>
+          <input type="text" id="testInput">
+          <button id="invalidTestBtn" type="button" class="btn btn-default" ng-click="test(true)">Invalid Test</button>
+          <button id="validTestBtn" type="button" class="btn btn-default" ng-click="test(false)">Valid Test</button>
+
         </div>
       </div>
     </div>
@@ -33,11 +42,21 @@
 
   <script>
     angular.module("testapp", ["risevision.widget.common.widget-button-toolbar"])
-      .controller("mainController", ["$scope", function ($scope) {
-        $scope.settings = {
-          additionalParams: {
-            background: {}
-          }
+      .controller("mainController", ["$scope", "$log", function ($scope, $log) {
+        var $testInput = $("#testInput");
+
+        $scope.inValidState = false;
+
+        $scope.saveSettings = function () {
+          $testInput.val("Save button clicked");
+        };
+
+        $scope.closeSettings = function () {
+          $testInput.val("Cancel button clicked");
+        };
+
+        $scope.test = function (invalid) {
+          $scope.inValidState = invalid;
         };
 
       }]);
