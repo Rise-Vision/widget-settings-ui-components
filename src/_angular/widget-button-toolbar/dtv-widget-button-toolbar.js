@@ -10,7 +10,7 @@
           contribute: "@",
           save: "&",
           cancel: "&",
-          disablesave: "&"
+          disableSave: "&"
         },
         template: $templateCache.get("_angular/widget-button-toolbar/widget-button-toolbar.html"),
         link: function ($scope, elem, attrs) {
