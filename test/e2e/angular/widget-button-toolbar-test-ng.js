@@ -24,7 +24,6 @@
       expect(element(by.css("button#save[disabled=disabled")).isPresent()).
         to.eventually.be.false;
 
-      expect(element(by.css("button#invalidTestBtn")))
     });
 
     it("should execute save function on click", function () {
