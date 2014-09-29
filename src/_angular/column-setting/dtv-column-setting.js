@@ -15,18 +15,18 @@
 
           var defaultNumberSettings = {
             type: "int",
-            width: "100",
+            width: 100,
             decimals: 0,
             sign: "arrow",
             colorCondition: "none"
           };
           var defaultStringSettings = {
             type: "string",
-            width: "100"
+            width: 100
           };
           var defaultDateSettings = {
             type: "date",
-            width: "100",
+            width: 100,
             date: "medium"
           };
 
