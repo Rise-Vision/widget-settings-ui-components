@@ -1,0 +1,32 @@
+<div class="component">
+  <div class="page-header">
+    <h1 class="page">Widget Button Toolbar</h1>
+  </div>
+
+  <p class="lead">An Angular directive that provides the set of buttons required for a widget settings file.</p>
+
+  <p><strong>Dependencies</strong> N/A</p>
+
+  <h3 class="add-top">Usage</h3>
+  <p>The directive provides attributes to set the value of the href for the Help button and Contribute buttons. Further attributes are also provided to allow setting the external function to run for the click event of the Save and Cancel buttons. Lastly another attribute allows for executing external code to return a boolean value that determines the disabled state of the Save button.</p>
+  <hljs include="'widget-button-toolbar-usage'"></hljs>
+
+  <h3>Script Includes</h3>
+  <p>Make sure you include the following files in <code>index.html</code></p>
+  <hljs include="'script-includes'"></hljs>
+
+  <!-- Dynamic Example -->
+  <div class="examples">
+    <h3>Example</h3>
+    <widget-button-toolbar help="http://www.risevision.com/user-training/" contribute="https://github.com/Rise-Vision/"></widget-button-toolbar>
+  </div>
+</div>
+
+<script type="text/ng-template" id="script-includes">
+  components/widget-settings-ui-components/dist/js/angular/widget-button-toolbar.js
+</script>
+
+<!-- Code Snippet -->
+<script type="text/ng-template" id="widget-button-toolbar-usage">
+  <widget-button-toolbar save="saveSettings()" cancel="closeSettings()" disablesave="settingsForm.$invalid" help="http://www.risevision.com/user-training/" contribute="https://github.com/Rise-Vision/"></widget-button-toolbar>
+</script>
