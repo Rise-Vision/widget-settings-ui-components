@@ -15,18 +15,18 @@
 
           var defaultNumberSettings = {
             type: "int",
-            width: "100",
+            width: 100,
             decimals: 0,
             sign: "arrow",
             colorCondition: "none"
           };
           var defaultStringSettings = {
             type: "string",
-            width: "100"
+            width: 100
           };
           var defaultDateSettings = {
             type: "date",
-            width: "100",
+            width: 100,
             date: "medium"
           };
 
@@ -115,7 +115,7 @@ app.run(["$templateCache", function($templateCache) {
     "              {{'column.width' | translate}}\n" +
     "            </label>\n" +
     "            <div class=\"input-group\">\n" +
-    "              <input id=\"column-width\" type=\"text\" ng-model=\"column.width\" class=\"form-control\" />\n" +
+    "              <input id=\"column-width\" type=\"number\" ng-model=\"column.width\" class=\"form-control\" />\n" +
     "              <span class=\"input-group-addon\">{{'common.units.pixels' | translate}}</span>\n" +
     "            </div>\n" +
     "          </div>\n" +
