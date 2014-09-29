@@ -14,11 +14,17 @@
         },
         template: $templateCache.get("_angular/widget-button-toolbar/widget-button-toolbar.html"),
         link: function ($scope, elem, attrs) {
-          var defaultHelpRef = "http://www.risevision.com/help/users/",
-            defaultContributeRef = "https://github.com/Rise-Vision/";
+          $scope.helpRef = "";
+          $scope.contributeRef = "";
 
-          $scope.helpRef = attrs.help || defaultHelpRef;
-          $scope.contributeRef = attrs.contribute || defaultContributeRef;
+          if (typeof attrs.help !== "undefined" && attrs.help !== "") {
+            $scope.helpRef = attrs.help;
+          }
+
+          if (typeof attrs.contribute !== "undefined" && attrs.contribute !== "") {
+            $scope.contributeRef = attrs.contribute;
+          }
+
         }
       };
     }]);

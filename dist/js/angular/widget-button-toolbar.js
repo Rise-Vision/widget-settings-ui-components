@@ -14,11 +14,17 @@
         },
         template: $templateCache.get("_angular/widget-button-toolbar/widget-button-toolbar.html"),
         link: function ($scope, elem, attrs) {
-          var defaultHelpRef = "http://www.risevision.com/help/users/",
-            defaultContributeRef = "https://github.com/Rise-Vision/";
+          $scope.helpRef = "";
+          $scope.contributeRef = "";
 
-          $scope.helpRef = attrs.help || defaultHelpRef;
-          $scope.contributeRef = attrs.contribute || defaultContributeRef;
+          if (typeof attrs.help !== "undefined" && attrs.help !== "") {
+            $scope.helpRef = attrs.help;
+          }
+
+          if (typeof attrs.contribute !== "undefined" && attrs.contribute !== "") {
+            $scope.contributeRef = attrs.contribute;
+          }
+
         }
       };
     }]);
@@ -39,11 +45,11 @@ app.run(["$templateCache", function($templateCache) {
     "    <span>{{\"common.buttons.cancel\" | translate}}</span>\n" +
     "    <i class=\"fa fa-white fa-times icon-right\"></i>\n" +
     "  </button>\n" +
-    "  <a type=\"button\" class=\"btn btn-rv-help btn-fixed-width\" target=\"_blank\" href={{helpRef}}>\n" +
+    "  <a type=\"button\" class=\"btn btn-rv-help btn-fixed-width\" target=\"_blank\" href={{helpRef}} ng-if=\"helpRef !== ''\">\n" +
     "    <span>{{\"common.buttons.help\" | translate}}</span>\n" +
     "    <i class=\"fa fa-question-circle icon-right\"></i>\n" +
     "  </a>\n" +
-    "  <a type=\"button\" class=\"btn btn-rv-help btn-fixed-width\" target=\"_blank\" href={{contributeRef}}>\n" +
+    "  <a type=\"button\" class=\"btn btn-rv-help btn-fixed-width\" target=\"_blank\" href={{contributeRef}} ng-if=\"contributeRef !== ''\">\n" +
     "    <span>{{\"common.buttons.contribute\" | translate}}</span>\n" +
     "    <i class=\"fa fa-github fa-lg\"></i>\n" +
     "  </a>\n" +

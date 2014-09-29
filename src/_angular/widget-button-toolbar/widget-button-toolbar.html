@@ -7,11 +7,11 @@
     <span>{{"common.buttons.cancel" | translate}}</span>
     <i class="fa fa-white fa-times icon-right"></i>
   </button>
-  <a type="button" class="btn btn-rv-help btn-fixed-width" target="_blank" href={{helpRef}}>
+  <a type="button" class="btn btn-rv-help btn-fixed-width" target="_blank" href={{helpRef}} ng-if="helpRef !== ''">
     <span>{{"common.buttons.help" | translate}}</span>
     <i class="fa fa-question-circle icon-right"></i>
   </a>
-  <a type="button" class="btn btn-rv-help btn-fixed-width" target="_blank" href={{contributeRef}}>
+  <a type="button" class="btn btn-rv-help btn-fixed-width" target="_blank" href={{contributeRef}} ng-if="contributeRef !== ''">
     <span>{{"common.buttons.contribute" | translate}}</span>
     <i class="fa fa-github fa-lg"></i>
   </a>
