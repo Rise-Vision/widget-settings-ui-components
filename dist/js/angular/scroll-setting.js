@@ -15,7 +15,7 @@
           $scope.defaultSetting = {
             by: "none",
             speed: "medium",
-            pause: "5"
+            pause: 5
           };
 
           $scope.defaults = function(obj) {
@@ -84,7 +84,7 @@ app.run(["$templateCache", function($templateCache) {
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"input-group\">\n" +
-    "            <input id=\"scroll-pause\" type=\"text\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
+    "            <input id=\"scroll-pause\" type=\"number\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
     "            <span class=\"input-group-addon\">{{'common.units.seconds' | translate}}</span>\n" +
     "          </div>\n" +
     "        </div>\n" +
