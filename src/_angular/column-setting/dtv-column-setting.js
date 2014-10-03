@@ -15,7 +15,7 @@
 
           var defaultNumberSettings = {
             type: "int",
-            alignment: "left",
+            align: "left",
             width: 100,
             decimals: 0,
             sign: "arrow",
@@ -23,12 +23,12 @@
           };
           var defaultStringSettings = {
             type: "string",
-            alignment: "left",
+            align: "left",
             width: 100
           };
           var defaultDateSettings = {
             type: "date",
-            alignment: "left",
+            align: "left",
             width: 100,
             date: "medium"
           };
