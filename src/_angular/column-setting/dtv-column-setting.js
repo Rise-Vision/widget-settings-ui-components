@@ -18,7 +18,7 @@
             align: "left",
             width: 100,
             decimals: 0,
-            sign: "arrow",
+            sign: "none",
             colorCondition: "none"
           };
           var defaultStringSettings = {

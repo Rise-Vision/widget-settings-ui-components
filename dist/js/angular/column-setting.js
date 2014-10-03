@@ -18,7 +18,7 @@
             align: "left",
             width: 100,
             decimals: 0,
-            sign: "arrow",
+            sign: "none",
             colorCondition: "none"
           };
           var defaultStringSettings = {
@@ -160,10 +160,11 @@ app.run(["$templateCache", function($templateCache) {
     "              {{'column.sign.label' | translate}}\n" +
     "            </label>\n" +
     "            <select id=\"column-sign\" ng-model=\"column.sign\" class=\"form-control\">\n" +
+    "              <option value=\"none\">{{'column.sign.none' | translate}}</option>\n" +
     "              <option value=\"neg\">-</option>\n" +
     "              <option value=\"pos-neg\">+/-</option>\n" +
     "              <option value=\"bracket\">()</option>\n" +
-    "              <option value=\"arrow\">Arrow</option>\n" +
+    "              <option value=\"arrow\">{{'column.sign.arrow' | translate}}</option>\n" +
     "            </select>\n" +
     "          </div>\n" +
     "        </div>\n" +

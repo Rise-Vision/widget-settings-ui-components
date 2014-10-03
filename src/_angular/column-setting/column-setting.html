@@ -69,10 +69,11 @@
               {{'column.sign.label' | translate}}
             </label>
             <select id="column-sign" ng-model="column.sign" class="form-control">
+              <option value="none">{{'column.sign.none' | translate}}</option>
               <option value="neg">-</option>
               <option value="pos-neg">+/-</option>
               <option value="bracket">()</option>
-              <option value="arrow">Arrow</option>
+              <option value="arrow">{{'column.sign.arrow' | translate}}</option>
             </select>
           </div>
         </div>
