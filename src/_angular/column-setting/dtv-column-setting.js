@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.alignment", "risevision.widget.common.translate"])
     .directive("columnSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
@@ -15,6 +15,7 @@
 
           var defaultNumberSettings = {
             type: "int",
+            alignment: "left",
             width: 100,
             decimals: 0,
             sign: "arrow",
@@ -22,10 +23,12 @@
           };
           var defaultStringSettings = {
             type: "string",
+            alignment: "left",
             width: 100
           };
           var defaultDateSettings = {
             type: "date",
+            alignment: "left",
             width: 100,
             date: "medium"
           };

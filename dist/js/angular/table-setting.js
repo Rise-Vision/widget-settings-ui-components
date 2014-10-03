@@ -103,7 +103,7 @@ app.run(["$templateCache", function($templateCache) {
     "    <label for=\"data-font\">{{'table.data-font.heading' | translate}}</label>\n" +
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-12\">\n" +
-    "        <font-setting font-data=\"table.dataFont\"\n" +
+    "        <font-setting font-data=\"table.dataFont\" hide-alignment=\"true\"\n" +
     "            preview-text=\"{{'table.data-font.text' | translate}}\">\n" +
     "        </font-setting>\n" +
     "      </div>\n" +

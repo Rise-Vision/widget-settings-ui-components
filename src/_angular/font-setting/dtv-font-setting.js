@@ -15,7 +15,7 @@
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
-        link: function ($scope, element) {
+        link: function ($scope, element, attrs) {
           var $element = $(element);
 
           $scope.defaultFont = {
@@ -29,9 +29,12 @@
             italic: false,
             underline: false,
             color: "black",
-            highlightColor: "transparent",
-            align: "left"
+            highlightColor: "transparent"
           };
+
+          if (typeof attrs.hideAlignment === "undefined" || attrs.hideAlignment !== "true") {
+            $scope.defaultFont.align = "left";
+          }
 
           $scope.defaults = function(obj) {
             if (obj) {
