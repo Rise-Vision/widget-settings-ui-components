@@ -15,7 +15,7 @@
 
           var defaultNumberSettings = {
             type: "int",
-            alignment: "left",
+            align: "left",
             width: 100,
             decimals: 0,
             sign: "arrow",
@@ -23,12 +23,12 @@
           };
           var defaultStringSettings = {
             type: "string",
-            alignment: "left",
+            align: "left",
             width: 100
           };
           var defaultDateSettings = {
             type: "date",
-            alignment: "left",
+            align: "left",
             width: 100,
             date: "medium"
           };
@@ -124,14 +124,14 @@ app.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
-    "      <!-- alignment -->\n" +
+    "      <!-- align -->\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-3\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label>\n" +
     "              {{'column.alignment.label' | translate}}\n" +
     "            </label> <br/>\n" +
-    "            <alignment align=\"column.alignment\"></alignment>\n" +
+    "            <alignment align=\"column.align\"></alignment>\n" +
     "          </div>\n" +
     "        </div>\n" +
     "      </div>\n" +
