@@ -17,7 +17,7 @@
 
           function onChange(color) {
             $scope.$apply(function() {
-              $scope.color = color.toHexString();
+              $scope.color = color.toRgbString();
             });
           }
 
