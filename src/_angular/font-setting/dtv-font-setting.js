@@ -68,7 +68,7 @@
               var parentEl = $element.find(".font-picker-text");
               var previewEl = $element.find(".font-picker-text span");
               previewEl.css("font-family", fontData.font.family);
-              previewEl.css("font-size", fontData.size + "pt");
+              previewEl.css("font-size", fontData.size + "px");
               previewEl.css("font-weight", fontData.bold ? "bold" : "normal");
               previewEl.css("font-style", fontData.italic ? "italic" : "normal");
               previewEl.css("text-decoration", fontData.underline ? "underline" : "none");
