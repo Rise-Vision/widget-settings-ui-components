@@ -178,10 +178,10 @@ app.run(["$templateCache", function($templateCache) {
     "            </label>\n" +
     "            <select id=\"column-color-condition\" ng-model=\"column.colorCondition\" class=\"form-control\">\n" +
     "              <option value=\"none\">{{'column.color-condition.none' | translate}}</option>\n" +
-    "              <option value=\"up-green\">{{'column.color-condition.up-green' | translate}}</option>\n" +
-    "              <option value=\"up-red\">{{'column.color-condition.up-red' | translate}}</option>\n" +
-    "              <option value=\"positive-green\">{{'column.color-condition.positive-green' | translate}}</option>\n" +
-    "              <option value=\"positive-red\">{{'column.color-condition.positive-red' | translate}}</option>\n" +
+    "              <option value=\"change-up\">{{'column.color-condition.change-up' | translate}}</option>\n" +
+    "              <option value=\"change-down\">{{'column.color-condition.change-down' | translate}}</option>\n" +
+    "              <option value=\"value-positive\">{{'column.color-condition.value-positive' | translate}}</option>\n" +
+    "              <option value=\"value-negative\">{{'column.color-condition.value-negative' | translate}}</option>\n" +
     "            </select>\n" +
     "          </div>\n" +
     "        </div>\n" +

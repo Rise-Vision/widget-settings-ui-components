@@ -73,10 +73,10 @@
 		"color-condition": {
 			"label": "Color Condition",
 			"none": "None",
-			"up-green": "Change up green change down red",
-			"up-red": "Change down green change up red",
-			"positive-green": "Positive value green negative red",
-			"positive-red": "Positive value red negative green"
+			"change-up": "Change up green change down red",
+			"change-down": "Change down green change up red",
+			"value-positive": "Positive value green negative red",
+			"value-negative": "Positive value red negative green"
 		},
     "date": {
       "label": "Date Format",
