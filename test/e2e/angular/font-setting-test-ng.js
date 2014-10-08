@@ -82,7 +82,7 @@
       element(by.css(".font-picker-text span")).then(function(elem) {
         expect(elem.getCssValue("font-family")).to.eventually.equal("Verdana");
 
-        expect(elem.getCssValue("font-size")).to.eventually.equal("27px");
+        expect(elem.getCssValue("font-size")).to.eventually.equal("20px");
 
         expect(elem.getCssValue("font-weight")).to.eventually.equal("normal");
 
