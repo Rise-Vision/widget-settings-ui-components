@@ -14,7 +14,8 @@
 		},
 		"units": {
 			"pixels": "px",
-			"seconds": "sec"
+			"seconds": "sec",
+      "minutes": "min"
 		}
 	},
 	"scroll": {
