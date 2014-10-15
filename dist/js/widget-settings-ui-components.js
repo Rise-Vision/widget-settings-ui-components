@@ -41,8 +41,9 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
   function Plugin(element, options) {
     var $element = $(element);
     var $btnAlignment = null;
+    var defaultAlignment = "left";
 
-    options = $.extend({}, { "align": "left" }, options);
+    options = $.extend({}, { "align": defaultAlignment }, options);
 
     /*
      *  Private Methods
@@ -84,11 +85,16 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
       $btnAlignment.data("wysihtml5-command-value", alignment);
     }
 
+    function reset() {
+      setAlignment(defaultAlignment);
+    }
+
     _init();
 
     return {
       getAlignment: getAlignment,
-      setAlignment: setAlignment
+      setAlignment: setAlignment,
+      reset:        reset
     };
   }
 
@@ -136,12 +142,13 @@ TEMPLATES['font-style.html'] = "<div class=\"btn-group\">\n" +
     var $bold = null;
     var $italic = null;
     var $underline = null;
-
-    options = $.extend({}, {
-      "bold": false,
-      "italic": false,
+    var defaults = {
+      "bold":      false,
+      "italic":    false,
       "underline": false,
-    }, options);
+    };
+
+    options = $.extend({}, defaults, options);
 
     /*
      *  Private Methods
@@ -225,6 +232,10 @@ TEMPLATES['font-style.html'] = "<div class=\"btn-group\">\n" +
       _setStyle($underline, styles.underline);
     }
 
+    function reset() {
+      setStyles(defaults);
+    }
+
     _init();
 
     return {
@@ -236,6 +247,7 @@ TEMPLATES['font-style.html'] = "<div class=\"btn-group\">\n" +
       setUnderline:   setUnderline,
       getStyles:      getStyles,
       setStyles:      setStyles,
+      reset:          reset
     };
   }
 

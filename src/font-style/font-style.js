@@ -14,12 +14,13 @@
     var $bold = null;
     var $italic = null;
     var $underline = null;
-
-    options = $.extend({}, {
-      "bold": false,
-      "italic": false,
+    var defaults = {
+      "bold":      false,
+      "italic":    false,
       "underline": false,
-    }, options);
+    };
+
+    options = $.extend({}, defaults, options);
 
     /*
      *  Private Methods
@@ -103,6 +104,10 @@
       _setStyle($underline, styles.underline);
     }
 
+    function reset() {
+      setStyles(defaults);
+    }
+
     _init();
 
     return {
@@ -114,6 +119,7 @@
       setUnderline:   setUnderline,
       getStyles:      getStyles,
       setStyles:      setStyles,
+      reset:          reset
     };
   }
 

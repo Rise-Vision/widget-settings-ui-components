@@ -41,8 +41,9 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
   function Plugin(element, options) {
     var $element = $(element);
     var $btnAlignment = null;
+    var defaultAlignment = "left";
 
-    options = $.extend({}, { "align": "left" }, options);
+    options = $.extend({}, { "align": defaultAlignment }, options);
 
     /*
      *  Private Methods
@@ -84,11 +85,16 @@ TEMPLATES['alignment.html'] = "<div class=\"btn-group alignment\">\n" +
       $btnAlignment.data("wysihtml5-command-value", alignment);
     }
 
+    function reset() {
+      setAlignment(defaultAlignment);
+    }
+
     _init();
 
     return {
       getAlignment: getAlignment,
-      setAlignment: setAlignment
+      setAlignment: setAlignment,
+      reset:        reset
     };
   }
 
