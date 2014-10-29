@@ -39,19 +39,19 @@ app.run(["$templateCache", function($templateCache) {
     "<div class=\"btn-toolbar sticky-buttons\">\n" +
     "  <button id=\"save\" class=\"btn btn-success btn-fixed-width\" type=\"button\" ng-click=\"save()\" ng-disabled=\"disableSave()\">\n" +
     "    <span>{{\"common.buttons.save\" | translate}}</span>\n" +
-    "    <i class=\"fa fa-white fa-check icon-right\"></i>\n" +
+    "    <i class=\"fa fa-white fa-check fa-lg icon-right\"></i>\n" +
     "  </button>\n" +
     "  <button id=\"cancel\" class=\"btn btn-primary btn-fixed-width\" type=\"button\" ng-click=\"cancel()\">\n" +
     "    <span>{{\"common.buttons.cancel\" | translate}}</span>\n" +
-    "    <i class=\"fa fa-white fa-times icon-right\"></i>\n" +
+    "    <i class=\"fa fa-white fa-times fa-lg icon-right\"></i>\n" +
     "  </button>\n" +
     "  <a type=\"button\" class=\"btn btn-rv-help btn-fixed-width\" target=\"_blank\" href={{helpRef}} ng-if=\"helpRef !== ''\">\n" +
     "    <span>{{\"common.buttons.help\" | translate}}</span>\n" +
-    "    <i class=\"fa fa-question-circle icon-right\"></i>\n" +
+    "    <i class=\"fa fa-question-circle fa-lg icon-right\"></i>\n" +
     "  </a>\n" +
     "  <a type=\"button\" class=\"btn btn-rv-help btn-fixed-width\" target=\"_blank\" href={{contributeRef}} ng-if=\"contributeRef !== ''\">\n" +
     "    <span>{{\"common.buttons.contribute\" | translate}}</span>\n" +
-    "    <i class=\"fa fa-github fa-lg\"></i>\n" +
+    "    <i class=\"fa fa-github fa-lg icon-right\"></i>\n" +
     "  </a>\n" +
     "</div>\n" +
     "");
