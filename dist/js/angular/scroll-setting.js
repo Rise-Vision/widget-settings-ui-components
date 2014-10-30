@@ -48,10 +48,11 @@ app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/scroll-setting/scroll-setting.html",
     "<div class=\"section\">\n" +
+    "  <h5>{{'scroll.heading' | translate}}</h5>\n" +
     "  <div class=\"form-group\">\n" +
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-3\">\n" +
-    "        <label>{{'scroll.heading' | translate}}</label>\n" +
+    "        <label>{{'scroll.by.label' | translate}}</label>\n" +
     "        <select id=\"scroll-by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
     "          <option value=\"none\">{{'scroll.by.none' | translate}}</option>\n" +
     "          <option value=\"continuous\">{{'scroll.by.continuous' | translate}}</option>\n" +
