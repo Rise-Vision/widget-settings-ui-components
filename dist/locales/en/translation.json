@@ -21,6 +21,7 @@
 	"scroll": {
     "heading": "Scroll",
 		"by": {
+      "label": "Type",
 			"none": "No",
 			"continuous": "Continuously",
 			"page": "By Page"
