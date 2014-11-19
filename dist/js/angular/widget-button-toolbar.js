@@ -37,11 +37,11 @@ app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/widget-button-toolbar/widget-button-toolbar.html",
     "<div class=\"btn-toolbar sticky-buttons\">\n" +
-    "  <button id=\"save\" class=\"btn btn-success btn-fixed-width\" type=\"button\" ng-click=\"save()\" ng-disabled=\"disableSave()\">\n" +
+    "  <button id=\"save\" class=\"btn btn-primary btn-fixed-width\" type=\"button\" ng-click=\"save()\" ng-disabled=\"disableSave()\">\n" +
     "    <span>{{\"common.buttons.save\" | translate}}</span>\n" +
     "    <i class=\"fa fa-white fa-check fa-lg icon-right\"></i>\n" +
     "  </button>\n" +
-    "  <button id=\"cancel\" class=\"btn btn-primary btn-fixed-width\" type=\"button\" ng-click=\"cancel()\">\n" +
+    "  <button id=\"cancel\" class=\"btn btn-default btn-fixed-width\" type=\"button\" ng-click=\"cancel()\">\n" +
     "    <span>{{\"common.buttons.cancel\" | translate}}</span>\n" +
     "    <i class=\"fa fa-white fa-times fa-lg icon-right\"></i>\n" +
     "  </button>\n" +
