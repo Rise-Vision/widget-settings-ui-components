@@ -103,5 +103,14 @@
     "color": {
       "label": "Color"
     }
+  },
+  "video": {
+    "heading": "Video",
+    "autoplay": {
+      "label": "Autoplay"
+    },
+    "loop": {
+      "label": "Loop"
+    }
   }
 }
