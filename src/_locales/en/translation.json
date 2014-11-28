@@ -107,10 +107,16 @@
   "video": {
     "heading": "Video",
     "autoplay": {
-      "label": "Autoplay"
+      "label": "Auto Play"
+    },
+    "volume": {
+      "label": "Volume"
     },
     "loop": {
       "label": "Loop"
+    },
+    "autohide": {
+      "label": "Auto Hide Controls"
     }
   }
 }

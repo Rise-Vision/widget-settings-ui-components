@@ -54,7 +54,12 @@ app.run(["$templateCache", function($templateCache) {
     "      <input name=\"video-autoplay\" type=\"checkbox\" ng-model=\"video.autoplay\"> {{\"video.autoplay.label\" | translate}}\n" +
     "    </label>\n" +
     "  </div>\n" +
-    "  <!-- TODO: Integrate slider component -->\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <label>{{\"video.volume.label\" | translate}}</label>\n" +
+    "    <div>\n" +
+    "      <slider orientation=\"horizontal\" handle=\"round\" ng-model=\"video.volume\" min=\"0\" step=\"1\" max=\"100\"></slider>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
     "  <div class=\"checkbox\">\n" +
     "    <label>\n" +
     "      <input name=\"video-loop\" type=\"checkbox\" ng-model=\"video.loop\"> {{\"video.loop.label\" | translate}}\n" +

@@ -5,7 +5,12 @@
       <input name="video-autoplay" type="checkbox" ng-model="video.autoplay"> {{"video.autoplay.label" | translate}}
     </label>
   </div>
-  <!-- TODO: Integrate slider component -->
+  <div class="form-group">
+    <label>{{"video.volume.label" | translate}}</label>
+    <div>
+      <slider orientation="horizontal" handle="round" ng-model="video.volume" min="0" step="1" max="100"></slider>
+    </div>
+  </div>
   <div class="checkbox">
     <label>
       <input name="video-loop" type="checkbox" ng-model="video.loop"> {{"video.loop.label" | translate}}
