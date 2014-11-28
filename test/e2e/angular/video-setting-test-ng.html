@@ -25,6 +25,8 @@
 <script type="text/javascript" src="/components/angular/angular.js"></script>
 <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="/components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+<script type="text/javascript" src="/components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+<script type="text/javascript" src="/components/angular-bootstrap-slider/slider.js"></script>
 <script type="text/javascript" src="/node_modules/widget-tester/mocks/common-mock.js"></script>
 <!--<script type="text/javascript" src="/dist/js/angular/video-setting.js"></script>-->
 <script type="text/javascript" src="/src/_config/config.js"></script>
@@ -32,7 +34,7 @@
 <script type="text/javascript" src="/tmp/ng-templates/video-setting/video-setting.js"></script>
 
 <script>
-  angular.module("testapp", ["risevision.widget.common.video-setting"])
+  angular.module("testapp", ["risevision.widget.common.video-setting", "ui.bootstrap-slider"])
     .controller("mainController", ["$scope", "$log", function ($scope, $log) {
       $scope.settings = {
         additionalParams: {

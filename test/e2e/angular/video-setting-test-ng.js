@@ -26,6 +26,16 @@
       expect(element(by.css("input[name=video-autoplay]")).getAttribute("checked")).
         to.eventually.not.be.null;
 
+      // ensure volume slider is displayed
+      expect(element(by.css(".slider")).isDisplayed()).to.eventually.be.true;
+
+      // force browser to mouse over the volume slider
+      browser.actions().mouseMove(element(by.css(".slider"))).perform();
+
+      // ensure volume slider default value setting is 50
+      expect(element(by.css(".slider #tooltip .tooltip-inner")).getText()).
+        to.eventually.equal("50");
+
       // ensure loop checkbox is displayed
       expect(element(by.css("input[name=video-loop]")).isDisplayed()).to.eventually.be.true;
       // ensure loop checkbox is checked
