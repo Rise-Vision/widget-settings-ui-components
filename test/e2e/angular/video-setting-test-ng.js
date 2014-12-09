@@ -33,8 +33,7 @@
       browser.actions().mouseMove(element(by.css(".slider"))).perform();
 
       // ensure volume slider default value setting is 50
-      expect(element(by.css(".slider #tooltip .tooltip-inner")).getText()).
-        to.eventually.equal("50");
+      expect(element(by.model("video.volume")).getAttribute("value")).to.eventually.equal("50,0");
 
       // ensure loop checkbox is displayed
       expect(element(by.css("input[name=video-loop]")).isDisplayed()).to.eventually.be.true;

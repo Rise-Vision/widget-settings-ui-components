@@ -1,6 +1,6 @@
 <div class="form-group" >
-  <label>{{ "url.label" | translate }}</label>
-  <input name="url" type="text" ng-model="url" class="form-control" placeholder="http://">
+  <label for="url" ng-if="!hideLabel">{{ "url.label" | translate }}</label>
+  <input id="url" name="url" type="text" ng-model="url" class="form-control" placeholder="http://">
   <p ng-if="!valid" class="help-block">{{ "url.invalid" | translate }}</p>
   <div class="checkbox" ng-show="forcedValid || !valid">
     <label>

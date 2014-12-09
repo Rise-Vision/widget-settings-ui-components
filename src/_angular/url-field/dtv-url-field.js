@@ -9,7 +9,8 @@
         restrict: "E",
         require: "?ngModel",
         scope: {
-          url: "="
+          url: "=",
+          hideLabel: "@"
         },
         template: $templateCache.get("_angular/url-field/url-field.html"),
         link: function (scope, element, attrs, ctrl) {
