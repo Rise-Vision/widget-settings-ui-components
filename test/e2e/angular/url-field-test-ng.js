@@ -20,6 +20,7 @@
     });
 
     it("Should correctly load", function () {
+      expect(element(by.css("label[for='url']")).isPresent()).to.eventually.be.false;
       // ensure validate checkbox is checked
       expect(element(by.css("input[name=validate-url]")).getAttribute("checked")).
         to.eventually.not.be.null;
