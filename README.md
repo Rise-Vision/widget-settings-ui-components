@@ -1,4 +1,4 @@
-# Widget Settings UI Components [![Build Status](http://devtools1.risevision.com:8080/job/Component-Widget-Settings-UI-Components-Master/badge/icon)](http://devtools1.risevision.com:8080/job/Component-Widget-Settings-UI-Components-Master/)
+# Widget Settings UI Components [![Circle CI](https://circleci.com/gh/Rise-Vision/widget-settings-ui-components/tree/master.svg?style=svg)](https://circleci.com/gh/Rise-Vision/widget-settings-ui-components/tree/master)
 
 ## Introduction
 
