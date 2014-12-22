@@ -37,6 +37,13 @@
         to.eventually.equal("rgba(0, 0, 0, 0)");
     });
 
+    it("Should show the palette", function () {
+      element(by.css(".sp-replacer.sp-light")).click();
+
+      expect(element(by.css(".sp-palette-container")).isPresent()).
+        to.eventually.be.true;
+    });
+
     it("Should close dialogue when Close is clicked", function() {
       element(by.css(".sp-replacer.sp-light")).click();
       element(by.css(".sp-cancel")).click();
@@ -45,13 +52,6 @@
         to.eventually.be.false;
     });
 
-    xit("Should select Color when clicked", function () {
-      //TODO
-    });
-
-    xit("Should correctly save settings", function (done) {
-      //TODO
-    });
   });
 
 })();
