@@ -20,6 +20,7 @@
     });
 
     it("Should correctly load", function () {
+      // test the label being hidden
       expect(element(by.css("label[for='url']")).isPresent()).to.eventually.be.false;
       // ensure validate checkbox is checked
       expect(element(by.css("input[name=validate-url]")).getAttribute("checked")).
@@ -29,6 +30,11 @@
       // ensure no error message
       expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
+      // ensure storage selector is displayed
+      expect(element(by.css(".input-group")).isPresent()).
+        to.eventually.be.true;
+      expect(element(by.css(".input-url-addon")).isPresent()).
+        to.eventually.be.true;
     });
 
     it("Should update input field via two-way binding", function () {

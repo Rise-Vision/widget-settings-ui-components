@@ -6,9 +6,13 @@
   <p class="lead">An Angular directive or jQuery plugin that allows a user to enter a URL.</p>
 
   <h3>Angular</h3>
-  <p><strong>Dependencies</strong> <span class="label label-info">Tooltip</span> <span class="label label-info">UI Bootstrap</span></p>
+  <p><strong>Dependencies</strong> <span class="label label-info">Tooltip</span> <span class="label label-info">UI Bootstrap</span> <span class="label label-info">Storage Selector</span></p>
   <p>The directive requires the use of the <code>url</code> attribute which configures the binding of the value for the URL.</p>
   <p>Self-validation occurs on the input field value and if deemed invalid an error message displays. Additionally, a checkbox is provided to either opt in or out of validation.</p>
+  <p>Additionally, the Storage Selector component is available to pick a file from Storage, which fills the input field with the URL of the file selected. To do so, the directive requires the use of the <code>company-id</code> attribute which is a local scope property of the directive. The ID for the currently selected Company can be found in the URL where the ID is everything to the right of "company=", for example:</p>
+  <hljs>http://rva.risevision.com/#COMPANY_MANAGE/company=XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX</hljs>
+  <p>It should also be noted that the URL Field component automatically configures the appropriate URL to use for the HTML file selected from Storage so that it does not trigger a browser download.</p>
+  <p>You can optionally hide the label for URL Field by using the <code>hideLabel</code> attribute like so <code>hideLabel="hideLabel"</code>. Similarly, the Storage Selector can be hidden using the <code>hideStorage</code> attribute like so <code>hideStorage="hide"</code>.</p>
   <ul>
     <li>Include the following files:
       <hljs include="'angular-script-includes'"></hljs>
@@ -49,6 +53,7 @@
 <script type="text/ng-template" id="angular-script-includes">
   components/angular-bootstrap/ui-bootstrap-tpls.js
   components/widget-settings-ui-components/dist/js/angular/tooltip.js
+  components/component-storage-selector/dist/storage-selector.js
   components/widget-settings-ui-components/dist/js/angular/url-field.js
 </script>
 

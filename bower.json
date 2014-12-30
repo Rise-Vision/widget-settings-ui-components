@@ -32,6 +32,7 @@
     "angular": "1.2.18",
     "angular-bootstrap-slider": "~0.0.6",
     "common-style": "https://github.com/Rise-Vision/common-style.git#1.1.4",
+    "component-storage-selector": "https://github.com/Rise-Vision/component-storage-selector.git",
     "bootstrap-sass-official": "~3.2.0",
     "angular-bootstrap": "0.11.0",
     "bootstrap-form-components": "https://github.com/Rise-Vision/bootstrap-form-components.git",
