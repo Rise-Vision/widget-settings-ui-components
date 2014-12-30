@@ -33,7 +33,7 @@
       expect(element(by.css(".more-scroll-options")).isDisplayed()).
       to.eventually.be.false;
 
-      element(by.cssContainingText('option', 'continuous')).click();
+      element(by.cssContainingText('option', 'Continuously')).click();
       expect(element(by.css(".more-scroll-options")).isDisplayed())
       .to.eventually.be.true;
 

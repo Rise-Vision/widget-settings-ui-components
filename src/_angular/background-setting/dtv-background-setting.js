@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module("risevision.widget.common.background-setting",
-    ["risevision.widget.common.translate", "risevision.widget.common.color-picker"])
+    ["risevision.common.i18n", "risevision.widget.common.color-picker"])
     .directive("backgroundSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",

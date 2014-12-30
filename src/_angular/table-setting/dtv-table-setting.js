@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.table-setting", ["risevision.widget.common.translate",
+  angular.module("risevision.widget.common.table-setting", ["risevision.common.i18n",
     "risevision.widget.common.color-picker", "risevision.widget.common.font-setting"])
     .directive("tableSetting", ["$templateCache", function ($templateCache) {
       return {

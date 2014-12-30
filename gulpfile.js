@@ -100,11 +100,6 @@
     .pipe(gulp.dest("dist/css"));
   });
 
-  gulp.task("i18n", function() {
-    return gulp.src("src/_locales/**/*.json")
-    .pipe(gulp.dest("dist/locales"));
-  });
-
   gulp.task("html2js-subcomponents", function () {
     var tasks = subcomponents.map(function(folder) {
       return gulp.src(path.join("src", folder, "**/*.html"))
@@ -177,7 +172,7 @@
   });
 
   gulp.task("build", function (cb) {
-    runSequence(["clean", "config"], ["js-uglify", "css-min", "i18n"], cb);
+    runSequence(["clean", "config"], ["js-uglify", "css-min"], cb);
   });
 
   gulp.task("webdriver_update", factory.webdriveUpdate());
