@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.font-setting", ["risevision.widget.common.translate",
+  angular.module("risevision.widget.common.font-setting", ["risevision.common.i18n",
     "risevision.widget.common.font-style", "risevision.widget.common.alignment",
     "risevision.widget.common.color-picker", "risevision.widget.common.fontsizepicker",
     "risevision.widget.common.fontpicker"])

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.color-picker", ["risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.color-picker", ["risevision.widget.common"])
     .directive("colorPicker", ["i18nLoader", function (i18nLoader) {
       return {
         restrict: "A",

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.alignment", "risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.alignment", "risevision.common.i18n"])
     .directive("columnSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",

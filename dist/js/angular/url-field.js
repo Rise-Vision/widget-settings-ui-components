@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module("risevision.widget.common.url-field",
-    ["risevision.widget.common.translate", "risevision.widget.common.tooltip"])
+    ["risevision.common.i18n", "risevision.widget.common.tooltip"])
 
     .directive("urlField", ["$templateCache", "$log", function ($templateCache, $log) {
       return {

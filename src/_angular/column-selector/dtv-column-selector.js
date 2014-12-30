@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module("risevision.widget.common.column-selector", ["risevision.widget.common.column-setting",
-          "risevision.widget.common.translate"])
+          "risevision.common.i18n"])
     .directive("columnSelector", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",

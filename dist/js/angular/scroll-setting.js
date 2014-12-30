@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module("risevision.widget.common.scroll-setting",
-    ["risevision.widget.common.translate", "risevision.widget.common.tooltip"])
+    ["risevision.common.i18n", "risevision.widget.common.tooltip"])
     .directive("scrollSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",

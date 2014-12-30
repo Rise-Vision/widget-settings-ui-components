@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.widget-button-toolbar", ["risevision.widget.common.translate"])
+  angular.module("risevision.widget.common.widget-button-toolbar", ["risevision.common.i18n"])
     .directive("widgetButtonToolbar", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
