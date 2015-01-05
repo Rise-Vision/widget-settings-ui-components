@@ -7,7 +7,9 @@
 </head>
 
 <body ng-app="testapp" ng-controller="mainController">
-  <column-selector columns="columns" column-names="columnNames" ng-model="columnselector"></column-selector>
+  <form role="form" name="settingsForm">
+    <column-selector columns="columns" column-names="columnNames" ng-model="columnselector" required></column-selector>
+  </form>
 
   <script type="text/javascript" src="/components/angular/angular.js"></script>
   <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
@@ -15,7 +17,7 @@
   <script type="text/javascript" src="/components/angular-translate/angular-translate.js"></script>
   <script type="text/javascript" src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
   <script type="text/javascript" src="/components/rv-common-i18n/dist/i18n.js"></script>
-  <script type="text/javascript" src="/node_modules/widget-tester/mocks/common-mock.js"></script>
+  <script type="text/javascript" src="/node_modules/widget-tester/mocks/i18n-config.js"></script>
   <script type="text/javascript" src="/dist/js/alignment.js"></script>
   <script type="text/javascript" src="/dist/js/angular/alignment.js"></script>
   <script type="text/javascript" src="/dist/js/angular/column-setting.js"></script>

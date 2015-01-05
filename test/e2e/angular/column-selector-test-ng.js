@@ -65,6 +65,19 @@
       });
 
     });
+    
+    it("Form should be invalid if all items are removed", function () {
+      element.all(by.css(".panel-group div.panel a.remove-column-button")).then(function (elements) {
+        elements[1].click();
+        elements[0].click();
+
+        expect(element(by.css("form[name=settingsform].ng-valid")).isPresent()).
+          to.equal.false;
+
+        expect(element(by.css("form[name=settingsform].ng-invalid")).isPresent()).
+          to.equal.true;
+      });
+    });
 
     xit("Should correctly save settings", function (done) {
       //TODO
