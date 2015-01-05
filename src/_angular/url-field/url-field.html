@@ -1,6 +1,9 @@
 <div class="form-group" >
   <label for="url" ng-if="!hideLabel">{{ "url.label" | translate }}</label>
-  <input id="url" name="url" type="text" ng-model="url" class="form-control" placeholder="http://">
+  <div ng-class="{'input-group':!hideStorage}">
+    <input id="url" name="url" type="text" ng-model="url" class="form-control" placeholder="http://">
+    <span class="input-url-addon" ng-if="!hideStorage"><storage-selector company-id="{{companyId}}"></storage-selector></span>
+  </div>
   <p ng-if="!valid" class="help-block">{{ "url.invalid" | translate }}</p>
   <div class="checkbox" ng-show="forcedValid || !valid">
     <label>

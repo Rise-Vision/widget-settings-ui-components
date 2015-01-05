@@ -15,7 +15,8 @@
           <h2 class="text-center">URL Field [Angular Directive] - e2e Testing</h2>
           <hr>
           <form style="margin-top: 10px">
-            <url-field id="url" url="settings.additionalParams.url" hide-label="true"></url-field>
+            <url-field id="url" url="settings.additionalParams.url" hide-label="true" company-id="{{settings.params.companyId}}"></url-field>
+            <!--<url-field id="url" url="settings.additionalParams.url" hide-storage="hide"></url-field>-->
           </form>
           <hr>
           <button id="setValidUrl" type="button" class="btn btn-default" ng-click="setValidUrl()">Set Valid URL</button>
@@ -33,6 +34,7 @@
 <script type="text/javascript" src="/components/rv-common-i18n/dist/i18n.js"></script>
 <script type="text/javascript" src="/node_modules/widget-tester/mocks/i18n-config.js"></script>
 <script type="text/javascript" src="/components/widget-settings-ui-components/dist/js/angular/tooltip.js"></script>
+<script type="text/javascript" src="/components/component-storage-selector/dist/storage-selector.js"></script>
 <script type="text/javascript" src="/dist/js/angular/url-field.js"></script>
 <!--<script type="text/javascript" src="/src/_config/config.js"></script>
 <script type="text/javascript" src="/src/_angular/url-field/dtv-url-field.js"></script>
@@ -42,6 +44,9 @@
     .controller("mainController", ["$scope", function ($scope) {
 
       $scope.settings = {
+        params: {
+          companyId: "12345"
+        },
         additionalParams: {}
       };
 

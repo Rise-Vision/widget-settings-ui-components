@@ -2,7 +2,9 @@
   "use strict";
 
   angular.module("risevision.widget.common.url-field",
-    ["risevision.common.i18n", "risevision.widget.common.tooltip"])
+    ["risevision.common.i18n",
+    "risevision.widget.common.tooltip",
+    "risevision.widget.common.storage-selector"])
 
     .directive("urlField", ["$templateCache", "$log", function ($templateCache, $log) {
       return {
@@ -10,7 +12,9 @@
         require: "?ngModel",
         scope: {
           url: "=",
-          hideLabel: "@"
+          hideLabel: "@",
+          hideStorage: "@",
+          companyId: "@"
         },
         template: $templateCache.get("_angular/url-field/url-field.html"),
         link: function (scope, element, attrs, ctrl) {
@@ -39,12 +43,43 @@
             return urlRegExp.test(value);
           }
 
+          function configureStorageUrl(url) {
+            /*
+             Storage URL is received like so:
+             https://www.googleapis.com/download/storage/v1/b/risemedialibrary-[companyid]/o/[file]?&alt=media
+
+             Need it to be:
+             https://storage-download.googleapis.com/storage/v1/b/risemedialibrary-[companyid]/o/[file]
+
+             Documentation: https://cloud.google.com/storage/docs/reference-uris
+             */
+
+            var base = "https://storage-download.googleapis.com/storage/v1/b/risemedialibrary-",
+              file = url.substring(url.indexOf("/o/"), (url.indexOf(".html") + 5));
+
+            return base + scope.companyId + file;
+          }
+
           // By default enforce validation
           scope.doValidation = true;
           // A flag to set if the user turned off validation
           scope.forcedValid = false;
           // Validation state
           scope.valid = true;
+
+          if (!scope.hideStorage) {
+            scope.$on("picked", function (event, data) {
+              var storageUrl = data[0];
+
+              // if this is an HTML file, the URL needs refactoring to work for an iframe
+              if (data[0].indexOf(".html") !== -1) {
+                storageUrl = configureStorageUrl(data[0]);
+              }
+
+              scope.url = storageUrl;
+
+            });
+          }
 
           scope.$watch("url", function (url) {
             if (url && scope.doValidation) {
@@ -70,6 +105,7 @@
               }
             }
           });
+
         }
       };
     }]);
@@ -83,7 +119,10 @@ app.run(["$templateCache", function($templateCache) {
   $templateCache.put("_angular/url-field/url-field.html",
     "<div class=\"form-group\" >\n" +
     "  <label for=\"url\" ng-if=\"!hideLabel\">{{ \"url.label\" | translate }}</label>\n" +
-    "  <input id=\"url\" name=\"url\" type=\"text\" ng-model=\"url\" class=\"form-control\" placeholder=\"http://\">\n" +
+    "  <div ng-class=\"{'input-group':!hideStorage}\">\n" +
+    "    <input id=\"url\" name=\"url\" type=\"text\" ng-model=\"url\" class=\"form-control\" placeholder=\"http://\">\n" +
+    "    <span class=\"input-url-addon\" ng-if=\"!hideStorage\"><storage-selector company-id=\"{{companyId}}\"></storage-selector></span>\n" +
+    "  </div>\n" +
     "  <p ng-if=\"!valid\" class=\"help-block\">{{ \"url.invalid\" | translate }}</p>\n" +
     "  <div class=\"checkbox\" ng-show=\"forcedValid || !valid\">\n" +
     "    <label>\n" +
