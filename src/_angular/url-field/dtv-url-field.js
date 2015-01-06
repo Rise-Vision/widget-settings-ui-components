@@ -43,23 +43,6 @@
             return urlRegExp.test(value);
           }
 
-          function configureStorageUrl(url) {
-            /*
-             Storage URL is received like so:
-             https://www.googleapis.com/download/storage/v1/b/risemedialibrary-[companyid]/o/[file]?&alt=media
-
-             Need it to be:
-             https://storage-download.googleapis.com/storage/v1/b/risemedialibrary-[companyid]/o/[file]
-
-             Documentation: https://cloud.google.com/storage/docs/reference-uris
-             */
-
-            var base = "https://storage-download.googleapis.com/storage/v1/b/risemedialibrary-",
-              file = url.substring(url.indexOf("/o/"), (url.indexOf(".html") + 5));
-
-            return base + scope.companyId + file;
-          }
-
           // By default enforce validation
           scope.doValidation = true;
           // A flag to set if the user turned off validation
@@ -69,15 +52,7 @@
 
           if (!scope.hideStorage) {
             scope.$on("picked", function (event, data) {
-              var storageUrl = data[0];
-
-              // if this is an HTML file, the URL needs refactoring to work for an iframe
-              if (data[0].indexOf(".html") !== -1) {
-                storageUrl = configureStorageUrl(data[0]);
-              }
-
-              scope.url = storageUrl;
-
+              scope.url = data[0];
             });
           }
 
