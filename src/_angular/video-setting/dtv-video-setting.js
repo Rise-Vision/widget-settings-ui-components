@@ -1,7 +1,10 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.video-setting", ["risevision.common.i18n"])
+  angular.module("risevision.widget.common.video-setting", [
+    "risevision.common.i18n",
+    "ui.bootstrap-slider"
+  ])
     .directive("videoSetting", ["$templateCache", "$log", function ($templateCache/*, $log*/) {
       return {
         restrict: "E",
