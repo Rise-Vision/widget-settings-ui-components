@@ -2,24 +2,24 @@
   "use strict";
 
   var gulp = require("gulp");
-  var spawn = require("spawn-cmd").spawn;
   var gutil = require("gulp-util");
   var connect = require("gulp-connect");
   var html2string = require("gulp-html2string");
   var html2js = require("gulp-html2js");
   var path = require("path");
   var rename = require("gulp-rename");
-  var clean = require("gulp-clean");
   var concat = require("gulp-concat");
   var bump = require("gulp-bump");
   var sass = require("gulp-sass");
   var minifyCSS = require("gulp-minify-css");
   var fs = require("fs");
-  var runSequence = require("gulp-run-sequence");
+  var runSequence = require("run-sequence");
   var es = require("event-stream");
   var jshint = require("gulp-jshint");
   var uglify = require("gulp-uglify");
   var factory = require("widget-tester").gulpTaskFactory;
+  var bower = require("gulp-bower");
+  var del = require("del");
 
   var subcomponents = fs.readdirSync("src")
     .filter(function(file) {
@@ -32,14 +32,16 @@
       return fs.statSync(path.join("src/_angular", file)).isDirectory();
     });
 
-  gulp.task("clean-dist", function () {
-    return gulp.src("dist", {read: false})
-      .pipe(clean());
+  gulp.task("clean-bower", function(cb){
+    del(["./components/**"], cb);
   });
 
-  gulp.task("clean-tmp", function () {
-    return gulp.src("tmp", {read: false})
-      .pipe(clean());
+  gulp.task("clean-dist", function (cb) {
+    del(['./dist/**'], cb);
+  });
+
+  gulp.task("clean-tmp", function (cb) {
+    del(['./tmp/**'], cb);
   });
 
   gulp.task("clean", ["clean-dist", "clean-tmp"]);
@@ -189,6 +191,13 @@
 
   gulp.task("test", function(cb) {
     runSequence("build", "e2e:server", "e2e:test", "e2e:test-ng", "e2e:server-close", "test:metrics", cb);
+  });
+
+  gulp.task("bower-clean-install", ["clean-bower"], function(cb){
+    return bower().on("error", function(err) {
+      console.log(err);
+      cb();
+    });
   });
 
   gulp.task("default", ["build"]);
