@@ -1,0 +1,44 @@
+<!-- Color -->
+<div class="row">
+  <div class="col-md-3">
+      <div class="input-group">
+        <input class="form-control" colorpicker="rgba" colorpicker-parent="true" background-setting type="text" ng-model="background.color">
+        <span class="input-group-addon color-wheel"></span>
+      </div>
+  </div>
+</div>
+<!-- Image Choice -->
+<div class="checkbox">
+  <label>
+    <input name="choice" type="checkbox" ng-model="background.useImage"> {{"background.choice" | translate}}
+  </label>
+</div>
+<div id="backgroundImageControls" ng-if="background.useImage">
+  <!-- Image Placeholder -->
+  <div class="form-group">
+    <div ng-if="!imageLoaded" class="image-placeholder">
+      <i class="fa fa-image"></i>
+    </div>
+    <!-- Image -->
+    <div ng-show="imageLoaded" class="row">
+      <div class="col-xs-5 col-sm-3 col-md-2">
+        <img ng-src="{{imageUrl}}" background-image class="img-rounded img-responsive">
+      </div>
+    </div>
+  </div>
+  <!-- Image URL -->
+  <url-field id="backgroundImageUrl" url="background.image.url"
+             file-type="image"
+             hide-label="true"
+             company-id="{{companyId}}"
+             ng-model="urlentry" valid></url-field>
+  <!-- Position -->
+  <position-setting position="background.image.position" hide-label="true"></position-setting>
+  <!-- Scale to fit -->
+  <div class="checkbox">
+    <label>
+      <input name="scale" type="checkbox" ng-model="background.image.scale"> {{"background.image.scale" | translate}}
+    </label>
+  </div>
+</div>
+
