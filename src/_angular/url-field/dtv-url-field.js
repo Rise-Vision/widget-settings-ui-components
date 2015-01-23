@@ -56,6 +56,10 @@
             });
           }
 
+          scope.blur = function() {
+            scope.$emit("urlFieldBlur");
+          };
+
           scope.$watch("url", function (url) {
             if (url && scope.doValidation) {
               scope.valid = testUrl(scope.url);

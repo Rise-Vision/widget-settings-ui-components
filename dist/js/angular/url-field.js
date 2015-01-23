@@ -56,6 +56,10 @@
             });
           }
 
+          scope.blur = function() {
+            scope.$emit("urlFieldBlur");
+          };
+
           scope.$watch("url", function (url) {
             if (url && scope.doValidation) {
               scope.valid = testUrl(scope.url);
@@ -95,7 +99,7 @@ app.run(["$templateCache", function($templateCache) {
     "<div class=\"form-group\" >\n" +
     "  <label for=\"url\" ng-if=\"!hideLabel\">{{ \"url.label\" | translate }}</label>\n" +
     "  <div ng-class=\"{'input-group':!hideStorage}\">\n" +
-    "    <input id=\"url\" name=\"url\" type=\"text\" ng-model=\"url\" class=\"form-control\" placeholder=\"http://\">\n" +
+    "    <input id=\"url\" name=\"url\" type=\"text\" ng-model=\"url\" ng-blur=\"blur()\" class=\"form-control\" placeholder=\"http://\">\n" +
     "    <span class=\"input-url-addon\" ng-if=\"!hideStorage\"><storage-selector company-id=\"{{companyId}}\"></storage-selector></span>\n" +
     "  </div>\n" +
     "  <p ng-if=\"!valid\" class=\"help-block\">{{ \"url.invalid\" | translate }}</p>\n" +
