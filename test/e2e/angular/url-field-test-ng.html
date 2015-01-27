@@ -15,12 +15,12 @@
           <h2 class="text-center">URL Field [Angular Directive] - e2e Testing</h2>
           <hr>
           <form style="margin-top: 10px">
-            <url-field id="url" url="settings.additionalParams.url" hide-label="true" company-id="{{settings.params.companyId}}"></url-field>
+            <url-field id="urlField" url="settings.additionalParams.url"
+                       hide-label="true"
+                       init-empty
+                       company-id="{{settings.params.companyId}}"></url-field>
             <!--<url-field id="url" url="settings.additionalParams.url" hide-storage="hide"></url-field>-->
           </form>
-          <hr>
-          <button id="setValidUrl" type="button" class="btn btn-default" ng-click="setValidUrl()">Set Valid URL</button>
-          <button id="setInvalidUrl" type="button" class="btn btn-default" ng-click="setInvalidUrl()">Set Invalid URL</button>
         </div>
       </div>
     </div>
@@ -47,21 +47,10 @@
         params: {
           companyId: "12345"
         },
-        additionalParams: {}
+        additionalParams: {
+          url: ""
+        }
       };
-
-      $scope.setValidUrl = function () {
-        $scope.settings.additionalParams.url = "https://www.example.com/foo/?bar=baz&inga=42&quux";
-      };
-
-      $scope.setInvalidUrl = function () {
-        $scope.settings.additionalParams.url = "http://a.b--c.de/";
-      }
-
-      $scope.getAdditionalParams = function (val, defaultVal) {
-        //always return defaultVal for now
-        return defaultVal;
-      }
 
     }]);
 </script>

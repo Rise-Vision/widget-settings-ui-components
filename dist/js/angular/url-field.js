@@ -1,11 +1,11 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.url-field",
-    ["risevision.common.i18n",
+  angular.module("risevision.widget.common.url-field", [
+    "risevision.common.i18n",
     "risevision.widget.common.tooltip",
-    "risevision.widget.common.storage-selector"])
-
+    "risevision.widget.common.storage-selector"
+  ])
     .directive("urlField", ["$templateCache", "$log", function ($templateCache, $log) {
       return {
         restrict: "E",
@@ -50,6 +50,8 @@
           // Validation state
           scope.valid = true;
 
+          scope.allowInitEmpty = (typeof attrs.initEmpty !== "undefined") ? true : false;
+
           if (!scope.hideStorage) {
             scope.$on("picked", function (event, data) {
               scope.url = data[0];
@@ -61,8 +63,16 @@
           };
 
           scope.$watch("url", function (url) {
-            if (url && scope.doValidation) {
-              scope.valid = testUrl(scope.url);
+            if (typeof url !== "undefined" && url !== null) {
+
+              if (url !== "" && scope.allowInitEmpty) {
+                // ensure an empty "" value now gets validated
+                scope.allowInitEmpty = false;
+              }
+
+              if (scope.doValidation && !scope.allowInitEmpty) {
+                scope.valid = testUrl(scope.url);
+              }
             }
           });
 
@@ -77,7 +87,10 @@
             if(typeof scope.url !== "undefined") {
               if (doValidation) {
                 scope.forcedValid = false;
-                scope.valid = testUrl(scope.url);
+
+                if (!scope.allowInitEmpty) {
+                  scope.valid = testUrl(scope.url);
+                }
               } else {
                 scope.forcedValid = true;
                 scope.valid = true;
