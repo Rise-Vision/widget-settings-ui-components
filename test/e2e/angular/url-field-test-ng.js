@@ -15,6 +15,10 @@
   browser.driver.manage().window().setSize(1024, 768);
 
   describe("URL Field Component", function() {
+
+    var validUrl = "https://www.example.com/foo/?bar=baz&inga=42&quux",
+      invalidUrl = "http://a.b--c.de/";
+
     beforeEach(function (){
       browser.get("/test/e2e/angular/url-field-test-ng.html");
     });
@@ -38,39 +42,42 @@
     });
 
     it("Should update input field via two-way binding", function () {
-      element(by.id("setValidUrl")).click();
+      element(by.css("#urlField input[name='url']")).sendKeys(validUrl);
 
       expect(element(by.css("input[name=url]")).getAttribute("value")).
-        to.eventually.equal("https://www.example.com/foo/?bar=baz&inga=42&quux");
+        to.eventually.equal(validUrl);
 
-      element(by.id("setInvalidUrl")).click();
+      element(by.css("#urlField input[name='url']")).clear();
+      element(by.css("#urlField input[name='url']")).sendKeys(invalidUrl);
 
       expect(element(by.css("input[name=url]")).getAttribute("value")).
-        to.eventually.equal("http://a.b--c.de/");
+        to.eventually.equal(invalidUrl);
 
     });
 
     it("Should provide checkbox to opt in or out of validating based on invalid URL entry", function () {
-      element(by.id("setInvalidUrl")).click();
+      element(by.css("#urlField input[name='url']")).sendKeys(invalidUrl);
 
       // ensure validate checkbox is displayed
       expect(element(by.css("input[name=validate-url]")).isDisplayed()).to.eventually.be.true;
     });
 
     it("Should show and hide error message based on valid and invalid URL entry", function () {
-      element(by.id("setValidUrl")).click();
+      element(by.css("#urlField input[name='url']")).sendKeys(validUrl);
 
       // ensure no error message
       expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
 
-      element(by.id("setInvalidUrl")).click();
+      element(by.css("#urlField input[name='url']")).clear();
+      element(by.css("#urlField input[name='url']")).sendKeys(invalidUrl);
 
       // ensure error message shown
       expect(element(by.css(".help-block")).isDisplayed()).
         to.eventually.be.true;
 
-      element(by.id("setValidUrl")).click();
+      element(by.css("#urlField input[name='url']")).clear();
+      element(by.css("#urlField input[name='url']")).sendKeys(validUrl);
 
       // ensure no error message
       expect(element(by.css(".help-block")).isPresent()).
@@ -78,7 +85,7 @@
     });
 
     it("Should bypass validation when un-checking 'Validate-URL' checkbox ", function () {
-      element(by.id("setInvalidUrl")).click();
+      element(by.css("#urlField input[name='url']")).sendKeys(invalidUrl);
 
       // ensure validate checkbox is displayed
       expect(element(by.css("input[name=validate-url]")).isDisplayed()).to.eventually.be.true;
@@ -95,9 +102,11 @@
       expect(element(by.css(".help-block")).isPresent()).
         to.eventually.be.false;
 
-      element(by.id("setValidUrl")).click();
+      element(by.css("#urlField input[name='url']")).clear();
+      element(by.css("#urlField input[name='url']")).sendKeys(validUrl);
 
-      element(by.id("setInvalidUrl")).click();
+      element(by.css("#urlField input[name='url']")).clear();
+      element(by.css("#urlField input[name='url']")).sendKeys(invalidUrl);
 
       // ensure no error message
       expect(element(by.css(".help-block")).isPresent()).
@@ -106,13 +115,15 @@
     });
 
     it("Should turn validation back on when re-checking 'Validate-URL' checkbox ", function () {
-      element(by.id("setInvalidUrl")).click();
+      element(by.css("#urlField input[name='url']")).sendKeys(invalidUrl);
 
       element(by.css("input[name=validate-url]")).click();
 
-      element(by.id("setValidUrl")).click();
+      element(by.css("#urlField input[name='url']")).clear();
+      element(by.css("#urlField input[name='url']")).sendKeys(validUrl);
 
-      element(by.id("setInvalidUrl")).click();
+      element(by.css("#urlField input[name='url']")).clear();
+      element(by.css("#urlField input[name='url']")).sendKeys(invalidUrl);
 
       // ensure no error message
       expect(element(by.css(".help-block")).isPresent()).

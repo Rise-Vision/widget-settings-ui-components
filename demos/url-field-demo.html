@@ -9,17 +9,17 @@
   <p><strong>Dependencies</strong> <span class="label label-info">Tooltip</span> <span class="label label-info">UI Bootstrap</span> <span class="label label-info">Storage Selector</span></p>
   <p>The directive requires the use of the <code>url</code> attribute which configures the binding of the value for the URL.</p>
   <p>Self-validation occurs on the input field value and if deemed invalid an error message displays. Additionally, a checkbox is provided to either opt in or out of validation.</p>
+  <p>When using the component within a form, add the <code>valid</code> attribute and an arbitrary model value (eg. <code>ng-model="urlentry"</code> in order to update your forms <code>$validity</code> pertaining to a valid URL entry</p>
   <p>Additionally, the Storage Selector component is available to pick a file from Storage, which fills the input field with the URL of the file selected. To do so, the directive requires the use of the <code>company-id</code> attribute which is a local scope property of the directive. The ID for the currently selected Company can be found in the URL where the ID is everything to the right of "company=", for example:</p>
   <hljs>http://rva.risevision.com/#COMPANY_MANAGE/company=XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX</hljs>
-  <p>It should also be noted that the URL Field component automatically configures the appropriate URL to use for the HTML file selected from Storage so that it does not trigger a browser download.</p>
-  <p>You can optionally hide the label for URL Field by using the <code>hideLabel</code> attribute like so <code>hideLabel="hideLabel"</code>. Similarly, the Storage Selector can be hidden using the <code>hideStorage</code> attribute like so <code>hideStorage="hide"</code>.</p>
+  <p>There are a number of optional attributes for further customizing the use of URL Field. You can optionally hide the label for URL Field by using the <code>hideLabel</code> attribute like so <code>hide-label="hideLabel"</code>. Similarly, the Storage Selector can be hidden using the <code>hideStorage</code> attribute like so <code>hide-storage="hide"</code>. If you need to listen for a <code>blur</code> event associated with the input field of URL Field, the component fires an event named <code>urlFieldBlur</code>. Lastly, in the scenario that you set a default value of <code>""</code> for the URL Field but you do not want the component to initially show the invalid controls, add the <code>init-empty</code> attribute.</p>
   <ul>
     <li>Include the following files:
       <hljs include="'angular-script-includes'"></hljs>
     </li>
     <li>Add the directive:
       <hljs>
-        <url-field url="url"></url-field>
+        <url-field url="url" company-id="YOUR_COMPANY_ID" ng-model="urlentry" valid></url-field>
       </hljs>
     </li>
   </ul>
