@@ -15,11 +15,30 @@
           <h2 class="text-center">URL Field [Angular Directive] - e2e Testing</h2>
           <hr>
           <form style="margin-top: 10px">
-            <url-field id="urlField" url="settings.additionalParams.url"
-                       hide-label="true"
-                       init-empty
+            <!-- main test instance -->
+            <url-field id="main"
+                       url="settings.additionalParams.main"
                        company-id="{{settings.params.companyId}}"></url-field>
-            <!--<url-field id="url" url="settings.additionalParams.url" hide-storage="hide"></url-field>-->
+
+            <!-- attributes for hiding -->
+            <url-field id="hiding"
+                       url="settings.additionalParams.hide"
+                       hide-storage="true"
+                       hide-label="true"></url-field>
+
+            <!-- allow validation to pass on initial empty value -->
+            <url-field id="empty"
+                       url="settings.additionalParams.empty"
+                       init-empty></url-field>
+
+            <!-- file type specific -->
+            <url-field id="imageType"
+                       url="settings.additionalParams.type"
+                       file-type="image"></url-field>
+
+            <url-field id="videoType"
+                       url="settings.additionalParams.type"
+                       file-type="video"></url-field>
           </form>
         </div>
       </div>
@@ -36,9 +55,6 @@
 <script type="text/javascript" src="/components/widget-settings-ui-components/dist/js/angular/tooltip.js"></script>
 <script type="text/javascript" src="/components/component-storage-selector/dist/storage-selector.js"></script>
 <script type="text/javascript" src="/dist/js/angular/url-field.js"></script>
-<!--<script type="text/javascript" src="/src/_config/config.js"></script>
-<script type="text/javascript" src="/src/_angular/url-field/dtv-url-field.js"></script>
-<script type="text/javascript" src="/tmp/ng-templates/url-field/url-field.js"></script>-->
 <script>
   angular.module("testapp", ["risevision.widget.common.url-field"])
     .controller("mainController", ["$scope", function ($scope) {
@@ -48,7 +64,10 @@
           companyId: "12345"
         },
         additionalParams: {
-          url: ""
+          main: "",
+          hide: "",
+          empty: "",
+          type: ""
         }
       };
 

@@ -14,13 +14,40 @@
           url: "=",
           hideLabel: "@",
           hideStorage: "@",
-          companyId: "@"
+          companyId: "@",
+          fileType: "@"
         },
         template: $templateCache.get("_angular/url-field/url-field.html"),
         link: function (scope, element, attrs, ctrl) {
 
+          function hasValidExtension(url, fileType) {
+            var testUrl = url.toLowerCase(),
+              extensions;
+
+            switch(fileType) {
+              case "image":
+                extensions = [".jpg", ".jpeg", ".png", ".bmp", ".svg", ".gif"];
+                break;
+              case "video":
+                extensions = [".webm"];
+                break;
+              default:
+                extensions = [];
+            }
+
+            for (var i = 0, len = extensions.length; i < len; i++) {
+              if (testUrl.indexOf(extensions[i]) !== -1) {
+                return true;
+              }
+            }
+
+            return false;
+          }
+
+
           function testUrl(value) {
-            var urlRegExp;
+            var urlRegExp,
+              isValid;
 
             /*
              Discussion
@@ -40,7 +67,18 @@
               value = "http://" + value;
             }
 
-            return urlRegExp.test(value);
+            isValid = urlRegExp.test(value);
+
+            if (isValid && typeof scope.fileType !== "undefined") {
+              isValid = hasValidExtension(value, scope.fileType);
+              if (!isValid) {
+                scope.invalidType = scope.fileType;
+              }
+            } else {
+              scope.invalidType = "url";
+            }
+
+            return isValid;
           }
 
           // By default enforce validation
@@ -49,6 +87,8 @@
           scope.forcedValid = false;
           // Validation state
           scope.valid = true;
+
+          scope.invalidType = "url";
 
           scope.allowInitEmpty = (typeof attrs.initEmpty !== "undefined") ? true : false;
 
@@ -115,7 +155,9 @@ app.run(["$templateCache", function($templateCache) {
     "    <input name=\"url\" type=\"text\" ng-model=\"url\" ng-blur=\"blur()\" class=\"form-control\" placeholder=\"http://\">\n" +
     "    <span class=\"input-url-addon\" ng-if=\"!hideStorage\"><storage-selector company-id=\"{{companyId}}\"></storage-selector></span>\n" +
     "  </div>\n" +
-    "  <p ng-if=\"!valid\" class=\"help-block\">{{ \"url.invalid\" | translate }}</p>\n" +
+    "  <p ng-if=\"!valid && invalidType === 'url'\" class=\"text-danger\">{{ \"url.errors.url\" | translate }}</p>\n" +
+    "  <p ng-if=\"!valid && invalidType === 'image'\" class=\"text-danger\">{{ \"url.errors.image\" | translate }}</p>\n" +
+    "  <p ng-if=\"!valid && invalidType === 'video'\" class=\"text-danger\">{{ \"url.errors.video\" | translate }}</p>\n" +
     "  <div class=\"checkbox\" ng-show=\"forcedValid || !valid\">\n" +
     "    <label>\n" +
     "      <input name=\"validate-url\" ng-click=\"doValidation = !doValidation\" type=\"checkbox\"\n" +
