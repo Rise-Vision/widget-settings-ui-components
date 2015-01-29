@@ -1,9 +1,7 @@
 <div class="row">
   <div class="col-md-3">
     <div class="form-group">
-      <label>
-        {{'widgets.alignment' | translate}}
-      </label>
+      <label ng-if="!hideLabel"> {{'widgets.alignment' | translate}}</label>
       <select name="position" ng-model="position" class="form-control">
         <option value="top-left">{{'position.top.left' | translate}}</option>
         <option value="top-center">{{'position.top.center' | translate}}</option>

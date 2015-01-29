@@ -6,7 +6,8 @@
       return {
         restrict: "E",
         scope: {
-          position: "="
+          position: "=",
+          hideLabel: "@"
         },
         template: $templateCache.get("_angular/position-setting/position-setting.html"),
         link: function ($scope) {
@@ -30,9 +31,7 @@ app.run(["$templateCache", function($templateCache) {
     "<div class=\"row\">\n" +
     "  <div class=\"col-md-3\">\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label>\n" +
-    "        {{'widgets.alignment' | translate}}\n" +
-    "      </label>\n" +
+    "      <label ng-if=\"!hideLabel\"> {{'widgets.alignment' | translate}}</label>\n" +
     "      <select name=\"position\" ng-model=\"position\" class=\"form-control\">\n" +
     "        <option value=\"top-left\">{{'position.top.left' | translate}}</option>\n" +
     "        <option value=\"top-center\">{{'position.top.center' | translate}}</option>\n" +
