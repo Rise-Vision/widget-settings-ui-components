@@ -24,7 +24,7 @@
       it("Should correctly load", function () {
         expect(element(by.css("#main select[name='position']")).isPresent()).to.eventually.be.true;
         expect(element(by.css("#main select[name='position']")).isDisplayed()).to.eventually.be.true;
-        expect(element(by.css("#main div.form-group > label")).isPresent()).to.eventually.be.true;
+        expect(element(by.css("#main label")).isPresent()).to.eventually.be.true;
       });
 
       it("Should correctly load with default selection", function () {
@@ -53,7 +53,7 @@
     describe("** Hiding functionality **", function () {
 
       it("Should hide the label", function () {
-        expect(element(by.css("#hiding div.form-group > label")).isPresent()).to.eventually.be.false;
+        expect(element(by.css("#hiding label")).isPresent()).to.eventually.be.false;
       });
 
     });
