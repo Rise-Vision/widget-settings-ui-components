@@ -32,7 +32,7 @@
     "angular": "1.2.18",
     "angular-bootstrap-slider": "~0.0.6",
     "rv-angular-bootstrap-colorpicker": "https://github.com/Rise-Vision/angular-bootstrap-colorpicker.git#3.0.14",
-    "common-style": "https://github.com/Rise-Vision/common-style.git#1.1.8",
+    "common-style": "https://github.com/Rise-Vision/common-style.git#1.1.9",
     "component-storage-selector": "https://github.com/Rise-Vision/component-storage-selector.git",
     "bootstrap-sass-official": "~3.2.0",
     "angular-bootstrap": "0.11.0",
@@ -41,7 +41,7 @@
     "rv-common-i18n": "https://github.com/Rise-Vision/common-i18n.git#master"
   },
   "resolutions": {
-    "common-style": "1.1.8",
+    "common-style": "1.1.9",
     "rv-common-i18n": "master"
   }
 }
