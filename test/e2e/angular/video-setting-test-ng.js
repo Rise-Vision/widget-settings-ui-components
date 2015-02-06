@@ -34,20 +34,7 @@
 
       // ensure volume slider default value setting is 50
       expect(element(by.model("video.volume")).getAttribute("value")).to.eventually.equal("50,0");
-
-      // ensure loop checkbox is displayed
-      expect(element(by.css("input[name=video-loop]")).isDisplayed()).to.eventually.be.true;
-      // ensure loop checkbox is checked
-      expect(element(by.css("input[name=video-loop]")).getAttribute("checked")).
-        to.eventually.not.be.null;
-
-      // ensure autohide checkbox is displayed
-      expect(element(by.css("input[name=video-autohide]")).isDisplayed()).to.eventually.be.true;
-      // ensure autohide checkbox is checked
-      expect(element(by.css("input[name=video-autohide]")).getAttribute("checked")).
-        to.eventually.not.be.null;
     });
-
 
   });
 

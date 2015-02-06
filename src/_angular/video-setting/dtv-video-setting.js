@@ -15,9 +15,7 @@
         link: function ($scope) {
           $scope.defaultSetting = {
             autoplay: true,
-            volume: 50,
-            loop: true,
-            autohide: true
+            volume: 50
           };
 
           $scope.defaults = function(obj) {
