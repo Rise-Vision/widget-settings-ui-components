@@ -15,9 +15,7 @@
         link: function ($scope) {
           $scope.defaultSetting = {
             autoplay: true,
-            volume: 50,
-            loop: true,
-            autohide: true
+            volume: 50
           };
 
           $scope.defaults = function(obj) {
@@ -62,16 +60,6 @@ app.run(["$templateCache", function($templateCache) {
     "    <div>\n" +
     "      <slider orientation=\"horizontal\" handle=\"round\" ng-model=\"video.volume\" min=\"0\" step=\"1\" max=\"100\"></slider>\n" +
     "    </div>\n" +
-    "  </div>\n" +
-    "  <div class=\"checkbox\">\n" +
-    "    <label>\n" +
-    "      <input name=\"video-loop\" type=\"checkbox\" ng-model=\"video.loop\"> {{\"video.loop.label\" | translate}}\n" +
-    "    </label>\n" +
-    "  </div>\n" +
-    "  <div class=\"checkbox\">\n" +
-    "    <label>\n" +
-    "      <input name=\"video-autohide\" type=\"checkbox\" ng-model=\"video.autohide\"> {{\"video.autohide.label\" | translate}}\n" +
-    "    </label>\n" +
     "  </div>\n" +
     "</div>\n" +
     "");
