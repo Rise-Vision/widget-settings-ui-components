@@ -29,7 +29,7 @@
                 extensions = [".jpg", ".jpeg", ".png", ".bmp", ".svg", ".gif"];
                 break;
               case "video":
-                extensions = [".webm"];
+                extensions = [".webm", ".mp4", ".ogv", ".ogg"];
                 break;
               default:
                 extensions = [];

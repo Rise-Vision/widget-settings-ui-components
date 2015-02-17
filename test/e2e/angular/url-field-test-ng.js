@@ -164,7 +164,7 @@
       });
 
       it("Should validate url to have appropriate video file type", function () {
-        var extensions = [".webm"],
+        var extensions = [".webm", ".mp4", ".ogv", ".ogg"],
           i;
 
         for (i = 0; i < extensions.length; i += 1) {
@@ -175,7 +175,7 @@
           expect(element(by.css("#videoType .text-danger")).isPresent()).to.eventually.be.true;
 
           element(by.css("#videoType input[name='url']")).clear();
-          element(by.css("#videoType input[name='url']")).sendKeys(validUrl + "/image" + extensions[i]);
+          element(by.css("#videoType input[name='url']")).sendKeys(validUrl + "/video" + extensions[i]);
 
           // ensure no error message
           expect(element(by.css("#videoType .text-danger")).isPresent()).to.eventually.be.false;
