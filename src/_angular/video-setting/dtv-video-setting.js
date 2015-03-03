@@ -15,6 +15,7 @@
         link: function ($scope) {
           $scope.defaultSetting = {
             autoplay: true,
+            scaleToFit: true,
             volume: 50
           };
 

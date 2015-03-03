@@ -1,14 +1,19 @@
 <div class="section">
   <h5>{{"video.heading" | translate}}</h5>
+  <div class="form-group">
+    <div class="checkbox">
+      <label>
+        <input name="video-autoplay" type="checkbox" ng-model="video.autoplay"> {{"video.autoplay.label" | translate}}
+      </label>
+    </div>
+  </div>
   <div class="checkbox">
     <label>
-      <input name="video-autoplay" type="checkbox" ng-model="video.autoplay"> {{"video.autoplay.label" | translate}}
+      <input name="video-scale" type="checkbox" ng-model="video.scaleToFit"> {{"widgets.scale-to-fit" | translate}}
     </label>
   </div>
-  <div class="form-group">
-    <label>{{"video.volume.label" | translate}}</label>
-    <div>
-      <slider orientation="horizontal" handle="round" ng-model="video.volume" min="0" step="1" max="100"></slider>
-    </div>
+  <label>{{"video.volume.label" | translate}}</label>
+  <div>
+    <slider orientation="horizontal" handle="round" ng-model="video.volume" min="0" step="1" max="100"></slider>
   </div>
 </div>

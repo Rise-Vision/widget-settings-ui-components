@@ -25,6 +25,16 @@
       // ensure autoplay checkbox is checked
       expect(element(by.css("input[name=video-autoplay]")).getAttribute("checked")).
         to.eventually.not.be.null;
+      // ensure correct model value for autoplay
+      expect(element(by.model("video.autoplay")).isSelected()).to.eventually.be.true;
+
+      // ensure scaleToFit checkbox is displayed
+      expect(element(by.css("input[name=video-scale]")).isDisplayed()).to.eventually.be.true;
+      // ensure autoplay checkbox is checked
+      expect(element(by.css("input[name=video-scale]")).getAttribute("checked")).
+        to.eventually.not.be.null;
+      // ensure correct model value for autoplay
+      expect(element(by.model("video.scaleToFit")).isSelected()).to.eventually.be.true;
 
       // ensure volume slider is displayed
       expect(element(by.css(".slider")).isDisplayed()).to.eventually.be.true;

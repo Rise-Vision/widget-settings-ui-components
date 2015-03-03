@@ -15,6 +15,7 @@
         link: function ($scope) {
           $scope.defaultSetting = {
             autoplay: true,
+            scaleToFit: true,
             volume: 50
           };
 
@@ -50,16 +51,21 @@ app.run(["$templateCache", function($templateCache) {
   $templateCache.put("_angular/video-setting/video-setting.html",
     "<div class=\"section\">\n" +
     "  <h5>{{\"video.heading\" | translate}}</h5>\n" +
+    "  <div class=\"form-group\">\n" +
+    "    <div class=\"checkbox\">\n" +
+    "      <label>\n" +
+    "        <input name=\"video-autoplay\" type=\"checkbox\" ng-model=\"video.autoplay\"> {{\"video.autoplay.label\" | translate}}\n" +
+    "      </label>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
     "  <div class=\"checkbox\">\n" +
     "    <label>\n" +
-    "      <input name=\"video-autoplay\" type=\"checkbox\" ng-model=\"video.autoplay\"> {{\"video.autoplay.label\" | translate}}\n" +
+    "      <input name=\"video-scale\" type=\"checkbox\" ng-model=\"video.scaleToFit\"> {{\"widgets.scale-to-fit\" | translate}}\n" +
     "    </label>\n" +
     "  </div>\n" +
-    "  <div class=\"form-group\">\n" +
-    "    <label>{{\"video.volume.label\" | translate}}</label>\n" +
-    "    <div>\n" +
-    "      <slider orientation=\"horizontal\" handle=\"round\" ng-model=\"video.volume\" min=\"0\" step=\"1\" max=\"100\"></slider>\n" +
-    "    </div>\n" +
+    "  <label>{{\"video.volume.label\" | translate}}</label>\n" +
+    "  <div>\n" +
+    "    <slider orientation=\"horizontal\" handle=\"round\" ng-model=\"video.volume\" min=\"0\" step=\"1\" max=\"100\"></slider>\n" +
     "  </div>\n" +
     "</div>\n" +
     "");
