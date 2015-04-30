@@ -15,7 +15,8 @@
           hideLabel: "@",
           hideStorage: "@",
           companyId: "@",
-          fileType: "@"
+          fileType: "@",
+          storageType: "@"
         },
         template: $templateCache.get("_angular/url-field/url-field.html"),
         link: function (scope, element, attrs, ctrl) {
@@ -58,9 +59,7 @@
              Reasoning
              http://mathiasbynens.be/demo/url-regex */
 
-            /* jshint ignore:start */
-            urlRegExp = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
-            /* jshint ignore:end */
+            urlRegExp = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i; // jshint ignore:line
 
             // Add http:// if no protocol parameter exists
             if (value.indexOf("://") === -1) {
@@ -90,7 +89,7 @@
 
           scope.invalidType = "url";
 
-          scope.allowInitEmpty = (typeof attrs.initEmpty !== "undefined") ? true : false;
+          scope.allowInitEmpty = (typeof attrs.initEmpty !== "undefined");
 
           if (!scope.hideStorage) {
             scope.$on("picked", function (event, data) {
@@ -153,7 +152,7 @@ app.run(["$templateCache", function($templateCache) {
     "  <label ng-if=\"!hideLabel\">{{ \"url.label\" | translate }}</label>\n" +
     "  <div ng-class=\"{'input-group':!hideStorage}\">\n" +
     "    <input name=\"url\" type=\"text\" ng-model=\"url\" ng-blur=\"blur()\" class=\"form-control\" placeholder=\"http://\">\n" +
-    "    <span class=\"input-url-addon\" ng-if=\"!hideStorage\"><storage-selector company-id=\"{{companyId}}\"></storage-selector></span>\n" +
+    "    <span class=\"input-url-addon\" ng-if=\"!hideStorage\"><storage-selector company-id=\"{{companyId}}\" type=\"{{storageType}}\"></storage-selector></span>\n" +
     "  </div>\n" +
     "  <p ng-if=\"!valid && invalidType === 'url'\" class=\"text-danger\">{{ \"url.errors.url\" | translate }}</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'image'\" class=\"text-danger\">{{ \"url.errors.image\" | translate }}</p>\n" +

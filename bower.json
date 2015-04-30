@@ -1,6 +1,6 @@
 {
   "name": "widget-settings-ui-components",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "homepage": "https://github.com/Rise-Vision/widget-settings-ui-components",
   "authors": [
     "Rise Vision"
@@ -22,7 +22,6 @@
     "test"
   ],
   "devDependencies": {
-    "angular": "~1.2.18",
     "angular-mocks": "1.2.18",
     "q": "1.0.1",
     "jquery": "1.11.0",
@@ -30,17 +29,19 @@
   },
   "dependencies": {
     "angular": "1.2.18",
+    "angular-bootstrap": "~0.11.1",
     "angular-bootstrap-slider": "~0.0.6",
     "rv-angular-bootstrap-colorpicker": "https://github.com/Rise-Vision/angular-bootstrap-colorpicker.git",
-    "common-style": "https://github.com/Rise-Vision/common-style.git#master",
+    "rv-common-style": "https://github.com/Rise-Vision/common-style.git#master",
     "component-storage-selector": "https://github.com/Rise-Vision/component-storage-selector.git",
     "bootstrap-sass-official": "~3.2.0",
-    "angular-bootstrap": "0.11.0",
     "bootstrap-form-components": "https://github.com/Rise-Vision/bootstrap-form-components.git",
     "spectrum": "https://github.com/Rise-Vision/spectrum.git",
     "rv-common-i18n": "https://github.com/Rise-Vision/common-i18n.git"
   },
   "resolutions": {
-    "common-style": "master"
+    "rv-common-style": "master",
+    "common-style": "master",
+    "angular-bootstrap": "~0.11.1"
   }
 }
