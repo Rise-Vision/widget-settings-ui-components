@@ -20,6 +20,7 @@
   var factory = require("widget-tester").gulpTaskFactory;
   var bower = require("gulp-bower");
   var del = require("del");
+  var colors = require("colors");
 
   var subcomponents = fs.readdirSync("src")
     .filter(function(file) {
@@ -173,11 +174,9 @@
       .pipe(gulp.dest("dist/js"));
   });
 
-  gulp.task("build", function (cb) {
-    runSequence(["clean", "config"], ["js-uglify", "css-min"], cb);
-  });
-
   gulp.task("webdriver_update", factory.webdriveUpdate());
+
+  // ***** e2e Testing ***** //
 
   gulp.task("e2e:server", ["config"], factory.testServer());
   gulp.task("e2e:server-close", factory.testServerClose());
@@ -187,12 +186,7 @@
     src: ["test/e2e/angular/*test-ng.js"]
   }));
 
-  gulp.task("test:metrics", factory.metrics());
-
-  gulp.task("test", function(cb) {
-    runSequence("build", "e2e:server", "e2e:test", "e2e:test-ng", "e2e:server-close", "test:metrics", cb);
-  });
-
+  // ***** Primary Tasks ***** //
   gulp.task("bower-clean-install", ["clean-bower"], function(cb){
     return bower().on("error", function(err) {
       console.log(err);
@@ -200,6 +194,21 @@
     });
   });
 
-  gulp.task("default", ["build"]);
+  gulp.task("test", function(cb) {
+    runSequence("build", "e2e:server", "e2e:test", "e2e:test-ng", "e2e:server-close", cb);
+  });
+
+  gulp.task("build", function (cb) {
+    runSequence(["clean", "config"], ["js-uglify", "css-min"], cb);
+  });
+
+  gulp.task("default", [], function() {
+    console.log("********************************************************************".yellow);
+    console.log("  gulp bower-clean-install: delete and re-install bower components".yellow);
+    console.log("  gulp test: run e2e tests".yellow);
+    console.log("  gulp build: build distribution versions of all components".yellow);
+    console.log("********************************************************************".yellow);
+    return true;
+  });
 
 })();
