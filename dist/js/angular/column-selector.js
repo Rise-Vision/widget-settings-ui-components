@@ -95,9 +95,9 @@
 }());
 
 (function(module) {
-try { app = angular.module("risevision.widget.common.column-selector"); }
-catch(err) { app = angular.module("risevision.widget.common.column-selector", []); }
-app.run(["$templateCache", function($templateCache) {
+try { module = angular.module("risevision.widget.common.column-selector"); }
+catch(err) { module = angular.module("risevision.widget.common.column-selector", []); }
+module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/column-selector/column-selector.html",
     "<div class=\"section\">\n" +

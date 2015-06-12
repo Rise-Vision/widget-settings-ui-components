@@ -28,7 +28,7 @@
       it("Should correctly load", function () {
         // ensure validate checkbox is checked
         expect(element(by.css("#main input[name=validate-url]")).getAttribute("checked")).
-          to.eventually.not.be.null;
+          to.eventually.be.null;
         // ensure storage selector is displayed
         expect(element(by.css("#main .input-group")).isPresent()).to.eventually.be.true;
         expect(element(by.css("#main .input-url-addon")).isPresent()).to.eventually.be.true;
@@ -67,20 +67,20 @@
         expect(element(by.css("#main .text-danger")).isPresent()).to.eventually.be.true;
       });
 
-      it("Should bypass validation when un-checking 'Validate-URL' checkbox ", function () {
+      it("Should bypass validation when checking 'Remove Validation' checkbox ", function () {
         element(by.css("#main input[name='url']")).sendKeys(invalidUrl);
 
-        // ensure validate checkbox is displayed
+        // ensure remove validation checkbox is displayed
         expect(element(by.css("#main input[name=validate-url]")).isDisplayed()).to.eventually.be.true;
-        // ensure validate checkbox is checked
+        // ensure remove validation checkbox is not checked
         expect(element(by.css("#main input[name=validate-url]")).getAttribute("checked")).
-          to.eventually.not.be.null;
+          to.eventually.be.null;
 
         element(by.css("#main input[name=validate-url]")).click();
 
-        // ensure the checkbox has been unchecked
+        // ensure the checkbox has been checked
         expect(element(by.css("#main input[name=validate-url]")).getAttribute("checked")).
-          to.eventually.be.null;
+          to.eventually.not.be.null;
         // ensure no error message
         expect(element(by.css("#main .text-danger")).isPresent()).to.eventually.be.false;
 
@@ -94,7 +94,7 @@
         expect(element(by.css("#main .text-danger")).isPresent()).to.eventually.be.false;
       });
 
-      it("Should turn validation back on when re-checking 'Validate-URL' checkbox ", function () {
+      it("Should turn validation back on when un-checking 'Remove Validation' checkbox ", function () {
         element(by.css("#main input[name='url']")).sendKeys(invalidUrl);
 
         element(by.css("#main input[name=validate-url]")).click();

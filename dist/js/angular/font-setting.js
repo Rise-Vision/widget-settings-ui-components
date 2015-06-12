@@ -84,21 +84,24 @@
 }());
 
 (function(module) {
-try { app = angular.module("risevision.widget.common.font-setting"); }
-catch(err) { app = angular.module("risevision.widget.common.font-setting", []); }
-app.run(["$templateCache", function($templateCache) {
+try { module = angular.module("risevision.widget.common.font-setting"); }
+catch(err) { module = angular.module("risevision.widget.common.font-setting", []); }
+module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/font-setting/font-setting.html",
-    "<div class=\"row\" class=\"font-settings\">\n" +
+    "<div class=\"row\">\n" +
     "  <div class=\"col-md-12\">\n" +
-    "    <ul class=\"list-inline\">\n" +
+    "    <ul class=\"list-inline font-setting\">\n" +
     "      <li class=\"pull-left\">\n" +
     "        <font-picker font=\"fontData.font\"></font-picker>\n" +
     "      </li>\n" +
     "      <li class=\"pull-left\">\n" +
     "        <font-size-picker ng-model=\"fontData.size\"></font-size-picker>\n" +
     "      </li>\n" +
-    "      <li class=\"pull-left font-setting-button\">\n" +
+    "      <li class=\"pull-left\" ng-if=\"!hideAlignment\">\n" +
+    "        <alignment align=\"fontData.align\" class=\"font-setting-button\"></alignment>\n" +
+    "      </li>\n" +
+    "      <li class=\"font-setting-button\">\n" +
     "        <font-style bold=\"fontData.bold\" italic=\"fontData.italic\" underline=\"fontData.underline\"></font-style>\n" +
     "      </li>\n" +
     "      <li class=\"pull-left font-setting-button\">\n" +
@@ -106,9 +109,6 @@ app.run(["$templateCache", function($templateCache) {
     "      </li>\n" +
     "      <li class=\"pull-left font-setting-button\">\n" +
     "        <input color-picker type=\"highlight\" color=\"fontData.highlightColor\" />\n" +
-    "      </li>\n" +
-    "      <li class=\"pull-left\" ng-if=\"!hideAlignment\">\n" +
-    "        <alignment align=\"fontData.align\" class=\"font-setting-button\"></alignment>\n" +
     "      </li>\n" +
     "    </ul>\n" +
     "  </div>\n" +

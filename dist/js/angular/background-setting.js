@@ -39,9 +39,9 @@
 }());
 
 (function(module) {
-try { app = angular.module("risevision.widget.common.background-setting"); }
-catch(err) { app = angular.module("risevision.widget.common.background-setting", []); }
-app.run(["$templateCache", function($templateCache) {
+try { module = angular.module("risevision.widget.common.background-setting"); }
+catch(err) { module = angular.module("risevision.widget.common.background-setting", []); }
+module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/background-setting/background-setting.html",
     "<div class=\"section\">\n" +

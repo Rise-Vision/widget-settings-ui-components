@@ -42,9 +42,9 @@
 }());
 
 (function(module) {
-try { app = angular.module("risevision.widget.common.scroll-setting"); }
-catch(err) { app = angular.module("risevision.widget.common.scroll-setting", []); }
-app.run(["$templateCache", function($templateCache) {
+try { module = angular.module("risevision.widget.common.scroll-setting"); }
+catch(err) { module = angular.module("risevision.widget.common.scroll-setting", []); }
+module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/scroll-setting/scroll-setting.html",
     "<div class=\"section\">\n" +
