@@ -58,9 +58,9 @@
 }());
 
 (function(module) {
-try { app = angular.module("risevision.widget.common.table-setting"); }
-catch(err) { app = angular.module("risevision.widget.common.table-setting", []); }
-app.run(["$templateCache", function($templateCache) {
+try { module = angular.module("risevision.widget.common.table-setting"); }
+catch(err) { module = angular.module("risevision.widget.common.table-setting", []); }
+module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/table-setting/table-setting.html",
     "<div class=\"section\">\n" +

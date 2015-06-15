@@ -7,25 +7,38 @@
   <link rel="stylesheet" href="/components/rv-common-style/dist/css/rise.min.css">
 </head>
 <body ng-app="testapp" ng-controller="mainController">
-  <div class="widget">
-    <div class="overlay"></div>
-    <div class="settings">
-      <div class="settings-center">
-        <div class="wrapper container modal-content">
-          <div class="modal-header">
-            <h2 class="text-center">Widget Button Toolbar - e2e Testing</h2>
-            <hr>
-            <widget-button-toolbar
-              save="saveSettings()" cancel="closeSettings()" disable-save="inValidState"
-              help="http://www.test-help.com"
-              contribute="http://www.test-contribute.com">
-              </widget-button-toolbar>
+  <div class="container-fluid">
+    <div class="modal-dialog modal-lg">
+      <!-- MODAL-->
+      <div class="modal-content">
+        <!-- Start Modal Header-->
+        <div class="modal-header">
+          <div class="app-header" style="padding:15px">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="fa fa-times"></i>
+            </button>
+            <div class="title-block">
+              <h1>Widget Settings</h1>
+              <button class="btn btn-link">
+                <i class="fa fa-github fa-2x"></i>
+              </button>
+            </div>
           </div>
-          <hr>
+        </div>
+        <!-- End Modal Header-->
+
+        <!-- Start Modal Body-->
+        <div class="modal-body">
+          <form>
+              <widget-button-toolbar
+                save="saveSettings()" cancel="closeSettings()" disable-save="inValidState"
+                help="http://www.test-help.com"
+                contribute="http://www.test-contribute.com">
+                </widget-button-toolbar>
+          </form>
           <input type="text" id="testInput">
           <button id="invalidTestBtn" type="button" class="btn btn-default" ng-click="test(true)">Invalid Test</button>
           <button id="validTestBtn" type="button" class="btn btn-default" ng-click="test(false)">Valid Test</button>
-
         </div>
       </div>
     </div>

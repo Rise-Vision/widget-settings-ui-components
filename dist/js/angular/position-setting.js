@@ -23,9 +23,9 @@
 }());
 
 (function(module) {
-try { app = angular.module("risevision.widget.common.position-setting"); }
-catch(err) { app = angular.module("risevision.widget.common.position-setting", []); }
-app.run(["$templateCache", function($templateCache) {
+try { module = angular.module("risevision.widget.common.position-setting"); }
+catch(err) { module = angular.module("risevision.widget.common.position-setting", []); }
+module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/position-setting/position-setting.html",
     "<div class=\"row\">\n" +

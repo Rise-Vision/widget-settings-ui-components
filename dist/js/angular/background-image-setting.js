@@ -96,9 +96,9 @@
 }());
 
 (function(module) {
-try { app = angular.module("risevision.widget.common.background-image-setting"); }
-catch(err) { app = angular.module("risevision.widget.common.background-image-setting", []); }
-app.run(["$templateCache", function($templateCache) {
+try { module = angular.module("risevision.widget.common.background-image-setting"); }
+catch(err) { module = angular.module("risevision.widget.common.background-image-setting", []); }
+module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/background-image-setting/background-image-setting.html",
     "<!-- Color -->\n" +

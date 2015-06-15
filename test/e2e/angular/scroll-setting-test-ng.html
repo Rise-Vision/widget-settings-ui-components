@@ -7,20 +7,35 @@
 </head>
 
 <body ng-app="testapp" ng-controller="mainController">
-    <div class="widget">
-      <div class="overlay"></div>
-      <div class="settings">
-        <div class="settings-center">
-          <div class="wrapper container-fluid modal-content">
-            <h2 class="text-center">Scrolling - e2e Testing</h2>
-            <hr>
-            <form style="margin-top: 10px">
-              <scroll-setting scroll="settings.additionalParams.scroll"></scroll-setting>
-            </form>
+  <div class="container-fluid">
+    <div class="modal-dialog modal-lg">
+      <!-- MODAL-->
+      <div class="modal-content">
+        <!-- Start Modal Header-->
+        <div class="modal-header">
+          <div class="app-header" style="padding:15px">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="fa fa-times"></i>
+            </button>
+            <div class="title-block">
+              <h1>Widget Settings</h1>
+              <button class="btn btn-link">
+                <i class="fa fa-github fa-2x"></i>
+              </button>
+            </div>
           </div>
+        </div>
+        <!-- End Modal Header-->
+
+        <!-- Start Modal Body-->
+        <div class="modal-body">
+          <form>
+            <scroll-setting scroll="settings.additionalParams.scroll"></scroll-setting>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
   <script type="text/javascript" src="/components/angular/angular.js"></script>
   <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>

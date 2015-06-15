@@ -84,9 +84,9 @@
 }());
 
 (function(module) {
-try { app = angular.module("risevision.widget.common.column-setting"); }
-catch(err) { app = angular.module("risevision.widget.common.column-setting", []); }
-app.run(["$templateCache", function($templateCache) {
+try { module = angular.module("risevision.widget.common.column-setting"); }
+catch(err) { module = angular.module("risevision.widget.common.column-setting", []); }
+module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/column-setting/column-setting.html",
     "<div class=\"panel panel-default\">\n" +

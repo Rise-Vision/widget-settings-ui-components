@@ -7,25 +7,36 @@
   <link rel="stylesheet" href="/components/rv-common-style/dist/css/rise.min.css">
 </head>
 <body ng-app="testapp" ng-controller="mainController">
-<div class="widget">
-  <div class="overlay"></div>
-  <div class="settings">
-    <div class="settings-center">
-      <div class="wrapper container modal-content">
+  <div class="container-fluid">
+    <div class="modal-dialog modal-lg">
+      <!-- MODAL-->
+      <div class="modal-content">
+        <!-- Start Modal Header-->
         <div class="modal-header">
-          <h2 class="text-center">Position Setting - e2e Testing</h2>
-          <hr>
-          <div class="form-group">
-            <position-setting id="main" position="settings.additionalParams.main"></position-setting>
+          <div class="app-header" style="padding:15px">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="fa fa-times"></i>
+            </button>
+            <div class="title-block">
+              <h1>Widget Settings</h1>
+              <button class="btn btn-link">
+                <i class="fa fa-github fa-2x"></i>
+              </button>
+            </div>
           </div>
-          <div class="form-group">
-            <position-setting id="hide" hide-label="true" position="settings.additionalParams.hiding"></position-setting>
-          </div>
+        </div>
+        <!-- End Modal Header-->
+
+        <!-- Start Modal Body-->
+        <div class="modal-body">
+          <form>
+              <position-setting id="main" position="settings.additionalParams.main"></position-setting>
+              <position-setting id="hide" hide-label="true" position="settings.additionalParams.hiding"></position-setting>
+          </form>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 <script type="text/javascript" src="/components/angular/angular.js"></script>
 <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
