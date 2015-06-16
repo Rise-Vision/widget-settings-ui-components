@@ -23,19 +23,13 @@
       //scroll enabled
       expect(element(by.id("scroll-by")).getAttribute("value")).
         to.eventually.equal("none");
-
-      expect(element(by.css(".more-scroll-options")).isDisplayed()).to.eventually.be.false;
     });
 
     it("Should display scroll settings when scroll is enabled", function () {
       expect(element(by.id("scroll-by")).getAttribute("value")).
         to.eventually.equal("none");
-      expect(element(by.css(".more-scroll-options")).isDisplayed()).
-      to.eventually.be.false;
 
       element(by.cssContainingText('option', 'Continuously')).click();
-      expect(element(by.css(".more-scroll-options")).isDisplayed())
-      .to.eventually.be.true;
 
       expect(element(by.id("scroll-by")).getAttribute("value"))
       .to.eventually.equal("continuous");
@@ -47,9 +41,6 @@
       .to.eventually.equal("5");
     });
 
-    xit("Should correctly save settings", function (done) {
-      //TODO
-    });
   });
 
 })();
