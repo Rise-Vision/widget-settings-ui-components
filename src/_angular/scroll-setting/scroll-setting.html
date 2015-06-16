@@ -1,45 +1,32 @@
-<div class="section">
-  <h5>{{'scroll.heading' | translate}}</h5>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-md-3">
-        <label>{{'scroll.by.label' | translate}}</label>
-        <select id="scroll-by" ng-model="scroll.by" class="form-control">
-          <option value="none">{{'scroll.by.none' | translate}}</option>
-          <option value="continuous">{{'scroll.by.continuous' | translate}}</option>
-          <option value="page">{{'scroll.by.page' | translate}}</option>
-        </select>
-      </div>
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <label class="control-label">{{"scroll.heading" | translate}}</label>
+      <select id="scroll-by" ng-model="scroll.by" class="form-control">
+        <option value="none">{{'scroll.by.none' | translate}}</option>
+        <option value="continuous">{{'scroll.by.continuous' | translate}}</option>
+        <option value="page">{{'scroll.by.page' | translate}}</option>
+      </select>
     </div>
   </div>
-  <div ng-show="scroll.by != 'none'" class="more-scroll-options">
+  <div class="col-md-3" ng-show="scroll.by != 'none'">
     <div class="form-group">
-      <label for="scroll-speed">{{'scroll.speed.label' | translate}}</label>
-      <div class="row">
-        <div class="col-md-3">
-          <select id="scroll-speed" ng-model="scroll.speed" class="form-control">
-            <option value="slowest">{{'scroll.speed.slowest' | translate}}</option>
-            <option value="slow">{{'scroll.speed.slow' | translate}}</option>
-            <option value="medium">{{'scroll.speed.medium' | translate}}</option>
-            <option value="fast">{{'scroll.speed.fast' | translate}}</option>
-            <option value="fastest">{{'scroll.speed.fastest' | translate}}</option>
-          </select>
-        </div>
-      </div>
+      <label class="control-label">{{'scroll.speed.label' | translate}}</label>
+      <select id="scroll-speed" ng-model="scroll.speed" class="form-control">
+        <option value="slowest">{{'scroll.speed.slowest' | translate}}</option>
+        <option value="slow">{{'scroll.speed.slow' | translate}}</option>
+        <option value="medium">{{'scroll.speed.medium' | translate}}</option>
+        <option value="fast">{{'scroll.speed.fast' | translate}}</option>
+        <option value="fastest">{{'scroll.speed.fastest' | translate}}</option>
+      </select>
     </div>
+  </div>
+  <div class="col-md-3" ng-show="scroll.by != 'none'">
     <div class="form-group">
-      <label for="scroll-pause">
-        {{'scroll.pause.label' | translate}}
-      </label>
-      <span popover="{{'scroll.pause.tooltip' | translate}}"
-            popover-trigger="click" popover-placement="right" rv-tooltip></span>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="input-group">
-            <input id="scroll-pause" type="number" ng-model="scroll.pause" class="form-control" />
-            <span class="input-group-addon">{{'common.units.seconds' | translate}}</span>
-          </div>
-        </div>
+      <label class="control-label">{{'scroll.pause.label' | translate}}</label>
+      <div class="input-group">
+        <input id="scroll-pause" type="number" ng-model="scroll.pause" class="form-control" />
+        <span class="input-group-addon">{{'common.units.seconds' | translate}}</span>
       </div>
     </div>
   </div>

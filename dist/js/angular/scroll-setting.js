@@ -47,48 +47,35 @@ catch(err) { module = angular.module("risevision.widget.common.scroll-setting", 
 module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/scroll-setting/scroll-setting.html",
-    "<div class=\"section\">\n" +
-    "  <h5>{{'scroll.heading' | translate}}</h5>\n" +
-    "  <div class=\"form-group\">\n" +
-    "    <div class=\"row\">\n" +
-    "      <div class=\"col-md-3\">\n" +
-    "        <label>{{'scroll.by.label' | translate}}</label>\n" +
-    "        <select id=\"scroll-by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
-    "          <option value=\"none\">{{'scroll.by.none' | translate}}</option>\n" +
-    "          <option value=\"continuous\">{{'scroll.by.continuous' | translate}}</option>\n" +
-    "          <option value=\"page\">{{'scroll.by.page' | translate}}</option>\n" +
-    "        </select>\n" +
-    "      </div>\n" +
+    "<div class=\"row\">\n" +
+    "  <div class=\"col-md-3\">\n" +
+    "    <div class=\"form-group\">\n" +
+    "      <label class=\"control-label\">{{\"scroll.heading\" | translate}}</label>\n" +
+    "      <select id=\"scroll-by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
+    "        <option value=\"none\">{{'scroll.by.none' | translate}}</option>\n" +
+    "        <option value=\"continuous\">{{'scroll.by.continuous' | translate}}</option>\n" +
+    "        <option value=\"page\">{{'scroll.by.page' | translate}}</option>\n" +
+    "      </select>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div ng-show=\"scroll.by != 'none'\" class=\"more-scroll-options\">\n" +
+    "  <div class=\"col-md-3\" ng-show=\"scroll.by != 'none'\">\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"scroll-speed\">{{'scroll.speed.label' | translate}}</label>\n" +
-    "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-3\">\n" +
-    "          <select id=\"scroll-speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
-    "            <option value=\"slowest\">{{'scroll.speed.slowest' | translate}}</option>\n" +
-    "            <option value=\"slow\">{{'scroll.speed.slow' | translate}}</option>\n" +
-    "            <option value=\"medium\">{{'scroll.speed.medium' | translate}}</option>\n" +
-    "            <option value=\"fast\">{{'scroll.speed.fast' | translate}}</option>\n" +
-    "            <option value=\"fastest\">{{'scroll.speed.fastest' | translate}}</option>\n" +
-    "          </select>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
+    "      <label class=\"control-label\">{{'scroll.speed.label' | translate}}</label>\n" +
+    "      <select id=\"scroll-speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
+    "        <option value=\"slowest\">{{'scroll.speed.slowest' | translate}}</option>\n" +
+    "        <option value=\"slow\">{{'scroll.speed.slow' | translate}}</option>\n" +
+    "        <option value=\"medium\">{{'scroll.speed.medium' | translate}}</option>\n" +
+    "        <option value=\"fast\">{{'scroll.speed.fast' | translate}}</option>\n" +
+    "        <option value=\"fastest\">{{'scroll.speed.fastest' | translate}}</option>\n" +
+    "      </select>\n" +
     "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"col-md-3\" ng-show=\"scroll.by != 'none'\">\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"scroll-pause\">\n" +
-    "        {{'scroll.pause.label' | translate}}\n" +
-    "      </label>\n" +
-    "      <span popover=\"{{'scroll.pause.tooltip' | translate}}\"\n" +
-    "            popover-trigger=\"click\" popover-placement=\"right\" rv-tooltip></span>\n" +
-    "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-3\">\n" +
-    "          <div class=\"input-group\">\n" +
-    "            <input id=\"scroll-pause\" type=\"number\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
-    "            <span class=\"input-group-addon\">{{'common.units.seconds' | translate}}</span>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
+    "      <label class=\"control-label\">{{'scroll.pause.label' | translate}}</label>\n" +
+    "      <div class=\"input-group\">\n" +
+    "        <input id=\"scroll-pause\" type=\"number\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
+    "        <span class=\"input-group-addon\">{{'common.units.seconds' | translate}}</span>\n" +
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
