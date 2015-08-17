@@ -20,25 +20,21 @@
     });
 
     it("Should correctly load default defaults", function () {
-      //scroll enabled
-      expect(element(by.id("scroll-by")).getAttribute("value")).
-        to.eventually.equal("none");
+      expect(element(by.id("scroll-by")).getAttribute("value")).to.eventually.equal("none");
     });
 
     it("Should display scroll settings when scroll is enabled", function () {
-      expect(element(by.id("scroll-by")).getAttribute("value")).
-        to.eventually.equal("none");
+      expect(element(by.id("scroll-by")).getAttribute("value")).to.eventually.equal("none");
 
       element(by.cssContainingText('option', 'Continuously')).click();
 
-      expect(element(by.id("scroll-by")).getAttribute("value"))
-      .to.eventually.equal("continuous");
+      expect(element(by.id("scroll-by")).getAttribute("value")).to.eventually.equal("continuous");
 
-      expect(element(by.id("scroll-speed")).getAttribute("value"))
-      .to.eventually.equal("medium");
+      expect(element(by.id("scroll-speed")).getAttribute("value")).to.eventually.equal("medium");
 
-      expect(element(by.id("scroll-pause")).getAttribute("value"))
-      .to.eventually.equal("5");
+      expect(element(by.id("scroll-pause")).getAttribute("value")).to.eventually.equal("5");
+
+      expect(element(by.id("scroll-pud")).getAttribute("value")).to.eventually.equal("10");
     });
 
   });
