@@ -15,7 +15,8 @@
           $scope.defaultSetting = {
             by: "none",
             speed: "medium",
-            pause: 5
+            pause: 5,
+            pud: 10
           };
 
           $scope.defaults = function(obj) {
@@ -75,6 +76,17 @@ module.run(["$templateCache", function($templateCache) {
     "      <label class=\"control-label\">{{'scroll.pause.label' | translate}}</label>\n" +
     "      <div class=\"input-group\">\n" +
     "        <input id=\"scroll-pause\" type=\"number\" ng-model=\"scroll.pause\" class=\"form-control\" />\n" +
+    "        <span class=\"input-group-addon\">{{'common.units.seconds' | translate}}</span>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"col-md-3\" ng-show=\"scroll.by != 'none'\">\n" +
+    "    <div class=\"form-group\">\n" +
+    "      <label class=\"control-label\">{{'scroll.pud.label' | translate}}</label>\n" +
+    "      <span popover=\"{{'scroll.pud.tooltip' | translate}}\" popover-trigger=\"click\"\n" +
+    "        popover-placement=\"right\" rv-tooltip></span>\n" +
+    "      <div class=\"input-group\">\n" +
+    "        <input id=\"scroll-pud\" type=\"number\" ng-model=\"scroll.pud\" class=\"form-control\" />\n" +
     "        <span class=\"input-group-addon\">{{'common.units.seconds' | translate}}</span>\n" +
     "      </div>\n" +
     "    </div>\n" +

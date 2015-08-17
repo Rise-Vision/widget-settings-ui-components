@@ -30,4 +30,15 @@
       </div>
     </div>
   </div>
+  <div class="col-md-3" ng-show="scroll.by != 'none'">
+    <div class="form-group">
+      <label class="control-label">{{'scroll.pud.label' | translate}}</label>
+      <span popover="{{'scroll.pud.tooltip' | translate}}" popover-trigger="click"
+        popover-placement="right" rv-tooltip></span>
+      <div class="input-group">
+        <input id="scroll-pud" type="number" ng-model="scroll.pud" class="form-control" />
+        <span class="input-group-addon">{{'common.units.seconds' | translate}}</span>
+      </div>
+    </div>
+  </div>
 </div>
