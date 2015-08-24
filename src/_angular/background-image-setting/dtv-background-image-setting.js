@@ -50,11 +50,8 @@
             scope.defaults(background, scope.defaultSetting);
           });
 
-          scope.$watch("background.image.url", function (newUrl, oldUrl) {
-            /* In the context of being used in a widget settings, this scenario happens only once when settings
-             initialize and have previously been saved. This will trigger the image to load/display.
-             */
-            if (newUrl !== "" && typeof oldUrl === "undefined") {
+          scope.$watch("background.image.url", function (newUrl) {
+            if (scope.imageUrl !== newUrl) {
               scope.imageUrl = newUrl;
             }
           });
