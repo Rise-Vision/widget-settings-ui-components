@@ -35,6 +35,11 @@
         // all background image controls should not exist
         expect(element(by.id("backgroundImageControls")).isPresent()).to.eventually.be.false;
 
+        // color container and position container classes should be set
+        expect(element(by.css(".colorParentClass")).isPresent()).to.eventually.be.true;
+        expect(element(by.css(".colorClass")).isPresent()).to.eventually.be.true;
+
+
       });
 
       it("Should display and correctly load the image controls", function () {
@@ -51,6 +56,9 @@
         expect(element(by.css("img")).isDisplayed()).to.eventually.be.false;
 
         expect(element(by.model("background.image.scale")).isSelected()).to.eventually.be.true;
+
+        expect(element(by.css(".positionParentClass")).isPresent()).to.eventually.be.true;
+        expect(element(by.css(".positionClass")).isPresent()).to.eventually.be.true;
       });
 
       it("Should successfully load image and display it", function () {

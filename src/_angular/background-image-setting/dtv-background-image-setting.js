@@ -13,7 +13,11 @@
         restrict: "E",
         scope: {
           background: "=",
-          companyId: "@"
+          companyId: "@",
+          colorParentContainerClass: "=",
+          colorContainerClass: "=",
+          positionParentContainerClass: "=",
+          positionContainerClass: "="
         },
         template: $templateCache.get("_angular/background-image-setting/background-image-setting.html"),
         link: function (scope) {

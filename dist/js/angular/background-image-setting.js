@@ -13,7 +13,11 @@
         restrict: "E",
         scope: {
           background: "=",
-          companyId: "@"
+          companyId: "@",
+          colorParentContainerClass: "=",
+          colorContainerClass: "=",
+          positionParentContainerClass: "=",
+          positionContainerClass: "="
         },
         template: $templateCache.get("_angular/background-image-setting/background-image-setting.html"),
         link: function (scope) {
@@ -99,8 +103,8 @@ module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/background-image-setting/background-image-setting.html",
     "<!-- Color -->\n" +
-    "<div class=\"row\">\n" +
-    "  <div class=\"col-md-3\">\n" +
+    "<div class=\"{{colorParentContainerClass || 'row'}}\">\n" +
+    "  <div class=\"{{colorContainerClass || 'col-md-3'}}\">\n" +
     "      <div class=\"input-group\">\n" +
     "        <input class=\"form-control\" colorpicker=\"rgba\" colorpicker-parent=\"true\" background-setting type=\"text\" ng-model=\"background.color\">\n" +
     "        <span class=\"input-group-addon color-wheel\"></span>\n" +
@@ -133,7 +137,7 @@ module.run(["$templateCache", function($templateCache) {
     "             company-id=\"{{companyId}}\"\n" +
     "             ng-model=\"urlentry\" valid></url-field>\n" +
     "  <!-- Position -->\n" +
-    "  <position-setting position=\"background.image.position\" hide-label=\"true\"></position-setting>\n" +
+    "  <position-setting parent-container-class=\"positionParentContainerClass\" container-class=\"positionContainerClass\" position=\"background.image.position\" hide-label=\"true\"></position-setting>\n" +
     "  <!-- Scale to fit -->\n" +
     "  <div class=\"checkbox\">\n" +
     "    <label>\n" +

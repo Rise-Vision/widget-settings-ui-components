@@ -7,7 +7,9 @@
         restrict: "E",
         scope: {
           position: "=",
-          hideLabel: "@"
+          hideLabel: "@",
+          parentContainerClass: "=",
+          containerClass: "="
         },
         template: $templateCache.get("_angular/position-setting/position-setting.html"),
         link: function ($scope) {

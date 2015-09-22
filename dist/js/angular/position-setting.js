@@ -7,7 +7,9 @@
         restrict: "E",
         scope: {
           position: "=",
-          hideLabel: "@"
+          hideLabel: "@",
+          parentContainerClass: "=",
+          containerClass: "="
         },
         template: $templateCache.get("_angular/position-setting/position-setting.html"),
         link: function ($scope) {
@@ -28,8 +30,8 @@ catch(err) { module = angular.module("risevision.widget.common.position-setting"
 module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/position-setting/position-setting.html",
-    "<div class=\"row\">\n" +
-    "  <div class=\"col-md-3\">\n" +
+    "<div class=\"{{parentContainerClass || 'row'}}\">\n" +
+    "  <div class=\"{{containerClass || 'col-md-3'}}\">\n" +
     "    <label ng-if=\"!hideLabel\"> {{'widgets.alignment' | translate}}</label>\n" +
     "    <select name=\"position\" ng-model=\"position\" class=\"form-control\">\n" +
     "      <option value=\"top-left\">{{'position.top.left' | translate}}</option>\n" +

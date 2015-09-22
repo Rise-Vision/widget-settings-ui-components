@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-3">
+<div class="{{parentContainerClass || 'row'}}">
+  <div class="{{containerClass || 'col-md-3'}}">
     <label ng-if="!hideLabel"> {{'widgets.alignment' | translate}}</label>
     <select name="position" ng-model="position" class="form-control">
       <option value="top-left">{{'position.top.left' | translate}}</option>
