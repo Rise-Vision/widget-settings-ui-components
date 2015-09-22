@@ -106,7 +106,7 @@ module.run(["$templateCache", function($templateCache) {
     "<div class=\"{{colorParentContainerClass || 'row'}}\">\n" +
     "  <div class=\"{{colorContainerClass || 'col-md-3'}}\">\n" +
     "      <div class=\"input-group\">\n" +
-    "        <input class=\"form-control\" colorpicker=\"rgba\" colorpicker-parent=\"true\" background-setting type=\"text\" ng-model=\"background.color\">\n" +
+    "        <input class=\"form-control\" colorpicker=\"rgba\" colorpicker-parent=\"true\" type=\"text\" ng-model=\"background.color\">\n" +
     "        <span class=\"input-group-addon color-wheel\"></span>\n" +
     "      </div>\n" +
     "  </div>\n" +
