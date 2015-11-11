@@ -1,6 +1,6 @@
 {
   "name": "widget-settings-ui-components",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/Rise-Vision/widget-settings-ui-components",
   "authors": [
     "Rise Vision"
@@ -40,6 +40,7 @@
   },
   "resolutions": {
     "angular": "~1.3.0",
-    "rv-common-style": "1.2.3"
+    "rv-common-style": "1.2.3",
+    "jquery": "1.11.0"
   }
 }

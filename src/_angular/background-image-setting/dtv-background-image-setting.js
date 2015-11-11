@@ -23,7 +23,6 @@
         link: function (scope) {
 
           scope.defaultSetting = {
-            color: "rgba(255,255,255,0)",
             useImage: false,
             image: {
               url: "",

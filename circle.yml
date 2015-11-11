@@ -1,3 +1,6 @@
+machine:
+  node:
+   version: 0.12.2
 dependencies:
   pre:
     - npm install -g gulp
@@ -8,7 +11,7 @@ dependencies:
     - nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
 test:
   override:
-    - NODE_ENV=prod npm run test
+    - NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
 deployment:
   staging:
     branch: /(feature|fix|chore).*/

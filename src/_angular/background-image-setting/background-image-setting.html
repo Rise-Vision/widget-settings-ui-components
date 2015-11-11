@@ -1,10 +1,10 @@
 <!-- Color -->
 <div class="{{colorParentContainerClass || 'row'}}">
-  <div class="{{colorContainerClass || 'col-md-3'}}">
-      <div class="input-group">
-        <input class="form-control" colorpicker="rgba" colorpicker-parent="true" background-setting type="text" ng-model="background.color">
-        <span class="input-group-addon color-wheel"></span>
-      </div>
+  <div class="{{colorContainerClass || 'col-md-3'}}" style="position:relative;">
+    <div class="input-group" colorpicker="rgba" colorpicker-parent="true" ng-model="background.color">
+      <input class="form-control" type="text" ng-model="background.color">
+      <span class="input-group-addon color-wheel"></span>
+    </div>
   </div>
 </div>
 <!-- Image Choice -->
@@ -21,7 +21,7 @@
     </div>
     <!-- Image -->
     <div ng-show="imageLoaded" class="row">
-      <div class="col-xs-5 col-sm-3 col-md-2">
+      <div class="col-xs-4">
         <img ng-src="{{imageUrl}}" background-image class="img-rounded img-responsive">
       </div>
     </div>
@@ -41,4 +41,3 @@
     </label>
   </div>
 </div>
-
