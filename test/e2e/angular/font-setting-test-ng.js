@@ -79,23 +79,23 @@
     });
 
     it("Preview should show default values", function () {
-      element(by.css(".font-picker-text span")).then(function(elem) {
-        expect(elem.getCssValue("font-family")).to.eventually.equal("Verdana");
+      var elem = element(by.css(".font-picker-text span"));
+      
+      expect(elem.getCssValue("font-family")).to.eventually.equal("Verdana");
 
-        expect(elem.getCssValue("font-size")).to.eventually.equal("20px");
+      expect(elem.getCssValue("font-size")).to.eventually.equal("20px");
 
-        expect(elem.getCssValue("font-weight")).to.eventually.equal("normal");
+      expect(elem.getCssValue("font-weight")).to.eventually.equal("normal");
 
-        expect(elem.getCssValue("font-style")).to.eventually.equal("normal");
+      expect(elem.getCssValue("font-style")).to.eventually.equal("normal");
 
-        //expect(elem.getCssValue("text-decoration")).to.eventually.equal("none");
-        expect(elem.getCssValue("text-decoration")).to.eventually.match(/^none/);
+      //expect(elem.getCssValue("text-decoration")).to.eventually.equal("none");
+      expect(elem.getCssValue("text-decoration")).to.eventually.match(/^none/);
 
-        expect(elem.getCssValue("color")).to.eventually.equal("rgba(0, 0, 0, 1)");
+      expect(elem.getCssValue("color")).to.eventually.equal("rgba(0, 0, 0, 1)");
 
-        expect(elem.getCssValue("background-color")).to.eventually.equal("rgba(0, 0, 0, 0)");
+      expect(elem.getCssValue("background-color")).to.eventually.equal("rgba(0, 0, 0, 0)");
 
-      });
 
       expect(element(by.css(
         ".btn-alignment[data-wysihtml5-command-value='left']")).isPresent()).

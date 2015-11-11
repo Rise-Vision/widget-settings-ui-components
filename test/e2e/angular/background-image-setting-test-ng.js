@@ -23,7 +23,7 @@
 
       it("Should correctly load", function () {
         // color picker input box displayed
-        expect(element(by.css("input[colorpicker]")).isDisplayed()).to.eventually.be.true;
+        expect(element(by.css("div[colorpicker]")).isDisplayed()).to.eventually.be.true;
         // color picker addon present
         expect(element(by.css(".color-wheel")).isPresent()).to.eventually.be.true;
         // image choice checkbox displayed

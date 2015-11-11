@@ -26,8 +26,8 @@
       expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
         .to.eventually.equal("none");
 
-      expect(element(by.css(".btn-alignment[data-wysihtml5-command-value='left']"))).
-        to.eventually.not.be.null;
+      expect(element(by.css(".btn-alignment[data-wysihtml5-command-value='left']")).isPresent()).
+        to.eventually.be.true;
 
       expect(element(by.id("column-width")).getAttribute("value")).
       to.eventually.equal("100");

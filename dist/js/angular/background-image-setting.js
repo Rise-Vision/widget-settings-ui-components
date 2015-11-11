@@ -23,7 +23,6 @@
         link: function (scope) {
 
           scope.defaultSetting = {
-            color: "rgba(255,255,255,0)",
             useImage: false,
             image: {
               url: "",
@@ -104,11 +103,11 @@ module.run(["$templateCache", function($templateCache) {
   $templateCache.put("_angular/background-image-setting/background-image-setting.html",
     "<!-- Color -->\n" +
     "<div class=\"{{colorParentContainerClass || 'row'}}\">\n" +
-    "  <div class=\"{{colorContainerClass || 'col-md-3'}}\">\n" +
-    "      <div class=\"input-group\">\n" +
-    "        <input class=\"form-control\" colorpicker=\"rgba\" colorpicker-parent=\"true\" background-setting type=\"text\" ng-model=\"background.color\">\n" +
-    "        <span class=\"input-group-addon color-wheel\"></span>\n" +
-    "      </div>\n" +
+    "  <div class=\"{{colorContainerClass || 'col-md-3'}}\" style=\"position:relative;\">\n" +
+    "    <div class=\"input-group\" colorpicker=\"rgba\" colorpicker-parent=\"true\" ng-model=\"background.color\">\n" +
+    "      <input class=\"form-control\" type=\"text\" ng-model=\"background.color\">\n" +
+    "      <span class=\"input-group-addon color-wheel\"></span>\n" +
+    "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +
     "<!-- Image Choice -->\n" +
@@ -125,7 +124,7 @@ module.run(["$templateCache", function($templateCache) {
     "    </div>\n" +
     "    <!-- Image -->\n" +
     "    <div ng-show=\"imageLoaded\" class=\"row\">\n" +
-    "      <div class=\"col-xs-5 col-sm-3 col-md-2\">\n" +
+    "      <div class=\"col-xs-4\">\n" +
     "        <img ng-src=\"{{imageUrl}}\" background-image class=\"img-rounded img-responsive\">\n" +
     "      </div>\n" +
     "    </div>\n" +
@@ -145,7 +144,6 @@ module.run(["$templateCache", function($templateCache) {
     "    </label>\n" +
     "  </div>\n" +
     "</div>\n" +
-    "\n" +
     "");
 }]);
 })();

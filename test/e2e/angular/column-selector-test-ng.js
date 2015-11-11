@@ -36,17 +36,20 @@
       });
     });
 
-    it("Should add an item when clicked", function () {
+    it("Should add an item when clicked", function (done) {
       element.all(by.css("#column-selector option")).then(function (elements) {
         elements[2].click();
-        return element.all(by.css("#column-selector option"));
-      })
-      .then(function (elements) {
-        expect(elements.length).to.equal(ADDABLE_COLUMNS - 1);
-        //expect(elements[2].getCssValue("display")).to.eventually.equal("none");
+        
+        element.all(by.css("#column-selector option")).then(function (elements) {
 
-        element.all(by.css(".panel-group div.panel.panel-default")).then(function (elements) {
-          expect(elements.length).to.equal(3);
+          expect(elements.length).to.equal(ADDABLE_COLUMNS - 1);
+          //expect(elements[2].getCssValue("display")).to.eventually.equal("none");
+
+          element.all(by.css(".panel-group div.panel.panel-default")).then(function (elements) {
+            expect(elements.length).to.equal(3);
+            
+            done();
+          });
         });
       });
     });
