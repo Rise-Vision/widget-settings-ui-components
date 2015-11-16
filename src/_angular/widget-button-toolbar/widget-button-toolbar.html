@@ -1,18 +1,10 @@
-<div class="btn-toolbar sticky-buttons">
+<div class="pull-right">
   <button id="save" class="btn btn-primary btn-fixed-width" type="button" ng-click="save()" ng-disabled="disableSave()">
     <span>{{"common.save" | translate}}</span>
-    <i class="fa fa-white fa-check fa-lg icon-right"></i>
+    <i class="fa fa-white fa-check icon-right"></i>
   </button>
   <button id="cancel" class="btn btn-default btn-fixed-width" type="button" ng-click="cancel()">
     <span>{{"common.cancel" | translate}}</span>
-    <i class="fa fa-white fa-times fa-lg icon-right"></i>
+    <i class="fa fa-white fa-times icon-right"></i>
   </button>
-  <a type="button" class="btn btn-rv-help btn-fixed-width" target="_blank" href={{helpRef}} ng-if="helpRef !== ''">
-    <span>{{"common.help" | translate}}</span>
-    <i class="fa fa-question-circle fa-lg icon-right"></i>
-  </a>
-  <a type="button" class="btn btn-rv-help btn-fixed-width" target="_blank" href={{contributeRef}} ng-if="contributeRef !== ''">
-    <span>{{"common.contribute" | translate}}</span>
-    <i class="fa fa-github fa-lg icon-right"></i>
-  </a>
 </div>
