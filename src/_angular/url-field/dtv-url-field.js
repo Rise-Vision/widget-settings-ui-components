@@ -3,8 +3,7 @@
 
   angular.module("risevision.widget.common.url-field", [
     "risevision.common.i18n",
-    "risevision.widget.common.tooltip",
-    "risevision.widget.common.storage-selector"
+    "risevision.widget.common.tooltip"
   ])
     .directive("urlField", ["$templateCache", "$log", function ($templateCache, $log) {
       return {
@@ -13,10 +12,7 @@
         scope: {
           url: "=",
           hideLabel: "@",
-          hideStorage: "@",
-          companyId: "@",
-          fileType: "@",
-          storageType: "@"
+          fileType: "@"
         },
         template: $templateCache.get("_angular/url-field/url-field.html"),
         link: function (scope, element, attrs, ctrl) {
@@ -91,17 +87,12 @@
 
           scope.allowInitEmpty = (typeof attrs.initEmpty !== "undefined");
 
-          if (!scope.hideStorage) {
-            scope.$on("picked", function (event, data) {
-              scope.url = data[0];
-            });
-          }
-
           scope.blur = function() {
             scope.$emit("urlFieldBlur");
           };
 
           scope.$watch("url", function (url) {
+
             if (typeof url !== "undefined" && url !== null) {
 
               if (url !== "" && scope.allowInitEmpty) {
