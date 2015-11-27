@@ -1,0 +1,50 @@
+<div class="form-group">
+  <label class="control-label remove-bottom">{{ title }}</label>
+
+  <div class="row half-top half-bottom">
+    <div class="col-md-12">
+      <!-- Storage Single File - Button -->
+      <storage-selector selected="fileBtnSelected"
+                        company-id="{{companyId}}"
+                        type="single-file"
+                        label="{{ fileLabel }}"></storage-selector>
+      <!-- Storage Single Folder - Button -->
+      <storage-selector selected="folderBtnSelected"
+                        company-id="{{companyId}}"
+                        type="single-folder"
+                        label="{{ folderLabel }}"></storage-selector>
+      <!-- Custom File - Button -->
+      <button name="customBtn" type="button" class="btn btn-default"
+              ng-class="{active: customBtnSelected}"
+              ng-click="onCustomBtnHandler()">{{ 'file-selector.buttons.custom' | translate }}
+        <i class="fa fa-link fa-large"></i></button>
+    </div>
+  </div>
+
+  <!-- Storage Single File - Input -->
+  <div class="form-group" ng-if="selector.selection === 'single-file'">
+    <div class="input-group custom-addon">
+      <input name="storage-file-name" type="text" class="form-control" ng-model="selector.storageName" readonly>
+      <span class="input-group-addon">
+        <button name="previewBtn" class="btn btn-default" ng-click="previewFile()">{{ 'file-selector.buttons.preview' | translate }}
+          <img src="http://s3.amazonaws.com/Rise-Images/Icons/newtab-icon.png" class="storage-selector-icon icon-right">
+        </button>
+      </span>
+    </div>
+    <p ng-if="!selectorValid && fileType === 'image'" class="text-danger">{{ "file-selector.errors.storage.image" | translate }}</p>
+    <p ng-if="!selectorValid && fileType === 'video'" class="text-danger">{{ "file-selector.errors.storage.video" | translate }}</p>
+  </div>
+
+  <!-- Storage Single Folder - Input -->
+  <div ng-if="selector.selection === 'single-folder'">
+    <input name="storage-folder-name" type="text" class="form-control" ng-model="selector.storageName" readonly>
+  </div>
+
+  <!-- Custom File - Input -->
+  <div ng-if="selector.selection === 'custom'">
+    <url-field id="customUrl" name="customUrl" url="selector.url"
+               file-type="{{fileType}}"
+               hide-label="true"
+               ng-model="customurlentry" valid></url-field>
+  </div>
+</div>
