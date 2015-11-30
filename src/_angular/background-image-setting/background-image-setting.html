@@ -26,12 +26,14 @@
       </div>
     </div>
   </div>
-  <!-- Image URL -->
-  <url-field id="backgroundImageUrl" url="background.image.url"
-             file-type="image"
-             hide-label="true"
-             company-id="{{companyId}}"
-             ng-model="urlentry" valid></url-field>
+  <!-- File Selector -->
+  <file-selector id="backgroundFileSelector" name="backgroundFileSelector"
+                 company-id="{{companyId}}"
+                 title="{{'background.image.selector.title' | translate}}"
+                 file-label="{{'background.image.selector.file' | translate}}"
+                 file-type="image"
+                 selector="background.image.selector"
+                 ng-model="backgroundfileselector" selector-valid valid></file-selector>
   <!-- Position -->
   <position-setting parent-container-class="positionParentContainerClass" container-class="positionContainerClass" position="background.image.position" hide-label="true"></position-setting>
   <!-- Scale to fit -->

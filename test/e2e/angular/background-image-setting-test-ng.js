@@ -52,8 +52,10 @@
         expect(element(by.css(".image-placeholder")).isPresent()).to.eventually.be.true;
         expect(element(by.css(".image-placeholder")).isDisplayed()).to.eventually.be.true;
 
-        expect(element(by.css("img")).isPresent()).to.eventually.be.true;
-        expect(element(by.css("img")).isDisplayed()).to.eventually.be.false;
+        expect(element(by.css("img.img-rounded")).isPresent()).to.eventually.be.true;
+        expect(element(by.css("img.img-rounded")).isDisplayed()).to.eventually.be.false;
+
+        expect(element(by.css("storage-selector[type='single-folder'] button")).isPresent()).to.eventually.be.false;
 
         expect(element(by.model("background.image.scale")).isSelected()).to.eventually.be.true;
 
@@ -62,22 +64,24 @@
       });
 
       it("Should successfully load image and display it", function () {
-        element(by.css("input[name=choice]")).click();
-        element(by.css("#backgroundImageUrl input[name='url']")).sendKeys("images/background_image.jpg");
+        element(by.css("input[name='choice']")).click();
+        element(by.css("#backgroundFileSelector button[name='customBtn']")).click();
+        element(by.css("#backgroundFileSelector input[name='url']")).sendKeys("images/background_image.jpg");
 
         // do arbitrary task to take focus off url field
         element(by.css("input[name=scale]")).click();
 
         // image placeholder should be removed
         expect(element(by.css(".image-placeholder")).isPresent()).to.eventually.be.false;
-        // img element should be displayed
-        expect(element(by.css("img")).isDisplayed()).to.eventually.be.true;
+        // background img element should be displayed
+        expect(element(by.css("img.img-rounded")).isDisplayed()).to.eventually.be.true;
 
       });
 
       it("Should not successfully load image and maintain displaying placeholder image", function () {
         element(by.css("input[name=choice]")).click();
-        element(by.css("#backgroundImageUrl input[name='url']")).sendKeys("images/test.jpg");
+        element(by.css("#backgroundFileSelector button[name='customBtn']")).click();
+        element(by.css("#backgroundFileSelector input[name='url']")).sendKeys("images/test.jpg");
 
         // do arbitrary task to take focus off url field
         element(by.css("input[name=scale]")).click();
@@ -86,7 +90,7 @@
         expect(element(by.css(".image-placeholder")).isPresent()).to.eventually.be.true;
         expect(element(by.css(".image-placeholder")).isDisplayed()).to.eventually.be.true;
         // img element should not be displayed
-        expect(element(by.css("img")).isDisplayed()).to.eventually.be.false;
+        expect(element(by.css("img.img-rounded")).isDisplayed()).to.eventually.be.false;
       });
 
     });

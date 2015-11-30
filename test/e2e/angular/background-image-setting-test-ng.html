@@ -12,24 +12,22 @@
     <div class="modal-content">
       <!-- Start Modal Header-->
       <div class="modal-header">
-        <div class="app-header" style="padding:15px">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            <i class="fa fa-times"></i>
-          </button>
-          <div class="title-block">
-            <h1>Widget Settings</h1>
-            <button class="btn btn-link">
-              <i class="fa fa-github fa-2x"></i>
-            </button>
-          </div>
-        </div>
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
       </div>
       <!-- End Modal Header-->
 
       <!-- Start Modal Body-->
       <div class="modal-body">
         <form>
-          <background-image-setting color-parent-container-class="'colorParentClass'" color-container-class="'colorClass'" position-parent-container-class="'positionParentClass'" position-container-class="'positionClass'"  background="settings.additionalParams.background"></background-image-setting>
+          <background-image-setting company-id="abc123" color-parent-container-class="'colorParentClass'" color-container-class="'colorClass'" position-parent-container-class="'positionParentClass'" position-container-class="'positionClass'" background="settings.additionalParams.background"></background-image-setting>
         </form>
       </div>
     </div>
@@ -48,6 +46,7 @@
 <script type="text/javascript" src="/dist/js/angular/tooltip.js"></script>
 <script type="text/javascript" src="/components/component-storage-selector/dist/storage-selector.js"></script>
 <script type="text/javascript" src="/dist/js/angular/url-field.js"></script>
+<script type="text/javascript" src="/dist/js/angular/file-selector.js"></script>
 <script type="text/javascript" src="/dist/js/angular/position-setting.js"></script>
 <script type="text/javascript" src="/dist/js/angular/background-image-setting.js"></script>
 <script>
@@ -55,7 +54,9 @@
     .controller("mainController", ["$scope", function ($scope) {
       $scope.settings = {
         additionalParams: {
-          background: {}
+          background: {
+            color: "" // 'color' is required to be set with a default
+          }
         }
       };
 

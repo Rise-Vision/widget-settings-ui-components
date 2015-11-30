@@ -4,7 +4,7 @@
   angular.module("risevision.widget.common.background-image-setting", [
     "risevision.common.i18n",
     "colorpicker.module",
-    "risevision.widget.common.url-field",
+    "risevision.widget.common.file-selector",
     "risevision.widget.common.position-setting",
     "risevision.widget.common.background-image"
   ])
@@ -23,9 +23,10 @@
         link: function (scope) {
 
           scope.defaultSetting = {
+            // color: "" this needs to be set as a default in the parents "background" model
             useImage: false,
             image: {
-              url: "",
+              selector: {},
               position: "top-left",
               scale: true
             }
@@ -53,7 +54,7 @@
             scope.defaults(background, scope.defaultSetting);
           });
 
-          scope.$watch("background.image.url", function (newUrl) {
+          scope.$watch("background.image.selector.url", function (newUrl) {
             if (scope.imageUrl !== newUrl) {
               scope.imageUrl = newUrl;
             }
@@ -67,7 +68,7 @@
           });
 
           scope.$on("urlFieldBlur", function () {
-            scope.imageUrl = scope.background.image.url;
+            scope.imageUrl = scope.background.image.selector.url;
           });
 
         }
@@ -129,12 +130,14 @@ module.run(["$templateCache", function($templateCache) {
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <!-- Image URL -->\n" +
-    "  <url-field id=\"backgroundImageUrl\" url=\"background.image.url\"\n" +
-    "             file-type=\"image\"\n" +
-    "             hide-label=\"true\"\n" +
-    "             company-id=\"{{companyId}}\"\n" +
-    "             ng-model=\"urlentry\" valid></url-field>\n" +
+    "  <!-- File Selector -->\n" +
+    "  <file-selector id=\"backgroundFileSelector\" name=\"backgroundFileSelector\"\n" +
+    "                 company-id=\"{{companyId}}\"\n" +
+    "                 title=\"{{'background.image.selector.title' | translate}}\"\n" +
+    "                 file-label=\"{{'background.image.selector.file' | translate}}\"\n" +
+    "                 file-type=\"image\"\n" +
+    "                 selector=\"background.image.selector\"\n" +
+    "                 ng-model=\"backgroundfileselector\" selector-valid valid></file-selector>\n" +
     "  <!-- Position -->\n" +
     "  <position-setting parent-container-class=\"positionParentContainerClass\" container-class=\"positionContainerClass\" position=\"background.image.position\" hide-label=\"true\"></position-setting>\n" +
     "  <!-- Scale to fit -->\n" +
