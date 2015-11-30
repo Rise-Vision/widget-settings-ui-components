@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>File Selector - Test Page</title>
+
+  <link rel="stylesheet" href="/components/rv-common-style/dist/css/rise.min.css">
+</head>
+<body ng-app="testapp" ng-controller="mainController">
+  <div class="container-fluid">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close">
+            <i class="fa fa-times half-top"></i>
+          </button>
+          <h2 class="modal-title">
+            Widget Settings
+            <a class="btn btn-link">
+              <i class="fa fa-github fa-2x icon-gray"></i>
+            </a>
+          </h2>
+        </div>
+
+        <div class="modal-body">
+          <button id="singleFileCorrectPick" class="btn btn-default" ng-click="singleFilePick(true)">Single File Pick (correct)</button>
+          <button id="singleFileWrongPick" class="btn btn-default" ng-click="singleFilePick(false)">Single File Pick (wrong)</button>
+          <button id="singleFolderPick" class="btn btn-default" ng-click="singleFolderPick()">Single Folder Pick</button>
+          <form>
+            <file-selector title="{{ 'video.url.label' | translate }}"
+                           file-label="{{ 'video.url.file' | translate}}"
+                           folder-label="{{ 'video.url.folder' | translate}}"
+                           company-id="{{settings.params.companyId}}"
+                           file-type="video"
+                           selector="settings.additionalParams.selector"
+                           ng-model="fileselector" valid></file-selector>
+          </form>
+        </div>
+
+     </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/components/angular/angular.js"></script>
+  <script type="text/javascript" src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="/components/angular-translate/angular-translate.js"></script>
+  <script type="text/javascript" src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+  <script type="text/javascript" src="/components/rv-common-i18n/dist/i18n.js"></script>
+  <script type="text/javascript" src="/node_modules/widget-tester/mocks/i18n-config.js"></script>
+  <script type="text/javascript" src="/components/component-storage-selector/dist/storage-selector.js"></script>
+  <script type="text/javascript" src="/dist/js/angular/tooltip.js"></script>
+  <script type="text/javascript" src="/dist/js/angular/url-field.js"></script>
+  <script type="text/javascript" src="/dist/js/angular/file-selector.js"></script>
+  <script>
+    angular.module("testapp", ["risevision.widget.common.file-selector"])
+      .controller("mainController", ["$scope", function ($scope) {
+
+        var singleFileCorrectUrl = "https://storage.googleapis.com/risemedialibrary-abc123/test%2Fvideos%2Ftest.webm",
+          singleFileWrongUrl = "https://storage.googleapis.com/risemedialibrary-abc123/test%2Fvideos%2Ftest.mov",
+          singleFolderUrl = "https://www.googleapis.com/storage/v1/b/risemedialibrary-abc123/o?prefix=test%2Fvideos%2F";
+
+        $scope.settings = {
+          params: {
+            companyId: "abc123"
+          },
+          additionalParams: {
+            selector: {}
+          }
+        };
+
+        //methods that simulate in app storage selection via storage-selector
+        $scope.singleFilePick = function (correctType) {
+          if (correctType) {
+            $scope.$broadcast("picked", [singleFileCorrectUrl], "single-file");
+          } else {
+            $scope.$broadcast("picked", [singleFileWrongUrl], "single-file");
+          }
+
+        };
+
+        $scope.singleFolderPick = function () {
+          $scope.$broadcast("picked", [singleFolderUrl], "single-folder");
+        };
+
+      }]);
+  </script>
+</body>
+</html>
