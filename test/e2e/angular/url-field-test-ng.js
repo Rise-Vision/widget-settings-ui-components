@@ -29,9 +29,6 @@
         // ensure validate checkbox is checked
         expect(element(by.css("#main input[name=validate-url]")).getAttribute("checked")).
           to.eventually.be.null;
-        // ensure storage selector is displayed
-        expect(element(by.css("#main .input-group")).isPresent()).to.eventually.be.true;
-        expect(element(by.css("#main .input-url-addon")).isPresent()).to.eventually.be.true;
       });
 
       it("Should update input field via two-way binding", function () {
@@ -56,7 +53,6 @@
 
       it("Should show and hide error message based on valid and invalid URL entry", function () {
         element(by.css("#main input[name='url']")).sendKeys(validUrl);
-
         // ensure no error message
         expect(element(by.css("#main .text-danger")).isPresent()).to.eventually.be.false;
 
@@ -184,7 +180,6 @@
       });
 
     });
-
   });
 
 })();
