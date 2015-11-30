@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label class="control-label remove-bottom">{{ title }}</label>
+  <label ng-if="title" class="control-label remove-bottom">{{ title }}</label>
 
   <div class="row half-top half-bottom">
     <div class="col-md-12">
@@ -9,7 +9,8 @@
                         type="single-file"
                         label="{{ fileLabel }}"></storage-selector>
       <!-- Storage Single Folder - Button -->
-      <storage-selector selected="folderBtnSelected"
+      <storage-selector ng-if="folderLabel"
+                        selected="folderBtnSelected"
                         company-id="{{companyId}}"
                         type="single-folder"
                         label="{{ folderLabel }}"></storage-selector>

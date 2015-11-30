@@ -206,7 +206,7 @@ module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/file-selector/file-selector.html",
     "<div class=\"form-group\">\n" +
-    "  <label class=\"control-label remove-bottom\">{{ title }}</label>\n" +
+    "  <label ng-if=\"title\" class=\"control-label remove-bottom\">{{ title }}</label>\n" +
     "\n" +
     "  <div class=\"row half-top half-bottom\">\n" +
     "    <div class=\"col-md-12\">\n" +
@@ -216,7 +216,8 @@ module.run(["$templateCache", function($templateCache) {
     "                        type=\"single-file\"\n" +
     "                        label=\"{{ fileLabel }}\"></storage-selector>\n" +
     "      <!-- Storage Single Folder - Button -->\n" +
-    "      <storage-selector selected=\"folderBtnSelected\"\n" +
+    "      <storage-selector ng-if=\"folderLabel\"\n" +
+    "                        selected=\"folderBtnSelected\"\n" +
     "                        company-id=\"{{companyId}}\"\n" +
     "                        type=\"single-folder\"\n" +
     "                        label=\"{{ folderLabel }}\"></storage-selector>\n" +
