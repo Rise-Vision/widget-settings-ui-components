@@ -114,6 +114,9 @@
 
         // Preview button not present
         expect(element(by.css("button[name='previewBtn']")).isPresent()).to.eventually.be.false;
+
+        // No error message, URL Field initially valid with empty value
+        expect(element(by.css(".text-danger")).isPresent()).to.eventually.be.false;
       });
 
     });
