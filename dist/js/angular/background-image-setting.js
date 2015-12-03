@@ -137,7 +137,7 @@ module.run(["$templateCache", function($templateCache) {
     "                 file-label=\"{{'background.image.selector.file' | translate}}\"\n" +
     "                 file-type=\"image\"\n" +
     "                 selector=\"background.image.selector\"\n" +
-    "                 ng-model=\"backgroundfileselector\" selector-valid valid></file-selector>\n" +
+    "                 ng-model=\"backgroundfileselector\" selector-valid valid hide-subscription></file-selector>\n" +
     "  <!-- Position -->\n" +
     "  <position-setting parent-container-class=\"positionParentContainerClass\" container-class=\"positionContainerClass\" position=\"background.image.position\" hide-label=\"true\"></position-setting>\n" +
     "  <!-- Scale to fit -->\n" +
