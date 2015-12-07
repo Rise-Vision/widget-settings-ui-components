@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group file-selector">
   <label ng-if="title" class="control-label remove-bottom">{{ title }}</label>
 
   <div class="row half-top half-bottom">
@@ -48,4 +48,11 @@
                hide-label="true"
                ng-model="customurlentry" valid init-empty></url-field>
   </div>
+
+  <!-- Storage Subscription Status -->
+  <div ng-show="!isSubscribed && !hideSubscription" subscription-status expanded-format="true"
+       product-id="24" product-code="b0cba08a4baa0c62b8cdc621b6f6a124f89a03db" company-id="{{companyId}}"
+       ng-model="subscribed">
+  </div>
+
 </div>

@@ -4,9 +4,10 @@
   angular.module("risevision.widget.common.file-selector", [
       "risevision.common.i18n",
       "risevision.widget.common.storage-selector",
-      "risevision.widget.common.url-field"
+      "risevision.widget.common.url-field",
+      "risevision.widget.common.subscription-status"
     ])
-    .directive("fileSelector", ["$templateCache", "$log", "$window", function ($templateCache, $log, $window) {
+    .directive("fileSelector", ["$templateCache", "$log", "$window", "$rootScope", function ($templateCache, $log, $window, $rootScope) {
       return {
         restrict: "E",
         require: "?ngModel",
@@ -133,6 +134,10 @@
           scope.selectorValid = false;
           // a flag to check if custom url is in an initial empty state
           scope.customInit = false;
+          // default to false so the subscription-status component doesn't show itself until it receives its status
+          scope.isSubscribed = true;
+
+          scope.hideSubscription = (typeof attrs.hideSubscription !== "undefined");
 
           scope.defaults = function(obj) {
             if (obj) {
@@ -163,6 +168,12 @@
             scope.selector.selection = type;
             scope.selector.storageName = getStorageName(data[0], scope.selector.selection);
             scope.selector.url = data[0];
+
+            if (!scope.isSubscribed) {
+              // ensure subscription-status component does a refresh in case user subscribed from in-app storage
+              $rootScope.$broadcast("refreshSubscriptionStatus", null);
+            }
+
           });
 
           scope.$watch("selectorValid", function (valid) {
@@ -205,6 +216,12 @@
             }
           });
 
+          scope.$watch("subscribed", function (subscription) {
+            if (typeof subscription !== "undefined" && subscription.statusCode !== "na") {
+              scope.isSubscribed = subscription.subscribed;
+            }
+          });
+
         }
       };
     }]);
@@ -216,7 +233,7 @@ catch(err) { module = angular.module("risevision.widget.common.file-selector", [
 module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/file-selector/file-selector.html",
-    "<div class=\"form-group\">\n" +
+    "<div class=\"form-group file-selector\">\n" +
     "  <label ng-if=\"title\" class=\"control-label remove-bottom\">{{ title }}</label>\n" +
     "\n" +
     "  <div class=\"row half-top half-bottom\">\n" +
@@ -266,6 +283,13 @@ module.run(["$templateCache", function($templateCache) {
     "               hide-label=\"true\"\n" +
     "               ng-model=\"customurlentry\" valid init-empty></url-field>\n" +
     "  </div>\n" +
+    "\n" +
+    "  <!-- Storage Subscription Status -->\n" +
+    "  <div ng-show=\"!isSubscribed && !hideSubscription\" subscription-status expanded-format=\"true\"\n" +
+    "       product-id=\"24\" product-code=\"b0cba08a4baa0c62b8cdc621b6f6a124f89a03db\" company-id=\"{{companyId}}\"\n" +
+    "       ng-model=\"subscribed\">\n" +
+    "  </div>\n" +
+    "\n" +
     "</div>\n" +
     "");
 }]);
