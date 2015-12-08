@@ -37,7 +37,7 @@
 
         // Subscription Status component is present
         expect(element(by.css("#main div[subscription-status]")).isPresent()).to.eventually.be.true;
-        // Subscription Status component is not displayed due to company having a valid storage subscription
+        // Subscription Status component is not displayed
         expect(element(by.css("#main div[subscription-status]")).isDisplayed()).to.eventually.be.false;
       });
 
@@ -124,11 +124,20 @@
         expect(element(by.css("#main .text-danger")).isPresent()).to.eventually.be.false;
       });
 
-      it("Should display subscription status component when not subscribed", function () {
+      it("Should display subscription status when not subscribed", function () {
+        element(by.id("singleFolderPick")).click();
         element(by.id("subscriptionExpired")).click();
 
         // Subscription Status component is displayed due to no storage subscription
         expect(element(by.css("#main div[subscription-status]")).isDisplayed()).to.eventually.be.true;
+      });
+
+      it("Should not display subscription status when custom URL is selected", function () {
+        element(by.css("#main button[name='customBtn']")).click();
+        element(by.id("subscriptionExpired")).click();
+
+        // Subscription Status component is displayed due to no storage subscription
+        expect(element(by.css("#main div[subscription-status]")).isDisplayed()).to.eventually.be.false;
       });
 
     });

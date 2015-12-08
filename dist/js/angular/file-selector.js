@@ -136,8 +136,10 @@
           scope.customInit = false;
           // default to false so the subscription-status component doesn't show itself until it receives its status
           scope.isSubscribed = true;
-
+          // will hide subscription status permanently if attr was used
           scope.hideSubscription = (typeof attrs.hideSubscription !== "undefined");
+          // a flag to toggle subscription status visibility (depends on selection type)
+          scope.subscriptionOff = true;
 
           scope.defaults = function(obj) {
             if (obj) {
@@ -189,6 +191,8 @@
           scope.$watch("selector.selection", function (selection) {
             if (typeof selection !== "undefined") {
               toggleButtons(selection);
+
+              scope.subscriptionOff = (selection === "" || selection === "custom");
 
               if (selection === "single-folder") {
                 // validity is fine when choosing a single-folder from storage
@@ -285,7 +289,7 @@ module.run(["$templateCache", function($templateCache) {
     "  </div>\n" +
     "\n" +
     "  <!-- Storage Subscription Status -->\n" +
-    "  <div ng-show=\"!isSubscribed && !hideSubscription\" subscription-status expanded-format=\"true\"\n" +
+    "  <div ng-show=\"!isSubscribed && !hideSubscription && !subscriptionOff\" subscription-status expanded-format=\"true\"\n" +
     "       product-id=\"24\" product-code=\"b0cba08a4baa0c62b8cdc621b6f6a124f89a03db\" company-id=\"{{companyId}}\"\n" +
     "       ng-model=\"subscribed\">\n" +
     "  </div>\n" +
