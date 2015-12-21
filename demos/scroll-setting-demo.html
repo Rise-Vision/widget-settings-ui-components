@@ -1,34 +1,26 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">Scroll Setting</h1>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
+
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form>
+          <scroll-setting scroll="settings.additionalParams.scroll"></scroll-setting>
+        </form>
+      </div>
+    </div>
   </div>
-
-  <p class="lead">An Angular directive that allows configuration of scroll settings</p>
-
-  <p><strong>Dependencies</strong> <span class="label label-info">tooltip</span></p>
-
-	<h3 class="add-top">Usage</h3>
-	<hljs include="'scroll-setting-usage'"></hljs>
-
-  <h3>Script Includes</h3>
-  <p>Make sure you include the following files in <code>index.html</code></p>
-  <hljs include="'script-includes'"></hljs>
-
-	<!-- Dynamic Example -->
-  <div class="examples">
-  	<h3>Example</h3>
-		<scroll-setting scroll="scroll"></scroll-setting>
-	</div>
 </div>
-
-<script type="text/ng-template" id="script-includes">
-bower_components/widget-settings-ui-components/dist/js/angular/scroll-setting.js
-bower_components/widget-settings-ui-components/dist/js/angular/tooltip.js
-</script>
-
-    <!-- Code Snippet -->
-<script type="text/ng-template" id="scroll-setting-usage">
-<form role="form">
-	<scroll-setting scroll="settings.additionalParams.scroll"></scroll-setting>
-</form>
-</script>

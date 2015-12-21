@@ -1,36 +1,26 @@
-<div class="page-header">
-  <h1 class="page">Color Picker</h1>
-</div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-<p class="lead">An Angular directive that allows color selection</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-<p><strong>Dependencies</strong> <span class="label label-info">spectrum</span> <span class="label label-info">i18next</span></p>
-
-<h3 class="add-top">Usage</h3>
-<p>Type parameter defines the type of color picker to display.
-  Available types are: 'text', 'background', 'highlight'.</p>
-<hljs include="'color-picker-usage'"></hljs>
-
-<h3>Script Includes</h3>
-<p>Make sure you include the following files in <code>index.html</code> This component is dependent on <code>i18next</code> for applying localized labels to the buttons. You can import the library from Rise Vision as mentioned below or get the latest version from <a href="http://i18next.com/" target="_blank">i18next</a>.</p>
-<hljs include="'script-includes'"></hljs>
-
-<!-- Dynamic Example -->
-<h3>Example</h3>
-<ng-include src="'color-picker-usage'"></ng-include>
-
-<script type="text/ng-template" id="script-includes">
-bower_components/spectrum/spectrum.js
-bower_components/widget-settings-ui-components/dist/js/angular/color-picker.js
-//s3.amazonaws.com/rise-common/scripts/i18next/i18next.min.js
-</script>
-
-
-<script type="text/ng-template" id="color-picker-usage">
-<form role="form">
-  <div class="form-group">
-    <label for="picker">Sample Color</label><br />
-    <input color-picker id="picker" color="color" type="background" />
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form>
+          <input color-picker id="color-picker" color="color" type="text" />
+        </form>
+      </div>
+    </div>
   </div>
-</form>
-</script>
+</div>

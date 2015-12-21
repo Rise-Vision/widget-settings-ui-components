@@ -21,5 +21,9 @@ deployment:
     branch: master
     commands:
       - NODE_ENV=prod npm run build
-      - echo "Trigger style-guide build"
-      - curl -X POST https://circleci.com/api/v1/project/Rise-Vision/style-guide/tree/master?circle-token=$RISE_CIRCLE_TOKEN
+#      - echo "Trigger style-guide build"
+#      - curl -X POST https://circleci.com/api/v1/project/Rise-Vision/style-guide/tree/master?circle-token=$RISE_CIRCLE_TOKEN
+      - echo build and deploy demos to gh-page
+      - npm run ci-build-demo
+      - npm run ci-deploy-demo
+

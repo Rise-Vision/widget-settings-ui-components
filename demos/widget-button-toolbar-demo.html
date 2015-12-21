@@ -1,33 +1,28 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">Widget Button Toolbar</h1>
-  </div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-  <p class="lead">An Angular directive that provides the set of buttons required for a widget settings file.</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-  <p><strong>Dependencies</strong> N/A</p>
-
-  <h3 class="add-top">Usage</h3>
-  <p>The directive provides attributes to set the value of the href for the Help button and Contribute buttons. Further attributes are also provided to allow setting the external function to run for the click event of the Save and Cancel buttons. Lastly another attribute allows for executing external code to return a boolean value that determines the disabled state of the Save button.</p>
-  <p>You can optionally omit the Help and Contribute buttons by either omitting the <code>help</code> and/or <code>contribute</code> attributes, or giving them <code>""</code> values. Doing so will result in the button(s) not showing.</p>
-  <hljs include="'widget-button-toolbar-usage'"></hljs>
-
-  <h3>Script Includes</h3>
-  <p>Make sure you include the following files in <code>index.html</code></p>
-  <hljs include="'script-includes'"></hljs>
-
-  <!-- Dynamic Example -->
-  <div class="examples">
-    <h3>Example</h3>
-    <widget-button-toolbar help="http://www.risevision.com/user-training/" contribute="https://github.com/Rise-Vision/"></widget-button-toolbar>
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form>
+          <widget-button-toolbar
+            save="saveSettings()" cancel="closeSettings()" disable-save="inValidState">
+          </widget-button-toolbar>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-<script type="text/ng-template" id="script-includes">
-  components/widget-settings-ui-components/dist/js/angular/widget-button-toolbar.js
-</script>
-
-<!-- Code Snippet -->
-<script type="text/ng-template" id="widget-button-toolbar-usage">
-  <widget-button-toolbar save="saveSettings()" cancel="closeSettings()" disable-save="settingsForm.$invalid" help="http://www.risevision.com/user-training/" contribute="https://github.com/Rise-Vision/"></widget-button-toolbar>
-</script>

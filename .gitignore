@@ -5,3 +5,4 @@ coverage/
 src/_config/config.js
 tmp
 reports/
+dist-demos

@@ -1,101 +1,26 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">Column Selector</h1>
-  </div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-  <p class="lead">An Angular directive used to select and configure columns</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-  <p><strong>Dependencies</strong> <span class="label label-info">alignment</span> <span class="label label-info">column-setting</span>
-   <span class="label label-info">tooltip</span>
-  </p>
-
-  <p>Directive requires 2 parameters: a list of all the columns available, and a list of columns selected by default. Columns can be of two types:
-    text and int columns, with slightly different fields available for configuration.
-    Optionally add ng-model variable for validation
-  </p>
-
-  <h3 class="add-top">Directive HTML:</h3>
-  <hljs include="'html-usage'"></hljs>
-
-  <h3 class="add-top">Directive Angular initialization:</h3>
-  <hljs include="'angular-usage'"></hljs>
-
-
-  <h3>Script Includes</h3>
-  <p>Make sure you include the following files in <code>index.html</code></p>
-  <hljs include="'script-includes'"></hljs>
-
-  <!-- Dynamic Example -->
-  <div class="examples">
-    <h3>Example</h3>
-      <column-selector columns="columns" column-names="columnNames"></column-selector>
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form role="form" name="settingsForm">
+          <column-selector columns="columns" column-names="columnNames" ng-model="columnselector" required></column-selector>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-<script type="text/ng-template" id="script-includes">
-bower_components/widget-settings-ui-components/dist/js/angular/column-selector.js
-bower_components/widget-settings-ui-components/dist/js/angular/column-setting.js
-bower_components/widget-settings-ui-components/dist/js/angular/alignment.js
-bower_components/widget-settings-ui-components/dist/js/alignment.js
-bower_components/widget-settings-ui-components/dist/js/angular.tooltip.js
-</script>
-
-    <!-- Code Snippet -->
-<script type="text/ng-template" id="html-usage">
-<form role="form">
-  <column-selector columns="settings.additionalParams.columns" column-names="columnNames"
-  ng-model"columnselectormodel"></column-selector>
-</form>
-</script>
-
-<script type="text/ng-template" id="angular-usage">
-  // Define all column names
-  $scope.columnNames = [
-    {
-      id: "instrument",
-      name: "columns.instrument",
-      type: "text"
-    },
-    {
-      id: "instrument-logo",
-      name: "columns.instrument-logo",
-      type: "text"
-    },
-    {
-      id: "last-price",
-      name: "columns.last-price",
-      type: "int"
-    },
-    {
-      id: "change",
-      name: "columns.change",
-      type: "int"
-    },
-    {
-      id: "percent-change",
-      name: "columns.percent-change",
-      type: "int"
-    },
-    {
-      id: "day-high",
-      name: "columns.day-high",
-      type: "int"
-    },
-    {
-      id: "day-low",
-      name: "columns.day-low",
-      type: "int"
-    }
-  ];
-
-  // Define selected columns
-  $scope.settings.additionalParams.columns = [
-    {
-      id: "instrument",
-      alignment: "right"
-    },
-    {
-      id: "instrument-logo"
-    }
-  ];
-</script>
