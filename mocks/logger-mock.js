@@ -29,6 +29,29 @@
     }
   }
 
+  function getEventParams(params, cb) {
+    var json = null;
+
+    // event is required.
+    if (params.event) {
+      json = params;
+
+      if (json.file_url) {
+        json.file_format = RiseVision.Common.LoggerUtils.getFileFormat(json.file_url);
+      }
+
+      RiseVision.Common.LoggerUtils.getIds(function(companyId, displayId) {
+        json.company_id = companyId;
+        json.display_id = displayId;
+
+        cb(json);
+      });
+    }
+    else {
+      cb(json);
+    }
+  }
+
   function isThrottled(event) {
     return throttle && (lastEvent === event);
   }
@@ -89,12 +112,20 @@
 
       return str.toLowerCase();
     },
-    getTable: function (name) {}
+    getTable: function (name) {},
+    logEvent: function (table, params) {
+      getEventParams(params, function(json) {
+        if (json !== null) {
+          RiseVision.Common.Logger.log(table, json);
+        }
+      });
+    }
   };
 
   window.RiseVision.Common.Logger = {
     log: function (tableName, params) {
-      if (!tableName || !params || !params.event || isThrottled(params.event)) {
+      if (!tableName || !params || (params.hasOwnProperty("event") && !params.event) ||
+        (params.hasOwnProperty("event") && isThrottled(params.event))) {
         return;
       }
 
