@@ -1,0 +1,15 @@
+msgid "errors.file-type"
+msgstr "Please provide the URL to a valid image."
+
+msgid "settings"
+msgstr "Image Settings"
+
+msgid "url.file"
+msgstr "Single Image"
+
+msgid "url.folder"
+msgstr "Folder of Image(s)"
+
+msgid "url.label"
+msgstr "How do you want to show your image(s)?"
+

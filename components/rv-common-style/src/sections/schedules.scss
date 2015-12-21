@@ -1,0 +1,5 @@
+.playlist-item-reference {
+  @extend .ellipsis;
+  max-width: 320px;
+  line-height: 24px;
+}

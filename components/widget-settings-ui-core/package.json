@@ -1,0 +1,62 @@
+{
+  "name": "widget-settings-ui-core",
+  "version": "0.1.11",
+  "description": "Common components shared across Rise Vision widget settings UI",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "build": "npm install && bower install && gulp build"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/settinghead/widget-settings-ui-core.git"
+  },
+  "keywords": [
+    "rise",
+    "vision",
+    "settings",
+    "ui"
+  ],
+  "contributors": [
+    "Xiyang Chen <settinghead@gmail.com>",
+    "fraserxu"
+  ],
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
+    "gulp": "^3.8.2",
+    "gulp-bump": "^0.1.8",
+    "gulp-concat": "^2.2.0",
+    "gulp-connect": "^2.0.5",
+    "gulp-jshint": "^1.6.3",
+    "gulp-karma": "0.0.4",
+    "gulp-map": "0.0.2",
+    "gulp-protractor": "0.0.7",
+    "gulp-rename": "^1.2.0",
+    "gulp-util": "^2.2.17",
+    "gulp-watch": "^0.6.8",
+    "jshint-stylish": "^0.2.0",
+    "run-sequence": "^0.3.2",
+    "karma": "~0.12.16",
+    "karma-chai": "^0.1.0",
+    "karma-chai-plugins": "^0.2.1",
+    "karma-coverage": "~0.2.4",
+    "karma-jasmine": "~0.1.5",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-mocha": "~0.1.4",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "mocha": "~1.20.1",
+    "phantomjs": "^1.9.7",
+    "protractor": "~1.0.0",
+    "widget-tester": "git://github.com/Rise-Vision/widget-tester.git"
+  },
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/settinghead/widget-settings-ui-core/issues"
+  },
+  "homepage": "https://github.com/settinghead/widget-settings-ui-core"
+}

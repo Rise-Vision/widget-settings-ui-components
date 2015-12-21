@@ -1,0 +1,36 @@
+{
+  "alignment": {
+    "center": "Center",
+    "label": "Alignment",
+    "left": "Left",
+    "right": "Right"
+  },
+  "color-condition": {
+    "change-down": "Change down green change up red",
+    "change-up": "Change up green change down red",
+    "label": "Color Condition",
+    "none": "None",
+    "value-negative": "Positive value red negative green",
+    "value-positive": "Positive value green negative red"
+  },
+  "date": {
+    "label": "Date Format",
+    "long": "Long",
+    "medium": "Medium",
+    "short": "Short"
+  },
+  "decimals": {
+    "label": "Decimals"
+  },
+  "header-text": {
+    "label": "Header Text"
+  },
+  "heading": "Columns",
+  "select-title": "Select Columns To Format",
+  "sign": {
+    "arrow": "Arrow",
+    "label": "Sign",
+    "none": "None"
+  },
+  "width": "Width"
+}

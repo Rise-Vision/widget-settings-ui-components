@@ -1,0 +1,39 @@
+<div class="page-header">
+  <h1 class="page">Font Size Picker</h1>
+</div>
+
+<p class="lead">Font size picker for choosing from a pre-defined set of sizes</p>
+
+<p>
+  <strong>Dependencies</strong>
+  <span class="label label-info">jQuery</span>
+  <span class="label label-info">Bootstrap</span>
+  <span class="label label-info">rv-bootstrap-formhelpers</span>
+  <span class="label label-info">bootstrap-select</span>
+</p>
+
+<h3>Script Includes</h3>
+<hljs language="html" include="'jquery-script-includes'"></hljs>
+
+<h3>Usage</h3>
+
+<p>Inject <code>'risevision.widget.common.fontsizepicker'</code> in your app <code>angular.module('myApp', ['risevision.widget.common.fontsizepicker']);</code></p>
+
+<hljs include="'font-size-picker-usage'"></hljs>
+
+<!-- Dynamic Example -->
+<div class="examples">
+  <h3>Example</h3>
+  <font-size-picker ng-model="sample.fontSize"></font-size-picker>
+</div>
+
+<script type="text/ng-template" id="jquery-script-includes">
+bower_components/bootstrap-select/bootstrap-select.js
+bower_components/rv-bootstrap-formhelpers/dist/js/rv-bootstrap-formhelpers.js
+bower_components/bootstrap-form-components/dist/js/bootstrap-font-size-picker.js
+bower_components/bootstrap-form-components/dist/js/angular/bootstrap-font-size-picker.js
+</script>
+
+<script type="text/ng-template" id="font-size-picker-usage">
+<font-size-picker ng-model="sample.fontSize"></font-size-picker>
+</script>

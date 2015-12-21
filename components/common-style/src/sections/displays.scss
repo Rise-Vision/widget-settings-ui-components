@@ -1,0 +1,60 @@
+.reboot-time {
+  margin-bottom: 0;
+  table.time-picker {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  label, .checkbox {
+    display: inline-block;
+  }
+  @media (max-width: 768px) {
+    .checkbox {
+      display: block;
+    }
+  }
+}
+
+.display-add {
+  .input-group {
+    display: block;
+    overflow: hidden;
+  }
+  input {
+    width: 100%;
+    display: block;
+  }
+  .input-group-addon {
+    display: none;
+  }
+}
+
+.offline {
+  &:before {
+    color:#e74c3c;
+  }
+}
+.noninstalled {
+  &:before {
+    color:#444;
+  }
+}
+.online {
+  &:before {
+    color:$rise-green;
+  }
+}
+
+.display-name {
+  font-weight: 500;
+  span {
+    max-width: 240px;
+    display: block;
+  }
+}
+
+.display-address {
+  span {
+    max-width: 320px;
+    display: block;
+  }
+}

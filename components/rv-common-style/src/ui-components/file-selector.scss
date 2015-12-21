@@ -1,0 +1,18 @@
+.file-selector
+{
+
+  .subscription-status
+  {
+    text-align: left;
+
+    &.trial,
+    &.cancelled,
+    &.expired,
+    &.suspended
+    {
+      border: none;
+    }
+  }
+
+
+}

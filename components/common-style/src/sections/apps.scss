@@ -1,0 +1,52 @@
+.apps-launcher {
+	text-align: center;
+	font-size: 18px;
+	.apps-launcher-tour {
+		padding: 64px 32px;
+		.content-box {
+			overflow: hidden;
+			margin: 2px;
+			-webkit-box-shadow:0 1px 4px rgba(50, 50, 50, 0.1);
+			-moz-box-shadow:0 1px 4px rgba(50, 50, 50, 0.1);
+			box-shadow:0 1px 4px rgba(50, 50, 50, 0.1);
+		}
+		.headline {
+			h2 {
+				font-weight: 300;
+				font-size: 36px;
+			}
+		}
+		.image {
+			background: #E9FFED;
+			padding: 16px 48px;
+			img {
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+.experimental-apps a {
+  display: block;
+  padding: 10px;
+  background: #FFF;
+  border:1px solid #f2f2f2;
+  -webkit-box-shadow: inset 0 -1px 0 #d5d1cb,0 1px 4px rgba(113,108,102,.1),transparent 0 0 0;
+  box-shadow: inset 0 -1px 0 #d5d1cb,0 1px 4px rgba(113,108,102,.1),transparent 0 0 0;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.experimental-apps a img {
+  width: 32px;
+}
+.experimental-apps-block {
+  background: #f7f7f7;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  padding: 56px 0;
+}
+.experimental-apps-block h2 {
+  font-size: 38px;
+}

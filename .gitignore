@@ -1,7 +1,0 @@
-*.log
-components/
-node_modules/
-coverage/
-src/_config/config.js
-tmp
-reports/

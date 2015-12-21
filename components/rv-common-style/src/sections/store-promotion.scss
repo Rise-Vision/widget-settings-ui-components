@@ -1,0 +1,138 @@
+/* ==========================================================================
+   COMPACT BANNER
+   ========================================================================== */
+
+.tiny-hero {
+  width: 100%;
+  height: 95px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  background: #f5f6f8 bottom center;
+  background-color: #FFF;
+  background-image: url('https://s3.amazonaws.com/Store-Products/Featured+Products/featured_tiny_storagesupportbundle.jpg');
+  background-size: cover;
+  background-position: 96%;
+  p {
+    width: 33%;
+    height: 100%;
+    margin-bottom: 0;
+    padding: 6px;
+    line-height: 17px;
+    position: relative;
+    @extend .gradient-blue-vertical;
+  }
+  .btn {
+    margin-top: 4px;
+    padding: 2px 12px;
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: $screen-md) {
+  .tiny-hero {
+    background-position: 37%;
+    p {
+      width: 45%;
+    }
+  }
+}
+
+@media (max-width: $screen-sm) {
+  .tiny-hero {
+    background-position: 31%;
+    p {
+      width: 55%;
+      padding: 6px;
+    }
+    .btn {
+    padding: 0px 11px;
+    }
+  }
+}
+
+@media (max-width: 566px) {
+  .tiny-hero {
+    background-position: 91%;
+    background-position-y: 402%;
+    background-size: 245% 93%;
+    p {
+      width: 100%;
+      color: #fff;
+    }
+  }
+}
+
+
+/* ==========================================================================
+   FEATURED BANNER
+   ========================================================================== */
+
+.featured-hero {
+  position: relative;
+  width: 100%;
+  height: 408px;
+  margin-top: 19px;
+  cursor: pointer;
+  border: 1px solid #0bd397;
+  background: #717e84 center center;
+  background-image: url('https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_storagesupportbundle.jpg');
+  h1 {
+    font-size: 44px;
+    font-weight: 300;
+    color: #fff;
+  }
+  p {
+    color: #fff;
+  }
+  .btn {
+    border: 1px solid #00ff03;
+  }
+  div {
+    @extend .gradient-blue-angled;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28%;
+    height: 100%;
+    padding: 13px 31px;
+  }
+}
+
+@media (max-width: $screen-md) {
+  .featured-hero {
+    background: #717e84 70% center;
+    background-image: url('https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_storagesupportbundle.jpg');
+    div {
+      width: 50%;
+    }
+  }
+}
+
+@media (max-width: $screen-sm) {
+  .featured-hero h1 {
+    line-height: 44px;
+  }
+}
+
+@media (max-width: $screen-xs) {
+  .featured-hero {
+    background-image: url('https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_storagesupportbundle.jpg');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 168% auto;
+    div {
+      width: 100%;
+    }
+  }
+}
+
+table.subtotals {
+  text-align: right;
+  .btn {
+    margin-right: 5px;
+  }
+}

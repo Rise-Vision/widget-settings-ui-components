@@ -1,0 +1,40 @@
+{
+  "name": "bootstrap-form-components",
+  "version": "0.1.9",
+  "description": "Bootstrap Font Picker jQuery Plugin",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test gulp test",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rise-Vision/bootstrap-form-components.git"
+  },
+  "author": "Rise Vision",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/Rise-Vision/bootstrap-form-components/issues"
+  },
+  "homepage": "https://github.com/Rise-Vision/bootstrap-form-components",
+  "devDependencies": {
+    "bower": "^1.5.3",
+    "chai": "~1.9.1",
+    "chai-as-promised": "~4.1.1",
+    "gulp": "~3.8.1",
+    "gulp-bump": "~0.1.8",
+    "gulp-concat": "^2.2.0",
+    "gulp-connect": "~2.0.5",
+    "gulp-html2string": "git://github.com/Rise-Vision/gulp-html2string",
+    "gulp-minify-css": "^0.3.5",
+    "gulp-rename": "~1.2.0",
+    "gulp-sass": "^0.7.2",
+    "gulp-util": "~2.2.17",
+    "phantomjs": "^1.9.7",
+    "run-sequence": "^0.3.6",
+    "spawn-cmd": "0.0.2",
+    "widget-tester": "git://github.com/Rise-Vision/widget-tester.git"
+  }
+}

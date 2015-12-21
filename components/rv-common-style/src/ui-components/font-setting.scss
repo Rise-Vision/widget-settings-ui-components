@@ -1,0 +1,19 @@
+.font-setting-button > div{
+  width : 54px;
+}
+
+@media (min-width: 667px) and (max-width: 1000px) {
+	.font-setting { 
+	  width:320px;
+	}
+}
+
+@media (min-width: 100px) and (max-width: 667px) {
+	.font-setting {
+	  width:255px;
+	}
+
+	.font-setting-button {
+	 padding-bottom: 10px;
+	}
+} 

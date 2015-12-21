@@ -1,0 +1,42 @@
+{
+  "name": "component-storage-selector",
+  "version": "1.1.1",
+  "description": "An Angular directive that provides the Storage Icon button to launch a modal containing Storage selection",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp test",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Rise-Vision/component-storage-selector.git"
+  },
+  "author": "Rise Vision",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/Rise-Vision/component-storage-selector/issues"
+  },
+  "homepage": "https://github.com/Rise-Vision/component-storage-selector",
+  "devDependencies": {
+    "bower": "^1.5.3",
+    "chai": "~1.9.2",
+    "chai-as-promised": "~4.1.1",
+    "colors": "^0.6.2",
+    "del": "~1.1.1",
+    "express": "^4.6.1",
+    "gulp": "^3.9.0",
+    "gulp-bower": "~0.0.10",
+    "gulp-bump": "~0.1.8",
+    "gulp-concat": "^2.2.0",
+    "gulp-html2js": "^0.2.0",
+    "gulp-jshint": "~1.5.5",
+    "gulp-rename": "~1.2.0",
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "~2.2.17",
+    "gulp-watch": "^0.6.8",
+    "jshint-stylish": "^0.2.0",
+    "phantomjs": "^1.9.7-9",
+    "run-sequence": "^0.3.2",
+    "widget-tester": "git://github.com/Rise-Vision/widget-tester.git"
+  }
+}

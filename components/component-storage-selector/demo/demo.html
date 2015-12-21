@@ -1,0 +1,72 @@
+
+<h1>Storage Selector</h1>
+
+<p class="lead">An Angular directive that provides the Storage Icon button to launch a Storage modal and select a file or folder</p>
+
+<p><strong>Dependencies</strong> <span class="label label-info">Angular JS</span> <span class="label label-info">Angular Bootstrap</span></p>
+
+<h3>Usage</h3>
+<p>When clicking the Storage icon button, a modal is launched containing Storage selection. You may need to allow Rise Vision access to your Google account to verify who you are. Once verified, you can select a file or folder.</p>
+
+<p>The Storage Selector directive will <code>$emit</code> an event called <code>"picked"</code> when you make a selection from Storage and this event will provide an array of urls of the selected files.</p>
+
+<p>This directive provides attributes <code>type</code> and <code>companyid</code>. The type attribute tells the directive what specific selector type it should use for configuring the Storage selection. Acceptable values are <code>single-file</code>, <code>multiple-file</code> and <code>single-folder</code>. To retrieve the Company ID click on Settings from the menu of the Rise Vision Application. The ID for the currently selected Company can be found in the URL where the ID is everything to the right of "company=", for example:</p>
+<hljs>http://rva.risevision.com/#COMPANY_MANAGE/company=XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX</hljs>
+
+<h3>Module Includes</h3>
+<code>angular.module('myApp', ['risevision.widget.common.storage-selector']);</code>
+
+
+<h3>Script Includes</h3>
+<p>Make sure you include the following dependency files:</p>
+<hljs>
+bower_components/common-style/dist/css/rise.min.css
+bower_components/angular/angular.js
+bower_components/angular-bootstrap/ui-bootstrap-tpls.js
+bower_components/component-storage-selector/dist/storage-selector.js
+</hljs>
+
+<h3>Usage</h3>
+<div class="btn-group" data-toggle="buttons">
+  <form>
+    <input type="radio"  ng-model="storageClientSource" value="angular"> AngularJs
+    <input type="radio"  ng-model="storageClientSource" value="js"> Javascript
+  </form>
+</div>
+<div ng-show="storageClientSource === 'angular'">
+  <hljs include="'sample-angular'"></hljs>
+</div>
+<div ng-show="storageClientSource === 'js'">
+  <hljs include="'sample-js'"></hljs>
+</div>
+  </div>
+</div>
+
+<div class="add-bottom">
+  <ng-include src="'sample-angular'"></ng-include>
+</div>
+
+<script type="text/ng-template" id="sample-angular">
+  <storage-selector company-id="abc123" type="single-file"></storage-selector>
+</script>
+
+<script type="text/ng-template" id="sample-js">
+  function loadStorageSelector() {
+    backDrop = document.createElement("div");
+    backDrop.className = "storage-selector-backdrop";
+    document.body.appendChild(backDrop);
+    storageModal = document.createElement("iframe");
+    storageModal.src = "http://storage.risevision.com/files/{YOUR_COMPANY_ID}?selector-type={YOUR_TYPE}";
+    storageModal.className = "storage-selector-iframe";
+    storageModal = document.body.appendChild(storageModal);
+  }
+
+  window.addEventListener("load", loadStorageSelector);
+  window.addEventListener("message", handleStorageMessage, false);
+
+  function handleStorageMessage(event) {
+    if (event.origin !== "http://storage.risevision.com") { return; }
+    console.log(event.data);
+  }
+</script>
+

@@ -1,0 +1,279 @@
+msgid "add.error"
+msgstr "Failed to create Presentation!"
+
+msgid "addWidget.settingsUrl"
+msgstr "Settings URL"
+
+msgid "addWidget.title"
+msgstr "Add Widget by URL"
+
+msgid "addWidget.url"
+msgstr "URL"
+
+msgid "details.deleteTitle"
+msgstr "Deleting Presentation"
+
+msgid "details.deleteWarning"
+msgstr "Are you sure you want to delete this Presentation?"
+
+msgid "details.error"
+msgstr "Failed to update Presentation!"
+
+msgid "details.published"
+msgstr "Published"
+
+msgid "details.remove"
+msgstr "Remove"
+
+msgid "details.removePlaceholder"
+msgstr "Remove Placeholder"
+
+msgid "details.removePlaceholderWarning"
+msgstr "Are you sure you want to remove this Placeholder from the Presentation?"
+
+msgid "details.removePlaylistItem"
+msgstr "Remove Item"
+
+msgid "details.removePlaylistItemWarning"
+msgstr "Are you sure you want to remove this Content from the Playlist?"
+
+msgid "details.revised"
+msgstr "Revised"
+
+msgid "details.saved"
+msgstr "Saved"
+
+msgid "details.unsavedTitle"
+msgstr "Unsaved Changes"
+
+msgid "details.unsavedWarning"
+msgstr "You have unsaved changes. Do you want to Save or Discard them?"
+
+msgid "landing.manageEditorText"
+msgstr "Create and manage HTML content for your digital signage displays, anywhere, anytime."
+
+msgid "list.actions.add"
+msgstr "Add Presentation"
+
+msgid "list.actions.fromTemplate"
+msgstr "From Template"
+
+msgid "list.actions.new"
+msgstr "New"
+
+msgid "list.empty"
+msgstr "You haven't created any Presentation yet"
+
+msgid "list.error"
+msgstr "Failed to load presentation. Please try again later."
+
+msgid "list.filter.filters"
+msgstr "Filters"
+
+msgid "list.filter.placeholder"
+msgstr "Search for Presentations"
+
+msgid "list.heading.changeDate"
+msgstr "Last Modified"
+
+msgid "list.heading.name"
+msgstr "Name"
+
+msgid "list.heading.status"
+msgstr "Status"
+
+msgid "list.no-results"
+msgstr "Your search didn't return any results"
+
+msgid "list.title"
+msgstr "Presentations"
+
+msgid "playlistItem.add"
+msgstr "Add Playlist Item"
+
+msgid "playlistItem.content"
+msgstr "Content"
+
+msgid "playlistItem.duration"
+msgstr "Duration"
+
+msgid "playlistItem.legacyWarningPart1"
+msgstr "This is a Gadget and it is not supported in this Editor. To configure a Gadget please use the"
+
+msgid "playlistItem.legacyWarningPart2"
+msgstr "previous version"
+
+msgid "playlistItem.legacyWarningPart3"
+msgstr "of the Editor."
+
+msgid "playlistItem.name"
+msgstr "Name"
+
+msgid "playlistItem.no-playlistItem"
+msgstr "No Playlist Items"
+
+msgid "playlistItem.playUntilDone"
+msgstr "Play Until Done"
+
+msgid "playlistItem.presentation"
+msgstr "Presentation"
+
+msgid "playlistItem.required"
+msgstr "Required"
+
+msgid "playlistItem.seconds"
+msgstr "seconds"
+
+msgid "playlistItem.select"
+msgstr "Select"
+
+msgid "playlistItem.title"
+msgstr "Edit Playlist Item"
+
+msgid "playlistItem.widgetByUrl"
+msgstr "Widget By URL"
+
+msgid "properties.labels.background"
+msgstr "Background"
+
+msgid "properties.labels.copy"
+msgstr "Copy Presentation"
+
+msgid "properties.labels.height"
+msgstr "Height"
+
+msgid "properties.labels.hideMouse"
+msgstr "Hide Mouse Pointer"
+
+msgid "properties.labels.id"
+msgstr "ID"
+
+msgid "properties.labels.name"
+msgstr "Name"
+
+msgid "properties.labels.playUntilDone"
+msgstr "Play Until Done Placeholder"
+
+msgid "properties.labels.resolution"
+msgstr "Resolution"
+
+msgid "properties.labels.width"
+msgstr "Width"
+
+msgid "properties.title"
+msgstr "Presentation Properties"
+
+msgid "properties.transition.fade"
+msgstr "Fade"
+
+msgid "properties.transition.label"
+msgstr "Transition"
+
+msgid "properties.transition.none"
+msgstr "None"
+
+msgid "properties.transition.slideDown"
+msgstr "Slide Down"
+
+msgid "properties.transition.slideLeft"
+msgstr "Slide Left"
+
+msgid "properties.transition.slideRight"
+msgstr "Slide Right"
+
+msgid "properties.transition.slideUp"
+msgstr "Slide Up"
+
+msgid "properties.warnings.duplicate"
+msgstr "Duplicate Placeholder names are not allowed"
+
+msgid "properties.warnings.invalid"
+msgstr "Placeholder name contains invalid character"
+
+msgid "properties.warnings.invalidUrl"
+msgstr "Invalid URL"
+
+msgid "properties.warnings.required"
+msgstr "Required"
+
+msgid "storeProduct.add"
+msgstr "Add"
+
+msgid "storeProduct.details"
+msgstr "Details"
+
+msgid "storeProduct.title"
+msgstr "Select Content"
+
+msgid "subscription.buy"
+msgstr "Buy"
+
+msgid "subscription.status.daysRemaining"
+msgstr "Days Remaining"
+
+msgid "subscription.status.daysTrial"
+msgstr "Days Trial"
+
+msgid "subscription.status.premium"
+msgstr "Premium"
+
+msgid "subscription.viewAccount"
+msgstr "View Account"
+
+msgid "title"
+msgstr "Editor"
+
+msgid "workspace.legacyWarning.confirmation"
+msgstr "Open with Classic Editor"
+
+msgid "workspace.legacyWarning.message"
+msgstr "This Presentation contains Gadgets, Video Items, Image Items, HTML Items, Text Items or Presentation Items that are not supported in this Editor.<br/>To modify this Presentation please use the previous version of the Editor."
+
+msgid "workspace.legacyWarning.title"
+msgstr "Deprecated Items"
+
+msgid "workspace.sidebar.edit.playlist"
+msgstr "Playlist"
+
+msgid "workspace.sidebar.edit.properties"
+msgstr "Properties"
+
+msgid "workspace.sidebar.edit.settings.height"
+msgstr "Height"
+
+msgid "workspace.sidebar.edit.settings.left"
+msgstr "Left"
+
+msgid "workspace.sidebar.edit.settings.top"
+msgstr "Top"
+
+msgid "workspace.sidebar.edit.settings.visible"
+msgstr "Visible"
+
+msgid "workspace.sidebar.edit.settings.width"
+msgstr "Width"
+
+msgid "workspace.sidebar.edit.settings.zOrder"
+msgstr "Z Order"
+
+msgid "workspace.sidebar.edit.title"
+msgstr "Edit Placeholder"
+
+msgid "workspace.sidebar.no-placeholder"
+msgstr "You haven't added any Placeholders to your Presentation yet."
+
+msgid "workspace.sidebar.title"
+msgstr "Placeholders"
+
+msgid "workspace.toolbar.addPlaceholder"
+msgstr "Add Placeholder"
+
+msgid "workspace.toolbar.mode.design"
+msgstr "Design"
+
+msgid "workspace.toolbar.mode.html"
+msgstr "HTML"
+
+msgid "workspace.toolbar.preview"
+msgstr "Preview"
+

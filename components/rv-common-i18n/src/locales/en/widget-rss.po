@@ -1,0 +1,63 @@
+msgid "author-format.heading"
+msgstr "Author Format"
+
+msgid "author-format.text"
+msgstr "Author Sample Text"
+
+msgid "custom"
+msgstr "Custom Layout URL"
+
+msgid "date-format.heading"
+msgstr "Date Format"
+
+msgid "date-format.text"
+msgstr "Date Sample Text"
+
+msgid "heading-format.heading"
+msgstr "Heading Format"
+
+msgid "heading-format.text"
+msgstr "Heading Sample Text"
+
+msgid "queue"
+msgstr "Queue"
+
+msgid "refresh"
+msgstr "Refresh Interval"
+
+msgid "selection.author"
+msgstr "Author"
+
+msgid "selection.date"
+msgstr "Date"
+
+msgid "selection.heading"
+msgstr "Data Selection"
+
+msgid "selection.snippet"
+msgstr "Story Snippet"
+
+msgid "selection.story"
+msgstr "Full Story"
+
+msgid "selection.title"
+msgstr "Title"
+
+msgid "settings"
+msgstr "RSS Settings"
+
+msgid "stories"
+msgstr "Stories to Display"
+
+msgid "story-format.heading"
+msgstr "Story Format"
+
+msgid "story-format.text"
+msgstr "Story Sample Text"
+
+msgid "transition"
+msgstr "Transition"
+
+msgid "transition-hold"
+msgstr "Transition Hold"
+

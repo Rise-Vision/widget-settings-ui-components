@@ -1,0 +1,33 @@
+{
+  "author-format": {
+    "heading": "Author Format",
+    "text": "Author Sample Text"
+  },
+  "custom": "Custom Layout URL",
+  "date-format": {
+    "heading": "Date Format",
+    "text": "Date Sample Text"
+  },
+  "heading-format": {
+    "heading": "Heading Format",
+    "text": "Heading Sample Text"
+  },
+  "queue": "Queue",
+  "refresh": "Refresh Interval",
+  "selection": {
+    "author": "Author",
+    "date": "Date",
+    "heading": "Data Selection",
+    "snippet": "Story Snippet",
+    "story": "Full Story",
+    "title": "Title"
+  },
+  "settings": "RSS Settings",
+  "stories": "Stories to Display",
+  "story-format": {
+    "heading": "Story Format",
+    "text": "Story Sample Text"
+  },
+  "transition": "Transition",
+  "transition-hold": "Transition Hold"
+}

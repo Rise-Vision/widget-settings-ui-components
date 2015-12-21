@@ -1,0 +1,59 @@
+.storage-full, .storage-modal {
+  .table-2 {
+    .folder,.file {
+      &:before {
+        font-family: FontAwesome;
+      }
+    }
+    .back-btn .folder {
+      &:before {content:'\f07c'; color: $rise-green;}
+    }
+    .folder {
+      &:before {content:'\f07b'; color: $rise-green; margin-right: 10px;}
+    }
+    .file {
+      &:before {content:'\f15b'; color: #d4d4d4;}
+    }
+    .sub-folder {
+      margin-left: 22px;
+      position: relative;
+      &:after {
+        content:'';
+        width: 15px;
+        height: 6px;
+        display: block;
+        position: absolute;
+        top: 4px;
+        left: -20px;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+      }
+    }
+  }
+  .notifications {
+    margin: 0px 5px;
+  }
+  .toolbar {
+    margin: 10px 0;
+  }
+  .rotating-text {
+    color: #777;
+    margin-left: 5px;
+  }
+}
+
+.storage-full {
+  .scrollable-list {
+    max-height: calc(100vh - 340px);
+  }
+}
+
+#store-modal-frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+

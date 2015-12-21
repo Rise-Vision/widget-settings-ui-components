@@ -1,0 +1,14 @@
+{
+  "choice": "Use Image",
+  "color": {
+    "label": "Color"
+  },
+  "heading": "Background",
+  "image": {
+    "scale": "Scale To Fit",
+    "selector": {
+      "file": "Rise Storage",
+      "title": "Select an image from Rise Storage or enter a valid URL"
+    }
+  }
+}

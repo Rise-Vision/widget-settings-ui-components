@@ -1,0 +1,18 @@
+msgid "choice"
+msgstr "Use Image"
+
+msgid "color.label"
+msgstr "Color"
+
+msgid "heading"
+msgstr "Background"
+
+msgid "image.scale"
+msgstr "Scale To Fit"
+
+msgid "image.selector.file"
+msgstr "Rise Storage"
+
+msgid "image.selector.title"
+msgstr "Select an image from Rise Storage or enter a valid URL"
+

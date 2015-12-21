@@ -1,0 +1,68 @@
+/* Variables
+   ========================================================================== */
+
+// Colors
+$rise-green: #4ab767;
+$rise-blue: #0081BA;
+$start-color: #1f71a2;
+$stop-color: #045888;
+$danger: #d9534f;
+
+// Tones
+$white: #fff;
+$lighter-gray: #f2f2f2;
+$light-gray: #e6e6e6;
+$gray: #555;
+$dark-gray: #4d4d4d;
+
+$light-border-color: #DDDDDD;
+$border: 1px solid #ccc;
+
+// Spacing
+$title-margin: 6px;
+
+// Borders
+$light-border: 1px solid $light-border-color;
+$dark-border: 1px solid $border;
+
+// Gradients
+@mixin gradient-vertical($from, $mid, $to)
+{
+  background:    -moz-linear-gradient(top,  $from 0%, $mid 34%, $to 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop(34%,$mid), color-stop(100%,$to));
+  background: -webkit-linear-gradient(top,  $from 0%, $mid 34%, $to 100%);
+  background:      -o-linear-gradient(top,  $from 0%, $mid 34%, $to 100%);
+  background:     -ms-linear-gradient(top,  $from 0%, $mid 34%, $to 100%);
+  background:         linear-gradient(to bottom,  $from 0%, $mid 34%, $to 100%);
+  background-color: $to;
+}
+
+@mixin gradient-angled($from, $to)
+{
+  background:    -moz-linear-gradient(45deg,  $from 0%, $to 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,$from), color-stop(100%,$to));
+  background: -webkit-linear-gradient(45deg,  $from 0%, $to 100%);
+  background:      -o-linear-gradient(45deg,  $from 0%, $to 100%);
+  background:     -ms-linear-gradient(45deg,  $from 0%, $to 100%);
+  background:         linear-gradient(45deg,  $from 0%, $to 100%);
+}
+
+.gradient-green-vertical
+{
+  @include gradient-vertical(rgba(0,221,151,1), rgba(0,221,151,1), rgba(0,221,151,.6));
+}
+
+.gradient-green-angled
+{
+  @include gradient-angled(rgba(102,223,186,.52), rgba(0,221,151,1));
+}
+
+.gradient-blue-vertical
+{
+  @include gradient-vertical(rgba(111,111,255,0.7), rgba(0,114,221,1), rgba(0,114,221,.6));
+}
+
+.gradient-blue-angled
+{
+  @include gradient-angled(rgba(111,111,255,0.7), rgba(0,114,221,1));
+}

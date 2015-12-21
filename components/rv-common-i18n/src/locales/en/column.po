@@ -1,0 +1,66 @@
+msgid "alignment.center"
+msgstr "Center"
+
+msgid "alignment.label"
+msgstr "Alignment"
+
+msgid "alignment.left"
+msgstr "Left"
+
+msgid "alignment.right"
+msgstr "Right"
+
+msgid "color-condition.change-down"
+msgstr "Change down green change up red"
+
+msgid "color-condition.change-up"
+msgstr "Change up green change down red"
+
+msgid "color-condition.label"
+msgstr "Color Condition"
+
+msgid "color-condition.none"
+msgstr "None"
+
+msgid "color-condition.value-negative"
+msgstr "Positive value red negative green"
+
+msgid "color-condition.value-positive"
+msgstr "Positive value green negative red"
+
+msgid "date.label"
+msgstr "Date Format"
+
+msgid "date.long"
+msgstr "Long"
+
+msgid "date.medium"
+msgstr "Medium"
+
+msgid "date.short"
+msgstr "Short"
+
+msgid "decimals.label"
+msgstr "Decimals"
+
+msgid "header-text.label"
+msgstr "Header Text"
+
+msgid "heading"
+msgstr "Columns"
+
+msgid "select-title"
+msgstr "Select Columns To Format"
+
+msgid "sign.arrow"
+msgstr "Arrow"
+
+msgid "sign.label"
+msgstr "Sign"
+
+msgid "sign.none"
+msgstr "None"
+
+msgid "width"
+msgstr "Width"
+

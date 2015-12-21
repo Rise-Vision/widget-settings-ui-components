@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <file-selector id="main" title="{{ 'video.url.label' | translate }}"
+                         file-label="{{ 'video.url.file' | translate}}"
+                         folder-label="{{ 'video.url.folder' | translate}}"
+                         company-id="{{settings.params.companyId}}"
+                         file-type="video"
+                         selector="settings.additionalParams.selector"
+                         ng-model="fileselector" valid></file-selector>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

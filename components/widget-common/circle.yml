@@ -1,0 +1,18 @@
+dependencies:
+  pre:
+    - npm install -g gulp
+    - npm install -g casperjs
+  post:
+    - bower install
+test:
+  override:
+    - NODE_ENV=prod npm run test
+deployment:
+  staging:
+    branch: /(feature|fix|chore).*/
+    commands:
+      - NODE_ENV=test npm run build
+  production:
+    branch: master
+    commands:
+      - NODE_ENV=prod npm run build

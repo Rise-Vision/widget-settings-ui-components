@@ -1,0 +1,350 @@
+.navbar {
+  background: #FFF;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: none;
+  .navbar-header {
+    height: auto;
+    li {
+      margin-right: 0;
+      vertical-align: top;
+      >a {
+        line-height: 33px;
+        font-size: 13px;
+        padding: 0;
+        margin-right: 3px;
+        border-radius: 3px;
+        white-space: nowrap;
+        &.selected {
+          color: $rise-blue;
+        }
+      }
+    }
+    .navbar-brand {
+      margin-right: 0;
+    }
+    .navbar-right {
+      margin:0;
+      >li {
+        display: inline-block;
+        margin-left: 5px;
+        >a {
+          display: block;
+          padding: 0;
+          margin-left: 0;
+          font-size: 24px;
+          &:hover {}
+          &:focus {}
+          >.fa {
+            display: block;
+            line-height: 33px;
+            padding: 0 10px;
+          }
+        }
+      }
+      .profile-pic {
+        width: 33px;
+        height: 33px;
+        border-radius: 4px;
+        vertical-align: top;
+        margin-left: 10px;
+      }
+    }
+    .navbar-left {
+      margin-left: 0;
+      a {
+        padding: 0 5px;
+      }
+    }
+  }
+}
+
+.app-navigation {
+  width: 190px;
+  li {
+    display: block;
+    .image {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      img {
+        width: 100%;
+      }
+    }
+    &:hover {
+      background: rgba(150,150,150,.1);
+      a {
+        background: none !important;
+      }
+    }
+    a {
+      line-height: 24px !important;
+      border-radius: 0 !important;
+      padding: 15px !important;
+      display: block;
+    }
+    span {
+      vertical-align: top;
+      line-height: 24px;
+      margin-left: 5px;
+      display: inline-block;
+    }
+  }
+  .new-apps-intro {
+    background: $rise-green;
+    padding: 15px;
+    color: #FFF;
+    &:hover {
+      background: $rise-green;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 4px;
+      &+p {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .new-app {
+    .new-app-link {
+      display: inline-block;
+      float: right;
+      color: $rise-green;
+      font-weight: 600;
+    }
+  }
+}
+
+/* Signup Modal
+   ========================================================================== */
+
+.signup-modal {
+  h1 {
+    font-size: 44px;
+    font-weight: 300;
+    margin-top: 48px;
+    &+.text-muted {
+      margin-top: 5px;
+      font-size: 16px;
+    }
+  }
+}
+
+.signup-offer {
+  margin-top: 48px;
+  .widgets-offer {
+    li {
+      background: $lighter-gray;
+      display: inline-block;
+      width: 85px;
+      height: 85px;
+      vertical-align: top;
+      padding: 5px;
+      border-radius: 4px;
+      img {
+        width: 36px;
+      }
+      span {
+        font-size: 12px;
+        font-weight: 500;
+        color: #666;
+        display: block;
+        line-height: 14px;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.registration-modal {
+  label {
+    font-weight: 500;
+    font-size: 15px;
+    span {
+      color: #666;
+      font-weight: 400;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+  }
+  .checkbox {
+    label {
+      font-size: 14px;
+      color: #666;
+      font-weight: 400;
+    }
+  }
+}
+
+.signup-counters {
+  text-align: center;
+  margin-top: 24px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 10px;
+  .counter {
+    margin-bottom: 16px;
+    p {
+      margin: 0;
+      font-weight: 300;
+      font-size: 28px;
+      color: $rise-green;
+    }
+    span {
+      font-size: 12px;
+      display: block;
+      color: #999;
+      font-weight: 500;
+    }
+  }
+}
+
+/* Company Selector
+   ========================================================================== */
+.company-search {
+  padding-top: 20px;
+}
+
+/* Move Company
+   ========================================================================== */
+.move-company {
+  label {
+    font-weight: normal;
+  }
+  a {
+    line-height: 34px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  .to-company {
+    margin-bottom: 20px;
+  }
+}
+
+/* Company Settings
+   ========================================================================== */
+.company-settings .action-link {
+  margin-left: 20px;
+}
+
+.double-margin {
+  margin-bottom: 40px !important;
+}
+
+.sub-company-alert.test-company-alert {
+  background-color: $brand-danger;
+}
+
+.sub-company-alert.test-company-alert + .sub-company-alert {
+  margin-top: 5px;
+}
+
+.sub-company-alert {
+  width: 100%;
+  line-height: 24px;
+  bottom: -24px;
+  background-color: lighten($brand-danger, 25%);
+  color: #000;
+  padding: 0 20px;
+  border-bottom: 1px solid lighten($brand-danger, 15%);
+  text-align: center;
+  display: inline-block;
+}
+
+.sub-company-alert .link-button {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.authorization-modal {
+  text-align: center;
+  .profile-img {
+    width: 72px;
+    height: 72px;
+    -webkit-border-radius: 72px;
+    -moz-border-radius: 72px;
+    border-radius: 72px;
+  }
+  p,.btn { margin-top: 40px;}
+}
+
+.user-profile-dropdown {
+  .dropdown-toggle {
+    .user-id {
+      span {
+        display: block;
+        line-height: 16px;
+        font-size: 13px;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        &.pending-registration {
+          line-height: 32px;
+          display: none;
+        }
+      }
+      strong {
+        font-size: 12px;
+        color: #999;
+      }
+    }
+  }
+  .google-account {
+    margin: 15px;
+    line-height: 32px;
+  }
+}
+
+.dropdown-header {
+  color: #555;
+  padding: 10px;
+  &.sub-company-header {
+    background: #f8e4e2;
+  }
+  p {
+    line-height: 18px;
+    margin: 0;
+    font-size: 13px;
+    overflow: hidden;
+    @media (max-width: 480px) {
+      strong {
+        text-overflow:ellipsis;
+        display: block;
+        overflow: hidden;
+        max-width: 260px;
+      }
+      a {
+        display: block;
+        margin-top:5px;
+      }
+      .text-muted {
+        display: none;
+      }
+    }
+  }
+}
+
+.dropdown-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e6e6e6;
+}
+
+
+.actions-nav {
+  > li > a .label {
+    position: absolute;
+    left: 60%;
+    top: -2px;
+    z-index: 1;
+    padding: 4px 7px;
+    font-size: 50%;
+    vertical-align: middle;
+  }
+  > li.shopping-cart > a .label { left: 75%; }
+  .dropdown .company-menu { right: -62px; }
+  .dropdown .company-menu::before { right: 80px; }
+  .dropdown .company-menu::after { right: 81px; }
+}

@@ -1,0 +1,48 @@
+.toolbar {
+  overflow: hidden;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.icon-nav {
+  color: #555;
+  line-height: 32px;
+  label {
+    @extend .btn;
+  }
+  .btn-link {
+    padding: 0;
+    border-radius: 3px;
+    min-width: 32px;
+    height: 32px;
+    vertical-align: top;
+    color: $dark-gray;
+    &:hover {
+      background:$light-gray;
+    }
+    &:focus {
+      outline:0;
+    }
+    .fa {
+      font-size: 20px;
+      line-height: 32px;
+      &:before {
+        color: $dark-gray;
+      }
+    }
+    .fa+.fa {
+      margin-left: -4px;
+      margin-top: 6px;
+      font-size: 12px;
+      vertical-align: top;
+    }
+  }
+}
+
+.custom-icon {
+  display: inline-block;
+  background-size: 100%;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}

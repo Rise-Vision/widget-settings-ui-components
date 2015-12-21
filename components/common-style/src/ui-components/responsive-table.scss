@@ -1,0 +1,204 @@
+ .table-2 {
+  width: 100%;
+  > thead > tr > th {
+    border-bottom: 1px solid $light-gray;
+    color: $gray;
+    padding: 10px;
+    white-space: nowrap;
+    a {
+      color: $gray;
+    }
+  }  
+  > tbody > tr > td {
+    border-bottom: 1px solid $lighter-gray;
+    color: $gray;
+    padding: 10px;
+    vertical-align: top;
+    strong {
+      font-weight: 500;
+    }
+    a {
+      color: $gray;
+      display: block;
+    }
+  }
+  > tbody > tr {
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+  > tbody > tr:hover {
+    &.clickable-row {
+      cursor: pointer;
+      td {color: $rise-blue;}    
+    }
+    > td a {
+      color: $rise-blue;
+    }
+    > td a.non-clickable-file {
+      color: $gray;
+    }
+  }
+}
+
+.table-middle {
+  > tbody > tr > td {
+    vertical-align: middle;
+  }
+}
+
+
+.table-selector {
+  > thead > tr {
+    th {
+        label {
+          margin: 0;
+        }
+        input[type=checkbox] {
+          display:none; 
+        }
+        input[type=checkbox] + label:before {
+          font-family: FontAwesome;
+          margin-right: 10px;
+          display: inline-block;
+          vertical-align: middle;
+          color: #d4d4d4;
+          font-size: 16px;
+          width: 16px;
+          text-align: center;
+          content:'\f096';
+        }
+        input[type=checkbox]:checked + label:before {
+          content: '\f14a';
+        }
+      }
+    }
+
+  > tbody > tr {
+    td {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      vertical-align: middle;
+      &:first-child:before {
+        font-family: FontAwesome;
+        font-style: normal;
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        color: #d4d4d4;
+        font-size: 16px;
+        width: 16px;
+        height: 18px;
+        text-align: center;
+      }
+    }
+    &.back-btn {
+      td {
+        &:first-child:before {
+          content: '\f060' !important;
+        }
+      }
+    }
+    &.no-select-row {
+      td {
+        &:first-child:before {
+          content: '' !important;
+        }
+      }
+    }
+    &.active {
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
+      &:hover {
+        td {
+          background: lighten($rise-green, 5%);
+          color: #FFF;
+
+        }
+      }
+      td {
+        background: lighten($rise-green, 5%);
+        color: #FFF;
+         a {
+            color: #FFF;
+          }
+          .text-muted {
+            color: #FFF;
+          }
+
+        .folder {
+          &:before {color:#FFF;}
+        }
+        &:first-child:before {
+          color: #FFF;
+        }
+      }
+    }
+  }
+  &.single-selector {
+    > tbody > tr {
+      td:first-child {
+        &:before {
+          content:'\f10c';
+        }
+      }
+      &.active { 
+        td {
+          &:first-child:before {content: '\f192';}
+        }
+      }
+    }
+  }
+  &.multiple-selector {
+    > tbody > tr {
+      td:first-child {
+        &:before {
+          content:'\f096';
+        }
+      }
+      &.active { 
+        td {
+          &:first-child:before {content: '\f14a';}
+        }
+      }
+    }
+  }
+}
+
+.table-2 {
+  > tbody > tr > td:first-child {
+      input {display: inline-block;}
+      span a {
+        display: inline-block;
+        vertical-align: middle;
+        overflow: hidden;
+      }
+    }
+  }
+
+tr.blocked-file {
+  >td {
+  background: #f7f7f7;
+  cursor: pointer;
+  position: relative;
+    .callout {
+      top:45px;
+      left: 0;
+    }
+  }
+}
+
+  tr {
+    td {
+      a {color: $gray}
+    }
+  }

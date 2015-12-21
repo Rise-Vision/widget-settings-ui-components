@@ -1,0 +1,396 @@
+msgid "actions.new"
+msgstr "Add Display"
+
+msgid "add.error"
+msgstr "Failed to create display!"
+
+msgid "alerts.acceptTerms"
+msgstr "Please accept Terms and Conditions to enable Alerts"
+
+msgid "alerts.authenticationName"
+msgstr "Authentication Name"
+
+msgid "alerts.authenticationPassword"
+msgstr "Authentication Password"
+
+msgid "alerts.categories.cbrne"
+msgstr "Chemical, Biological, Radiological, Nuclear and Explosives"
+
+msgid "alerts.categories.env"
+msgstr "Environment"
+
+msgid "alerts.categories.fire"
+msgstr "Fire"
+
+msgid "alerts.categories.geo"
+msgstr "Geophysical"
+
+msgid "alerts.categories.health"
+msgstr "Health"
+
+msgid "alerts.categories.infra"
+msgstr "Infrastructure"
+
+msgid "alerts.categories.met"
+msgstr "Meteorological"
+
+msgid "alerts.categories.other"
+msgstr "Other"
+
+msgid "alerts.categories.rescue"
+msgstr "Rescue"
+
+msgid "alerts.categories.safety"
+msgstr "Safety"
+
+msgid "alerts.categories.security"
+msgstr "Security"
+
+msgid "alerts.categories.transport"
+msgstr "Transport"
+
+msgid "alerts.category"
+msgstr "Category"
+
+msgid "alerts.certainties.likely"
+msgstr "Likely"
+
+msgid "alerts.certainties.observed"
+msgstr "Observed"
+
+msgid "alerts.certainties.possible"
+msgstr "Possible"
+
+msgid "alerts.certainties.unknown"
+msgstr "Unknown"
+
+msgid "alerts.certainties.unlikely"
+msgstr "Unlikely"
+
+msgid "alerts.certainty"
+msgstr "Certainty"
+
+msgid "alerts.code"
+msgstr "Code"
+
+msgid "alerts.defaultExpiry"
+msgstr "Default Expiry"
+
+msgid "alerts.handling"
+msgstr "Handling"
+
+msgid "alerts.hideFilters"
+msgstr "Hide Filters"
+
+msgid "alerts.iAccept"
+msgstr "I accept the terms and conditions."
+
+msgid "alerts.minutes"
+msgstr "Minutes"
+
+msgid "alerts.presentation"
+msgstr "Presentation"
+
+msgid "alerts.reset"
+msgstr "Reset"
+
+msgid "alerts.sender"
+msgstr "Sender"
+
+msgid "alerts.severities.extreme"
+msgstr "Extreme"
+
+msgid "alerts.severities.minor"
+msgstr "Minor"
+
+msgid "alerts.severities.moderate"
+msgstr "Moderate"
+
+msgid "alerts.severities.severe"
+msgstr "Severe"
+
+msgid "alerts.severities.unknown"
+msgstr "Unknown"
+
+msgid "alerts.severity"
+msgstr "Severity"
+
+msgid "alerts.showFilters"
+msgstr "Show Filters"
+
+msgid "alerts.status"
+msgstr "Status"
+
+msgid "alerts.statuses.actual"
+msgstr "Actual"
+
+msgid "alerts.statuses.draft"
+msgstr "Draft"
+
+msgid "alerts.statuses.exercise"
+msgstr "Exercise"
+
+msgid "alerts.statuses.system"
+msgstr "System"
+
+msgid "alerts.statuses.test"
+msgstr "Test"
+
+msgid "alerts.terms"
+msgstr "The Alert Service is based upon the Common Alert Protocol version 1.2. This standard does not require authentication or a secure connection, which could result in somebody sending false Alerts by pretending to be your Alerts provider. We highly recommend that, at the very least, you have your Alerts provider connect to our service with HTTPS, not HTTP, and that you require an Authentication Name and Password for that connection. That password should be complex and changed regularly. You should test your Alerts system at least weekly. You have read and understood this disclaimer and you agree that Rise Vision cannot be responsible for the erroneous showing of Alert Messages on your Displays."
+
+msgid "alerts.textFields.description"
+msgstr "Description"
+
+msgid "alerts.textFields.headline"
+msgstr "Headline"
+
+msgid "alerts.textFields.instruction"
+msgstr "Instruction"
+
+msgid "alerts.textToShow"
+msgstr "Alert Text To Show"
+
+msgid "alerts.title"
+msgstr "Alerts"
+
+msgid "alerts.turnOff"
+msgstr "Turn Off Alerts"
+
+msgid "alerts.turnOn"
+msgstr "Turn On Alerts"
+
+msgid "alerts.turnOnShort"
+msgstr "Turn On"
+
+msgid "alerts.turnedOffWarning"
+msgstr "Alerts Are Turned Off and Won't Be Sent to Your Target Displays."
+
+msgid "alerts.urgencies.expected"
+msgstr "Expected"
+
+msgid "alerts.urgencies.future"
+msgstr "Future"
+
+msgid "alerts.urgencies.immediate"
+msgstr "Immediate"
+
+msgid "alerts.urgencies.past"
+msgstr "Past"
+
+msgid "alerts.urgencies.unknown"
+msgstr "Unknown"
+
+msgid "alerts.urgency"
+msgstr "Urgency"
+
+msgid "alerts.viewTerms"
+msgstr "View Terms and Conditions"
+
+msgid "alerts.webServiceURL"
+msgstr "Web Service URL"
+
+msgid "details.deleteTitle"
+msgstr "Deleting Display"
+
+msgid "details.deleteWarning"
+msgstr "Are you sure you want to delete this Display?"
+
+msgid "details.error"
+msgstr "Failed to update display!"
+
+msgid "details.unsavedTitle"
+msgstr "Unsaved Changes"
+
+msgid "details.unsavedWarning"
+msgstr "You have unsaved changes. Do you want to Save or Discard them?"
+
+msgid "fields.address.city"
+msgstr "City"
+
+msgid "fields.address.country.name"
+msgstr "Country"
+
+msgid "fields.address.country.placeholder"
+msgstr "&lt; Select Country &gt;"
+
+msgid "fields.address.description"
+msgstr "Description"
+
+msgid "fields.address.postalCode"
+msgstr "Zip / Postal Code"
+
+msgid "fields.address.province.name"
+msgstr "State/Province/Region"
+
+msgid "fields.address.province.provincePlaceholder"
+msgstr "&lt; Select Province &gt;"
+
+msgid "fields.address.province.statePlaceholder"
+msgstr "&lt; Select State &gt;"
+
+msgid "fields.address.street"
+msgstr "Street"
+
+msgid "fields.address.timezone.name"
+msgstr "Time Zone"
+
+msgid "fields.address.timezone.placeholder"
+msgstr "&lt; Select Time Zone &gt;"
+
+msgid "fields.address.unit"
+msgstr "Unit"
+
+msgid "fields.address.useCompany"
+msgstr "Use Company Address"
+
+msgid "fields.controls.download"
+msgstr "Download Player"
+
+msgid "fields.controls.error"
+msgstr "Error:"
+
+msgid "fields.controls.reboot.name"
+msgstr "Reboot Player"
+
+msgid "fields.controls.reboot.success"
+msgstr "Reboot signal sent"
+
+msgid "fields.controls.reboot.title"
+msgstr "Rebooting Display"
+
+msgid "fields.controls.reboot.warning"
+msgstr "The Rise Player on the Display's Computer will reboot and the currently Scheduled Content will be interrupted. Do you wish to proceed?"
+
+msgid "fields.controls.restart.name"
+msgstr "Restart Player"
+
+msgid "fields.controls.restart.success"
+msgstr "Restart signal sent"
+
+msgid "fields.controls.restart.title"
+msgstr "Restarting Display"
+
+msgid "fields.controls.restart.warning"
+msgstr "The Rise Player on the Display's Computer will restart and the currently Scheduled Content will be interrupted. Do you wish to proceed?"
+
+msgid "fields.id"
+msgstr "Display Id:"
+
+msgid "fields.monitor.name"
+msgstr "Monitor"
+
+msgid "fields.monitor.warning"
+msgstr "No Monitoring Emails have been set up for your Company. Please go to your Company Settings to configure."
+
+msgid "fields.name.name"
+msgstr "Name"
+
+msgid "fields.name.required"
+msgstr "Required"
+
+msgid "fields.player.browser.installed"
+msgstr "Installed Browser:"
+
+msgid "fields.player.browser.recommended"
+msgstr "Recommended Browser:"
+
+msgid "fields.player.browser.upgrade.autoUpgrade"
+msgstr "Auto Upgrade"
+
+msgid "fields.player.browser.upgrade.current"
+msgstr "Current"
+
+msgid "fields.player.browser.upgrade.name"
+msgstr "Player Upgrade:"
+
+msgid "fields.player.browser.upgrade.previous"
+msgstr "Previous"
+
+msgid "fields.player.browser.upgrade.userManaged"
+msgstr "User Managed"
+
+msgid "fields.player.browser.upgrade.warning"
+msgstr "Using any option other than Auto Upgrade may result in Presentation Content failures."
+
+msgid "fields.player.ipAddress"
+msgstr "IP Address:"
+
+msgid "fields.player.localIpAddress"
+msgstr "Local IP Address:"
+
+msgid "fields.player.operatingSystem"
+msgstr "Operating System:"
+
+msgid "fields.player.orientation.0"
+msgstr "Landscape"
+
+msgid "fields.player.orientation.180"
+msgstr "Landscape (flipped)"
+
+msgid "fields.player.orientation.270"
+msgstr "Portrait (flipped)"
+
+msgid "fields.player.orientation.90"
+msgstr "Portrait"
+
+msgid "fields.player.orientation.name"
+msgstr "Rotation:"
+
+msgid "fields.player.playerVersion"
+msgstr "Player Version:"
+
+msgid "fields.player.playerWarning"
+msgstr "A Player has not been configured for this Display. To configure your Display click Download Player and install the software on the computer that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID <span class="label label-default">{{displayId}}</span> to link the Player with the Display that you have setup here."
+
+msgid "fields.player.resolution"
+msgstr "Resolution:"
+
+msgid "fields.player.viewerVersion"
+msgstr "Viewer Version:"
+
+msgid "fields.reboot"
+msgstr "Reboot:"
+
+msgid "fields.status.active"
+msgstr "Active"
+
+msgid "fields.status.inactive"
+msgstr "Inactive"
+
+msgid "fields.status.name"
+msgstr "Status"
+
+msgid "landing.manageDisplaysText"
+msgstr "Manage and monitor your digital signage displays, anywhere, anytime."
+
+msgid "list.empty"
+msgstr "You haven't created any Displays yet"
+
+msgid "list.filter.filters"
+msgstr "Filters"
+
+msgid "list.filter.placeholder"
+msgstr "Search for Displays"
+
+msgid "list.heading.address"
+msgstr "Address"
+
+msgid "list.heading.lastConnection"
+msgstr "Last Connection"
+
+msgid "list.heading.name"
+msgstr "Name"
+
+msgid "list.heading.status"
+msgstr "Status"
+
+msgid "list.no-results"
+msgstr "Your search didn't return any results"
+
+msgid "list.searchNotification"
+msgstr "Search results may include Displays that belong to your sub-companies."
+
+msgid "title"
+msgstr "Displays"
+

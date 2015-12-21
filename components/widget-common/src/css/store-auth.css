@@ -1,0 +1,24 @@
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255,255,255,.7);
+}
+
+.auth-warning {
+  position: absolute;
+  z-index: 1;
+  top: 5%;
+  left: 5%;
+  font-family: Verdana;
+  font-size: 16pt;
+  background: white;
+  color: red;
+  border: 1px solid red;
+  overflow: fixed;
+  margin: auto;
+  padding: 15px;
+}

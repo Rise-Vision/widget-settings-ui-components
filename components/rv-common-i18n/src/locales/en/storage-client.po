@@ -1,0 +1,165 @@
+msgid "access-denied"
+msgstr "You don't have access to that action. Please contact your Administrator to give you the access you need."
+
+msgid "cancel-uploads"
+msgstr "Cancel All"
+
+msgid "delete-files-folders-plural"
+msgstr "{{count}} files and folders are about to be permanently deleted."
+
+msgid "delete-files-plural"
+msgstr "{{count}} files are about to be permanently deleted."
+
+msgid "delete-files-singular"
+msgstr "One file is about to be permanently deleted."
+
+msgid "delete-folders-plural"
+msgstr "{{count}} folders are about to be permanently deleted."
+
+msgid "delete-folders-singular"
+msgstr "One folder is about to be permanently deleted."
+
+msgid "delete-verify-company"
+msgstr "You cannot delete a file because your account {{username}} doesn't have access to this company.  Please login with a different account and try again."
+
+msgid "download-status"
+msgstr "Download Status"
+
+msgid "duplicate-folder"
+msgstr "A Folder already uses that name, please choose a different one"
+
+msgid "failed-delete"
+msgstr "Delete failed.  Please try again."
+
+msgid "failed-restore"
+msgstr "Restore failed.  Please try again."
+
+msgid "failed-trash"
+msgstr "Move to trash failed.  Please try again."
+
+msgid "folder-inactive-subscription"
+msgstr "You cannot add a folder because you don't have an active subscription.  Please purchase a subscription and try again."
+
+msgid "folder-verify-company"
+msgstr "You cannot create a folder because your account {{username}} doesn't have access to this company.  Please login with a different account and try again."
+
+msgid "header"
+msgstr "Storage"
+
+msgid "loading-files"
+msgstr "Loading..."
+
+msgid "loading-functions"
+msgstr "Loading..."
+
+msgid "new-folder"
+msgstr "Add Folder"
+
+msgid "not-authorized"
+msgstr "Your account {{username}} doesn't have access to this company.  Please login with a different account and try again."
+
+msgid "open-in-storage-app"
+msgstr "Open in Storage App"
+
+msgid "pending-delete"
+msgstr "Deleting..."
+
+msgid "pending-ops-leave-page"
+msgstr "There are tasks in progress.  If you close this window they won't be completed."
+
+msgid "pending-restore"
+msgstr "Restoring..."
+
+msgid "pending-trash"
+msgstr "Moving to trash..."
+
+msgid "restore-inactive-subscription"
+msgstr "You cannot restore the file from trash because you don't have an active subscription.  Please purchase a subscription and try again."
+
+msgid "restore-verify-company"
+msgstr "You cannot restore the file from trash because your account {{username}} doesn't have access to this company.  Please login with a different account and try again."
+
+msgid "retry-failed-uploads"
+msgstr "Retry failed uploads"
+
+msgid "select-file"
+msgstr "Select a File"
+
+msgid "select-multiple-file"
+msgstr "Select one or more Files"
+
+msgid "select-single-file"
+msgstr "Select a File"
+
+msgid "select-single-folder"
+msgstr "Select a Folder"
+
+msgid "selected-items"
+msgstr "{{count}} Selected"
+
+msgid "signed-download-uri-request-failed"
+msgstr "Download failed.  Please try again."
+
+msgid "signed-url-verify-company"
+msgstr "The download failed because your account {{username}} does not have access to this company.  Please log in with a different account and try again."
+
+msgid "tag-definition-confirm-delete"
+msgstr "One tag definition is about to be permanently deleted"
+
+msgid "tagging"
+msgstr "Tagging"
+
+msgid "tagging-inactive-subscription"
+msgstr "You cannot modify tags because you don't have an active subscription.  Please purchase a subscription and try again."
+
+msgid "tagging-verify-company"
+msgstr "You cannot modify tags because your account {{username}} doesn't have access to this company.  Please login with a different account and try again."
+
+msgid "title"
+msgstr "Rise Vision Storage"
+
+msgid "trash"
+msgstr "Trash"
+
+msgid "trash-inactive-subscription"
+msgstr "You cannot move the file to trash because you don't have an active subscription.  Please purchase a subscription and try again."
+
+msgid "trash-verify-company"
+msgstr "You cannot move the file to trash because your account {{username}} doesn't have access to this company.  Please login with a different account and try again."
+
+msgid "upload"
+msgstr "Upload"
+
+msgid "upload-failed"
+msgstr "Upload failed.  Please try again."
+
+msgid "upload-files"
+msgstr "Upload Files"
+
+msgid "upload-folders"
+msgstr "Upload Folders"
+
+msgid "upload-inactive-subscription"
+msgstr "You cannot upload files because you don't have an active subscription.  Please purchase a subscription and try again."
+
+msgid "upload-status"
+msgstr "Upload Status"
+
+msgid "upload-uri-request-failed"
+msgstr "Upload failed.  Please try again."
+
+msgid "upload-uri-request-failed-mail"
+msgstr "Upload failed for {{username}}.  Please try again."
+
+msgid "upload-verify-company"
+msgstr "The upload failed because your account {{username}} does not have access to this company.  Please log in with a different account and try again."
+
+msgid "uploading"
+msgstr "Uploading {{filename}}"
+
+msgid "uploading-count-files"
+msgstr "Uploading {{count}} files"
+
+msgid "uploading-one-file"
+msgstr "Uploading 1 file"
+

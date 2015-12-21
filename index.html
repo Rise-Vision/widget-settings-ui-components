@@ -1,0 +1,383 @@
+<html>
+<head>
+  <link rel="stylesheet" href="components/rv-common-style/dist/css/rise.min.css">
+  <link rel="stylesheet" href="components/rv-angular-bootstrap-colorpicker/css/colorpicker.css">
+  <link rel="stylesheet" href="components/spectrum/spectrum.css" />
+  <link rel="stylesheet" href="components/bootstrap-select/bootstrap-select.css">
+  <link rel="stylesheet" href="components/rv-bootstrap-formhelpers/dist/css/rv-bootstrap-formhelpers.css">
+  <style>
+    alignment {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+  </style>
+</head>
+<body ng-app="testapp">
+
+<div class="row" style="padding: 30px">
+  <div class="col-md-2">
+
+    <ng-include src="'menu.html'"></ng-include>
+  </div>
+
+  <div
+    class="col-md-10"
+    ui-view>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="components/angular/angular.js"></script>
+<script type="text/javascript" src="components/angular-sanitize/angular-sanitize.js"></script>
+<script type="text/javascript" src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+<script type="text/javascript" src="components/spectrum/spectrum.js"></script>
+<script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src="components/angular-translate/angular-translate.js"></script>
+<script type="text/javascript" src="components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script type="text/javascript" src="components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="components/rv-common-i18n/dist/i18n.js"></script>
+<script type="text/javascript" src="mocks/i18n-config.js"></script>
+<script type="text/javascript" src="components/rv-angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+<script type="text/javascript" src="dist/js/angular/tooltip.js"></script>
+<script type="text/javascript" src="components/component-storage-selector/dist/storage-selector.js"></script>
+<script type="text/javascript" src="components/component-subscription-status/dist/js/subscription-status.js"></script>
+<script type="text/javascript" src="components/bootstrap-select/bootstrap-select.js"></script>
+<script type="text/javascript" src="components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+<script type="text/javascript" src="components/angular-bootstrap-slider/slider.js"></script>
+<script type="text/javascript" src="dist/js/angular/url-field.js"></script>
+<script type="text/javascript" src="dist/js/angular/file-selector.js"></script>
+<script type="text/javascript" src="dist/js/angular/position-setting.js"></script>
+<script type="text/javascript" src="dist/js/angular/background-image-setting.js"></script>
+<script type="text/javascript" src="dist/js/alignment.js"></script>
+<script type="text/javascript" src="dist/js/angular/alignment.js"></script>
+<script type="text/javascript" src="dist/js/angular/color-picker.js"></script>
+<script type="text/javascript" src="dist/js/angular/background-setting.js"></script>
+<script type="text/javascript" src="dist/js/angular/column-setting.js"></script>
+<script type="text/javascript" src="dist/js/angular/column-selector.js"></script>
+<script type="text/javascript" src="dist/js/url-field.js"></script>
+<script type="text/javascript" src="components/rv-bootstrap-formhelpers/dist/js/rv-bootstrap-formhelpers.js"></script>
+<script type="text/javascript" src="components/bootstrap-form-components/dist/js/bootstrap-font-picker.js"></script>
+<script type="text/javascript" src="components/bootstrap-form-components/dist/js/angular/bootstrap-font-picker.js"></script>
+<script type="text/javascript" src="components/bootstrap-form-components/dist/js/bootstrap-font-size-picker.js"></script>
+<script type="text/javascript" src="components/bootstrap-form-components/dist/js/angular/bootstrap-font-size-picker.js"></script>
+<script src="dist/js/font-style.js"></script>
+<script src="dist/js/angular/font-style.js"></script>
+<script src="dist/js/angular/font-setting.js"></script>
+<script src="dist/js/angular/order.js"></script>
+<script src="dist/js/angular/position-setting.js"></script>
+<script src="dist/js/angular/scroll-setting.js"></script>
+<script src="dist/js/angular/table-setting.js"></script>
+<script src="dist/js/angular/tooltip.js"></script>
+<script src="dist/js/angular/video-setting.js"></script>
+<script src="dist/js/angular/widget-button-toolbar.js"></script>
+
+
+
+<script>
+  angular.module("testapp", [
+    "ui.router",
+    "risevision.widget.common.background-image-setting",
+    "risevision.widget.common.alignment",
+    "risevision.widget.common.background-setting",
+    "risevision.widget.common.color-picker",
+    "risevision.widget.common.column-selector",
+    "risevision.widget.common.column-setting",
+    "risevision.widget.common.file-selector",
+    "risevision.widget.common.font-setting",
+    "risevision.widget.common.font-style",
+    "risevision.widget.common.order",
+    "risevision.widget.common.position-setting",
+    "risevision.widget.common.scroll-setting",
+    "risevision.widget.common.table-setting",
+    "risevision.widget.common.tooltip",
+    "risevision.widget.common.url-field",
+    "risevision.widget.common.video-setting",
+    "risevision.widget.common.widget-button-toolbar"
+  ])
+    .config(['$urlRouterProvider', '$stateProvider',
+      function routeConfig($urlRouterProvider, $stateProvider) {
+
+        // Use $stateProvider to configure states.
+        $stateProvider
+          .state('backgroundImageSettings', {
+            templateUrl: 'background-image-setting-demo.html',
+            url: '/background-image-settings',
+            controller: "backgroundImageSettingsController"
+          })
+          .state('backgroundSettings', {
+            templateUrl: 'background-setting-demo.html',
+            url: '/background-settings',
+            controller: "backgroundSettingsController"
+          })
+          .state('alignment', {
+            templateUrl: 'alignment-demo.html',
+            url: '/alignment',
+            controller: "alignmentController"
+          })
+          .state('colorPicker', {
+            templateUrl: 'color-picker-demo.html',
+            url: '/color-picker',
+            controller: "colorPickerController"
+          })
+          .state('columnSelector', {
+            templateUrl: 'column-selector-demo.html',
+            url: '/column-selector',
+            controller: "columnSelectorController"
+          })
+          .state('columnSetting', {
+            templateUrl: 'column-setting-demo.html',
+            url: '/column-setting',
+            controller: "columnSettingController"
+          })
+          .state('fileSelector', {
+            templateUrl: 'file-selector-demo.html',
+            url: '/file-selector',
+            controller: "fileSelectorController"
+          })
+          .state('fontSetting', {
+            templateUrl: 'font-setting-demo.html',
+            url: '/font-setting',
+            controller: "fontSettingController"
+          })
+          .state('fontStyle', {
+            templateUrl: 'font-style-demo.html',
+            url: '/font-style',
+            controller: "fontStyleController"
+          })
+          .state('order', {
+            templateUrl: 'order-demo.html',
+            url: '/order',
+            controller: "orderController"
+          })
+          .state('positionSetting', {
+            templateUrl: 'position-setting-demo.html',
+            url: '/position-setting',
+            controller: "positionSettingController"
+          })
+          .state('scrollSetting', {
+            templateUrl: 'scroll-setting-demo.html',
+            url: '/scroll-setting',
+            controller: "scrollSettingController"
+          })
+          .state('tableSetting', {
+            templateUrl: 'table-setting-demo.html',
+            url: '/table-setting',
+            controller: "tableSettingController"
+          })
+          .state('tooltip', {
+            templateUrl: 'tooltip-demo.html',
+            url: '/tooltip',
+            controller: "tooltipController"
+          })
+          .state('urlField', {
+            templateUrl: 'url-field-demo.html',
+            url: '/url-field',
+            controller: "urlFieldController"
+          })
+          .state('videoSetting', {
+            templateUrl: 'video-setting-demo.html',
+            url: '/video-setting',
+            controller: "videoSettingController"
+          })
+          .state('widgetButtonToolbar', {
+            templateUrl: 'widget-button-toolbar-demo.html',
+            url: '/widget-button-toolbar',
+            controller: "widgetButtonToolbarController"
+          })
+      }
+    ])
+    .controller("backgroundImageSettingsController", ["$scope", function ($scope) {
+      $scope.settings = {
+        additionalParams: {
+          background: {
+            color: "" // 'color' is required to be set with a default
+          }
+        }
+      };
+
+      $scope.getAdditionalParams = function (val, defaultVal) {
+        //always return defaultVal for now
+        return defaultVal;
+      }
+    }])
+    .controller("backgroundSettingsController", ["$scope", function ($scope) {
+      $scope.settings = {
+        additionalParams: {
+          background: {}
+        }
+      };
+
+      $scope.getAdditionalParams = function (val, defaultVal) {
+        //always return defaultVal for now
+        return defaultVal;
+      }
+    }])
+    .controller("alignmentController", ["$scope", function ($scope) {
+      $scope.align = "left";
+    }])
+    .controller("colorPickerController", ["$scope", function ($scope) {
+      $scope.color = "transparent";
+    }])
+    .controller("columnSelectorController", ["$scope", function ($scope) {
+      $scope.columnNames = [
+        {
+          id: "instrument",
+          name: "Instrument",
+          type: "text"
+        },
+        {
+          id: "instrument-logo",
+          name: "Instrument Logo",
+          type: "text"
+        },
+        {
+          id: "last-price",
+          name: "Last Price",
+          type: "int"
+        },
+        {
+          id: "change",
+          name: "Change",
+          type: "int"
+        },
+        {
+          id: "percent-change",
+          name: "Percent change",
+          type: "int"
+        },
+        {
+          id: "day-high",
+          name: "Day High",
+          type: "int"
+        },
+        {
+          id: "day-low",
+          name: "Day Low",
+          type: "int"
+        }
+      ];
+
+
+      $scope.columns = [
+        {
+          id: "instrument",
+          alignment: "right"
+        },
+        {
+          id: "instrument-logo"
+        }
+      ];
+    }])
+    .controller("columnSettingController", ["$scope", function ($scope) {
+      $scope.column = {};
+    }])
+    .controller("fileSelectorController", ["$scope", function ($scope) {
+      $scope.settings = {
+        params: {
+          companyId: "abc123" // When testing manually in browser, apply a real company id
+        },
+        additionalParams: {
+          selector: {}
+        }
+      };
+    }])
+    .controller("fontSettingController", ["$scope", function ($scope) {
+      $scope.font = {
+        font: {
+          type: "standard",
+          name: "Verdana",
+          family: "Verdana"
+        },
+        size: "20",
+        bold: false,
+        italic: false,
+        underline: false,
+        color: "black",
+        backgroundColor: "transparent",
+        align: "left"
+      };
+    }])
+    .controller("fontStyleController", ["$scope", function ($scope) {
+    }])
+    .controller("orderController", ["$scope", "$log", function ($scope, $log) {
+      $scope.settings = {
+        additionalParams: {}
+      };
+
+      $scope.getAdditionalParams = function (val, defaultVal) {
+        //always return defaultVal for now
+        return defaultVal;
+      }
+
+    }])
+    .controller("positionSettingController", ["$scope", "$log", function ($scope, $log) {
+      $scope.settings = {
+        additionalParams: {}
+      };
+
+      $scope.getAdditionalParams = function (val, defaultVal) {
+        //always return defaultVal for now
+        return defaultVal;
+      }
+
+    }])
+    .controller("scrollSettingController", ["$scope", function ($scope) {
+      $scope.settings = {
+        additionalParams: {
+          scroll: {}
+        }
+      };
+
+      $scope.getAdditionalParams = function (val, defaultVal) {
+        //always return defaultVal for now
+        return defaultVal;
+      }
+    }])
+    .controller("tableSettingController", ["$scope", function ($scope) {
+      $scope.settings = {
+        additionalParams: {
+          table: {
+          }
+        }
+      };
+    }])
+    .controller("tooltipController", ["$scope", function ($scope) {
+    }])
+    .controller("urlFieldController", ["$scope", function ($scope) {
+
+      $scope.settings = {
+        params: {
+          companyId: "12345"
+        },
+        additionalParams: {
+          main: "",
+          hide: "",
+          empty: "",
+          type: ""
+        }
+      };
+    }])
+    .controller("videoSettingController", ["$scope", "$log", function ($scope, $log) {
+      $scope.settings = {
+        additionalParams: {
+          video: {}
+        }
+      };
+
+      $scope.getAdditionalParams = function (val, defaultVal) {
+        //always return defaultVal for now
+        return defaultVal;
+      }
+
+    }])
+    .controller("widgetButtonToolbarController", ["$scope", "$log", function ($scope, $log) {
+      var $testInput = $("#testInput");
+
+      $scope.inValidState = false;
+
+    }]);
+</script>
+</body>
+</html>
