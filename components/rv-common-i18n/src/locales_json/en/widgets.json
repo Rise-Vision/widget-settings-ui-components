@@ -21,6 +21,7 @@
     "label": "Pause",
     "tooltip": "Number of seconds before slideshow resumes after a touch"
   },
+  "resume": "Resume Playing from Last Position",
   "scale-to-fit": "Scale to Fit",
   "storage": {
     "folder": {

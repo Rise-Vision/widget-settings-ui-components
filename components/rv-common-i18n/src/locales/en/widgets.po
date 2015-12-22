@@ -40,6 +40,9 @@ msgstr "Pause"
 msgid "pause.tooltip"
 msgstr "Number of seconds before slideshow resumes after a touch"
 
+msgid "resume"
+msgstr "Resume Playing from Last Position"
+
 msgid "scale-to-fit"
 msgstr "Scale to Fit"
 
