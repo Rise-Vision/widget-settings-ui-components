@@ -18,6 +18,8 @@
   var bower = require("gulp-bower");
   var del = require("del");
   var colors = require("colors");
+  var deploy      = require('gulp-gh-pages');
+  var argv        = require('minimist')(process.argv.slice(2));
 
   var subcomponents = fs.readdirSync("src")
     .filter(function(file) {
@@ -156,6 +158,52 @@
 
   gulp.task("build", function (cb) {
     runSequence(["clean", "config"], ["js-uglify"], cb);
+  });
+
+  gulp.task("demo:server", ["build-demo"], factory.testServer({
+    rootPath: "./dist-demos"
+  }));
+
+  gulp.task("build-demo", function (cb) {
+    runSequence("copy-pages-to-demo-dist", "copy-dist-to-demo-dist", "copy-components-to-demo-dist", "copy-mocks-to-demo-dist", cb);
+  });
+
+  gulp.task("copy-pages-to-demo-dist", function() {
+    return gulp.src(["./demos/*.html"])
+      .pipe(gulp.dest("./dist-demos"));
+  });
+
+  gulp.task("copy-dist-to-demo-dist", function() {
+    return gulp.src(["./dist/**"])
+      .pipe(gulp.dest("./dist-demos/dist"));
+  });
+
+  gulp.task("copy-components-to-demo-dist", function() {
+    return gulp.src(["./components/**"])
+      .pipe(gulp.dest("./dist-demos/components"));
+  });
+
+  gulp.task("copy-mocks-to-demo-dist", function() {
+    return gulp.src(["./demos/mocks/**"])
+      .pipe(gulp.dest("./dist-demos/mocks"));
+  });
+
+  /**
+   *  Deploy to gh-pages
+   */
+  gulp.task("deploy-demo", function () {
+
+    // Remove temp folder created by gulp-gh-pages
+    if (argv.clean) {
+      var os = require('os');
+      var path = require('path');
+      var repoPath = path.join(os.tmpdir(), 'tmpRepo');
+      gutil.log('Delete ' + gutil.colors.magenta(repoPath));
+      del.sync(repoPath, {force: true});
+    }
+
+    return gulp.src("./dist-demos/**/*")
+      .pipe(deploy("https://github.com/Rise-Vision/widget-settings-ui-components.git"));
   });
 
   gulp.task("default", [], function() {

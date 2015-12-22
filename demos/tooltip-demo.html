@@ -1,58 +1,29 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">Tooltip</h1>
-  </div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-  <p class="lead">For a simple Popover, see <a href="http://rise-vision.github.io/style-guide/#/components/ui-popover">UI-Popover</a>.</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-  <p><strong>Dependencies</strong> popover</p>
-
-	<h3 class="add-top">Usage</h3>
-	<hljs include="'tooltip-usage'"></hljs>
-
-	<h3>Script Includes</h3>
-	<p>Make sure you include the following files in <code>index.html</code></p>
-	<hljs include="'script-includes'"></hljs>
-
-	<!-- Dynamic Example -->
-  <div class="examples">
-  	<h3>Example</h3>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="example">
-            Tooltip Example
-          </label>
-          <span popover-trigger="click" popover-placement="right"
-            popover="This is a sample tooltip" rv-tooltip>
-          </span>
-          <input id="example" type="text" class="form-control" />
-        </div>
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form>
+            <span id="tooltip" popover="Tooltip text"
+                  popover-trigger="click" popover-placement="right"
+                  rv-tooltip>
+            </span>
+        </form>
       </div>
     </div>
-	</div>
+  </div>
 </div>
-
-<script type="text/ng-template" id="script-includes">
-bower_components/angular-bootstrap/ui-bootstrap-tpls.js
-bower_components/widget-settings-ui-components/dist/js/angular/tooltip.js
-</script>
-
-    <!-- Code Snippet -->
-<script type="text/ng-template" id="tooltip-usage">
-<form role="form">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group">
-        <label for="example">
-          Tooltip Example
-        </label>
-        <span popover-trigger="click" popover-placement="right"
-          popover="This is a sample tooltip" rv-tooltip>
-        </span>
-        <input id="example" type="text" class="form-control" />
-      </div>
-    </div>
-  </div>
-</form>
-</script>

@@ -1,62 +1,26 @@
-<h1>Font Style</h1>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-<p class="lead">Bold, italic and underline font styling</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-<p>
-  <strong>Dependencies</strong>
-  <span class="label label-info">Angular</span>
-  <span class="label label-info">jQuery</span>
-</p>
-
-<h3>Usage</h3>
-<strong>Angular</strong>
-<ul>
-  <li>Include the following files:
-    <hljs include="'angular-script-includes'"></hljs>
-  </li>
-  <li>Add the directive:
-    <hljs>
-<font-style bold="true" italic="true" underline="true"></font-style>
-    </hljs>
-  </li>
-</ul>
-
-<strong>jQuery</strong>
-<ul>
-  <li>Include the following files:
-    <hljs include="'jquery-script-includes'"></hljs>
-  </li>
-  <li>Add the HTML:
-    <hljs>
-<div id="font-style"></div>
-    </hljs>
-  </li>
-  <li>Call the plugin:
-    <hljs include="'jquery-usage'"></hljs>
-  </li>
-</ul>
-
-<!-- Dynamic Example -->
-<div class="examples">
-  <h3>Example</h3>
-  <font-style bold="false" italic="false" underline="false"></font-style>
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form>
+          <font-style bold="true" italic="true" underline="true"></font-style>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-
-<script type="text/ng-template" id="angular-script-includes">
-/bower_components/widget-settings-ui-components/dist/js/font-style.min.js
-/bower_components/widget-settings-ui-components/dist/js/angular/font-style.min.js
-</script>
-
-<script type="text/ng-template" id="jquery-script-includes">
-/bower_components/widget-settings-ui-components/dist/js/font-style.min.js
-</script>
-
-<script type="text/ng-template" id="jquery-usage">
-  <script type="text/javascript">
-    $("#font-style").fontStyle({
-      bold: true,
-      italic: true,
-      underline: true,
-    });
-  </ script>
-</script>

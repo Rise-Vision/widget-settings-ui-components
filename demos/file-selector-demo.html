@@ -15,12 +15,18 @@
       </div>
       <!-- End Modal Header-->
 
-      <!-- Start Modal Body-->
       <div class="modal-body">
         <form>
-          <position-setting id="main" position="settings.additionalParams.main"></position-setting>
+          <file-selector id="main" title="{{ 'video.url.label' | translate }}"
+                         file-label="{{ 'video.url.file' | translate}}"
+                         folder-label="{{ 'video.url.folder' | translate}}"
+                         company-id="{{settings.params.companyId}}"
+                         file-type="video"
+                         selector="settings.additionalParams.selector"
+                         ng-model="fileselector" valid></file-selector>
         </form>
       </div>
+
     </div>
   </div>
 </div>

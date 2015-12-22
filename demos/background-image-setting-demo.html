@@ -1,45 +1,27 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">Background Image Setting</h1>
-  </div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-  <p class="lead">An Angular directive that allows a user to format the background of a widget with a color and/or an image</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-  <p><strong>Dependencies</strong> <span class="label label-info">angular-bootstrap-colorpicker</span> <span class="label label-info">UI Bootstrap</span> <span class="label label-info">Tooltip</span> <span class="label label-info">Storage Selector</span> <span class="label label-info">URL Field</span> <span class="label label-info">Position Setting</span></p>
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form role="form">
+          <background-image-setting company-id="abc123" color-parent-container-class="'colorParentClass'" color-container-class="'colorClass'" position-parent-container-class="'positionParentClass'" position-container-class="'positionClass'" background="settings.additionalParams.background"></background-image-setting>
 
-  <h3 class="add-top">Usage</h3>
-  <p>The directive provides controls for choosing an RGBA value to use as a Background color as well as an specifying an image (optional). </p>
-  <p>When opting to use an image, you can either enter a valid URL to an existing image on a server or use the Storage Selector and choose a file you have stored in your Rise Vision Storage. If you intend on choosing from your Storage, be sure to include the <code>company-id</code> attribute and your company id as the value like so <code>company-id="xxxxxxx"</code>. Please review the usage of the Storage Selector for more information regarding company-id.</p>
-  <hljs include="'background-image-setting-usage'"></hljs>
-
-  <h3>Script Includes</h3>
-  <p>Make sure you include the following files in <code>index.html</code></p>
-  <hljs include="'script-includes'"></hljs>
-
-  <!-- Dynamic Example -->
-  <div class="examples">
-    <h3>Example</h3>
-    <form role="form">
-      <background-image-setting background="background"></background-image-setting>
-    </form>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-<script type="text/ng-template" id="script-includes">
-  components/rv-angular-bootstrap-colorpicker/css/colorpicker.css
-
-  components/angular-bootstrap/ui-bootstrap-tpls.js
-  components/rv-angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js
-  components/widget-settings-ui-components/dist/js/angular/tooltip.js
-  components/component-storage-selector/dist/storage-selector.js
-  components/widget-settings-ui-components/dist/js/angular/url-field.js
-  components/widget-settings-ui-components/dist/js/angular/position-setting.js
-  components/widget-settings-ui-components/dist/js/angular/background-image-setting.js
-</script>
-
-<!-- Code Snippet -->
-<script type="text/ng-template" id="background-image-setting-usage">
-<form role="form">
-  <background-image-setting background="background" company-id="YOUR_COMPANY_ID"></background-image-setting>
-</form>
-</script>
