@@ -152,8 +152,29 @@
     });
   });
 
+  // ****** Unit Testing ***** //
+  gulp.task("test:unit", factory.testUnitAngular(
+    {testFiles: [
+      "components/angular/angular.js",
+      "components/angular-mocks/angular-mocks.js",
+      "components/angular-sanitize/angular-sanitize.js",
+      "components/angular-bootstrap/ui-bootstrap-tpls.js",
+      "components/jquery/dist/jquery.js",
+      "components/angular-translate/angular-translate.js",
+      "components/angular-translate-loader-static-files/angular-translate-loader-static-files.js",
+      "components/rv-common-i18n/dist/i18n.js",
+      "node_modules/widget-tester/mocks/i18n-config.js",
+      "components/component-storage-selector/dist/storage-selector.js",
+      "components/component-subscription-status/dist/js/subscription-status.js",
+      "dist/js/angular/tooltip.js",
+      "dist/js/angular/url-field.js",
+      "dist/js/angular/file-selector.js",
+      "test/mock/subscription-svc-http-mock.js",
+      "test/unit/**/*spec.js"]}
+  ));
+
   gulp.task("test", function(cb) {
-    runSequence("build", "e2e:server", "e2e:test", "e2e:test-ng", "e2e:server-close", cb);
+    runSequence("build", "test:unit", "e2e:server", "e2e:test", "e2e:test-ng", "e2e:server-close", cb);
   });
 
   gulp.task("build", function (cb) {
