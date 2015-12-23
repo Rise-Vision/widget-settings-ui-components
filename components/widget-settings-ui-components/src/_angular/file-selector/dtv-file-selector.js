@@ -203,6 +203,8 @@
                 // set selector validity to false to account for allowing an initial empty value for url-field
                 scope.selectorValid = false;
               }
+
+              $rootScope.$broadcast("fileSelectorClick", selection);
             }
           });
 

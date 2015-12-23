@@ -31,7 +31,7 @@ module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/position-setting/position-setting.html",
     "<div class=\"{{parentContainerClass || 'row'}}\">\n" +
-    "  <div class=\"{{containerClass || 'col-md-3'}}\">\n" +
+    "  <div class=\"{{containerClass || 'col-md-4'}}\">\n" +
     "    <label ng-if=\"!hideLabel\"> {{'widgets.alignment' | translate}}</label>\n" +
     "    <select name=\"position\" ng-model=\"position\" class=\"form-control\">\n" +
     "      <option value=\"top-left\">{{'position.top.left' | translate}}</option>\n" +

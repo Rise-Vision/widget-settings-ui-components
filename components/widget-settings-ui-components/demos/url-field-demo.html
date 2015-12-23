@@ -1,71 +1,29 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">URL Field</h1>
-  </div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-  <p class="lead">An Angular directive or jQuery plugin that allows a user to enter a URL.</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-  <h3>Angular</h3>
-  <p><strong>Dependencies</strong> <span class="label label-info">Angular JS</span> <span class="label label-info">Angular Bootstrap</span>   <span class="label label-info">Storage Selector</span> <span class="label label-info">Tooltip</span></p>
-  <p>The directive requires the use of the <code>url</code> attribute which configures the binding of the value for the URL.</p>
-  <p>Self-validation occurs on the input field value and if deemed invalid an error message displays. Additionally, a checkbox is provided to either opt in or out of validation.</p>
-  <p>When using the component within a form, add the <code>valid</code> attribute and an arbitrary model value (eg. <code>ng-model="urlentry"</code> in order to update your forms <code>$validity</code> pertaining to a valid URL entry</p>
-  <p>Additionally, the Storage Selector component is available to pick a file from Storage, which fills the input field with the URL of the file selected. In order for the Storage Selector to work properly, the URL Field directive provides the <code>company-id</code> and <code>storage-type</code> attributes so their values can be bound to the Storage Selector directive. The ID for the currently selected Company can be found in the URL where the ID is everything to the right of "company=", for example:</p>
-  <hljs>http://rva.risevision.com/#COMPANY_MANAGE/company=XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX</hljs>
-  <p>There are a number of optional attributes for further customizing the use of URL Field. You can optionally hide the label for URL Field by using the <code>hideLabel</code> attribute like so <code>hide-label="hideLabel"</code>. Similarly, the Storage Selector can be hidden using the <code>hideStorage</code> attribute like so <code>hide-storage="hide"</code>. If you need to listen for a <code>blur</code> event associated with the input field of URL Field, the component fires an event named <code>urlFieldBlur</code>. You can specify two different file types that the URL should validate against - image or video - for ensuring a valid file extension is entered in the URL. Use the <code>fileType</code> attribute like so <code>file-type="image"</code> or <code>file-type="video"</code> to do so. Lastly, in the scenario that you set a default value of <code>""</code> for the URL Field but you do not want the component to initially show the invalid controls, add the <code>init-empty</code> attribute.</p>
-  <ul>
-    <li>Include the following dependency files:
-      <hljs include="'angular-script-includes'"></hljs>
-    </li>
-    <li>Add the directive:
-      <hljs>
-        <url-field url="url" company-id="abc123" storage-type="single-file"></url-field>
-      </hljs>
-    </li>
-  </ul>
-
-  <h3>jQuery</h3>
-  <p><strong>Dependencies</strong> N/A</p>
-  <p>The jQuery plugin version provides public methods <code>getUrl()</code>, <code>setUrl()</code>, and <code>validateUrl()</code> to use as you need.</p>
-  <p>Upon calling <code>validateUrl()</code>, if deemed invalid a checkbox is provided to either opt in or out of validation.</p>
-  <p>Note: An error message is not displayed in the jQuery version.</p>
-  <ul>
-    <li>Include the following files:
-      <hljs include="'jquery-script-includes'"></hljs>
-    </li>
-    <li>Add the HTML:
-      <hljs>
-        <div id="url-field"></div>
-      </hljs>
-    </li>
-    <li>Call the plugin:
-      <hljs include="'jquery-usage'"></hljs>
-    </li>
-  </ul>
-
-  <!-- Dynamic Example -->
-  <div class="examples">
-    <h3>Example (Angular)</h3>
-    <url-field url="url" company-id="abc123" storage-type="single-file"></url-field>
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form>
+          <!-- main test instance -->
+          <url-field id="main"
+                     url="settings.additionalParams.main"
+            ></url-field>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-<script type="text/ng-template" id="angular-script-includes">
-  components/rv-common-style/dist/css/rise.min.css
-  components/angular-bootstrap/ui-bootstrap-tpls.js
-  components/widget-settings-ui-components/dist/js/angular/tooltip.js
-  components/component-storage-selector/dist/storage-selector.js
-  components/widget-settings-ui-components/dist/js/angular/url-field.js
-</script>
-
-<script type="text/ng-template" id="jquery-script-includes">
-  components/widget-settings-ui-components/dist/js/jquery/url-field.js
-</script>
-
-<script type="text/ng-template" id="jquery-usage">
-  <script type="text/javascript">
-    $urlField.urlField({
-      url: "http://www.risevision.com"
-    });
-    < /script>
-</script>

@@ -1,65 +1,26 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">Alignment</h1>
-  </div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-  <p class="lead">Horizontal text alignment</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-  <p>
-    <strong>Dependencies</strong>
-    <span class="label label-info">Angular</span>
-    <span class="label label-info">jQuery</span>
-  </p>
-
-  <h3>Usage</h3>
-  <!-- Code Snippet -->
-  <strong>Angular</strong>
-  <ul>
-    <li>Include the following files:
-      <hljs include="'angular-script-includes'"></hljs>
-    </li>
-    <li>Add the directive:
-      <hljs>
-<alignment align="'left'"></alignment>
-      </hljs>
-    </li>
-  </ul>
-
-  <strong>jQuery</strong>
-  <ul>
-    <li>Include the following files:
-      <hljs include="'jquery-script-includes'"></hljs>
-    </li>
-    <li>Add the HTML:
-      <hljs>
-<div id="alignment"></div>
-      </hljs>
-    </li>
-    <li>Call the plugin:
-      <hljs include="'jquery-usage'"></hljs>
-    </li>
-  </ul>
-
-  <!-- Dynamic Example -->
-  <div class="examples">
-    <h3>Example</h3>
-    <alignment align="'left'"></alignment>
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form>
+          <alignment align="align"></alignment>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-<script type="text/ng-template" id="angular-script-includes">
-<script type="text/javascript" src="/bower_components/widget-settings-ui-components/dist/js/alignment.min.js"></ script>
-<script type="text/javascript" src="/bower_components/widget-settings-ui-components/dist/js/angular/alignment.min.js"></ script>
-</script>
-
-<script type="text/ng-template" id="jquery-script-includes">
-<script type="text/javascript" src="/bower_components/widget-settings-ui-components/dist/js/alignment.min.js"></ script>
-</script>
-
-<script type="text/ng-template" id="jquery-usage">
-<script type="text/javascript">
-  $("#alignment").alignment({
-    alignment: "left"
-  });
-</ script>
-</script>

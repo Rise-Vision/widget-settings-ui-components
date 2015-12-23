@@ -1,63 +1,26 @@
-<div class="component">
-  <div class="page-header">
-    <h1 class="page">Table Setting</h1>
-  </div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-  <p class="lead">An Angular directive used to format a table</p>
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+      <!-- End Modal Header-->
 
-  <p>Note: Font selection is currently broken in this directive</p>
-
-  <p>
-    <strong>Dependencies</strong>
-    <span class="label label-info">font-setting</span>
-    <span class="label label-info">color-picker</span>
-    <span class="label label-info">spectrum</span>
-  </p>
-
-  <h3 class="add-top">Usage</h3>
-  <hljs include="'table-setting-usage'"></hljs>
-
-  <h3>Script Includes</h3>
-  <p>Make sure you include the following files in <code>index.html</code></p>
-  <hljs include="'script-includes'"></hljs>
-
-  <!-- Dynamic Example -->
-  <div class="examples">
-    <h3>Example</h3>
-			<table-setting table="table"></table-setting>
+      <!-- Start Modal Body-->
+      <div class="modal-body">
+        <form>
+          <table-setting table="settings.additionalParams.table"></table-setting>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-<script type="text/ng-template" id="script-includes">
-/bower_components/widget-settings-ui-components/dist/css/widget-settings-ui-components.min.css
-/bower_components/spectrum/spectrum.css
-/bower_components/bootstrap-select/bootstrap-select.css
-/bower_components/rv-bootstrap-formhelpers/dist/css/rv-bootstrap-formhelpers.css
-
-/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js
-/bower_components/bootstrap-select/bootstrap-select.js
-/bower_components/spectrum/spectrum.js
-
-/bower_components/rv-bootstrap-formhelpers/dist/js/rv-bootstrap-formhelpers.js
-/bower_components/bootstrap-form-components/dist/js/bootstrap-font-picker.js
-/bower_components/bootstrap-form-components/dist/js/angular/bootstrap-font-picker.js
-/bower_components/bootstrap-form-components/dist/js/bootstrap-font-size-picker.js
-/bower_components/bootstrap-form-components/dist/js/angular/bootstrap-font-size-picker.js
-
-/bower_components/widget-settings-ui-components/dist/js/alignment.min.js
-/bower_components/widget-settings-ui-components/dist/js/angular/alignment.min.js
-/bower_components/widget-settings-ui-components/dist/js/url-field.min.js
-/bower_components/widget-settings-ui-components/dist/js/angular/color-picker.min.js
-/bower_components/widget-settings-ui-components/dist/js/font-style.min.js
-/bower_components/widget-settings-ui-components/dist/js/angular/font-style.min.js
-/bower_components/widget-settings-ui-components/dist/js/angular/font-setting.min.js
-
-/bower_components/widget-settings-ui-components/dist/js/angular/table-setting.js
-</script>
-
-    <!-- Code Snippet -->
-<script type="text/ng-template" id="table-setting-usage">
-<form role="form">
-	<table-setting table="settings.additionalParams.table"></table-setting>
-</form>
-</script>
