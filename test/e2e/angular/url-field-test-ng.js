@@ -139,26 +139,6 @@
 
     describe("** File type functionality **", function () {
 
-      it("Should validate url to have appropriate image file type", function () {
-        var extensions = [".jpg", ".jpeg", ".png", ".bmp", ".svg", ".gif"],
-          i;
-
-        for (i = 0; i < extensions.length; i += 1) {
-          element(by.css("#imageType input[name='url']")).clear();
-          element(by.css("#imageType input[name='url']")).sendKeys(validUrl);
-
-          // ensure error message shown
-          expect(element(by.css("#imageType .text-danger")).isPresent()).to.eventually.be.true;
-
-          element(by.css("#imageType input[name='url']")).clear();
-          element(by.css("#imageType input[name='url']")).sendKeys(validUrl + "/image" + extensions[i]);
-
-          // ensure no error message
-          expect(element(by.css("#imageType .text-danger")).isPresent()).to.eventually.be.false;
-        }
-
-      });
-
       it("Should validate url to have appropriate video file type", function () {
         var extensions = [".webm", ".mp4", ".ogv", ".ogg"],
           i;
@@ -177,6 +157,39 @@
           expect(element(by.css("#videoType .text-danger")).isPresent()).to.eventually.be.false;
         }
 
+      });
+
+      it("Should show error if URL does not have a valid extension", function () {
+        element(by.css("#imageType input[name='url']")).clear();
+        element(by.css("#imageType input[name='url']")).sendKeys("https://www.risevision.com/images/logo.sv");
+
+        browser.wait(function() {
+          return element(by.css("#imageType .text-danger")).isPresent().then(function(isVisible) {
+            return isVisible;
+          });
+        }, 5000);
+      });
+
+      it("Should show error if URL has a valid extension but is not a valid image file", function () {
+        element(by.css("#imageType input[name='url']")).clear();
+        element(by.css("#imageType input[name='url']")).sendKeys("https://s3.amazonaws.com/Rise-Images/UI/test.svg");
+
+        browser.wait(function() {
+          return element(by.css("#imageType .text-danger")).isPresent().then(function(isVisible) {
+            return isVisible;
+          });
+        }, 5000);
+      });
+
+      it("Should not show error if URL has a valid extension and is a valid image file", function () {
+        element(by.css("#imageType input[name='url']")).clear();
+        element(by.css("#imageType input[name='url']")).sendKeys("https://www.risevision.com/images/logo.svg");
+
+        browser.wait(function() {
+          return element(by.css("#imageType .text-danger")).isPresent().then(function(isVisible) {
+            return !isVisible;
+          });
+        }, 5000);
       });
 
     });

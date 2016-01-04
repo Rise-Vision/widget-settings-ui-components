@@ -41,6 +41,27 @@
             return false;
           }
 
+          // Check that the URL points to a valid image file.
+          function testImage() {
+            if ((scope.fileType !== "undefined") && (scope.url !== "undefined")) {
+              if (scope.fileType === "image") {
+                var image = new Image();
+
+                image.onload = function() {
+                  scope.valid = true;
+                  scope.$apply();
+                };
+
+                image.onerror = function() {
+                  scope.valid = false;
+                  scope.invalidType = scope.fileType;
+                  scope.$apply();
+                };
+
+                image.src = scope.url;
+              }
+            }
+          }
 
           function testUrl(value) {
             var urlRegExp,
@@ -71,6 +92,10 @@
               }
             } else {
               scope.invalidType = "url";
+            }
+
+            if (isValid) {
+              testImage();
             }
 
             return isValid;
