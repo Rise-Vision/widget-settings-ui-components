@@ -205,6 +205,18 @@ msgstr "Unsaved Changes"
 msgid "details.unsavedWarning"
 msgstr "You have unsaved changes. Do you want to Save or Discard them?"
 
+msgid "download.linux32"
+msgstr "Download Ubuntu [32-bit]"
+
+msgid "download.linux64"
+msgstr "Download Ubuntu [64-bit]"
+
+msgid "download.win32"
+msgstr "Download Windows 7+ [32-bit]"
+
+msgid "download.win64"
+msgstr "Download Windows 7+ [64-bit]"
+
 msgid "fields.address.city"
 msgstr "City"
 
@@ -249,6 +261,9 @@ msgstr "Download Player"
 
 msgid "fields.controls.error"
 msgstr "Error:"
+
+msgid "fields.controls.howto"
+msgstr "How do I show Presentations on my device?"
 
 msgid "fields.controls.reboot.name"
 msgstr "Reboot Player"

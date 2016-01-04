@@ -49,6 +49,18 @@ msgstr "Unsaved Changes"
 msgid "details.unsavedWarning"
 msgstr "You have unsaved changes. Do you want to Save or Discard them?"
 
+msgid "goToStore.message"
+msgstr "is a Premium Template Presentation for purchase. You can view more information about the template and"
+
+msgid "goToStore.purchase"
+msgstr "purchase for use in our Store"
+
+msgid "goToStore.title"
+msgstr "Premium Template"
+
+msgid "goToStore.view"
+msgstr "View In Store"
+
 msgid "landing.manageEditorText"
 msgstr "Create and manage HTML content for your digital signage displays, anywhere, anytime."
 

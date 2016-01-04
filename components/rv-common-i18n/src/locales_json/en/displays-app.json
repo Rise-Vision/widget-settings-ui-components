@@ -88,6 +88,12 @@
     "unsavedTitle": "Unsaved Changes",
     "unsavedWarning": "You have unsaved changes. Do you want to Save or Discard them?"
   },
+  "download": {
+    "linux32": "Download Ubuntu [32-bit]",
+    "linux64": "Download Ubuntu [64-bit]",
+    "win32": "Download Windows 7+ [32-bit]",
+    "win64": "Download Windows 7+ [64-bit]"
+  },
   "fields": {
     "address": {
       "city": "City",
@@ -113,6 +119,7 @@
     "controls": {
       "download": "Download Player",
       "error": "Error:",
+      "howto": "How do I show Presentations on my device?",
       "reboot": {
         "name": "Reboot Player",
         "success": "Reboot signal sent",

@@ -22,6 +22,12 @@
     "unsavedTitle": "Unsaved Changes",
     "unsavedWarning": "You have unsaved changes. Do you want to Save or Discard them?"
   },
+  "goToStore": {
+    "message": "is a Premium Template Presentation for purchase. You can view more information about the template and",
+    "purchase": "purchase for use in our Store",
+    "title": "Premium Template",
+    "view": "View In Store"
+  },
   "landing": {
     "manageEditorText": "Create and manage HTML content for your digital signage displays, anywhere, anytime."
   },

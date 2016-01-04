@@ -3,38 +3,64 @@ $panel-width: 290px;
 .workspace {
   -webkit-transition: all 0.2s; /* Safari 3.1 to 6.0 */
   transition: all 0.2s;
+  position: relative;
+  background: #d4d4d4;
   .content-box-body {
     padding: 8px;
   }
   .workspace-toolbar {
-    width: calc((100% - #{$panel-width}) - 11px);
-    left: $panel-width;
+    width: calc(100% - 11px);
     white-space: nowrap;
     position: absolute;
     z-index: 100;
-    background-color: rgba(30,30,30,0.8);
-    padding: 8px;
-    color: #FFF;
+    background-color: rgba(255,255,255,0.9);
+    border-bottom: 1px solid $lighter-gray;
+    border-top: 1px solid $lighter-gray;
+    padding: 8px 10px;
     -webkit-transition: all 0.25s; /* Safari 3.1 to 6.0 */
     transition: all 0.25s;
+    #addPlaceholderButton {
+      width: calc((#{$panel-width} - 20px));
+      margin-right: 10px;
+    }
+    #previewButton {
+      margin-left: 10px;
+    }
     .presentation-name {
       display: inline-block;
-      line-height: 30px;
-      font-size: 16px;
+      line-height: 32px;
+      font-size: 18px;
+      font-weight: 400;
       vertical-align: top;
       margin: 0;
+      max-width: calc(100% - 520px);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      @media (max-width: 768px) {
+        max-width: 200px;
+      }
     }
     @media (max-width: 768px) {
       width: 100%;
       overflow: hidden;
       left:0;
-      top:50px;
+      top:0;
+    }
+    @media (max-width: 920px) {
+      #addPlaceholderButton {
+        width: 100%;
+        display: block;
+        float: none;
+        margin: 8px 0;
+      }
     }
   }
   .workspace-sidebar {
     padding: 8px 0;
     position: absolute;
-    height: calc(100vh - 105px);
+    top: 49px;
+    height: calc(100vh - 120px);
     width: $panel-width;
     background-color: $brand-bg;
     -webkit-transition: all 0.5s; /* Safari 3.1 to 6.0 */
@@ -52,6 +78,7 @@ $panel-width: 290px;
       width: 100%;
       position: relative;
       z-index: 80;
+      top: 133px;
       .scrollable-list {
         max-height: calc(100vh - 420px);
       }
@@ -65,7 +92,6 @@ $panel-width: 290px;
       width: calc((#{$panel-width} * 2)); /* Total width of panels */
       @media (max-width: 768px) {
         width: 100%;
-        margin-top: 140px;
       }
     }
     .table-playlist-items {
@@ -75,7 +101,7 @@ $panel-width: 290px;
     }
     .ph-list, .ph-properties {
       width: $panel-width;
-      padding: 0 12px;
+      padding: 0 10px;
       -webkit-transition: all 0.5s; /* Safari 3.1 to 6.0 */
       transition: all 0.5s;
       @media (max-width: 768px) {
@@ -89,6 +115,7 @@ $panel-width: 290px;
     }
     .ph-properties {
       float: right;
+      opacity: 0;
       @media (max-width: 768px) {
         -webkit-transform: translateX(0); /* Safari */
         transform: translateX(0);
@@ -107,6 +134,7 @@ $panel-width: 290px;
         }
       }
       .ph-properties {
+        opacity: 1;
         -webkit-transform: translateX(-$panel-width); /* Safari */
         transform: translateX(-$panel-width);
         @media (max-width: 768px) {
@@ -174,14 +202,6 @@ $panel-width: 290px;
     height: calc(100vh - 150px);
   }
 }
-
-.presentation-name {
-  max-width: calc(100% - 240px);
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
 .placeholder-item-name {
   @extend .ellipsis;
   width: 180px;
@@ -209,17 +229,6 @@ $panel-width: 290px;
     position: static;
     bottom: 0;
     z-index:100;
-  }
-}
-
-.main-actions {
-  white-space: nowrap;
-  .btn {
-    @media (max-width: 992px) {
-      width: 100%;
-      display: block;
-      margin-top: 10px;
-    }
   }
 }
 
