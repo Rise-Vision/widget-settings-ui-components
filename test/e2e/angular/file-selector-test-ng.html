@@ -5,6 +5,21 @@
   <title>File Selector - Test Page</title>
 
   <link rel="stylesheet" href="/components/rv-common-style/dist/css/rise.min.css">
+  <style>
+    /* Hide editor. */
+    .font-setting div.mce-edit-area {
+      display: none;
+    }
+
+    /* Style preview text. */
+    .font-setting .font-picker-text {
+      margin-top: 15px;
+      padding: 15px;
+      text-align: left;
+      background-color: #efefef;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body ng-app="testapp" ng-controller="mainController">
   <div class="container-fluid">
