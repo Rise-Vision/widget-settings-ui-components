@@ -2,22 +2,6 @@
 <head>
   <title>Font Setting - Angular Test Page</title>
   <link rel="stylesheet" href="/components/rv-common-style/dist/css/rise.min.css">
-
-  <style>
-    /* Hide editor. */
-    .font-setting .mce-edit-area {
-      display: none;
-    }
-
-    /* Style preview text. */
-    .font-setting .text-container {
-      margin-top: 10px;
-      padding: 15px;
-      text-align: left;
-      background-color: #efefef;
-      border-radius: 8px;
-    }
-  </style>
 </head>
 
 <body ng-app="fontSettingApp" ng-controller="fontSettingController">
@@ -51,20 +35,20 @@
     </div>
   </div>
 
-  <script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-  <script type="text/javascript" src="/components/angular/angular.js"></script>
-  <script type="text/javascript" src="/components/angular-ui-tinymce/src/tinymce.js"></script>
-  <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
-  <!-- <script type="text/javascript" src="/components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-  <script type="text/javascript" src="/components/angular-translate/angular-translate.js"></script>
-  <script type="text/javascript" src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-  <script type="text/javascript" src="/components/rv-common-i18n/dist/i18n.js"></script>
-  <script type="text/javascript" src="/node_modules/widget-tester/mocks/i18n-config.js"></script> -->
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
-  <script type="text/javascript" src="/src/_angular/font-setting/dtv-font-setting.js"></script>
-  <script type="text/javascript" src="/tmp/ng-templates/font-setting/font-setting.js"></script>
+  <script src="/components/angular/angular.js"></script>
+  <script src="/components/angular-ui-tinymce/src/tinymce.js"></script>
+  <script src="/components/angular-load/angular-load.js"></script>
+  <script src="/components/ng-font/ngFont.js"></script>
+  <script src="/components/jquery/dist/jquery.js"></script>
 
-  <script type="text/javascript">
+  <script src="/src/_config/dev.js"></script>
+  <script src="/src/_angular/font-setting/dtv-font-setting.js"></script>
+  <script src="/tmp/ng-templates/font-setting/font-setting.js"></script>
+  <script src="/src/_angular/font-setting/svc-google-font-loader.js"></script>
+
+  <script>
     angular.module("fontSettingApp", ["risevision.widget.common.font-setting"])
       .controller("fontSettingController", ["$scope", function ($scope) {
         $scope.font = {
@@ -74,11 +58,11 @@
             family: "verdana,geneva,sans-serif"
           },
           size: "24px",
-          bold: true,
-          italic: true,
-          underline: true,
-          color: "black",
-          backgroundColor: "transparent",
+          bold: false,
+          italic: false,
+          underline: false,
+          forecolor: "#000000",
+          backcolor: "transparent",
           align: "left"
         };
       }]);

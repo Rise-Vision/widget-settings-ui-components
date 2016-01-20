@@ -1,8 +1,9 @@
+/* global WIDGET_SETTINGS_UI_CONFIG */
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.font-setting", ["ui.tinymce"])
-    .directive("fontSetting", ["$templateCache", function ($templateCache) {
+  angular.module("risevision.widget.common.font-setting", ["angularLoad", "ui.tinymce"])
+    .directive("fontSetting", ["$templateCache", "$log", "googleFontLoader", function ($templateCache, $log, googleFontLoader) {
       return {
         restrict: "AE",
         scope: {
@@ -25,161 +26,14 @@
             bold: false,
             italic: false,
             underline: false,
-            color: "black",
-            highlightColor: "transparent"
+            forecolor: "black",
+            backcolor: "transparent"
           };
 
-          // Initialize TinyMCE.
-          $scope.tinymceOptions = {
-            content_css: "http://fonts.googleapis.com/css?family=Aclonica,http://fonts.googleapis.com/css?family=Rock+Salt",
-            selector: "textarea",
-            menubar: false,
-            statusbar: false,
-            plugins: "textcolor",
-            toolbar: "fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | forecolor backcolor | bold italic underline",
-            // font_formats: tm_fonts,
-            fontsize_formats: "8px 9px 10px 11px 12px 14px 18px 24px 30px 36px 48px 60px 72px 96px",
-            setup: function(editor) {
-              var textContainer = document.querySelector(".text-container"),
-                text = document.querySelector(".text"),
-                $bold = null,
-                $italic = null,
-                $underline = null;
-
-              // Initialize toolbar and preview text.
-              editor.on("init", function() {
-                $bold = $(".mce-btn[aria-label='Bold']");
-                $italic = $(".mce-btn[aria-label='Italic']");
-                $underline = $(".mce-btn[aria-label='Underline']");
-
-                if (_fontData) {
-                  // Alignment
-                  switch(_fontData.align) {
-                    case "left":
-                      editor.execCommand("JustifyLeft", false);
-                      break;
-                    case "center":
-                      editor.execCommand("JustifyCenter", false);
-                      break;
-                    case "right":
-                      editor.execCommand("JustifyRight", false);
-                      break;
-                    case "justify":
-                      editor.execCommand("JustifyFull", false);
-                      break;
-                    default:
-                      break;
-                  }
-
-                  // TODO: Colors
-
-                  // Font Style
-                  if (_fontData.bold) {
-                    toggleButton($bold);
-                  }
-
-                  if (_fontData.italic) {
-                    toggleButton($italic);
-                  }
-
-                  if (_fontData.underline) {
-                    toggleButton($underline);
-                  }
-
-                  // These 2 must be last for some reason.
-                  editor.execCommand("FontName", false, _fontData.font.family);
-                  editor.execCommand("FontSize", false, _fontData.size);
-                }
-              });
-
-              // Save changes to toolbar items.
-              editor.on("ExecCommand", function(args) {
-                switch(args.command) {
-                  case "FontName":
-                    _fontData.font.family = args.value;
-                    text.style.fontFamily = args.value;
-
-                    break;
-                  case "FontSize":
-                    _fontData.size = args.value;
-                    text.style.fontSize = args.value;
-
-                    break;
-                  case "JustifyLeft":
-                    _fontData.align = "left";
-                    textContainer.style.textAlign = "left";
-
-                    break;
-                  case "JustifyCenter":
-                    _fontData.align = "center";
-                    textContainer.style.textAlign = "center";
-
-                    break;
-                  case "JustifyRight":
-                    _fontData.align = "right";
-                    textContainer.style.textAlign = "right";
-
-                    break;
-                  case "JustifyFull":
-                    _fontData.align = "justify";
-                    textContainer.style.textAlign = "justify";
-
-                    break;
-                  case "forecolor":
-                    _fontData.color = args.value;
-                    text.style.color = args.value;
-
-                    break;
-                  case "hilitecolor":
-                    _fontData.highlightColor = args.value;
-                    text.style.backgroundColor = args.value;
-
-                    break;
-                  case "Bold":
-                    text.style.fontWeight = _fontData.bold ? "bold" : "normal";
-
-                    break;
-                  case "mceToggleFormat":
-                    if (args.value === "bold") {
-                      _fontData.bold = !_fontData.bold;
-                      text.style.fontWeight = _fontData.bold ? "bold" : "normal";
-
-                      toggleButton($bold);
-                    }
-                    else if (args.value === "italic") {
-                      _fontData.italic = !_fontData.italic;
-                      text.style.fontStyle = _fontData.italic ? "italic" : "normal";
-
-                      toggleButton($italic);
-                    }
-                    else if (args.value === "underline") {
-                      _fontData.underline = !_fontData.underline;
-                      text.style.textDecoration = _fontData.underline ? "underline" : "none";
-
-                      toggleButton($underline);
-                    }
-
-                    break;
-                  default:
-                    break;
-                }
-              });
-            },
-            init_instance_callback: function(editor) {
-              var oldApply = editor.formatter.apply;
-
-              // Reference - http://goo.gl/55IhWI
-              editor.formatter.apply = function apply(name, vars, node) {
-                var args = {
-                  command: name,
-                  value: vars.value
-                };
-
-                oldApply(name, vars, node);
-                editor.fire("ExecCommand", args);
-              };
-            }
-          };
+          // Load Google fonts.
+          googleFontLoader.getFonts().then(function(fonts) {
+            initTinyMCE(fonts);
+          });
 
           if (typeof attrs.hideAlignment === "undefined" || attrs.hideAlignment !== "true") {
             $scope.defaultFont.align = "left";
@@ -214,10 +68,148 @@
             }
           });
 
+          // Initialize TinyMCE.
+          function initTinyMCE(families) {
+            $scope.tinymceOptions = {
+              font_formats: WIDGET_SETTINGS_UI_CONFIG.families + families,
+              fontsize_formats: WIDGET_SETTINGS_UI_CONFIG.sizes,
+              menubar: false,
+              plugins: "textcolor",
+              statusbar: false,
+              toolbar: "fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | forecolor backcolor | bold italic underline",
+              setup: function(editor) {
+                editor.on("init", function() {
+                  initToolbar(editor);
+                });
+
+                editor.on("ExecCommand", function(args) {
+                  initCommands(args);
+                });
+              },
+              init_instance_callback: function(editor) {
+                var oldApply = editor.formatter.apply;
+
+                // Reference - http://goo.gl/55IhWI
+                editor.formatter.apply = function apply(name, vars, node) {
+                  var args = {
+                    command: name,
+                    value: vars.value
+                  };
+
+                  oldApply(name, vars, node);
+                  editor.fire("ExecCommand", args);
+                };
+              }
+            };
+          }
+
+          // Initialize TinyMCE toolbar.
+          function initToolbar(editor) {
+            if (_fontData) {
+              // Alignment
+              switch(_fontData.align) {
+                case "left":
+                  editor.execCommand("JustifyLeft", false);
+                  break;
+                case "center":
+                  editor.execCommand("JustifyCenter", false);
+                  break;
+                case "right":
+                  editor.execCommand("JustifyRight", false);
+                  break;
+                case "justify":
+                  editor.execCommand("JustifyFull", false);
+                  break;
+                default:
+                  break;
+              }
+
+              // Colors
+              $(".mce-colorbutton[aria-label='Text color'] span").css("background-color", _fontData.forecolor);
+              $(".mce-colorbutton[aria-label='Background color'] span").css("background-color", _fontData.backcolor);
+
+              // Font Style
+              if (_fontData.bold) {
+                toggleButton($(".mce-btn[aria-label='Bold']"));
+              }
+
+              if (_fontData.italic) {
+                toggleButton($(".mce-btn[aria-label='Italic']"));
+              }
+
+              if (_fontData.underline) {
+                toggleButton($(".mce-btn[aria-label='Underline']"));
+              }
+
+              // These 2 must be last for some reason.
+              editor.execCommand("FontName", false, _fontData.font.family);
+              editor.execCommand("FontSize", false, _fontData.size);
+            }
+          }
+
+          // Handle toolbar interactions.
+          function initCommands(args) {
+            switch(args.command) {
+              case "FontName":
+                _fontData.font.family = args.value;
+                break;
+
+              case "FontSize":
+                _fontData.size = args.value;
+                break;
+
+              case "JustifyLeft":
+                _fontData.align = "left";
+                break;
+
+              case "JustifyCenter":
+                _fontData.align = "center";
+                break;
+
+              case "JustifyRight":
+                _fontData.align = "right";
+                break;
+
+              case "JustifyFull":
+                _fontData.align = "justify";
+                break;
+
+              case "forecolor":
+                _fontData.forecolor = args.value;
+                break;
+
+              case "hilitecolor":
+                _fontData.backcolor = args.value;
+                break;
+
+              case "mceToggleFormat":
+                if (args.value === "bold") {
+                  _fontData.bold = !_fontData.bold;
+                  toggleButton($(".mce-btn[aria-label='Bold']"));
+                }
+                else if (args.value === "italic") {
+                  _fontData.italic = !_fontData.italic;
+                  toggleButton($(".mce-btn[aria-label='Italic']"));
+                }
+                else if (args.value === "underline") {
+                  _fontData.underline = !_fontData.underline;
+                  toggleButton($(".mce-btn[aria-label='Underline']"));
+                }
+
+                break;
+
+              default:
+                break;
+            }
+
+            updatePreview(_fontData);
+          }
+
           function toggleButton($btn) {
             $btn.toggleClass("mce-active");
           }
 
+          // Style the preview text.
           function updatePreview(fontData) {
             var textContainer = document.querySelector(".text-container"),
               text = document.querySelector(".text");
@@ -228,14 +220,54 @@
               text.style.fontWeight = fontData.bold ? "bold" : "normal";
               text.style.fontStyle = fontData.italic ? "italic" : "normal";
               text.style.textDecoration = fontData.underline ? "underline" : "none";
-              text.style.color = fontData.color;
-              text.style.backgroundColor = fontData.highlightColor;
+              text.style.color = fontData.forecolor;
+              text.style.backgroundColor = fontData.backcolor;
               textContainer.style.textAlign = fontData.align;
             }
           }
         }
       };
     }]);
+}());
+
+(function () {
+  "use strict";
+
+  angular.module("risevision.widget.common.font-setting")
+    .factory("googleFontLoader", ["$http", "$log", "angularLoad", function($http, $log, angularLoad) {
+
+    var fontsApi = "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBXxVK_IOV7LNQMuVVo_l7ZvN53ejN86zY",
+      fontBaseUrl = "http://fonts.googleapis.com/css?family=",
+      exclude = ["Buda", "Coda Caption", "Open Sans Condensed", "UnifrakturCook", "Molle"],
+      fallback = ",sans-serif;",
+      fonts = "",
+      factory = {};
+
+    factory.getFonts = function() {
+      return $http.get(fontsApi, { cache: true })
+        .then(function(response) {
+          var family = "";
+
+          if (response.data && response.data.items) {
+            for (var i = 0; i < response.data.items.length; i++) {
+              family = response.data.items[i].family;
+
+              if (exclude.indexOf(family) === -1) {
+                angularLoad.loadCSS(fontBaseUrl + family).then(function() {
+                  // Font loaded.
+                });
+
+                fonts += family + "=" + family + fallback;
+              }
+            }
+          }
+
+          return fonts;
+        });
+    };
+
+    return factory;
+  }]);
 }());
 
 (function(module) {

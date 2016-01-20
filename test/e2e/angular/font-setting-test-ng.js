@@ -11,16 +11,22 @@
   describe("Font Setting", function() {
     beforeEach(function () {
       browser.get("/test/e2e/angular/font-setting-test-ng.html");
+
+      return browser.wait(function() {
+        return element(by.css(".mce-tinymce")).isDisplayed()
+          .then(function (isDisplayed) {
+            return isDisplayed;
+        });
+      });
     });
 
-    // it("Font Picker should be present and the dialog closed", function() {
+    it("should show font family", function() {
+      expect(element(by.css(".mce-btn[aria-label='Font Family']")).isDisplayed()).to.eventually.be.true;
+    });
 
-    //   expect(element(by.css(".bfh-selectbox-option")).getText()).
-    //     to.eventually.equal("Verdana");
-    //   expect(element(by.css(".bfh-selectbox-options")).isDisplayed()).
-    //     to.eventually.be.false;
-
-    // });
+    it("should default font family to verdana", function() {
+      expect(element(by.css(".mce-btn[aria-label='Font Family'] span")).getText()).to.eventually.equal("Verdana");
+    });
 
     // it("Font Size Picker should be present and dialog closed", function() {
 
