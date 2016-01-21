@@ -230,7 +230,7 @@
   "use strict";
 
   angular.module("risevision.widget.common.font-setting")
-    .factory("googleFontLoader", ["$http", "$log", "angularLoad", function($http, $log, angularLoad) {
+    .factory("googleFontLoader", ["$http", "angularLoad", function($http, angularLoad) {
 
     var fontsApi = "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBXxVK_IOV7LNQMuVVo_l7ZvN53ejN86zY",
       fontBaseUrl = "http://fonts.googleapis.com/css?family=",
