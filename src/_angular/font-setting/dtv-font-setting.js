@@ -8,17 +8,17 @@
         restrict: "AE",
         scope: {
           fontData: "=",
-          previewText: "@",
-          hideAlignment: "@"
+          previewText: "@"
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
-        link: function ($scope, element, attrs) {
+        link: function ($scope) {
           var _fontData = null;
 
           $scope.defaultFont = {
             family: "verdana,geneva,sans-serif",
             size: "24px",
+            align: "left",
             bold: false,
             italic: false,
             underline: false,
@@ -30,10 +30,6 @@
           googleFontLoader.getFonts().then(function(fonts) {
             initTinyMCE(fonts);
           });
-
-          if (typeof attrs.hideAlignment === "undefined" || attrs.hideAlignment !== "true") {
-            $scope.defaultFont.align = "left";
-          }
 
           $scope.defaults = function(obj) {
             if (obj) {
