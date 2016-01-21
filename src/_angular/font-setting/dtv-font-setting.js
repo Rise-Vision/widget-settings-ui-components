@@ -17,11 +17,7 @@
           var _fontData = null;
 
           $scope.defaultFont = {
-            font: {
-              type: "standard",
-              name: "Verdana",
-              family: "verdana,geneva,sans-serif"
-            },
+            family: "verdana,geneva,sans-serif",
             size: "24px",
             bold: false,
             italic: false,
@@ -142,7 +138,7 @@
               }
 
               // These 2 must be last for some reason.
-              editor.execCommand("FontName", false, _fontData.font.family);
+              editor.execCommand("FontName", false, _fontData.family);
               editor.execCommand("FontSize", false, _fontData.size);
             }
           }
@@ -151,7 +147,7 @@
           function initCommands(args) {
             switch(args.command) {
               case "FontName":
-                _fontData.font.family = args.value;
+                _fontData.family = args.value;
                 break;
 
               case "FontSize":
@@ -215,7 +211,7 @@
               text = document.querySelector(".text");
 
             if ($scope.previewText && fontData) {
-              text.style.fontFamily = fontData.font.family;
+              text.style.fontFamily = fontData.family;
               text.style.fontSize = fontData.size;
               text.style.fontWeight = fontData.bold ? "bold" : "normal";
               text.style.fontStyle = fontData.italic ? "italic" : "normal";

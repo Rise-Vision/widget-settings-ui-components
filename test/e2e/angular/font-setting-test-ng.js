@@ -20,105 +20,208 @@
       });
     });
 
-    it("should show font family", function() {
-      expect(element(by.css(".mce-btn[aria-label='Font Family']")).isDisplayed()).to.eventually.be.true;
+    describe("Initialization", function() {
+      describe("Font Family", function() {
+        it("should load both default and Google fonts", function() {
+          element(by.css(".mce-btn[aria-label='Font Family']")).click();
+
+          element.all(by.css("#mceu_20-body div")).then(function(elements) {
+            expect(elements.length).to.equal(745);
+          });
+        });
+
+        it("should show font family", function() {
+          expect(element(by.css(".mce-btn[aria-label='Font Family']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should set font family to Verdana", function() {
+          expect(element(by.css(".mce-btn[aria-label='Font Family'] .mce-txt")).getText()).to.eventually.equal("Verdana");
+        });
+
+        it("should set correct font family for preview text", function() {
+          expect(element(by.css(".text")).getCssValue("font-family")).to.eventually.equal("verdana, geneva, sans-serif");
+        });
+      });
+
+      describe("Font Sizes", function() {
+        it("should show font sizes", function() {
+          expect(element(by.css(".mce-btn[aria-label='Font Sizes']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should set font size to 24px", function() {
+          expect(element(by.css(".mce-btn[aria-label='Font Sizes'] .mce-txt")).getText()).to.eventually.equal("24px");
+        });
+
+        it("should set correct font size for preview text", function() {
+          expect(element(by.css(".text")).getCssValue("font-size")).to.eventually.equal("24px");
+        });
+      });
+
+      describe("Alignment", function() {
+        it("should show align left", function() {
+          expect(element(by.css(".mce-btn[aria-label='Align left']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should show align center", function() {
+          expect(element(by.css(".mce-btn[aria-label='Align center']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should show align right", function() {
+          expect(element(by.css(".mce-btn[aria-label='Align right']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should show justify", function() {
+          expect(element(by.css(".mce-btn[aria-label='Justify']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should set alignment to align left", function() {
+          expect(element(by.css(".mce-active[aria-label='Align left']")).isDisplayed()).to.eventually.be.true;
+        });
+
+         it("should set correct alignment for preview text", function() {
+          expect(element(by.css(".text-container")).getCssValue("text-align")).to.eventually.equal("left");
+        });
+      });
+
+      describe("Text Color", function() {
+        it("should show text color", function() {
+          expect(element(by.css(".mce-colorbutton[aria-label='Text color']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should show background color", function() {
+          expect(element(by.css(".mce-colorbutton[aria-label='Background color']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should set correct color for preview text", function() {
+          expect(element(by.css(".text")).getCssValue("color")).to.eventually.equal("rgba(0, 0, 0, 1)");
+        });
+      });
+
+      describe("Background Color", function() {
+        it("should set text color to black", function() {
+          expect(element(by.css(".mce-colorbutton[aria-label='Text color'] .mce-preview")).getCssValue("background-color")).to.eventually.equal("rgba(0, 0, 0, 1)");
+        });
+
+        it("should set background color to transparent", function() {
+          expect(element(by.css(".mce-colorbutton[aria-label='Background color'] .mce-preview")).getCssValue("background-color")).to.eventually.equal("rgba(0, 0, 0, 0)");
+        });
+
+        it("should set correct background color for preview text", function() {
+          expect(element(by.css(".text")).getCssValue("background-color")).to.eventually.equal("rgba(0, 0, 0, 0)");
+        });
+      });
+
+      describe("Bold", function() {
+        it("should show bold", function() {
+          expect(element(by.css(".mce-btn[aria-label='Bold']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should not select bold", function() {
+          expect(element(by.css(".mce-active[aria-label='Bold']")).isPresent()).to.eventually.be.false;
+        });
+
+        it("should set correct font weight for preview text", function() {
+          expect(element(by.css(".text")).getCssValue("font-weight")).to.eventually.equal("normal");
+        });
+      });
+
+      describe("Italic", function() {
+        it("should show italic", function() {
+          expect(element(by.css(".mce-btn[aria-label='Italic']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should not select italic", function() {
+          expect(element(by.css(".mce-active[aria-label='Italic']")).isPresent()).to.eventually.be.false;
+        });
+
+        it("should set correct font style for preview text", function() {
+          expect(element(by.css(".text")).getCssValue("font-style")).to.eventually.equal("normal");
+        });
+      });
+
+      describe("Underline", function() {
+        it("should show underline", function() {
+          expect(element(by.css(".mce-btn[aria-label='Underline']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should not select underline", function() {
+          expect(element(by.css(".mce-active[aria-label='Underline']")).isPresent()).to.eventually.be.false;
+        });
+
+        it("should set correct text decoration for preview text", function() {
+          expect(element(by.css(".text")).getCssValue("text-decoration")).to.eventually.equal("none");
+        });
+      });
     });
 
-    it("should default font family to verdana", function() {
-      expect(element(by.css(".mce-btn[aria-label='Font Family'] span")).getText()).to.eventually.equal("Verdana");
+    describe("Updating", function() {
+      describe("Font Family", function() {
+        it("should update font family for preview text", function() {
+          element(by.css(".mce-btn[aria-label='Font Family']")).click();
+          element(by.css("#mceu_21-text")).click();
+
+          expect(element(by.css(".text")).getCssValue("font-family")).to.eventually.equal("'andale mono', monospace");
+        });
+      });
+
+      describe("Font Sizes", function() {
+        it("should update font size for preview text", function() {
+          element(by.css(".mce-btn[aria-label='Font Sizes']")).click();
+          element(by.css("#mceu_21-text")).click();
+
+          expect(element(by.css(".text")).getCssValue("font-size")).to.eventually.equal("8px");
+        });
+      });
+
+      describe("Alignment", function() {
+        it("should update alignment for preview text", function() {
+          element(by.css(".mce-btn[aria-label='Align center']")).click();
+
+          expect(element(by.css(".text-container")).getCssValue("text-align")).to.eventually.equal("center");
+        });
+      });
+
+      describe("Text Color", function() {
+        it("should update color for preview text", function() {
+          element(by.css(".mce-colorbutton[aria-label='Text color'] .mce-open")).click();
+          element(by.css("#mceu_20-16")).click();
+
+          expect(element(by.css(".text")).getCssValue("color")).to.eventually.equal("rgba(255, 0, 0, 1)");
+        });
+      });
+
+      describe("Background Color", function() {
+        it("should update background color for preview text", function() {
+          element(by.css(".mce-colorbutton[aria-label='Background color'] .mce-open")).click();
+          element(by.css("#mceu_20-16")).click();
+
+          expect(element(by.css(".text")).getCssValue("background-color")).to.eventually.equal("rgba(255, 0, 0, 1)");
+        });
+      });
+
+      describe("Bold", function() {
+        it("should update font weight for preview text", function() {
+          element(by.css(".mce-btn[aria-label='Bold']")).click();
+
+          expect(element(by.css(".text")).getCssValue("font-weight")).to.eventually.equal("bold");
+        });
+      });
+
+      describe("Italic", function() {
+        it("should update font style for preview text", function() {
+          element(by.css(".mce-btn[aria-label='Italic']")).click();
+
+          expect(element(by.css(".text")).getCssValue("font-style")).to.eventually.equal("italic");
+        });
+      });
+
+      describe("Underline", function() {
+        it("should update text decoration for preview text", function() {
+          element(by.css(".mce-btn[aria-label='Underline']")).click();
+
+          expect(element(by.css(".text")).getCssValue("text-decoration")).to.eventually.equal("underline");
+        });
+      });
     });
-
-    // it("Font Size Picker should be present and dialog closed", function() {
-
-    //   expect(element(by.css("button.selectpicker span.filter-option")).getText()).
-    //     to.eventually.equal("20");
-    //   expect(element(by.css(".bootstrap-select div.dropdown-menu")).isDisplayed()).
-    //     to.eventually.be.false;
-
-    // });
-
-    // it("Font Style should be present", function() {
-
-    //   expect(element(by.css(".bold")).isPresent()).
-    //     to.eventually.be.true;
-    //   expect(element(by.css(".italic")).isPresent()).
-    //     to.eventually.be.true;
-    //   expect(element(by.css(".underline")).isPresent()).
-    //     to.eventually.be.true;
-
-    //   expect(element(by.css(".bold.active")).isPresent()).
-    //     to.eventually.be.false;
-    //   expect(element(by.css(".italic.active")).isPresent()).
-    //     to.eventually.be.false;
-    //   expect(element(by.css(".underline.active")).isPresent()).
-    //     to.eventually.be.false;
-
-    // });
-
-    // it("Text and Highlight Color Picker should be present and dialogs closed", function() {
-    //   expect(element(by.css(".sp-replacer.text-color-picker")).isPresent()).
-    //     to.eventually.be.true;
-
-    //   expect(element(by.css(".sp-replacer.text-color-picker div.sp-preview")).
-    //     getCssValue("background-color")).
-    //     to.eventually.equal("rgba(0, 0, 0, 0)");
-
-    //   expect(element(by.css(".sp-replacer.highlight-color-picker")).isPresent()).
-    //     to.eventually.be.true;
-
-    //   expect(element(by.css(".sp-replacer.highlight-color-picker div.sp-preview-inner")).
-    //     getCssValue("background-color")).
-    //     to.eventually.equal("rgba(0, 0, 0, 0)");
-
-    //   expect(element.all(by.css(".sp-container.sp-hidden")).count()).
-    //     to.eventually.equal(2);
-
-    // });
-
-    // it("Alignment should be present and dialog closed", function() {
-
-    //   expect(element(by.css(".btn-alignment .fa-align-left"))
-    //     .isPresent()).to.eventually.be.true;
-    //   expect(element(by.css(".alignment div.dropdown-menu")).isDisplayed())
-    //     .to.eventually.be.false;
-
-    // });
-
-    // it("Preview should show default values", function () {
-    //   var elem = element(by.css(".font-picker-text span"));
-
-    //   expect(elem.getCssValue("font-family")).to.eventually.equal("Verdana");
-
-    //   expect(elem.getCssValue("font-size")).to.eventually.equal("20px");
-
-    //   expect(elem.getCssValue("font-weight")).to.eventually.equal("normal");
-
-    //   expect(elem.getCssValue("font-style")).to.eventually.equal("normal");
-
-    //   //expect(elem.getCssValue("text-decoration")).to.eventually.equal("none");
-    //   expect(elem.getCssValue("text-decoration")).to.eventually.match(/^none/);
-
-    //   expect(elem.getCssValue("color")).to.eventually.equal("rgba(0, 0, 0, 1)");
-
-    //   expect(elem.getCssValue("background-color")).to.eventually.equal("rgba(0, 0, 0, 0)");
-
-
-    //   expect(element(by.css(
-    //     ".btn-alignment[data-wysihtml5-command-value='left']")).isPresent()).
-    //     to.eventually.be.true;
-    //   expect(element(by.css(".font-picker-text")).getCssValue("text-align")).
-    //     to.eventually.equal("left");
-
-    // });
-
-    // // Bold
-    // it("Should turn bold on when clicked", function () {
-    //   element(by.css(".bold")).click();
-
-    //   expect(element(by.css(".bold.active")).isPresent()).
-    //     to.eventually.be.true;
-    //   expect(element(by.css(".font-picker-text span")).getCssValue("font-weight")).
-    //     to.eventually.equal("bold");
-    // });
   });
 })();
