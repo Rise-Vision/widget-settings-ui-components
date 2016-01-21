@@ -13,9 +13,14 @@
       browser.get("/test/e2e/angular/font-setting-test-ng.html");
 
       return browser.wait(function() {
-        return element(by.css(".mce-btn[aria-label='Font Family']")).isDisplayed()
-          .then(function(isDisplayed) {
-            return isDisplayed;
+        return element(by.css(".mce-btn[aria-label='Font Family']")).isPresent()
+          .then(function(isPresent) {
+            if (isPresent) {
+              return element(by.css(".mce-btn[aria-label='Font Family']")).isDisplayed()
+                .then(function(isDisplayed) {
+                  return isDisplayed;
+                });
+            }
           });
       });
     });
