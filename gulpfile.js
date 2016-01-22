@@ -86,7 +86,7 @@
 
   gulp.task("dependencies", function () {
     return gulp.src(dependencies)
-      .pipe(gulp.dest("dist/js"));
+      .pipe(gulp.dest("dist/js/vendor"));
   });
 
   gulp.task('js-concat-subcomponents', ["html2js-subcomponents", "lint"], function () {
