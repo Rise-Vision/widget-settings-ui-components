@@ -32,6 +32,12 @@
       return fs.statSync(path.join("src/_angular", file)).isDirectory();
     });
 
+  var dependencies = [
+    "components/tinymce-dist/tinymce.min.js",
+    "components/angular-ui-tinymce/src/tinymce.js",
+    "components/angular-load/angular-load.min.js"
+  ];
+
   gulp.task("clean-bower", function(cb){
     del(["./components/**"], cb);
   });
@@ -76,6 +82,11 @@
       .pipe(jshint())
       .pipe(jshint.reporter("jshint-stylish"))
       .pipe(jshint.reporter("fail"));
+  });
+
+  gulp.task("dependencies", function () {
+    return gulp.src(dependencies)
+      .pipe(gulp.dest("dist/js/vendor"));
   });
 
   gulp.task('js-concat-subcomponents', ["html2js-subcomponents", "lint"], function () {
@@ -178,7 +189,7 @@
   });
 
   gulp.task("build", function (cb) {
-    runSequence(["clean", "config"], ["js-uglify"], cb);
+    runSequence(["clean", "config"], ["js-uglify"], ["dependencies"], cb);
   });
 
   gulp.task("demo:server", ["build-demo"], factory.testServer({

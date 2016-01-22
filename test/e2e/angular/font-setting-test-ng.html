@@ -2,9 +2,6 @@
 <head>
   <title>Font Setting - Angular Test Page</title>
   <link rel="stylesheet" href="/components/rv-common-style/dist/css/rise.min.css">
-  <link rel="stylesheet" href="/components/spectrum/spectrum.css" />
-  <link rel="stylesheet" href="/components/bootstrap-select/bootstrap-select.css">
-  <link rel="stylesheet" href="/components/rv-bootstrap-formhelpers/dist/css/rv-bootstrap-formhelpers.css">
 </head>
 
 <body ng-app="fontSettingApp" ng-controller="fontSettingController">
@@ -38,49 +35,32 @@
     </div>
   </div>
 
-  <script type="text/javascript" src="/components/angular/angular.js"></script>
-  <script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="/components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-  <script type="text/javascript" src="/components/angular-translate/angular-translate.js"></script>
-  <script type="text/javascript" src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-  <script type="text/javascript" src="/components/rv-common-i18n/dist/i18n.js"></script>
-  <script type="text/javascript" src="/node_modules/widget-tester/mocks/i18n-config.js"></script>
+  <script src="/components/jquery/dist/jquery.js"></script>
+  <script src="/components/tinymce-dist/tinymce.min.js"></script>
+  <script src="/components/angular/angular.js"></script>
+  <script src="/components/angular-ui-tinymce/src/tinymce.js"></script>
+  <script src="/components/angular-load/angular-load.js"></script>
 
-  <script src="/components/bootstrap-select/bootstrap-select.js"></script>
-  <script src="/dist/js/url-field.js"></script>
-
-  <script src="/components/rv-bootstrap-formhelpers/dist/js/rv-bootstrap-formhelpers.js"></script>
-  <script src="/components/bootstrap-form-components/dist/js/bootstrap-font-picker.js"></script>
-  <script src="/components/bootstrap-form-components/dist/js/angular/bootstrap-font-picker.js"></script>
-  <script src="/components/bootstrap-form-components/dist/js/bootstrap-font-size-picker.js"></script>
-  <script src="/components/bootstrap-form-components/dist/js/angular/bootstrap-font-size-picker.js"></script>
-
-  <script type="text/javascript" src="/components/spectrum/spectrum.js"></script>
-  <script src="/dist/js/angular/color-picker.js"></script>
-
-  <script src="/dist/js/alignment.js"></script>
-  <script src="/dist/js/angular/alignment.js"></script>
-
-  <script src="/dist/js/font-style.js"></script>
-  <script src="/dist/js/angular/font-style.js"></script>
+  <script src="/src/_config/config.js"></script>
   <script src="/src/_angular/font-setting/dtv-font-setting.js"></script>
   <script src="/tmp/ng-templates/font-setting/font-setting.js"></script>
+  <script src="/src/_angular/font-setting/svc-google-font-loader.js"></script>
 
-  <script type="text/javascript">
+  <script>
     angular.module("fontSettingApp", ["risevision.widget.common.font-setting"])
       .controller("fontSettingController", ["$scope", function ($scope) {
         $scope.font = {
           font: {
             type: "standard",
             name: "Verdana",
-            family: "Verdana"
+            family: "verdana,geneva,sans-serif"
           },
-          size: "20",
+          size: "24px",
           bold: false,
           italic: false,
           underline: false,
-          color: "black",
-          backgroundColor: "transparent",
+          forecolor: "#000000",
+          backcolor: "transparent",
           align: "left"
         };
       }]);
