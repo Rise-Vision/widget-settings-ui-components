@@ -1,19 +1,13 @@
-.font-setting-button > div{
-  width : 54px;
-}
+.font-setting {
+	.mce-edit-area {
+		display: none;
+	}
 
-@media (min-width: 667px) and (max-width: 1000px) {
-	.font-setting { 
-	  width:320px;
+	.text-container {
+		margin-top: 10px;
+		padding: 15px;
+		text-align: left;
+		background-color: #efefef;
+		border-radius: 8px;
 	}
 }
-
-@media (min-width: 100px) and (max-width: 667px) {
-	.font-setting {
-	  width:255px;
-	}
-
-	.font-setting-button {
-	 padding-bottom: 10px;
-	}
-} 

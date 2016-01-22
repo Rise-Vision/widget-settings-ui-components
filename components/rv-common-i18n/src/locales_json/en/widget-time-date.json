@@ -1,0 +1,16 @@
+{
+  "date": {
+    "label": "Date",
+    "show": "Show Date"
+  },
+  "settings": "Time and Date Settings",
+  "system": "This widget will show the current time and date according to the time and date configured on the operating system it is used on.",
+  "time": {
+    "formats": {
+      "twelve": "12-Hour",
+      "twenty-four": "24-Hour"
+    },
+    "label": "Time",
+    "show": "Show Time"
+  }
+}

@@ -1,3 +1,6 @@
+$store-featured-tiny-banner-url: "https://s3.amazonaws.com/Store-Products/Featured+Products/featured_tiny_display_bundle.jpg";
+$store-featured-splash-banner-url: "https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_display_bundle.jpg";
+
 /* ==========================================================================
    COMPACT BANNER
    ========================================================================== */
@@ -10,7 +13,7 @@
   color: #fff;
   background: #f5f6f8 bottom center;
   background-color: #FFF;
-  background-image: url('https://s3.amazonaws.com/Store-Products/Featured+Products/featured_tiny_storagesupportbundle.jpg');
+  background-image: url($store-featured-tiny-banner-url);
   background-size: cover;
   background-position: 96%;
   p {
@@ -20,7 +23,8 @@
     padding: 6px;
     line-height: 17px;
     position: relative;
-    @extend .gradient-blue-vertical;
+    background: #3C3C3C;
+    font-size: 18px;
   }
   .btn {
     margin-top: 4px;
@@ -29,6 +33,7 @@
     left: 50%;
     bottom: 4px;
     transform: translateX(-50%);
+    background-color: #E4FEE9;
   }
 }
 
@@ -79,24 +84,27 @@
   cursor: pointer;
   border: 1px solid #0bd397;
   background: #717e84 center center;
-  background-image: url('https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_storagesupportbundle.jpg');
+  background-image: url($store-featured-splash-banner-url);
   h1 {
-    font-size: 44px;
-    font-weight: 300;
-    color: #fff;
+    font-size: 56px;
+    font-weight: 500;
+    color: #4AB766;
   }
   p {
     color: #fff;
+    font-size: 24px;
   }
   .btn {
     border: 1px solid #00ff03;
+    background-color: #E4FEE9;
   }
   div {
-    @extend .gradient-blue-angled;
+    background: #3C3C3C;
     position: absolute;
     top: 0;
     left: 0;
     width: 28%;
+    min-width: 320px;
     height: 100%;
     padding: 13px 31px;
   }
@@ -105,7 +113,7 @@
 @media (max-width: $screen-md) {
   .featured-hero {
     background: #717e84 70% center;
-    background-image: url('https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_storagesupportbundle.jpg');
+    background-image: url($store-featured-splash-banner-url);
     div {
       width: 50%;
     }
@@ -120,7 +128,7 @@
 
 @media (max-width: $screen-xs) {
   .featured-hero {
-    background-image: url('https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_storagesupportbundle.jpg');
+    background-image: url($store-featured-splash-banner-url);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: 168% auto;

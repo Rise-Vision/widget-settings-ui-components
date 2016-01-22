@@ -8,18 +8,17 @@
     h1 {
       display: inline-block;
       font-weight: 400;
-      line-height: 40px;
+      line-height: 43px;
       margin: 0 5px 0 0;
-    }
-    .store-status-2 {
-      display: inline-block;
-      vertical-align: text-bottom;
     }
   }
 
   .global-actions {
     @include make-sm-column(6);
     text-align: right;
+    .btn {
+      margin-bottom: 0;
+    }
     .btn-group {
       .dropdown-menu {
         left: auto;
@@ -36,7 +35,6 @@
         }
       }
     }
-
     @media (max-width: 768px) {
       margin-top: 10px;
       .btn {

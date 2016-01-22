@@ -89,10 +89,10 @@
     "unsavedWarning": "You have unsaved changes. Do you want to Save or Discard them?"
   },
   "download": {
-    "linux32": "Download Ubuntu [32-bit]",
-    "linux64": "Download Ubuntu [64-bit]",
-    "win32": "Download Windows 7+ [32-bit]",
-    "win64": "Download Windows 7+ [64-bit]"
+    "linux32": "Download Player for Ubuntu 14.04 LTS [32-bit]",
+    "linux64": "Download Player for Ubuntu 14.04 LTS [64-bit]",
+    "win32": "Download Player for Windows 7+ [32-bit]",
+    "win64": "Download Player for Windows 7+ [64-bit]"
   },
   "fields": {
     "address": {
@@ -155,6 +155,10 @@
           "warning": "Using any option other than Auto Upgrade may result in Presentation Content failures."
         }
       },
+      "install": {
+        "heading": "Install Rise Player",
+        "id": "Your Display ID is"
+      },
       "ipAddress": "IP Address:",
       "localIpAddress": "Local IP Address:",
       "operatingSystem": "Operating System:",
@@ -166,7 +170,7 @@
         "name": "Rotation:"
       },
       "playerVersion": "Player Version:",
-      "playerWarning": "A Player has not been configured for this Display. To configure your Display click Download Player and install the software on the computer that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID <span class=\"label label-default\">{{displayId}}</span> to link the Player with the Display that you have setup here.",
+      "playerWarning": "A Player has not been configured for your Display. To configure your Display, select your Operating System below and install the software <b>on the device</b> that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID (above) to link the Player with the Display that you have setup here. Further setup details can be <a href=\"http://help.risevision.com/user/create-a-display/\" target=\"_blank\">found here</a>.",
       "resolution": "Resolution:",
       "viewerVersion": "Viewer Version:"
     },

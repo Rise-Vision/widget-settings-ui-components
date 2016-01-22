@@ -206,16 +206,16 @@ msgid "details.unsavedWarning"
 msgstr "You have unsaved changes. Do you want to Save or Discard them?"
 
 msgid "download.linux32"
-msgstr "Download Ubuntu [32-bit]"
+msgstr "Download Player for Ubuntu 14.04 LTS [32-bit]"
 
 msgid "download.linux64"
-msgstr "Download Ubuntu [64-bit]"
+msgstr "Download Player for Ubuntu 14.04 LTS [64-bit]"
 
 msgid "download.win32"
-msgstr "Download Windows 7+ [32-bit]"
+msgstr "Download Player for Windows 7+ [32-bit]"
 
 msgid "download.win64"
-msgstr "Download Windows 7+ [64-bit]"
+msgstr "Download Player for Windows 7+ [64-bit]"
 
 msgid "fields.address.city"
 msgstr "City"
@@ -328,6 +328,12 @@ msgstr "User Managed"
 msgid "fields.player.browser.upgrade.warning"
 msgstr "Using any option other than Auto Upgrade may result in Presentation Content failures."
 
+msgid "fields.player.install.heading"
+msgstr "Install Rise Player"
+
+msgid "fields.player.install.id"
+msgstr "Your Display ID is"
+
 msgid "fields.player.ipAddress"
 msgstr "IP Address:"
 
@@ -356,7 +362,7 @@ msgid "fields.player.playerVersion"
 msgstr "Player Version:"
 
 msgid "fields.player.playerWarning"
-msgstr "A Player has not been configured for this Display. To configure your Display click Download Player and install the software on the computer that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID <span class="label label-default">{{displayId}}</span> to link the Player with the Display that you have setup here."
+msgstr "A Player has not been configured for your Display. To configure your Display, select your Operating System below and install the software <b>on the device</b> that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID (above) to link the Player with the Display that you have setup here. Further setup details can be <a href="http://help.risevision.com/user/create-a-display/" target="_blank">found here</a>."
 
 msgid "fields.player.resolution"
 msgstr "Resolution:"

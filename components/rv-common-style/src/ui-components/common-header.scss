@@ -1,4 +1,4 @@
-.navbar {
+.navbar.navbar-default {
   background: #FFF;
   margin-bottom: 0;
   padding: 10px 0;
@@ -11,12 +11,16 @@
       >a {
         line-height: 33px;
         font-size: 13px;
-        padding: 0;
+        padding: 1px 11px;
         margin-right: 3px;
         border-radius: 3px;
         white-space: nowrap;
+        &:hover {
+          color: $rise-blue;
+        }
         &.selected {
           color: $rise-blue;
+          background: $brand-bg;
         }
       }
     }
