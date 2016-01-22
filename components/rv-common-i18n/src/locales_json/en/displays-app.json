@@ -144,15 +144,12 @@
     },
     "player": {
       "browser": {
-        "installed": "Installed Browser:",
+        "installed": "Browser Version:",
         "recommended": "Recommended Browser:",
         "upgrade": {
           "autoUpgrade": "Auto Upgrade",
-          "current": "Current",
-          "name": "Player Upgrade:",
-          "previous": "Previous",
-          "userManaged": "User Managed",
-          "warning": "Using any option other than Auto Upgrade may result in Presentation Content failures."
+          "name": "Browser Upgrade:",
+          "userManaged": "User Managed"
         }
       },
       "install": {

@@ -28,7 +28,12 @@ body {
 body.modal-open {
     overflow: hidden;
 }    
-   
+
+a:focus, button:focus {
+  outline: 0 !important;
+  text-decoration: none !important;
+}
+
 a:hover {
   text-decoration: none;
 }

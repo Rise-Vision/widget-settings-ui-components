@@ -305,7 +305,7 @@ msgid "fields.name.required"
 msgstr "Required"
 
 msgid "fields.player.browser.installed"
-msgstr "Installed Browser:"
+msgstr "Browser Version:"
 
 msgid "fields.player.browser.recommended"
 msgstr "Recommended Browser:"
@@ -313,20 +313,11 @@ msgstr "Recommended Browser:"
 msgid "fields.player.browser.upgrade.autoUpgrade"
 msgstr "Auto Upgrade"
 
-msgid "fields.player.browser.upgrade.current"
-msgstr "Current"
-
 msgid "fields.player.browser.upgrade.name"
-msgstr "Player Upgrade:"
-
-msgid "fields.player.browser.upgrade.previous"
-msgstr "Previous"
+msgstr "Browser Upgrade:"
 
 msgid "fields.player.browser.upgrade.userManaged"
 msgstr "User Managed"
-
-msgid "fields.player.browser.upgrade.warning"
-msgstr "Using any option other than Auto Upgrade may result in Presentation Content failures."
 
 msgid "fields.player.install.heading"
 msgstr "Install Rise Player"

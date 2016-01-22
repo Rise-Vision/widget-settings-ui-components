@@ -101,7 +101,7 @@ msgid "list.title"
 msgstr "Presentations"
 
 msgid "playlistItem.add"
-msgstr "Add Playlist Item"
+msgstr "Add Content"
 
 msgid "playlistItem.content"
 msgstr "Content"
@@ -141,9 +141,6 @@ msgstr "Select"
 
 msgid "playlistItem.title"
 msgstr "Edit Playlist Item"
-
-msgid "playlistItem.widgetByUrl"
-msgstr "Widget By URL"
 
 msgid "properties.labels.background"
 msgstr "Background"

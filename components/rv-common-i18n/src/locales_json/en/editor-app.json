@@ -52,7 +52,7 @@
     "title": "Presentations"
   },
   "playlistItem": {
-    "add": "Add Playlist Item",
+    "add": "Add Content",
     "content": "Content",
     "duration": "Duration",
     "legacyWarningPart1": "This is a Gadget and it is not supported in this Editor. To configure a Gadget please use the",
@@ -65,8 +65,7 @@
     "required": "Required",
     "seconds": "seconds",
     "select": "Select",
-    "title": "Edit Playlist Item",
-    "widgetByUrl": "Widget By URL"
+    "title": "Edit Playlist Item"
   },
   "properties": {
     "labels": {

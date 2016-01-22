@@ -5,9 +5,6 @@ $panel-width: 290px;
   transition: all 0.2s;
   position: relative;
   background: #d4d4d4;
-  .content-box-body {
-    padding: 8px;
-  }
   .workspace-toolbar {
     width: calc(100% - 11px);
     white-space: nowrap;
@@ -60,9 +57,9 @@ $panel-width: 290px;
     padding: 8px 0;
     position: absolute;
     top: 49px;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 140px);
     width: $panel-width;
-    background-color: $brand-bg;
+    background-color: #f7f7f7;
     -webkit-transition: all 0.5s; /* Safari 3.1 to 6.0 */
     transition: all 0.5s;
     border-right: 1px solid $light-gray;
@@ -207,12 +204,6 @@ $panel-width: 290px;
   width: 180px;
   font-weight: 500;
   line-height: 24px;
-}
-
-.playlist-item-name {
-  @extend .ellipsis;
-  width: 140px;
-  font-weight: 500;
 }
 
 .editor-footer {
@@ -501,7 +492,7 @@ $panel-width: 290px;
 }
 
 .active-banner {
-  padding-bottom: 0;
+  padding-bottom: 0 !important;
 }
 
 .background-color-picker-input {
@@ -519,5 +510,59 @@ $panel-width: 290px;
   .image-placeholder {
     width: auto;
     height: 128px;
+  }
+}
+
+.editor-playlist {
+  margin-top: 10px;
+  .editor-playlist-item {
+    overflow: hidden;
+    background: #FFF;
+    border: 1px solid $light-gray;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    &:hover {
+      border: 1px solid #d4d4d4;
+    }
+    p { 
+      margin: 0;
+      line-height: 22px;
+    }
+    .playlist-item-name {
+      span {
+        @extend .ellipsis;
+        font-weight: 500;
+        display: inline-block;
+        vertical-align: top;
+        max-width: 150px;
+        padding-right: 5px;
+      }
+    }
+  }
+  .arrows {
+    float: left;
+    width: 24px;
+    margin-right: 6px;
+    .btn {
+      margin: 0;
+      &:first-child {
+        border-radius: 3px 3px 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 3px 3px;
+      }
+    }
+  }
+  .actions {
+    float: right;
+  }
+}
+
+.editor-playlist {
+  height: calc(100vh - 290px);
+  border:none;
+  .editor-playlist-item:last-child {
+    margin-bottom:20px;
   }
 }
