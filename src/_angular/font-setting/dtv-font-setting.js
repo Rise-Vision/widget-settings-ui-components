@@ -13,10 +13,14 @@
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
         link: function ($scope) {
-          var _fontData = null;
+          var _fontData = null,
+            _googleFontList = "";
 
           $scope.defaultFont = {
-            family: "verdana,geneva,sans-serif",
+            font: {
+              family: "verdana,geneva,sans-serif",
+              type: "standard"
+            },
             size: "24px",
             align: "left",
             bold: false,
@@ -28,6 +32,7 @@
 
           // Load Google fonts.
           googleFontLoader.getFonts().then(function(fonts) {
+            _googleFontList = fonts;
             initTinyMCE(fonts);
           });
 
@@ -134,16 +139,30 @@
               }
 
               // These 2 must be last for some reason.
-              editor.execCommand("FontName", false, _fontData.family);
+              editor.execCommand("FontName", false, _fontData.font.family);
               editor.execCommand("FontSize", false, _fontData.size);
             }
+          }
+
+          // Determine what type of font this is (standard or google)
+          function getFontType(family) {
+            if (WIDGET_SETTINGS_UI_CONFIG.families.indexOf(family) !== -1) {
+              return "standard";
+            }
+
+            if (_googleFontList.indexOf(family) !== -1) {
+              return "google";
+            }
+
+            return "";
           }
 
           // Handle toolbar interactions.
           function initCommands(args) {
             switch(args.command) {
               case "FontName":
-                _fontData.family = args.value;
+                _fontData.font.family = args.value;
+                _fontData.font.type = getFontType(args.value);
                 break;
 
               case "FontSize":
@@ -207,7 +226,7 @@
               text = document.querySelector(".text");
 
             if ($scope.previewText && fontData) {
-              text.style.fontFamily = fontData.family;
+              text.style.fontFamily = fontData.font.family;
               text.style.fontSize = fontData.size;
               text.style.fontWeight = fontData.bold ? "bold" : "normal";
               text.style.fontStyle = fontData.italic ? "italic" : "normal";
