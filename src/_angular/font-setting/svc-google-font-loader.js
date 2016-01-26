@@ -5,7 +5,7 @@
     .factory("googleFontLoader", ["$http", "angularLoad", function($http, angularLoad) {
 
     var fontsApi = "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBXxVK_IOV7LNQMuVVo_l7ZvN53ejN86zY",
-      fontBaseUrl = "http://fonts.googleapis.com/css?family=",
+      fontBaseUrl = "//fonts.googleapis.com/css?family=",
       exclude = ["Buda", "Coda Caption", "Open Sans Condensed", "UnifrakturCook", "Molle"],
       fallback = ",sans-serif;",
       fonts = "",
