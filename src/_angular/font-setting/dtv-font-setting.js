@@ -2,8 +2,14 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.font-setting", ["angularLoad", "ui.tinymce"])
-    .directive("fontSetting", ["$templateCache", "$log", "googleFontLoader", function ($templateCache, $log, googleFontLoader) {
+  angular.module("risevision.widget.common.font-setting", [
+      "angularLoad",
+      "ui.tinymce",
+      "risevision.common.i18n",
+      "risevision.widget.common.url-field"
+    ])
+    .directive("fontSetting", ["$templateCache", "$log", "googleFontLoader",
+    function ($templateCache, $log, googleFontLoader) {
       return {
         restrict: "AE",
         scope: {
@@ -12,14 +18,17 @@
         },
         template: $templateCache.get("_angular/font-setting/font-setting.html"),
         transclude: false,
-        link: function ($scope) {
-          var _fontData = null,
+        link: function ($scope, element) {
+          var $element = $(element),
+            $customFont = $element.find(".custom-font"),
+            _isLoading = true,
             _googleFontList = "";
 
           $scope.defaultFont = {
             font: {
               family: "verdana,geneva,sans-serif",
-              type: "standard"
+              type: "standard",
+              url: ""
             },
             size: "24px",
             align: "left",
@@ -33,8 +42,25 @@
           // Load Google fonts.
           googleFontLoader.getFonts().then(function(fonts) {
             _googleFontList = fonts;
-            initTinyMCE(fonts);
+
+            initTinyMCE();
           });
+
+          // Apply custom font to preview text.
+          $scope.applyCustomFont = function() {
+            var family = getCustomFontFamily();
+
+            if (family !== null) {
+              loadCustomFont(family);
+
+              $scope.fontData.font.family = family;
+              $scope.fontData.font.type = "custom";
+
+              updatePreview($scope.fontData);
+            }
+
+            $customFont.modal("hide");
+          };
 
           $scope.defaults = function(obj) {
             if (obj) {
@@ -52,23 +78,33 @@
           };
 
           var watch = $scope.$watch("fontData", function(fontData) {
+            var family = null;
+
             if (fontData) {
               $scope.defaults(fontData, $scope.defaultFont);
+
+              // Load custom font.
+              if ($scope.fontData.font.url) {
+                family = getCustomFontFamily();
+
+                if (family !== null) {
+                  loadCustomFont(family);
+                }
+              }
+
               updatePreview(fontData);
               watch();
 
               if ($scope.previewText) {
                 $scope.$watch("fontData", updatePreview, true);
               }
-
-              _fontData = fontData;
             }
           });
 
           // Initialize TinyMCE.
-          function initTinyMCE(families) {
+          function initTinyMCE() {
             $scope.tinymceOptions = {
-              font_formats: WIDGET_SETTINGS_UI_CONFIG.families + families,
+              font_formats: WIDGET_SETTINGS_UI_CONFIG.families + _googleFontList + "Custom=custom;",
               fontsize_formats: WIDGET_SETTINGS_UI_CONFIG.sizes,
               menubar: false,
               plugins: "textcolor colorpicker",
@@ -82,10 +118,11 @@
               setup: function(editor) {
                 editor.on("init", function() {
                   initToolbar(editor);
+                  _isLoading = false;
                 });
 
                 editor.on("ExecCommand", function(args) {
-                  initCommands(args);
+                  initCommands(editor, args);
                 });
               },
               init_instance_callback: function(editor) {
@@ -107,9 +144,20 @@
 
           // Initialize TinyMCE toolbar.
           function initToolbar(editor) {
-            if (_fontData) {
+            if ($scope.fontData) {
+              // Font Family
+              if ($scope.fontData.font.url) {
+                editor.execCommand("FontName", false, "custom");
+              }
+              else {
+                editor.execCommand("FontName", false, $scope.fontData.font.family);
+              }
+
+              // Font Sizes
+              editor.execCommand("FontSize", false, $scope.fontData.size);
+
               // Alignment
-              switch(_fontData.align) {
+              switch($scope.fontData.align) {
                 case "left":
                   editor.execCommand("JustifyLeft", false);
                   break;
@@ -127,98 +175,91 @@
               }
 
               // Colors
-              $(".mce-colorbutton[aria-label='Text color'] span").css("background-color", _fontData.forecolor);
-              $(".mce-colorbutton[aria-label='Background color'] span").css("background-color", _fontData.backcolor);
+              $(".mce-colorbutton[aria-label='Text color'] span").css("background-color", $scope.fontData.forecolor);
+              $(".mce-colorbutton[aria-label='Background color'] span").css("background-color", $scope.fontData.backcolor);
 
               // Font Style
-              if (_fontData.bold) {
+              if ($scope.fontData.bold) {
                 toggleButton($(".mce-btn[aria-label='Bold']"));
               }
 
-              if (_fontData.italic) {
+              if ($scope.fontData.italic) {
                 toggleButton($(".mce-btn[aria-label='Italic']"));
               }
 
-              if (_fontData.underline) {
+              if ($scope.fontData.underline) {
                 toggleButton($(".mce-btn[aria-label='Underline']"));
               }
-
-              // These 2 must be last for some reason.
-              editor.execCommand("FontName", false, _fontData.font.family);
-              editor.execCommand("FontSize", false, _fontData.size);
             }
-          }
-
-          // Determine what type of font this is (standard or google)
-          function getFontType(family) {
-            if (WIDGET_SETTINGS_UI_CONFIG.families.indexOf(family) !== -1) {
-              return "standard";
-            }
-
-            if (_googleFontList.indexOf(family) !== -1) {
-              return "google";
-            }
-
-            return "";
           }
 
           // Handle toolbar interactions.
-          function initCommands(args) {
+          function initCommands(editor, args) {
             switch(args.command) {
               case "FontName":
-                _fontData.font.family = args.value;
-                _fontData.font.type = getFontType(args.value);
+                if (_isLoading) {
+                  return;
+                }
+                else if (args.value === "custom") {
+                  $customFont.modal("show");
+
+                  return;
+                }
+                else {
+                  $scope.fontData.font.family = args.value;
+                  $scope.fontData.font.type = getFontType(args.value);
+                }
+
                 break;
 
               case "FontSize":
-                _fontData.size = args.value;
+                $scope.fontData.size = args.value;
                 break;
 
               case "JustifyLeft":
-                _fontData.align = "left";
+                $scope.fontData.align = "left";
                 break;
 
               case "JustifyCenter":
-                _fontData.align = "center";
+                $scope.fontData.align = "center";
                 break;
 
               case "JustifyRight":
-                _fontData.align = "right";
+                $scope.fontData.align = "right";
                 break;
 
               case "JustifyFull":
-                _fontData.align = "justify";
+                $scope.fontData.align = "justify";
                 break;
 
               case "forecolor":
-                _fontData.forecolor = args.value;
+                $scope.fontData.forecolor = args.value;
                 break;
 
               case "hilitecolor":
-                _fontData.backcolor = args.value;
+                $scope.fontData.backcolor = args.value;
                 break;
 
               case "mceToggleFormat":
                 if (args.value === "bold") {
-                  _fontData.bold = !_fontData.bold;
+                  $scope.fontData.bold = !$scope.fontData.bold;
                   toggleButton($(".mce-btn[aria-label='Bold']"));
                 }
                 else if (args.value === "italic") {
-                  _fontData.italic = !_fontData.italic;
+                  $scope.fontData.italic = !$scope.fontData.italic;
                   toggleButton($(".mce-btn[aria-label='Italic']"));
                 }
                 else if (args.value === "underline") {
-                  _fontData.underline = !_fontData.underline;
+                  $scope.fontData.underline = !$scope.fontData.underline;
                   toggleButton($(".mce-btn[aria-label='Underline']"));
                 }
 
                 break;
-
               default:
                 break;
             }
 
-            updatePreview(_fontData);
+            updatePreview($scope.fontData);
           }
 
           function toggleButton($btn) {
@@ -239,6 +280,41 @@
               text.style.color = fontData.forecolor;
               text.style.backgroundColor = fontData.backcolor;
               textContainer.style.textAlign = fontData.align;
+            }
+          }
+
+          // Determine what type of font this is (standard or google).
+          function getFontType(family) {
+            if (WIDGET_SETTINGS_UI_CONFIG.families.indexOf(family) !== -1) {
+              return "standard";
+            }
+
+            if (_googleFontList.indexOf(family) !== -1) {
+              return "google";
+            }
+
+            return "custom";
+          }
+
+          // Extract font name from font URL.
+          function getCustomFontFamily() {
+            if ($scope.fontData.font.url) {
+              return $scope.fontData.font.url.split("/").pop().split(".")[0];
+            }
+
+            return null;
+          }
+
+          // Load a custom font.
+          function loadCustomFont(family) {
+            var sheet = null,
+              url = $.trim($scope.fontData.font.url),
+              rule = "font-family: " + family + "; " + "src: url('" + url + "');";
+
+            sheet = document.styleSheets[0];
+
+            if (sheet !== null) {
+              sheet.addRule("@font-face", rule);
             }
           }
         }

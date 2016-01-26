@@ -25,19 +25,24 @@
 
         <!-- Start Modal Body-->
         <div class="modal-body">
-          <form>
-            <font-setting font-data="font" preview-text="Sample Text"></font-setting>
-          </form>
+          <font-setting font-data="font" preview-text="Sample Text"></font-setting>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="/components/jquery/dist/jquery.js"></script>
-  <script src="/components/tinymce-dist/tinymce.min.js"></script>
   <script src="/components/angular/angular.js"></script>
+  <script src="/components/jquery/dist/jquery.js"></script>
+  <script src="/components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/components/angular-translate/angular-translate.js"></script>
+  <script src="/components/rv-common-i18n/dist/i18n.js"></script>
+  <script src="/node_modules/widget-tester/mocks/i18n-config.js"></script>
+  <script src="/dist/js/angular/tooltip.js"></script>
+  <script src="/components/tinymce-dist/tinymce.min.js"></script>
   <script src="/components/angular-ui-tinymce/src/tinymce.js"></script>
   <script src="/components/angular-load/angular-load.js"></script>
+  <script src="/dist/js/angular/url-field.js"></script>
 
   <script src="/src/_config/config.js"></script>
   <script src="/src/_angular/font-setting/dtv-font-setting.js"></script>
@@ -49,9 +54,9 @@
       .controller("fontSettingController", ["$scope", function ($scope) {
         $scope.font = {
           font: {
+            family: "verdana,geneva,sans-serif",
             type: "standard",
-            name: "Verdana",
-            family: "verdana,geneva,sans-serif"
+            url: ""
           },
           size: "24px",
           bold: false,
