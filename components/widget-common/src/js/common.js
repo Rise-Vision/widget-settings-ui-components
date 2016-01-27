@@ -6,12 +6,12 @@ RiseVision.Common.Utilities = (function() {
 
   function getFontCssStyle(className, fontObj) {
     var family = "font-family:" + fontObj.font.family + "; ";
-    var color = "color: " + fontObj.color + "; ";
-    var size = "font-size: " + fontObj.size + "px; ";
+    var color = "color: " + (fontObj.color ? fontObj.color : fontObj.forecolor) + "; ";
+    var size = "font-size: " + (fontObj.size.indexOf("px") === -1 ? fontObj.size + "px; " : fontObj.size + "; ");
     var weight = "font-weight: " + (fontObj.bold ? "bold" : "normal") + "; ";
     var italic = "font-style: " + (fontObj.italic ? "italic" : "normal") + "; ";
     var underline = "text-decoration: " + (fontObj.underline ? "underline" : "none") + "; ";
-    var highlight = "background-color: " + fontObj.highlightColor + "; ";
+    var highlight = "background-color: " + (fontObj.highlightColor ? fontObj.highlightColor : fontObj.backcolor) + "; ";
 
     return "." + className + " {" + family + color + size + weight + italic + underline + highlight + "}";
   }
@@ -92,8 +92,9 @@ RiseVision.Common.Utilities = (function() {
 
     stylesheet.setAttribute("rel", "stylesheet");
     stylesheet.setAttribute("type", "text/css");
-    stylesheet.setAttribute("href", "https://fonts.googleapis.com/css?family=" +
-      family);
+
+    // split to account for family value containing a fallback (eg. Aladin,sans-serif)
+    stylesheet.setAttribute("href", "https://fonts.googleapis.com/css?family=" + family.split(",")[0]);
 
     if (stylesheet !== null) {
       contentDoc.getElementsByTagName("head")[0].appendChild(stylesheet);

@@ -1,0 +1,3 @@
+msgid "custom-font"
+msgstr "Custom Font"
+
