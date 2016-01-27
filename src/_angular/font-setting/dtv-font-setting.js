@@ -71,7 +71,12 @@
               font_formats: WIDGET_SETTINGS_UI_CONFIG.families + families,
               fontsize_formats: WIDGET_SETTINGS_UI_CONFIG.sizes,
               menubar: false,
-              plugins: "textcolor",
+              plugins: "textcolor colorpicker",
+              /*
+               When testing this via local server, CORS will be required. Handy CORS Chrome extension can be found here
+               https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
+               */
+              skin_url: "//s3.amazonaws.com/rise-common/styles/tinymce/rise",
               statusbar: false,
               toolbar: "fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | forecolor backcolor | bold italic underline",
               setup: function(editor) {
