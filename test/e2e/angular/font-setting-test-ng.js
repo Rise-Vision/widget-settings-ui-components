@@ -4,7 +4,6 @@
   var chai = require("chai");
   var chaiAsPromised = require("chai-as-promised");
   var expect = chai.expect;
-  var customFontUrl = "https://custom-font.ttf";
 
   chai.use(chaiAsPromised);
   browser.driver.manage().window().setSize(1024, 768);
@@ -230,21 +229,14 @@
       });
 
       describe("Custom Font", function() {
-        var url = "";
+        var url = "",
+          customFontUrl = "https://my.custom.font/BrushScriptStd.otf";
 
         beforeEach(function () {
           url = browser.findElement(by.model("url"));
 
           element(by.css(".mce-btn[aria-label='Font Family']")).click();
           element(by.css("#mceu_766-text")).click();
-
-          // Wait for modal to be visible.
-          return browser.wait(function() {
-            return element(by.css(".custom-font")).isDisplayed()
-              .then(function(isDisplayed) {
-                return isDisplayed;
-              });
-          });
         });
 
         describe("Modal visibility", function() {
@@ -254,14 +246,6 @@
 
           it("should hide modal when cancel button is clicked", function() {
             element(by.css(".custom-font .cancel")).click();
-
-            // Wait for modal to be hidden.
-            return browser.wait(function() {
-              return element(by.css(".custom-font")).isDisplayed()
-                .then(function(isDisplayed) {
-                  return !isDisplayed;
-                });
-            });
 
             expect(element(by.css(".custom-font")).isDisplayed()).to.eventually.be.false;
           });
@@ -293,18 +277,9 @@
             url.sendKeys(customFontUrl);
             element(by.css(".custom-font .select")).click();
 
-            // Wait for modal to be hidden.
-            return browser.wait(function() {
-              return element(by.css(".custom-font")).isDisplayed()
-                .then(function(isDisplayed) {
-                  return !isDisplayed;
-                });
-            });
-
-            expect(element(by.css(".text")).getCssValue("font-family")).to.eventually.equal("PermanentMarker");
+            expect(element(by.css(".text")).getCssValue("font-family")).to.eventually.equal("BrushScriptStd");
           });
         });
-
       });
 
     });
