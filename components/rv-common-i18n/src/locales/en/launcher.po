@@ -1,0 +1,12 @@
+msgid "createAccount"
+msgstr "Create a Free Account"
+
+msgid "dontHaveAccount"
+msgstr "I don't have a google account."
+
+msgid "haveAccount"
+msgstr "Have an Account?"
+
+msgid "signUpGoogle"
+msgstr "Sign Up with Google"
+
