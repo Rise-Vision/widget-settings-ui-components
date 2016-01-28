@@ -252,10 +252,6 @@
         });
 
         describe("Select button", function() {
-          it("should disable Select button if there is no custom font URL", function() {
-            expect(element(by.css(".custom-font .select")).isEnabled()).to.eventually.be.false;
-          });
-
           it("should disable Select button if custom font URL is invalid", function() {
             element(by.css(".custom-font input[name='url']")).clear();
             element(by.css(".custom-font input[name='url']")).sendKeys("http://abc123");

@@ -146,7 +146,7 @@
           function initToolbar(editor) {
             if ($scope.fontData) {
               // Font Family
-              if ($scope.fontData.font.url) {
+              if (($scope.fontData.font.type === "custom") && $scope.fontData.font.url) {
                 editor.execCommand("FontName", false, "custom");
               }
               else {
