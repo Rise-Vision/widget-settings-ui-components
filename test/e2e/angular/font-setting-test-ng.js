@@ -31,7 +31,7 @@
           element(by.css(".mce-btn[aria-label='Font Family']")).click();
 
           element.all(by.css("#mceu_20-body div")).then(function(elements) {
-            expect(elements.length).to.equal(745);
+            expect(elements.length).to.equal(746);
           });
         });
 
@@ -227,6 +227,61 @@
           expect(element(by.css(".text")).getCssValue("text-decoration")).to.eventually.equal("underline");
         });
       });
+
+      describe("Custom Font", function() {
+        var url = "",
+          customFontUrl = "https://my.custom.font/BrushScriptStd.otf";
+
+        beforeEach(function () {
+          url = browser.findElement(by.model("url"));
+
+          element(by.css(".mce-btn[aria-label='Font Family']")).click();
+          element(by.css("#mceu_766-text")).click();
+        });
+
+        describe("Modal visibility", function() {
+          it("should show modal for custom font", function() {
+            expect(element(by.css(".custom-font")).isDisplayed()).to.eventually.be.true;
+          });
+
+          it("should hide modal when cancel button is clicked", function() {
+            element(by.css(".custom-font .cancel")).click();
+
+            expect(element(by.css(".custom-font")).isDisplayed()).to.eventually.be.false;
+          });
+        });
+
+        describe("Select button", function() {
+          it("should disable Select button if there is no custom font URL", function() {
+            expect(element(by.css(".custom-font .select")).isEnabled()).to.eventually.be.false;
+          });
+
+          it("should disable Select button if custom font URL is invalid", function() {
+            element(by.css(".custom-font input[name='url']")).clear();
+            element(by.css(".custom-font input[name='url']")).sendKeys("http://abc123");
+
+            expect(element(by.css(".custom-font .select")).isEnabled()).to.eventually.be.false;
+          });
+
+          it("should enable Select button if custom font URL is valid", function() {
+            url.clear();
+            url.sendKeys(customFontUrl);
+
+            expect(element(by.css(".custom-font .select")).isEnabled()).to.eventually.be.true;
+          });
+        });
+
+        describe("Preview text", function() {
+          it("should set correct font family for preview text", function() {
+            url.clear();
+            url.sendKeys(customFontUrl);
+            element(by.css(".custom-font .select")).click();
+
+            expect(element(by.css(".text")).getCssValue("font-family")).to.eventually.equal("BrushScriptStd");
+          });
+        });
+      });
+
     });
   });
 })();
