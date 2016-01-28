@@ -146,7 +146,7 @@
           function initToolbar(editor) {
             if ($scope.fontData) {
               // Font Family
-              if ($scope.fontData.font.url) {
+              if (($scope.fontData.font.type === "custom") && $scope.fontData.font.url) {
                 editor.execCommand("FontName", false, "custom");
               }
               else {
@@ -396,7 +396,7 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "        <form role=\"form\" name=\"customFontForm\">\n" +
     "          <div class=\"modal-body\">\n" +
-    "            <url-field url=\"fontData.font.url\" ng-model=\"customFont\"></url-field>\n" +
+    "            <url-field url=\"fontData.font.url\" ng-model=\"customFont\" init-empty></url-field>\n" +
     "          </div>\n" +
     "\n" +
     "          <div class=\"modal-footer\">\n" +
