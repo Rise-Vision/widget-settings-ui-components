@@ -104,7 +104,7 @@
           // Initialize TinyMCE.
           function initTinyMCE() {
             $scope.tinymceOptions = {
-              font_formats: WIDGET_SETTINGS_UI_CONFIG.families + _googleFontList + "Custom=custom;",
+              font_formats: "Use Custom Font=custom;" + WIDGET_SETTINGS_UI_CONFIG.families + _googleFontList,
               fontsize_formats: WIDGET_SETTINGS_UI_CONFIG.sizes,
               menubar: false,
               plugins: "textcolor colorpicker",
@@ -126,7 +126,8 @@
                 });
               },
               init_instance_callback: function(editor) {
-                var oldApply = editor.formatter.apply;
+                var oldApply = editor.formatter.apply,
+                  oldRemove = editor.formatter.remove;
 
                 // Reference - http://goo.gl/55IhWI
                 editor.formatter.apply = function apply(name, vars, node) {
@@ -136,6 +137,16 @@
                   };
 
                   oldApply(name, vars, node);
+                  editor.fire("ExecCommand", args);
+                };
+
+                editor.formatter.remove = function remove(name, vars, node) {
+                  var args = {
+                    command: name,
+                    value: (vars && vars.value) ? vars.value : null
+                  };
+
+                  oldRemove(name, vars, node);
                   editor.fire("ExecCommand", args);
                 };
               }
@@ -233,11 +244,11 @@
                 break;
 
               case "forecolor":
-                $scope.fontData.forecolor = args.value;
+                $scope.fontData.forecolor = (args.value) ? args.value : $scope.defaultFont.forecolor;
                 break;
 
               case "hilitecolor":
-                $scope.fontData.backcolor = args.value;
+                $scope.fontData.backcolor = (args.value) ? args.value : $scope.defaultFont.backcolor;
                 break;
 
               case "mceToggleFormat":
