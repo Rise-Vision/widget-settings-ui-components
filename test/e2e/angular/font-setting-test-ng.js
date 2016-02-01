@@ -193,6 +193,13 @@
 
           expect(element(by.css(".text")).getCssValue("color")).to.eventually.equal("rgba(255, 0, 0, 1)");
         });
+
+        it("should remove color for preview text", function() {
+          element(by.css(".mce-colorbutton[aria-label='Text color'] .mce-open")).click();
+          element(by.css("#mceu_20-39")).click();
+
+          expect(element(by.css(".text")).getCssValue("color")).to.eventually.equal("rgba(0, 0, 0, 1)");
+        });
       });
 
       describe("Background Color", function() {
@@ -201,6 +208,13 @@
           element(by.css("#mceu_20-16")).click();
 
           expect(element(by.css(".text")).getCssValue("background-color")).to.eventually.equal("rgba(255, 0, 0, 1)");
+        });
+
+        it("should remove color for preview text", function() {
+          element(by.css(".mce-colorbutton[aria-label='Background color'] .mce-open")).click();
+          element(by.css("#mceu_20-39")).click();
+
+          expect(element(by.css(".text")).getCssValue("background-color")).to.eventually.equal("rgba(0, 0, 0, 0)");
         });
       });
 
