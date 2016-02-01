@@ -104,7 +104,7 @@
           // Initialize TinyMCE.
           function initTinyMCE() {
             $scope.tinymceOptions = {
-              font_formats: WIDGET_SETTINGS_UI_CONFIG.families + _googleFontList + "Custom=custom;",
+              font_formats: "Use Custom Font=custom;" + WIDGET_SETTINGS_UI_CONFIG.families + _googleFontList,
               fontsize_formats: WIDGET_SETTINGS_UI_CONFIG.sizes,
               menubar: false,
               plugins: "textcolor colorpicker",
