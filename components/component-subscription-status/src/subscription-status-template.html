@@ -41,8 +41,8 @@
   </div>
   <div class="subscription-status suspended" ng-show="subscriptionStatus.statusCode === 'suspended'">
     <span translate="subscription-status.expanded-suspended"></span>
-    <button type="button" class="btn btn-primary add-left" ng-click="showStoreAccountModal = true;">
+    <a type="button" class="btn btn-primary add-left" ng-href="{{storeAccountUrl}}" target="_blank">
       <span translate="subscription-status.view-invoices"></span>
-    </button>
+    </a>
   </div>
 </div>

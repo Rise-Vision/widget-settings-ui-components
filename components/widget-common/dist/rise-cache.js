@@ -48,10 +48,10 @@ RiseVision.Common.RiseCache = (function () {
       return;
     }
 
-    function fileRequest(isCacheRunning) {
+    function fileRequest() {
       var url, str, separator;
 
-      if (isCacheRunning) {
+      if (_isCacheRunning) {
         // configure url with cachebuster or not
         url = (nocachebuster) ? BASE_CACHE_URL + "?url=" + encodeURIComponent(fileUrl) :
         BASE_CACHE_URL + "cb=" + new Date().getTime() + "?url=" + encodeURIComponent(fileUrl);
@@ -75,36 +75,38 @@ RiseVision.Common.RiseCache = (function () {
           url: url
         };
 
-      xhr.open(method, url, true);
+      if (_isCacheRunning) {
+        xhr.open(method, url, true);
 
-      xhr.addEventListener("loadend", function () {
-        var status = xhr.status || 0;
+        xhr.addEventListener("loadend", function () {
+          var status = xhr.status || 0;
 
-        if (status >= 200 && status < 300) {
-          callback(request);
-        } else {
-          // Server may not support HEAD request. Fallback to a GET request.
-          if (method === "HEAD") {
-            makeRequest("GET", url);
+          if (status >= 200 && status < 300) {
+            callback(request);
           } else {
-            if (_isCacheRunning) {
+            // Server may not support HEAD request. Fallback to a GET request.
+            if (method === "HEAD") {
+              makeRequest("GET", url);
+            } else {
               callback(request, new Error("The request failed with status code: " + status));
-            } else{
-              // This is to avoid throwing an error when there is a cross domain issue
-              callback(request);
             }
           }
-        }
-      });
+        });
 
-      xhr.send();
+        xhr.send();
+      }
+      else {
+        // Rise Cache is not running (preview), skip HEAD request and execute callback immediately
+        callback(request);
+      }
+
     }
 
     if (!_pingReceived) {
       /* jshint validthis: true */
       return this.ping(fileRequest);
     } else {
-      return fileRequest(_isCacheRunning);
+      return fileRequest();
     }
 
   }

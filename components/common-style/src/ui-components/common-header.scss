@@ -1,8 +1,7 @@
 .navbar.navbar-default {
   background: #FFF;
   margin-bottom: 0;
-  padding: 10px 0;
-  border-bottom: none;
+  padding: 8px 0;
   .navbar-header {
     height: auto;
     li {
@@ -25,13 +24,14 @@
       }
     }
     .navbar-brand {
-      margin-right: 0;
+      margin-right: 10px;
     }
     .navbar-right {
       margin:0;
       >li {
         display: inline-block;
         margin-left: 5px;
+        float: none;
         >a {
           display: block;
           padding: 0;
@@ -52,12 +52,6 @@
         border-radius: 4px;
         vertical-align: top;
         margin-left: 10px;
-      }
-    }
-    .navbar-left {
-      margin-left: 0;
-      a {
-        padding: 0 5px;
       }
     }
   }
@@ -92,29 +86,6 @@
       line-height: 24px;
       margin-left: 5px;
       display: inline-block;
-    }
-  }
-  .new-apps-intro {
-    background: $rise-green;
-    padding: 15px;
-    color: #FFF;
-    &:hover {
-      background: $rise-green;
-    }
-    h3 {
-      margin-top: 0;
-      margin-bottom: 4px;
-      &+p {
-        margin-bottom: 0;
-      }
-    }
-  }
-  .new-app {
-    .new-app-link {
-      display: inline-block;
-      float: right;
-      color: $rise-green;
-      font-weight: 600;
     }
   }
 }

@@ -26,28 +26,238 @@
 	}
 }
 
-.experimental-apps a {
-  display: block;
-  padding: 10px;
-  background: #FFF;
-  border:1px solid #f2f2f2;
-  -webkit-box-shadow: inset 0 -1px 0 #d5d1cb,0 1px 4px rgba(113,108,102,.1),transparent 0 0 0;
-  box-shadow: inset 0 -1px 0 #d5d1cb,0 1px 4px rgba(113,108,102,.1),transparent 0 0 0;
-  border-radius: 4px;
-  text-align: center;
-  margin-bottom: 8px;
+
+.app-launcher {
+	line-height: 1.6;
 }
-.experimental-apps a img {
-  width: 32px;
-}
-.experimental-apps-block {
-  background: #f7f7f7;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
-  padding: 56px 0;
-}
-.experimental-apps-block h2 {
-  font-size: 38px;
+.app-launcher-header {
+	padding: 48px 0;
+	h1 {
+		margin: 0;
+	}
 }
 
+.app-launcher-block {
+	padding: 0;
+	.btn-primary {
+		width: 200px;
+	}
+	.app-launcher-block-header {
+		h2 {
+			display: inline-block;
+			margin-right: 10px;
+			margin-top: 8px;
+		}
+	}
+}
+
+.template-filters {
+	text-align: center;
+	padding: 10px 0;
+	ul {
+		>li {
+			display: inline-block;
+			span {
+				padding: 4px 10px;
+				display: block;
+				color: #666;
+				cursor: pointer;
+				border-radius: 3px;
+				text-transform: uppercase;
+				font-size: 13px;
+				&:hover {
+					color: $rise-blue;
+				}
+			}
+			&.active {
+				span {
+					font-weight: 800;
+					background: $light-gray;
+					
+				}
+			}
+			&.more-templates {
+				span {
+					font-weight: 800;
+				}
+			}
+		}
+	}
+}
+
+.app-launcher-login {
+	padding-top: 64px;
+	background: url('https://s3.amazonaws.com/Rise-Images/UI/triangles.svg');
+	background-size: cover;
+	height: 100vh;
+	h1 {
+		margin-top: 0;
+	}
+	.content-box {
+		padding: 32px;
+	}
+	.rise-logo {
+		text-align: center;
+		border-right: 1px solid #CCC;
+		padding: 110px 0;
+		img {
+			width: 150px;
+		}
+		@media (max-width: 768px){
+			border-right: none;
+			text-align: left;
+			padding:0;
+			img {
+				width: 100px;
+			}
+		}
+	}
+}
+
+
+/* -- FLUID GRID STYLES -- */
+
+.template-grid {
+  text-align: justify;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.template-grid li{
+  display: inline-block;
+  box-shadow: 0 2px 5px 0 rgba(80,80,80,0.1),0 2px 10px 0 rgba(80,80,80,0.1);
+  background: #eee;
+  width: 22.5%;
+  padding-top: calc(12.7% + 64px); /* Used instead of height to give elements fluid, width-based height */
+  margin-bottom: 2.5%;
+  position: relative;
+  > a {
+  	display: block;
+  	position: absolute;
+  	top: 0;
+  	width: 100%;
+  	height: 100%;
+  	text-decoration: none !important;
+  }
+  &:before {
+  	display: none;
+  	content: 'Copy Template';
+  	text-align: center;
+  	width: 100%;
+  	line-height: 150px;
+  	height: calc(100% - 64px);
+  	position: absolute;
+  	background: rgba(50,50,50,0.8);
+  	font-size: 16px;
+  	color: #FFF;
+  	font-weight: 800;
+  	top:0;
+  	z-index: 1000;
+  	cursor: pointer;
+  	text-shadow: -1px -1px 0 #555,1px -1px 0 #555,-1px 1px 0 #555,1px 1px 0 #555;
+  }
+  &:hover {
+  	&:before {
+  		display: block;
+  	}
+  }
+}
+
+.template-grid:after{
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+.template-grid .placeholder{
+  padding: 0;
+}
+
+/* 2 COL */
+
+@media (max-width: 996px){
+  .template-grid li{
+    width: 48%;
+    padding-top: calc(26.4% + 64px);
+    margin-bottom: 4%;
+  }
+}
+
+/* SINGLE COL */
+
+@media (max-width: 768px){
+  .template-grid li{
+    width: 100%;
+    padding-top: calc(55.2% + 64px);
+    margin-bottom: 5%;
+  }
+}
+
+.blank-template {
+	a {
+		color: #999;
+	}
+	p {
+		text-align: center;		
+		height: 100%;
+		padding-top: 26%;
+		background: #FFF;
+		font-size: 24px;
+		span {
+			display: block;
+		}
+	}
+	&:hover {
+  	&:before {
+  		display:none !important;
+  	}
+  }
+}
+
+.template-info {
+	background: #FFF;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 15px;
+	color: $gray;
+	text-align: left;
+	h3 {
+		margin: 0 0 8px;
+		font-size: 14px;
+		max-width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	p {
+		margin: 0;
+		font-size: 12px;
+		color: #999;
+		line-height: 10px;
+	}
+}
+
+.suggest-template {
+	text-align: left;
+	a {
+		padding: 0 20px;
+		display: block;
+		background: $rise-green;
+		color: #FFF;
+	}
+	h3 {
+		margin: 0 0 5px 0;
+		padding-top: 26%;
+		color: #FFF;
+		font-size: 21px;
+	}
+	p {
+		margin: 0;
+	}
+	&:hover {
+  	&:before {
+  		display:none !important;
+  	}
+  }
+}

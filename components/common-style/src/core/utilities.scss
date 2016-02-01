@@ -82,6 +82,10 @@ path {
   color: $white;
 }
 
+.text-white {
+  color: #FFF;
+}
+
 .row.sm-gutter {
   margin-left: -4px;
   margin-right: -4px;
@@ -102,6 +106,10 @@ path {
 .row.no-gutter [class*='col-']:not(:last-child) {
   padding-right: 0px;
   padding-left: 0px;
+}
+
+.padding-large {
+  padding: 30px;
 }
 
 .padding-large-horizontal {

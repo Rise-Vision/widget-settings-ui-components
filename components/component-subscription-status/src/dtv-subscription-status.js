@@ -3,8 +3,9 @@
 
   angular.module("risevision.widget.common.subscription-status")
     .directive("subscriptionStatus", ["$templateCache", "subscriptionStatusService",
-    "$document", "$compile", "$rootScope",
-      function ($templateCache, subscriptionStatusService, $document, $compile, $rootScope) {
+    "$document", "$compile", "$rootScope", "STORE_URL", "ACCOUNT_PATH",
+      function ($templateCache, subscriptionStatusService, $document, $compile, 
+        $rootScope, STORE_URL, ACCOUNT_PATH) {
       return {
         restrict: "AE",
         require: "?ngModel",
@@ -18,12 +19,18 @@
         template: $templateCache.get("subscription-status-template.html"),
         link: function($scope, elm, attrs, ctrl) {
           var storeModalInitialized = false;
-          var storeAccountModalInitialized = false;
 
           $scope.subscriptionStatus = {"status": "N/A", "statusCode": "na", "subscribed": false, "expiry": null};
 
+          var updateStoreAccountUrl = function() {
+            $scope.storeAccountUrl = STORE_URL + ACCOUNT_PATH
+                              .replace("companyId", $scope.companyId);
+          };
+
           $scope.$watch("companyId", function() {
             checkSubscriptionStatus();
+            
+            updateStoreAccountUrl();
           });
 
           $rootScope.$on("refreshSubscriptionStatus", function(event, data) {
@@ -64,14 +71,6 @@
             }
           });
 
-          var watchAccount = $scope.$watch("showStoreAccountModal", function(show) {
-            if (show) {
-              initStoreAccountModal();
-
-              watchAccount();
-            }
-          });
-
           $scope.$on("store-dialog-save", function() {
             checkSubscriptionStatus();
           });
@@ -97,26 +96,6 @@
               body.append(modalDomEl);
               
               storeModalInitialized = true;
-            }
-          }
-
-          function initStoreAccountModal() {
-            if (!storeAccountModalInitialized) {
-              var body = $document.find("body").eq(0);
-
-              var angularDomEl = angular.element("<div store-account-modal></div>");
-              angularDomEl.attr({
-                "id": "store-account-modal",
-                "animate": "animate",
-                "show-store-account-modal": "showAccountStoreModal",
-                "company-id": "{{companyId}}",
-                "product-id": "{{productId}}"
-              });
-
-              var modalDomEl = $compile(angularDomEl)($scope);
-              body.append(modalDomEl);
-
-              storeAccountModalInitialized = true;
             }
           }
         }

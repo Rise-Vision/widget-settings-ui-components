@@ -103,6 +103,15 @@
    ========================================================================== */
 
 .grid-list { 
+  h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 30px;
+    font-size: 16px;
+    margin-bottom: 0;
+    width: 100%;
+  }
   .grid-list-image {
     background: $light-gray;
     max-width: 100%;
@@ -121,24 +130,6 @@
       box-sizing: border-box;
     }
   }
- 
-   .grid-list-text {
-    padding: 0 6px;
-    margin-bottom: 22px;
-    color: #333;
-    h4 {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 30px;
-      font-size: 16px;
-      margin-bottom: 0;
-      width: 100%;
-      }
-    }
-    h4#productName {
-      min-height: 36px;
-    }
 
   .content-box {
     margin: 8px;
