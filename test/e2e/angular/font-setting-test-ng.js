@@ -27,12 +27,18 @@
 
     describe("Initialization", function() {
       describe("Font Family", function() {
-        it("should load both default and Google fonts", function() {
+        it("should load all fonts", function() {
           element(by.css(".mce-btn[aria-label='Font Family']")).click();
 
           element.all(by.css("#mceu_20-body div")).then(function(elements) {
             expect(elements.length).to.equal(746);
           });
+        });
+
+        it("should show 'Use Custom Font' first", function() {
+          element(by.css(".mce-btn[aria-label='Font Family']")).click();
+
+          expect(element(by.css("#mceu_21-text")).getText()).to.eventually.equal("Use Custom Font");
         });
 
         it("should show font family", function() {
@@ -163,7 +169,7 @@
       describe("Font Family", function() {
         it("should update font family for preview text", function() {
           element(by.css(".mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_21-text")).click();
+          element(by.css("#mceu_22-text")).click();
 
           expect(element(by.css(".text")).getCssValue("font-family")).to.eventually.equal("'andale mono', monospace");
         });
@@ -250,7 +256,7 @@
           url = browser.findElement(by.model("url"));
 
           element(by.css(".mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_766-text")).click();
+          element(by.css("#mceu_21-text")).click();
         });
 
         describe("Modal visibility", function() {
