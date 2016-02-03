@@ -36,9 +36,8 @@
         expect(element(by.css("#main #customUrl input[name='url']")).isPresent()).to.eventually.be.false;
 
         // Subscription Status component is present
-        expect(element(by.css("#main div[subscription-status]")).isPresent()).to.eventually.be.true;
-        // Subscription Status component is not displayed
-        expect(element(by.css("#main div[subscription-status]")).isDisplayed()).to.eventually.be.false;
+        expect(element(by.css("#main div[subscription-status]")).isPresent()).to.eventually.be.false;
+
       });
 
       it("Should correctly handle storage file selection", function () {
@@ -124,9 +123,19 @@
         expect(element(by.css("#main .text-danger")).isPresent()).to.eventually.be.false;
       });
 
-      it("Should display subscription status when not subscribed", function () {
-        element(by.id("singleFolderPick")).click();
+      it("Should display subscription status when not subscribed and selecting single file", function () {
+
         element(by.id("subscriptionExpired")).click();
+        element(by.id("singleFileCorrectPick")).click();
+
+        // Subscription Status component is displayed due to no storage subscription
+        expect(element(by.css("#main div[subscription-status]")).isDisplayed()).to.eventually.be.true;
+      });
+
+      it("Should display subscription status when not subscribed and selecting single folder", function () {
+
+        element(by.id("subscriptionExpired")).click();
+        element(by.id("singleFolderPick")).click();
 
         // Subscription Status component is displayed due to no storage subscription
         expect(element(by.css("#main div[subscription-status]")).isDisplayed()).to.eventually.be.true;
@@ -137,7 +146,7 @@
         element(by.id("subscriptionExpired")).click();
 
         // Subscription Status component is displayed due to no storage subscription
-        expect(element(by.css("#main div[subscription-status]")).isDisplayed()).to.eventually.be.false;
+        expect(element(by.css("#main div[subscription-status]")).isPresent()).to.eventually.be.false;
       });
 
     });
@@ -146,14 +155,12 @@
 
       it("Should not display subscription status component regardless of subscription status", function () {
         // Subscription Status component is present
-        expect(element(by.css("#hideSubscription div[subscription-status]")).isPresent()).to.eventually.be.true;
-        // Subscription Status component is not displayed
-        expect(element(by.css("#hideSubscription div[subscription-status]")).isDisplayed()).to.eventually.be.false;
+        expect(element(by.css("#hideSubscription div[subscription-status]")).isPresent()).to.eventually.be.false;
 
         element(by.id("subscriptionExpired")).click();
 
         // Subscription Status component is not displayed
-        expect(element(by.css("#hideSubscription div[subscription-status]")).isDisplayed()).to.eventually.be.false;
+        expect(element(by.css("#hideSubscription div[subscription-status]")).isPresent()).to.eventually.be.false;
       });
 
     });
