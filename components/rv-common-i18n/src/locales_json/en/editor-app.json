@@ -98,8 +98,29 @@
   },
   "storeProduct": {
     "add": "Add",
+    "content": {
+      "search": "Search for Content",
+      "title": "Add Content"
+    },
     "details": "Details",
-    "title": "Select Content"
+    "productTags": {
+      "all": "All",
+      "business": "Business",
+      "education": "Education",
+      "healthcare": "Healthcare",
+      "hospitality": "Hospitality",
+      "lifestyle": "Lifestyle",
+      "other": "Other",
+      "retail": "Retail",
+      "worship": "Worship"
+    },
+    "templates": {
+      "blank": "Blank",
+      "cantFind": "Can’t find what you’re looking for?",
+      "search": "Search for Templates",
+      "suggest": "Suggest a Template!",
+      "title": "Add a New Presentation"
+    }
   },
   "subscription": {
     "buy": "Buy",

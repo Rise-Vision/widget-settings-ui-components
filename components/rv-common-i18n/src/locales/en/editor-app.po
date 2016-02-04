@@ -208,11 +208,56 @@ msgstr "Required"
 msgid "storeProduct.add"
 msgstr "Add"
 
+msgid "storeProduct.content.search"
+msgstr "Search for Content"
+
+msgid "storeProduct.content.title"
+msgstr "Add Content"
+
 msgid "storeProduct.details"
 msgstr "Details"
 
-msgid "storeProduct.title"
-msgstr "Select Content"
+msgid "storeProduct.productTags.all"
+msgstr "All"
+
+msgid "storeProduct.productTags.business"
+msgstr "Business"
+
+msgid "storeProduct.productTags.education"
+msgstr "Education"
+
+msgid "storeProduct.productTags.healthcare"
+msgstr "Healthcare"
+
+msgid "storeProduct.productTags.hospitality"
+msgstr "Hospitality"
+
+msgid "storeProduct.productTags.lifestyle"
+msgstr "Lifestyle"
+
+msgid "storeProduct.productTags.other"
+msgstr "Other"
+
+msgid "storeProduct.productTags.retail"
+msgstr "Retail"
+
+msgid "storeProduct.productTags.worship"
+msgstr "Worship"
+
+msgid "storeProduct.templates.blank"
+msgstr "Blank"
+
+msgid "storeProduct.templates.cantFind"
+msgstr "Can’t find what you’re looking for?"
+
+msgid "storeProduct.templates.search"
+msgstr "Search for Templates"
+
+msgid "storeProduct.templates.suggest"
+msgstr "Suggest a Template!"
+
+msgid "storeProduct.templates.title"
+msgstr "Add a New Presentation"
 
 msgid "subscription.buy"
 msgstr "Buy"
