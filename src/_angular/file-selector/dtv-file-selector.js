@@ -170,12 +170,6 @@
             scope.selector.selection = type;
             scope.selector.storageName = getStorageName(data[0], scope.selector.selection);
             scope.selector.url = data[0];
-
-            if (!scope.isSubscribed) {
-              // ensure subscription-status component does a refresh in case user subscribed from in-app storage
-              $rootScope.$broadcast("refreshSubscriptionStatus", null);
-            }
-
           });
 
           scope.$watch("selectorValid", function (valid) {
@@ -202,6 +196,12 @@
                 scope.customInit = true;
                 // set selector validity to false to account for allowing an initial empty value for url-field
                 scope.selectorValid = false;
+              }
+
+              if (!scope.subscriptionOff && !scope.hideSubscription) {
+                // ensure subscription-status component does a refresh in case user subscribed from in-app storage
+                scope.isSubscribed = false;
+                $rootScope.$broadcast("refreshSubscriptionStatus", null);
               }
 
               $rootScope.$broadcast("fileSelectorClick", selection);

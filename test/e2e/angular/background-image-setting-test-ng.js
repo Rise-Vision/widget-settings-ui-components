@@ -63,9 +63,8 @@
         expect(element(by.css(".positionClass")).isPresent()).to.eventually.be.true;
 
         // Subscription Status component is present
-        expect(element(by.css("#backgroundFileSelector div[subscription-status]")).isPresent()).to.eventually.be.true;
-        // Subscription Status component is not displayed
-        expect(element(by.css("#backgroundFileSelector div[subscription-status]")).isDisplayed()).to.eventually.be.false;
+        expect(element(by.css("#backgroundFileSelector div[subscription-status]")).isPresent()).to.eventually.be.false;
+
       });
 
       it("Should successfully load image and display it", function () {
