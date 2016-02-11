@@ -8,8 +8,8 @@
       "risevision.common.i18n",
       "risevision.widget.common.url-field"
     ])
-    .directive("fontSetting", ["$templateCache", "$log", "googleFontLoader",
-    function ($templateCache, $log, googleFontLoader) {
+    .directive("fontSetting", ["$templateCache", "$log", "$window", "googleFontLoader",
+    function ($templateCache, $log, $window, googleFontLoader) {
       return {
         restrict: "AE",
         scope: {
@@ -21,6 +21,7 @@
         link: function ($scope, element) {
           var $element = $(element),
             $customFont = $element.find(".custom-font"),
+            $customFontSize = $element.find(".custom-font-size"),
             _isLoading = true,
             _googleFontList = "";
 
@@ -31,6 +32,7 @@
               url: ""
             },
             size: "24px",
+            customSize: "",
             align: "left",
             bold: false,
             italic: false,
@@ -46,6 +48,8 @@
             initTinyMCE();
           });
 
+          $scope.customFontSize = null;
+
           // Apply custom font to preview text.
           $scope.applyCustomFont = function() {
             var family = getCustomFontFamily();
@@ -60,6 +64,36 @@
             }
 
             $customFont.modal("hide");
+          };
+
+          $scope.applyCustomFontSize = function() {
+            $customFontSize.modal("hide");
+
+            if ($scope.customFontSize !== null && $scope.customFontSize >= 8) {
+
+              if (($scope.customFontSize + "px") !== $scope.fontData.size) {
+                $scope.fontData.size = $scope.customFontSize + "px";
+
+                if (WIDGET_SETTINGS_UI_CONFIG.sizes.indexOf($scope.fontData.size) !== -1 ||
+                  $scope.fontData.customSize === $scope.fontData.size) {
+                  // tell editor to select this size
+                  $window.tinymce.activeEditor.execCommand("FontSize", false, $scope.fontData.size);
+                }
+                else {
+                  // new custom font size to add
+                  $scope.fontData.customSize = $scope.customFontSize + "px";
+
+                  // update value of font_formats
+                  $scope.tinymceOptions.fontsize_formats = "Custom " +
+                    (($scope.fontData.customSize !== "") ? $scope.fontData.customSize + " " : "")  +
+                    WIDGET_SETTINGS_UI_CONFIG.sizes;
+                }
+              }
+
+            }
+
+            // reset modal input size value
+            $scope.customFontSize = null;
           };
 
           $scope.defaults = function(obj) {
@@ -101,11 +135,20 @@
             }
           });
 
+          $scope.$watch("tinymceOptions.fontsize_formats", function (value) {
+            if (typeof value !== "undefined" && !_isLoading) {
+              // leverage ui-tinymce workaround of refreshing editor
+              $scope.$broadcast("$tinymce:refresh");
+            }
+          });
+
           // Initialize TinyMCE.
           function initTinyMCE() {
             $scope.tinymceOptions = {
               font_formats: "Use Custom Font=custom;" + WIDGET_SETTINGS_UI_CONFIG.families + _googleFontList,
-              fontsize_formats: WIDGET_SETTINGS_UI_CONFIG.sizes,
+              fontsize_formats: "Custom " +
+                (($scope.fontData.customSize !== "") ? $scope.fontData.customSize + " " : "")  +
+                WIDGET_SETTINGS_UI_CONFIG.sizes,
               menubar: false,
               plugins: "textcolor colorpicker",
               /*
@@ -224,7 +267,18 @@
                 break;
 
               case "FontSize":
-                $scope.fontData.size = args.value;
+                if (_isLoading) {
+                  return;
+                }
+                else if (args.value === "Custom") {
+                  $customFontSize.modal("show");
+
+                  return;
+                }
+                else {
+                  $scope.fontData.size = args.value;
+                }
+
                 break;
 
               case "JustifyLeft":

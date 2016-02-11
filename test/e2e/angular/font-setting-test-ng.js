@@ -178,7 +178,7 @@
       describe("Font Sizes", function() {
         it("should update font size for preview text", function() {
           element(by.css(".mce-btn[aria-label='Font Sizes']")).click();
-          element(by.css("#mceu_21-text")).click();
+          element(by.css("#mceu_22-text")).click();
 
           expect(element(by.css(".text")).getCssValue("font-size")).to.eventually.equal("8px");
         });
@@ -295,6 +295,57 @@
 
             expect(element(by.css(".text")).getCssValue("font-family")).to.eventually.equal("BrushScriptStd");
           });
+        });
+      });
+
+      describe("Custom Font Size", function () {
+        var size = "",
+          customFontUrl = "https://my.custom.font/BrushScriptStd.otf";
+
+        beforeEach(function () {
+          size = browser.findElement(by.model("customFontSize"));
+
+          element(by.css(".mce-btn[aria-label='Font Sizes']")).click();
+          element(by.css("#mceu_21-text")).click();
+        });
+
+        describe("Modal visibility", function() {
+          it("should show modal for custom font size", function() {
+            expect(element(by.css(".custom-font-size")).isDisplayed()).to.eventually.be.true;
+          });
+
+          it("should hide modal when cancel button is clicked", function() {
+            element(by.css(".custom-font-size .cancel")).click();
+
+            expect(element(by.css(".custom-font-size")).isDisplayed()).to.eventually.be.false;
+          });
+        });
+
+        describe("Apply size", function() {
+          it("should set font size to custom font size", function() {
+            size.clear();
+            size.sendKeys(17);
+            element(by.css(".custom-font-size .select")).click();
+
+            expect(element(by.css(".mce-btn[aria-label='Font Sizes'] .mce-txt")).getText()).to.eventually.equal("17px");
+          });
+
+          it("should set font size to existing size entered", function() {
+            size.clear();
+            size.sendKeys(12);
+            element(by.css(".custom-font-size .select")).click();
+
+            expect(element(by.css(".mce-btn[aria-label='Font Sizes'] .mce-txt")).getText()).to.eventually.equal("12px");
+          });
+
+          it("should set correct font size for preview text", function() {
+            size.clear();
+            size.sendKeys(17);
+            element(by.css(".custom-font-size .select")).click();
+
+            expect(element(by.css(".text")).getCssValue("font-size")).to.eventually.equal("17px");
+          });
+
         });
       });
 
