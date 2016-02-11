@@ -73,7 +73,6 @@
 				span {
 					font-weight: 800;
 					background: $light-gray;
-					
 				}
 			}
 			&.more-templates {
@@ -118,15 +117,18 @@
 /* -- FLUID GRID STYLES -- */
 
 .template-grid {
-  text-align: justify;
-  padding: 0;
-  margin-bottom: 0;
+  @extend .scrollable-list;
+  padding: 15px 0px 5px 15px;
+  margin-bottom: 5px;
+  border:none;
+  max-height: calc(100vh - 320px);
 }
 
 .template-grid li{
   display: inline-block;
   box-shadow: 0 2px 5px 0 rgba(80,80,80,0.1),0 2px 10px 0 rgba(80,80,80,0.1);
   background: #eee;
+  margin-right: 22px;
   width: 22.5%;
   padding-top: calc(12.7% + 64px); /* Used instead of height to give elements fluid, width-based height */
   margin-bottom: 2.5%;
@@ -141,14 +143,15 @@
   }
   &:before {
   	display: none;
-  	content: 'Copy Template';
+  	font-family: FontAwesome;
+    content:'\f067';
   	text-align: center;
   	width: 100%;
   	line-height: 150px;
   	height: calc(100% - 64px);
   	position: absolute;
   	background: rgba(50,50,50,0.8);
-  	font-size: 16px;
+  	font-size: 24px;
   	color: #FFF;
   	font-weight: 800;
   	top:0;
@@ -180,6 +183,7 @@
     width: 48%;
     padding-top: calc(26.4% + 64px);
     margin-bottom: 4%;
+    margin-right: 5px;
   }
 }
 
@@ -190,6 +194,7 @@
     width: 100%;
     padding-top: calc(55.2% + 64px);
     margin-bottom: 5%;
+    margin-right: 0;
   }
 }
 

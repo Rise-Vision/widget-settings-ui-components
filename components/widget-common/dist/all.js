@@ -251,6 +251,22 @@ RiseVision.Common.Utilities = (function() {
     return "";
   }
 
+  function getRiseCacheErrorMessage(statusCode) {
+    var errorMessage = "";
+    switch (statusCode) {
+      case 404:
+        errorMessage = "The file does not exist or cannot be accessed.";
+        break;
+      case 507:
+        errorMessage = "There is not enough disk space to save the file on Rise Cache.";
+        break;
+      default:
+        errorMessage = "There was a problem retrieving the file from Rise Cache.";
+    }
+
+    return errorMessage;
+  }
+
   return {
     getQueryParameter: getQueryParameter,
     getFontCssStyle:  getFontCssStyle,
@@ -258,7 +274,8 @@ RiseVision.Common.Utilities = (function() {
     loadFonts:        loadFonts,
     loadCustomFont:   loadCustomFont,
     loadGoogleFont:   loadGoogleFont,
-    preloadImages:    preloadImages
+    preloadImages:    preloadImages,
+    getRiseCacheErrorMessage: getRiseCacheErrorMessage
   };
 })();
 

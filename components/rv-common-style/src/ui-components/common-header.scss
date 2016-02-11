@@ -25,6 +25,9 @@
     }
     .navbar-brand {
       margin-right: 10px;
+      @media (max-width: 768px) {
+        margin-right: 0;
+      }
     }
     .navbar-right {
       margin:0;
@@ -45,6 +48,13 @@
             padding: 0 10px;
           }
         }
+        @media (max-width: 768px) {
+          margin-left: 0;
+          margin-right: 0;
+          .btn {
+            padding: 6px 8px;
+          }
+        }
       }
       .profile-pic {
         width: 33px;
@@ -55,6 +65,11 @@
       }
     }
   }
+}
+
+.container>.navbar-header {
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .app-navigation {
@@ -98,7 +113,7 @@
     font-size: 44px;
     font-weight: 300;
     margin-top: 48px;
-    &+.text-muted {
+    &.text-muted {
       margin-top: 5px;
       font-size: 16px;
     }
@@ -254,10 +269,13 @@
         text-align: right;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow:ellipsis;
+        text-overflow: ellipsis;
         &.pending-registration {
           line-height: 32px;
           display: none;
+        }
+        @media (max-width: 768px) {
+          width: 120px;
         }
       }
       strong {

@@ -31,6 +31,8 @@ gulp.task('build', ['build-alignment'], function() {
     .pipe(sass({
       errLogToConsole: true
     }))
+    .pipe(rename('rise.css'))
+    .pipe(gulp.dest(paths.distCss))
     .pipe(minifyCSS())
     .pipe(rename('rise.min.css'))
     .pipe(gulp.dest(paths.distCss))

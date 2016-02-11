@@ -14,26 +14,12 @@
   }
 }
 
-.display-add {
-  .input-group {
-    display: block;
-    overflow: hidden;
-  }
-  input {
-    width: 100%;
-    display: block;
-  }
-  .input-group-addon {
-    display: none;
-  }
-}
-
 .offline {
   &:before {
     color:#e74c3c;
   }
 }
-.noninstalled {
+.notinstalled {
   &:before {
     color:#444;
   }
@@ -81,12 +67,8 @@
 .download-buttons {
   img {
     height: 32px;
-    // margin-left: 12px;
   }
   .row:nth-child(2) {
     margin-top: 6px;
   }
 }
-
-
-

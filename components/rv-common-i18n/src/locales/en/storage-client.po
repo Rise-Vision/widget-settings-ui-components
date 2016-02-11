@@ -136,8 +136,8 @@ msgstr "Upload failed.  Please try again."
 msgid "upload-files"
 msgstr "Upload Files"
 
-msgid "upload-folders"
-msgstr "Upload Folders"
+msgid "upload-folder"
+msgstr "Upload Folder"
 
 msgid "upload-inactive-subscription"
 msgstr "You cannot upload files because you don't have an active subscription.  Please purchase a subscription and try again."

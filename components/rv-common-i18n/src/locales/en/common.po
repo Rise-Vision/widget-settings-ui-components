@@ -19,6 +19,9 @@ msgstr "Cancel"
 msgid "close"
 msgstr "Close"
 
+msgid "completeRegistration"
+msgstr "Complete Registration"
+
 msgid "contribute"
 msgstr "Contribute"
 
@@ -150,6 +153,9 @@ msgstr "Sign In"
 
 msgid "signInText"
 msgstr "if you already have an account."
+
+msgid "signOut"
+msgstr "Sign Out"
 
 msgid "signUp"
 msgstr "Sign Up"

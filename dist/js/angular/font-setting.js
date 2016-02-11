@@ -8,8 +8,8 @@
       "risevision.common.i18n",
       "risevision.widget.common.url-field"
     ])
-    .directive("fontSetting", ["$templateCache", "$log", "googleFontLoader",
-    function ($templateCache, $log, googleFontLoader) {
+    .directive("fontSetting", ["$templateCache", "$log", "$window", "googleFontLoader",
+    function ($templateCache, $log, $window, googleFontLoader) {
       return {
         restrict: "AE",
         scope: {
@@ -21,6 +21,7 @@
         link: function ($scope, element) {
           var $element = $(element),
             $customFont = $element.find(".custom-font"),
+            $customFontSize = $element.find(".custom-font-size"),
             _isLoading = true,
             _googleFontList = "";
 
@@ -31,6 +32,7 @@
               url: ""
             },
             size: "24px",
+            customSize: "",
             align: "left",
             bold: false,
             italic: false,
@@ -46,6 +48,8 @@
             initTinyMCE();
           });
 
+          $scope.customFontSize = null;
+
           // Apply custom font to preview text.
           $scope.applyCustomFont = function() {
             var family = getCustomFontFamily();
@@ -60,6 +64,36 @@
             }
 
             $customFont.modal("hide");
+          };
+
+          $scope.applyCustomFontSize = function() {
+            $customFontSize.modal("hide");
+
+            if ($scope.customFontSize !== null && $scope.customFontSize >= 8) {
+
+              if (($scope.customFontSize + "px") !== $scope.fontData.size) {
+                $scope.fontData.size = $scope.customFontSize + "px";
+
+                if (WIDGET_SETTINGS_UI_CONFIG.sizes.indexOf($scope.fontData.size) !== -1 ||
+                  $scope.fontData.customSize === $scope.fontData.size) {
+                  // tell editor to select this size
+                  $window.tinymce.activeEditor.execCommand("FontSize", false, $scope.fontData.size);
+                }
+                else {
+                  // new custom font size to add
+                  $scope.fontData.customSize = $scope.customFontSize + "px";
+
+                  // update value of font_formats
+                  $scope.tinymceOptions.fontsize_formats = "Custom " +
+                    (($scope.fontData.customSize !== "") ? $scope.fontData.customSize + " " : "")  +
+                    WIDGET_SETTINGS_UI_CONFIG.sizes;
+                }
+              }
+
+            }
+
+            // reset modal input size value
+            $scope.customFontSize = null;
           };
 
           $scope.defaults = function(obj) {
@@ -101,11 +135,20 @@
             }
           });
 
+          $scope.$watch("tinymceOptions.fontsize_formats", function (value) {
+            if (typeof value !== "undefined" && !_isLoading) {
+              // leverage ui-tinymce workaround of refreshing editor
+              $scope.$broadcast("$tinymce:refresh");
+            }
+          });
+
           // Initialize TinyMCE.
           function initTinyMCE() {
             $scope.tinymceOptions = {
               font_formats: "Use Custom Font=custom;" + WIDGET_SETTINGS_UI_CONFIG.families + _googleFontList,
-              fontsize_formats: WIDGET_SETTINGS_UI_CONFIG.sizes,
+              fontsize_formats: "Custom " +
+                (($scope.fontData.customSize !== "") ? $scope.fontData.customSize + " " : "")  +
+                WIDGET_SETTINGS_UI_CONFIG.sizes,
               menubar: false,
               plugins: "textcolor colorpicker",
               /*
@@ -224,7 +267,18 @@
                 break;
 
               case "FontSize":
-                $scope.fontData.size = args.value;
+                if (_isLoading) {
+                  return;
+                }
+                else if (args.value === "Custom") {
+                  $customFontSize.modal("show");
+
+                  return;
+                }
+                else {
+                  $scope.fontData.size = args.value;
+                }
+
                 break;
 
               case "JustifyLeft":
@@ -412,6 +466,46 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "          <div class=\"modal-footer\">\n" +
     "            <button type=\"button\" class=\"select btn btn-primary btn-fixed-width\" ng-click=\"applyCustomFont()\" ng-disabled=\"customFontForm.$invalid\">\n" +
+    "              <span>{{\"common.select\" | translate}}</span>\n" +
+    "              <i class=\"fa fa-white fa-check icon-right\"></i>\n" +
+    "            </button>\n" +
+    "            <button type=\"button\" class=\"cancel btn btn-default btn-fixed-width\" data-dismiss=\"modal\">\n" +
+    "              <span>{{\"common.cancel\" | translate}}</span>\n" +
+    "              <i class=\"fa fa-white fa-times icon-right\"></i>\n" +
+    "            </button>\n" +
+    "          </div>\n" +
+    "        </form>\n" +
+    "\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <!-- Custom Font Size -->\n" +
+    "  <div class=\"custom-font-size modal\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\" data-backdrop=\"false\">\n" +
+    "    <div class=\"modal-dialog\">\n" +
+    "      <div class=\"modal-content\">\n" +
+    "\n" +
+    "        <div class=\"modal-header\">\n" +
+    "          <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n" +
+    "            <i class=\"fa fa-times half-top\"></i>\n" +
+    "          </button>\n" +
+    "          <h2 class=\"modal-title\">{{\"font-setting.custom-font-size\" | translate}}</h2>\n" +
+    "        </div>\n" +
+    "\n" +
+    "        <form role=\"form\" name=\"customFontSizeForm\">\n" +
+    "          <div class=\"modal-body\">\n" +
+    "            <div class=\"row\">\n" +
+    "              <div class=\"col-md-3\">\n" +
+    "                <div class=\"input-group\">\n" +
+    "                  <input type=\"number\" ng-model=\"customFontSize\" class=\"form-control\" />\n" +
+    "                  <span class=\"input-group-addon\">{{'common.units.pixels' | translate}}</span>\n" +
+    "                </div>\n" +
+    "              </div>\n" +
+    "            </div>\n" +
+    "          </div>\n" +
+    "\n" +
+    "          <div class=\"modal-footer\">\n" +
+    "            <button type=\"button\" class=\"select btn btn-primary btn-fixed-width\" ng-click=\"applyCustomFontSize()\" ng-disabled=\"customFontSizeForm.$invalid\">\n" +
     "              <span>{{\"common.select\" | translate}}</span>\n" +
     "              <i class=\"fa fa-white fa-check icon-right\"></i>\n" +
     "            </button>\n" +

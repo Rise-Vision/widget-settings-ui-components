@@ -45,7 +45,7 @@
   "upload": "Upload",
   "upload-failed": "Upload failed.  Please try again.",
   "upload-files": "Upload Files",
-  "upload-folders": "Upload Folders",
+  "upload-folder": "Upload Folder",
   "upload-inactive-subscription": "You cannot upload files because you don't have an active subscription.  Please purchase a subscription and try again.",
   "upload-status": "Upload Status",
   "upload-uri-request-failed": "Upload failed.  Please try again.",
