@@ -229,20 +229,20 @@
               }
 
               // Colors
-              $(".mce-colorbutton[aria-label='Text color'] span").css("background-color", $scope.fontData.forecolor);
-              $(".mce-colorbutton[aria-label='Background color'] span").css("background-color", $scope.fontData.backcolor);
+              $element.find(".mce-colorbutton[aria-label='Text color'] span").css("background-color", $scope.fontData.forecolor);
+              $element.find(".mce-colorbutton[aria-label='Background color'] span").css("background-color", $scope.fontData.backcolor);
 
               // Font Style
               if ($scope.fontData.bold) {
-                toggleButton($(".mce-btn[aria-label='Bold']"));
+                toggleButton($element.find(".mce-btn[aria-label='Bold']"));
               }
 
               if ($scope.fontData.italic) {
-                toggleButton($(".mce-btn[aria-label='Italic']"));
+                toggleButton($element.find(".mce-btn[aria-label='Italic']"));
               }
 
               if ($scope.fontData.underline) {
-                toggleButton($(".mce-btn[aria-label='Underline']"));
+                toggleButton($element.find(".mce-btn[aria-label='Underline']"));
               }
             }
           }
@@ -308,15 +308,15 @@
               case "mceToggleFormat":
                 if (args.value === "bold") {
                   $scope.fontData.bold = !$scope.fontData.bold;
-                  toggleButton($(".mce-btn[aria-label='Bold']"));
+                  toggleButton($element.find(".mce-btn[aria-label='Bold']"));
                 }
                 else if (args.value === "italic") {
                   $scope.fontData.italic = !$scope.fontData.italic;
-                  toggleButton($(".mce-btn[aria-label='Italic']"));
+                  toggleButton($element.find(".mce-btn[aria-label='Italic']"));
                 }
                 else if (args.value === "underline") {
                   $scope.fontData.underline = !$scope.fontData.underline;
-                  toggleButton($(".mce-btn[aria-label='Underline']"));
+                  toggleButton($element.find(".mce-btn[aria-label='Underline']"));
                 }
 
                 break;
@@ -333,18 +333,18 @@
 
           // Style the preview text.
           function updatePreview(fontData) {
-            var textContainer = document.querySelector(".text-container"),
-              text = document.querySelector(".text");
+            var $textContainer = $element.find(".text-container"),
+              $text = $element.find(".text");
 
             if ($scope.previewText && fontData) {
-              text.style.fontFamily = fontData.font.family;
-              text.style.fontSize = fontData.size;
-              text.style.fontWeight = fontData.bold ? "bold" : "normal";
-              text.style.fontStyle = fontData.italic ? "italic" : "normal";
-              text.style.textDecoration = fontData.underline ? "underline" : "none";
-              text.style.color = fontData.forecolor;
-              text.style.backgroundColor = fontData.backcolor;
-              textContainer.style.textAlign = fontData.align;
+              $text.css("fontFamily", fontData.font.family);
+              $text.css("fontSize", fontData.size);
+              $text.css("fontWeight", fontData.bold ? "bold" : "normal");
+              $text.css("fontStyle", fontData.italic ? "italic" : "normal");
+              $text.css("textDecoration", fontData.underline ? "underline" : "none");
+              $text.css("color", fontData.forecolor);
+              $text.css("backgroundColor", fontData.backcolor);
+              $textContainer.css("textAlign", fontData.align);
             }
           }
 
