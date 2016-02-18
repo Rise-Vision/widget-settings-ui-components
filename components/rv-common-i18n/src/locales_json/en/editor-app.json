@@ -74,9 +74,11 @@
       "height": "Height",
       "hideMouse": "Hide Mouse Pointer",
       "id": "ID",
+      "isStoreProduct": "This Presentation is a Store Product",
       "name": "Name",
       "playUntilDone": "Play Until Done Placeholder",
       "resolution": "Resolution",
+      "shareAsTemplate": "Share this Presentation as a Template with your Sub-Companies",
       "width": "Width"
     },
     "title": "Presentation Properties",
@@ -95,6 +97,12 @@
       "invalidUrl": "Invalid URL",
       "required": "Required"
     }
+  },
+  "sharedTemplates": {
+    "name": "Name",
+    "preview": "Preview",
+    "search": "Search for Shared Templates",
+    "title": "Shared Templates"
   },
   "storeProduct": {
     "add": "Add",

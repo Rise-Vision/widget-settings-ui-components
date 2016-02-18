@@ -75,10 +75,9 @@
   gulp.task("webdriver_update", factory.webdriveUpdate());
   gulp.task("e2e:server-close", factory.testServerClose());
   gulp.task("test:e2e:settings", ["webdriver_update", "e2e:server"], factory.testE2EAngular());
-  gulp.task("test:metrics", factory.metrics());
 
   gulp.task("test", function(cb) {
-    runSequence("test:unit:ng", "test:e2e:settings", "e2e:server-close", "test:metrics", cb);
+    runSequence("test:unit:ng", "test:e2e:settings", "e2e:server-close", cb);
   });
 
   gulp.task('default', ['build']);

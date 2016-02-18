@@ -22,3 +22,12 @@ msgstr "Time"
 msgid "time.show"
 msgstr "Show Time"
 
+msgid "timezone.label"
+msgstr "Show the current time and date according to:"
+
+msgid "timezone.local-timezone"
+msgstr "The media player's time zone."
+
+msgid "timezone.specific-timezone"
+msgstr "Specific time zone."
+

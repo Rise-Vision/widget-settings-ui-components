@@ -157,6 +157,9 @@ msgstr "Hide Mouse Pointer"
 msgid "properties.labels.id"
 msgstr "ID"
 
+msgid "properties.labels.isStoreProduct"
+msgstr "This Presentation is a Store Product"
+
 msgid "properties.labels.name"
 msgstr "Name"
 
@@ -165,6 +168,9 @@ msgstr "Play Until Done Placeholder"
 
 msgid "properties.labels.resolution"
 msgstr "Resolution"
+
+msgid "properties.labels.shareAsTemplate"
+msgstr "Share this Presentation as a Template with your Sub-Companies"
 
 msgid "properties.labels.width"
 msgstr "Width"
@@ -204,6 +210,18 @@ msgstr "Invalid URL"
 
 msgid "properties.warnings.required"
 msgstr "Required"
+
+msgid "sharedTemplates.name"
+msgstr "Name"
+
+msgid "sharedTemplates.preview"
+msgstr "Preview"
+
+msgid "sharedTemplates.search"
+msgstr "Search for Shared Templates"
+
+msgid "sharedTemplates.title"
+msgstr "Shared Templates"
 
 msgid "storeProduct.add"
 msgstr "Add"

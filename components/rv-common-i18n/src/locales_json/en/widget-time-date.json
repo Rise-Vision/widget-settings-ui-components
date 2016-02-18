@@ -12,5 +12,10 @@
     },
     "label": "Time",
     "show": "Show Time"
+  },
+  "timezone": {
+    "label": "Show the current time and date according to:",
+    "local-timezone": "The media player's time zone.",
+    "specific-timezone": "Specific time zone."
   }
 }
