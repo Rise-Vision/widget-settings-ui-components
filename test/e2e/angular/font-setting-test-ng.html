@@ -25,7 +25,11 @@
 
         <!-- Start Modal Body-->
         <div class="modal-body">
-          <font-setting font-data="font" preview-text="Sample Text"></font-setting>
+          <font-setting id="font1" font-data="font" preview-text="Sample Text"></font-setting>
+        </div>
+
+        <div class="modal-body">
+          <font-setting id="font2" font-data="font2" preview-text="Sample Text 2"></font-setting>
         </div>
       </div>
     </div>
@@ -53,6 +57,22 @@
     angular.module("fontSettingApp", ["risevision.widget.common.font-setting"])
       .controller("fontSettingController", ["$scope", function ($scope) {
         $scope.font = {
+          font: {
+            family: "verdana,geneva,sans-serif",
+            type: "standard",
+            url: ""
+          },
+          size: "24px",
+          customSize: "",
+          bold: false,
+          italic: false,
+          underline: false,
+          forecolor: "#000000",
+          backcolor: "transparent",
+          align: "left"
+        };
+
+        $scope.font2 = {
           font: {
             family: "verdana,geneva,sans-serif",
             type: "standard",

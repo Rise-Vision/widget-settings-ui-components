@@ -8,13 +8,12 @@
       fontBaseUrl = "//fonts.googleapis.com/css?family=",
       exclude = ["Buda", "Coda Caption", "Open Sans Condensed", "UnifrakturCook", "Molle"],
       fallback = ",sans-serif;",
-      fonts = "",
       factory = {};
 
     factory.getFonts = function() {
       return $http.get(fontsApi, { cache: true })
         .then(function(response) {
-          var family = "";
+          var family = "", fonts = "";
 
           if (response.data && response.data.items) {
             for (var i = 0; i < response.data.items.length; i++) {
