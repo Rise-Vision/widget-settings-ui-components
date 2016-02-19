@@ -11557,6 +11557,16 @@ a[data-wysihtml5-command=underline].active {
     color: #0081BA; }
   .table-2 > tbody > tr:hover > td a.non-clickable-file {
     color: #555; }
+  .table-2 > tbody > tr:hover.text-clickable-row {
+    cursor: auto; }
+    .table-2 > tbody > tr:hover.text-clickable-row td {
+      color: #0081BA; }
+  .table-2 > tbody > tr:hover > td a {
+    cursor: pointer;
+    display: inline-block;
+    color: #0081BA; }
+  .table-2 > tbody > tr:hover > td a.non-clickable-file {
+    color: #555; }
 
 .table-middle > tbody > tr > td {
   vertical-align: middle; }
@@ -12211,7 +12221,7 @@ ul.tree ul li:last-child:before {
     padding: 15px; }
   .widget .wrapper {
     /* Positioning */
-    z-index: 2;
+    z-index: 1000;
     /* Display & Box Model */
     height: 99%;
     padding-bottom: 25px;
@@ -13239,7 +13249,7 @@ tr.blocked-file {
       font-weight: 500;
       display: inline-block;
       vertical-align: top;
-      max-width: 150px;
+      max-width: 130px;
       padding-right: 5px; }
   .editor-playlist .arrows {
     float: left;

@@ -1,63 +1,57 @@
-msgid "author-format.heading"
-msgstr "Author Format"
-
-msgid "author-format.text"
-msgstr "Author Sample Text"
-
-msgid "custom"
-msgstr "Custom Layout URL"
-
-msgid "date-format.heading"
-msgstr "Date Format"
-
-msgid "date-format.text"
-msgstr "Date Sample Text"
-
-msgid "heading-format.heading"
-msgstr "Heading Format"
-
-msgid "heading-format.text"
-msgstr "Heading Sample Text"
-
-msgid "queue"
-msgstr "Queue"
-
-msgid "refresh"
-msgstr "Refresh Interval"
-
-msgid "selection.author"
-msgstr "Author"
-
-msgid "selection.date"
-msgstr "Date"
-
-msgid "selection.heading"
+msgid "data-selection.heading"
 msgstr "Data Selection"
 
-msgid "selection.snippet"
-msgstr "Story Snippet"
+msgid "data-selection.showAuthor"
+msgstr "Show Author"
 
-msgid "selection.story"
-msgstr "Full Story"
+msgid "data-selection.showDescriptionSnippet"
+msgstr "Show Description Snippet"
 
-msgid "selection.title"
-msgstr "Title"
+msgid "data-selection.showFullDescription"
+msgstr "Show Full Description"
+
+msgid "data-selection.showImage"
+msgstr "Show Image"
+
+msgid "data-selection.showTimestamp"
+msgstr "Show Timestamp"
+
+msgid "data-selection.showTitle"
+msgstr "Show Title"
+
+msgid "item.itemsToShow"
+msgstr "Items to Show"
+
+msgid "item.maxItemsInQueue"
+msgstr "Max Items in Queue"
+
+msgid "layout.custom"
+msgstr "Custom Layout URL"
+
+msgid "layout.heading"
+msgstr "Layout"
+
+msgid "separator.heading"
+msgstr "Separator"
+
+msgid "separator.option"
+msgstr "Show Separator Between Stories"
 
 msgid "settings"
 msgstr "RSS Settings"
 
-msgid "stories"
-msgstr "Stories to Display"
-
 msgid "story-format.heading"
-msgstr "Story Format"
+msgstr "Description Style"
 
 msgid "story-format.text"
-msgstr "Story Sample Text"
+msgstr "Description Style Sample Text"
+
+msgid "title-format.heading"
+msgstr "Title Style"
+
+msgid "title-format.text"
+msgstr "Title Style Sample Text"
 
 msgid "transition"
 msgstr "Transition"
-
-msgid "transition-hold"
-msgstr "Transition Hold"
 

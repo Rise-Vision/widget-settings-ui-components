@@ -39,6 +39,20 @@
       color: $gray;
     }
   }
+  > tbody > tr:hover {
+    &.text-clickable-row {
+      cursor: auto;
+      td {color: $rise-blue;}    
+    }
+    > td a {
+      cursor: pointer;
+      display: inline-block;
+      color: $rise-blue;
+    }
+    > td a.non-clickable-file {
+      color: $gray;
+    }
+  }
 }
 
 .table-middle {
