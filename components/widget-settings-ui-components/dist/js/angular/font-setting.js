@@ -22,8 +22,9 @@
           var $element = $(element),
             $customFont = $element.find(".custom-font"),
             $customFontSize = $element.find(".custom-font-size"),
-            _isLoading = true,
-            _googleFontList = "";
+            _isLoading = true;
+
+          $scope.googleFontList = "";
 
           $scope.defaultFont = {
             font: {
@@ -43,9 +44,7 @@
 
           // Load Google fonts.
           googleFontLoader.getFonts().then(function(fonts) {
-            _googleFontList = fonts;
-
-            initTinyMCE();
+            $scope.googleFontList = fonts;
           });
 
           $scope.customFontSize = null;
@@ -111,10 +110,11 @@
             return obj;
           };
 
-          var watch = $scope.$watch("fontData", function(fontData) {
+          var watch = $scope.$watchGroup(["fontData","googleFontList"], function(newValues) {
             var family = null;
-
-            if (fontData) {
+            var fontData = newValues[0];
+            var googleFontList = newValues[1];
+            if (fontData && googleFontList) {
               $scope.defaults(fontData, $scope.defaultFont);
 
               // Load custom font.
@@ -127,6 +127,7 @@
               }
 
               updatePreview(fontData);
+              initTinyMCE();
               watch();
 
               if ($scope.previewText) {
@@ -145,7 +146,7 @@
           // Initialize TinyMCE.
           function initTinyMCE() {
             $scope.tinymceOptions = {
-              font_formats: "Use Custom Font=custom;" + WIDGET_SETTINGS_UI_CONFIG.families + _googleFontList,
+              font_formats: "Use Custom Font=custom;" + WIDGET_SETTINGS_UI_CONFIG.families + $scope.googleFontList,
               fontsize_formats: "Custom " +
                 (($scope.fontData.customSize !== "") ? $scope.fontData.customSize + " " : "")  +
                 WIDGET_SETTINGS_UI_CONFIG.sizes,
@@ -354,7 +355,7 @@
               return "standard";
             }
 
-            if (_googleFontList.indexOf(family) !== -1) {
+            if ($scope.googleFontList.indexOf(family) !== -1) {
               return "google";
             }
 
@@ -402,7 +403,7 @@
     factory.getFonts = function() {
       return $http.get(fontsApi, { cache: true })
         .then(function(response) {
-          var family = "", fonts = "";
+          var family = "", fonts = "", spaces = false;
 
           if (response.data && response.data.items) {
             for (var i = 0; i < response.data.items.length; i++) {
@@ -413,7 +414,19 @@
                   // Font loaded.
                 });
 
-                fonts += family + "=" + family + fallback;
+                // check for spaces in family name
+                if (/\s/.test(family)) {
+                  spaces = true;
+                }
+
+                if (spaces) {
+                  // wrap family name in single quotes
+                  fonts += family + "='" + family + "'" + fallback;
+                }
+                else {
+                  fonts += family + "=" + family + fallback;
+                }
+
               }
             }
           }
