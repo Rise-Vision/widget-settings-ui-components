@@ -29,5 +29,18 @@
     "heading": "Title Style",
     "text": "Title Style Sample Text"
   },
-  "transition": "Transition"
+  "transition": {
+    "PUDFailover": "PUD Failover",
+    "PUDFailoverHelp": "If Play Until Done(PUD) is enabled, the amount of time to show the items(s) when all data us visible and no scrolling takes place.",
+    "duration": "Show Each Item for",
+    "heading": "Transition",
+    "resumePlay": "Resume Play",
+    "resumePlayHelp": "If content is interacted with resume playing after this set duration.",
+    "type": {
+      "fade": "Fade",
+      "none": "None",
+      "page": "Page",
+      "scroll": "Scroll"
+    }
+  }
 }

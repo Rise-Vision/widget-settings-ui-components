@@ -86,7 +86,8 @@ RiseVision.Common.Utilities = (function() {
   }
 
   function loadGoogleFont(family, contentDoc) {
-    var stylesheet = document.createElement("link");
+    var stylesheet = document.createElement("link"),
+      familyVal;
 
     contentDoc = contentDoc || document;
 
@@ -94,7 +95,12 @@ RiseVision.Common.Utilities = (function() {
     stylesheet.setAttribute("type", "text/css");
 
     // split to account for family value containing a fallback (eg. Aladin,sans-serif)
-    stylesheet.setAttribute("href", "https://fonts.googleapis.com/css?family=" + family.split(",")[0]);
+    familyVal = family.split(",")[0];
+
+    // strip possible single quotes
+    familyVal = familyVal.replace(/'/g, "");
+
+    stylesheet.setAttribute("href", "https://fonts.googleapis.com/css?family=" + familyVal);
 
     if (stylesheet !== null) {
       contentDoc.getElementsByTagName("head")[0].appendChild(stylesheet);

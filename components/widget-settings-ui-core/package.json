@@ -1,6 +1,6 @@
 {
   "name": "widget-settings-ui-core",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Common components shared across Rise Vision widget settings UI",
   "main": "gulpfile.js",
   "directories": {
@@ -42,7 +42,7 @@
     "jshint-stylish": "^2.1.0",
     "phantomjs": "^1.9.16",
     "run-sequence": "^0.3.2",
-    "widget-tester": "git://github.com/Rise-Vision/widget-tester.git#1.1.0"
+    "widget-tester": "git://github.com/Rise-Vision/widget-tester.git#1.5.0"
   },
   "license": "GPLv3",
   "bugs": {
