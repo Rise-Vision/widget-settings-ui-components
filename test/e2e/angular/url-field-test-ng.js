@@ -111,17 +111,6 @@
       });
     });
 
-    describe("** Proxy server URL **", function () {
-      it("Should strip the proxy server information from the URL", function () {
-        element(by.css("#imageType input[name='url']")).clear();
-        element(by.css("#imageType input[name='url']"))
-          .sendKeys("https://proxy.risevision.com/https://www.risevision.com/images/logo.svg");
-
-        expect(element(by.css("#imageType input[name=url]")).getAttribute("value"))
-          .to.eventually.equal("https://www.risevision.com/images/logo.svg");
-      });
-    });
-
     describe("** Hiding functionality **", function () {
 
       it("Should hide the label", function () {
