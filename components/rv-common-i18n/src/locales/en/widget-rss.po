@@ -1,3 +1,9 @@
+msgid "author-format.heading"
+msgstr "Author Style"
+
+msgid "author-format.text"
+msgstr "Author Style Sample Text"
+
 msgid "data-selection.heading"
 msgstr "Data Selection"
 
@@ -45,6 +51,12 @@ msgstr "Description Style"
 
 msgid "story-format.text"
 msgstr "Description Style Sample Text"
+
+msgid "timestamp-format.heading"
+msgstr "Timestamp Style"
+
+msgid "timestamp-format.text"
+msgstr "Timestamp Style Sample Text"
 
 msgid "title-format.heading"
 msgstr "Title Style"

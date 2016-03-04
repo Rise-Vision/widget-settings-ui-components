@@ -1,4 +1,8 @@
 {
+  "author-format": {
+    "heading": "Author Style",
+    "text": "Author Style Sample Text"
+  },
   "data-selection": {
     "heading": "Data Selection",
     "showAuthor": "Show Author",
@@ -24,6 +28,10 @@
   "story-format": {
     "heading": "Description Style",
     "text": "Description Style Sample Text"
+  },
+  "timestamp-format": {
+    "heading": "Timestamp Style",
+    "text": "Timestamp Style Sample Text"
   },
   "title-format": {
     "heading": "Title Style",

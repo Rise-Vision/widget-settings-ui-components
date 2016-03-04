@@ -111,8 +111,24 @@ RiseVision.Common.RiseCache = (function () {
 
   }
 
+  function isRiseCacheRunning(callback) {
+    if (!callback || typeof callback !== "function") {
+      return;
+    }
+
+    if (!_pingReceived) {
+      /* jshint validthis: true */
+      return this.ping(function () {
+        callback(_isCacheRunning);
+      });
+    } else {
+      callback(_isCacheRunning);
+    }
+  }
+
   return {
     getFile: getFile,
+    isRiseCacheRunning: isRiseCacheRunning,
     ping: ping
   };
 

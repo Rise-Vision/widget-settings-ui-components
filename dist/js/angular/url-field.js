@@ -119,8 +119,6 @@
           scope.$watch("url", function (url) {
 
             if (typeof url !== "undefined" && url !== null) {
-              // Strip proxy server URL, if applicable.
-              scope.url = url.replace("https://proxy.risevision.com/", "");
 
               if (url !== "" && scope.allowInitEmpty) {
                 // ensure an empty "" value now gets validated
