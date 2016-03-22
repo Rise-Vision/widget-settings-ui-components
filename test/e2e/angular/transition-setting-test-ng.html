@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transition Setting - Test Page</title>
+
+  <link rel="stylesheet" href="/components/rv-common-style/dist/css/rise.min.css">
+</head>
+<body ng-app="transitionSettingApp" ng-controller="transitionSettingController">
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close">
+          <i class="fa fa-times half-top"></i>
+        </button>
+        <h2 class="modal-title">
+          Widget Settings
+          <a class="btn btn-link">
+            <i class="fa fa-github fa-2x icon-gray"></i>
+          </a>
+        </h2>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <transition-setting id="main" transition="settings.additionalParams.transition"></transition-setting>
+          <transition-setting id="no-fade" transition="settings.additionalParams.transition" hide-fade="true"></transition-setting>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/components/angular/angular.js"></script>
+<script type="text/javascript" src="/components/angular-sanitize/angular-sanitize.js"></script>
+<script type="text/javascript" src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src="/components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/components/angular-translate/angular-translate.js"></script>
+<script type="text/javascript" src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script type="text/javascript" src="/components/rv-common-i18n/dist/i18n.js"></script>
+<script type="text/javascript" src="/node_modules/widget-tester/mocks/i18n-config.js"></script>
+<script type="text/javascript" src="/dist/js/angular/tooltip.js"></script>
+<script type="text/javascript" src="/src/_config/config.js"></script>
+<script type="text/javascript" src="/src/_angular/transition-setting/dtv-transition-setting.js"></script>
+<script type="text/javascript" src="/tmp/ng-templates/transition-setting/transition-setting.js"></script>
+
+<script>
+  angular.module("transitionSettingApp", ["risevision.widget.common.transition-setting"])
+    .controller("transitionSettingController", ["$scope", function ($scope) {
+
+      $scope.settings = {
+        additionalParams: {
+          transition: {}
+        }
+      };
+
+    }]);
+</script>
+</body>
+</html>
