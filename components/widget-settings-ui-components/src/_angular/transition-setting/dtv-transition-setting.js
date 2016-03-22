@@ -14,7 +14,7 @@
         link: function (scope) {
 
           scope.defaultSetting = {
-            by: "none",
+            type: "none",
             duration: 10,
             pud: 10,
             resume: 5,

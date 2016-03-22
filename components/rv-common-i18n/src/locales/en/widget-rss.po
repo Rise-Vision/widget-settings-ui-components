@@ -25,6 +25,12 @@ msgstr "Show Timestamp"
 msgid "data-selection.showTitle"
 msgstr "Show Title"
 
+msgid "data-selection.snippetLength"
+msgstr "Snippet length to show"
+
+msgid "data-selection.snippetLengthMeasure"
+msgstr "Characters"
+
 msgid "item.itemsToShow"
 msgstr "Items to Show"
 

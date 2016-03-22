@@ -1,10 +1,4 @@
 {
-  "by": {
-    "fade": "Fade",
-    "none": "None",
-    "page": "Page",
-    "scroll": "Scroll"
-  },
   "duration": "Show Each Item for",
   "heading": "Transition",
   "pud": {
@@ -22,5 +16,11 @@
     "medium": "Medium",
     "slow": "Slow",
     "slowest": "Slowest"
+  },
+  "type": {
+    "fade": "Fade",
+    "none": "None",
+    "page": "Page",
+    "scroll": "Scroll"
   }
 }

@@ -10,7 +10,9 @@
     "showFullDescription": "Show Full Description",
     "showImage": "Show Image",
     "showTimestamp": "Show Timestamp",
-    "showTitle": "Show Title"
+    "showTitle": "Show Title",
+    "snippetLength": "Snippet length to show",
+    "snippetLengthMeasure": "Characters"
   },
   "item": {
     "itemsToShow": "Items to Show",
