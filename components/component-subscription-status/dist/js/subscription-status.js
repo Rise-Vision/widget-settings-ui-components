@@ -30,16 +30,61 @@
      "risevision.widget.common.subscription-status.service",
      "risevision.widget.common",
      "risevision.common.i18n",
-     "ngSanitize"]);
+     "ngSanitize",
+     "ui.bootstrap"]);
   }());
 
 (function () {
   "use strict";
 
   angular.module("risevision.widget.common.subscription-status")
-    .directive("appSubscriptionStatus", ["$templateCache", "subscriptionStatusService",
-    "$document", "$compile",
-      function ($templateCache, subscriptionStatusService, $document, $compile) {
+    .controller("StoreModalController", ["$scope", "$rootScope", "$timeout", 
+      "$modalInstance", "$location", "$sce", "gadgetsApi", 
+      "STORE_URL", "IN_RVA_PATH", "productId", "companyId",
+      function ($scope, $rootScope, $timeout, $modalInstance, $location, $sce,
+        gadgetsApi, STORE_URL, IN_RVA_PATH, productId, companyId) {
+
+        var getStoreUrl = function() {  
+          var url = STORE_URL + IN_RVA_PATH
+            .replace("productId", productId)
+            .replace("companyId", companyId)
+            .replace("iframeId", "store-modal-iframe")
+            .replace("parentUrl", encodeURIComponent($location.$$absUrl));
+                          
+          return $sce.trustAsResourceUrl(url);
+        };
+        $scope.url = getStoreUrl();
+        
+        var saveSettings = function() {
+          $modalInstance.close();
+        };
+
+        var closeSettings = function() {
+          $modalInstance.dismiss();
+        };
+
+        var registerRPC = function() {
+          if (gadgetsApi) {
+            $timeout(function() {
+              gadgetsApi.rpc.register("rscmd_saveSettings", saveSettings);
+              gadgetsApi.rpc.register("rscmd_closeSettings", closeSettings);
+
+              gadgetsApi.rpc.setupReceiver("store-modal-iframe");
+            });
+          }
+        };
+        registerRPC();
+    }]);
+}());
+  
+
+(function () {
+  "use strict";
+
+  angular.module("risevision.widget.common.subscription-status")
+    .directive("appSubscriptionStatus", ["$templateCache", "$modal", 
+    "subscriptionStatusService",
+      function ($templateCache, $modal, subscriptionStatusService) {
       return {
         restrict: "AE",
         require: "?ngModel",
@@ -51,9 +96,6 @@
         },
         template: $templateCache.get("app-subscription-status-template.html"),
         link: function($scope, elm, attrs, ctrl) {
-          var storeModalInitialized = false;
-          var storeAccountModalInitialized = false;
-
           $scope.subscriptionStatus = {"status": "N/A", "statusCode": "na", "subscribed": false, "expiry": null};
 
           $scope.$watch("companyId", function() {
@@ -79,65 +121,34 @@
             });
           }
 
-          var watch = $scope.$watch("showStoreModal", function(show) {
+          $scope.$watch("showStoreModal", function(show) {
             if (show) {
-              initStoreModal();
-
-              watch();
-            }
-          });
-
-          var watchAccount = $scope.$watch("showStoreAccountModal", function(show) {
-            if (show) {
-              initStoreAccountModal();
-
-              watchAccount();
-            }
-          });
-
-          $scope.$on("store-dialog-save", function() {
-            checkSubscriptionStatus();
-          });
-
-          function initStoreModal() {
-            if (!storeModalInitialized) {
-              var body = $document.find("body").eq(0);
-
-              var angularDomEl = angular.element("<div store-modal></div>");
-              angularDomEl.attr({
-                "id": "store-modal",
-                "animate": "animate",
-                "show-store-modal": "showStoreModal",
-                "company-id": "{{companyId}}",
-                "product-id": "{{productId}}"
+              var modalInstance = $modal.open({
+                templateUrl: "store-iframe-template.html",
+                controller: "StoreModalController",
+                size: "lg",
+                resolve: {
+                  productId: function () {
+                    return $scope.productId;
+                  },
+                  companyId: function() {
+                    return $scope.companyId;
+                  }
+                }
               });
 
-              var modalDomEl = $compile(angularDomEl)($scope);
-              body.append(modalDomEl);
+              modalInstance.result.then(function () {
+                checkSubscriptionStatus();
 
-              storeModalInitialized = true;
-            }
-          }
+              }, function () {
+                checkSubscriptionStatus();
 
-          function initStoreAccountModal() {
-            if (!storeAccountModalInitialized) {
-              var body = $document.find("body").eq(0);
-
-              var angularDomEl = angular.element("<div store-account-modal></div>");
-              angularDomEl.attr({
-                "id": "store-account-modal",
-                "animate": "animate",
-                "show-store-account-modal": "showAccountStoreModal",
-                "company-id": "{{companyId}}",
-                "product-id": "{{productId}}"
+              })
+              .finally(function() {
+                $scope.showStoreModal = false;
               });
-
-              var modalDomEl = $compile(angularDomEl)($scope);
-              body.append(modalDomEl);
-
-              storeAccountModalInitialized = true;
             }
-          }
+          });
         }
       };
     }])
@@ -156,72 +167,9 @@
   "use strict";
 
   angular.module("risevision.widget.common.subscription-status")
-    .directive("storeModal", ["$templateCache", "$location", "gadgetsApi", "STORE_URL", "IN_RVA_PATH",
-      function ($templateCache, $location, gadgetsApi, STORE_URL, IN_RVA_PATH) {
-        return {
-          restrict: "AE",
-          scope: {
-            showStoreModal: "=",
-            productId: "@",
-            companyId: "@"
-          },
-          template: $templateCache.get("store-modal-template.html"),
-          link: function($scope, elm) {
-            var $elm = $(elm);
-            $scope.showStoreModal = true;
-            
-            function registerRPC() {
-              if (!$scope.rpcRegistered && gadgetsApi) {
-                $scope.rpcRegistered = true;
-                
-                gadgetsApi.rpc.register("rscmd_saveSettings", saveSettings);
-                gadgetsApi.rpc.register("rscmd_closeSettings", closeSettings);
-
-                gadgetsApi.rpc.setupReceiver("store-modal-frame");
-              }
-            }
-            
-            function saveSettings() {
-              $scope.$emit("store-dialog-save");
-              
-              closeSettings();
-            }
-
-            function closeSettings() {
-              $scope.$emit("store-dialog-close");
-
-              $scope.$apply(function() {
-                $scope.showStoreModal = false;
-              });
-            }
-            
-            $scope.$watch("showStoreModal", function(showStoreModal) {
-              if (showStoreModal) {
-                registerRPC();
-                
-                var url = STORE_URL + IN_RVA_PATH
-                  .replace("productId", $scope.productId)
-                  .replace("companyId", $scope.companyId)
-                  .replace("iframeId", "store-modal-frame")
-                  .replace("parentUrl", encodeURIComponent($location.$$absUrl));
-                                
-                $elm.find("#store-modal-frame").attr("src", url);
-                
-              }
-            });            
-          }
-        };
-    }]);
-}());
-  
-
-(function () {
-  "use strict";
-
-  angular.module("risevision.widget.common.subscription-status")
-    .directive("subscriptionStatus", ["$templateCache", "subscriptionStatusService",
+    .directive("subscriptionStatus", ["$templateCache", "$modal", "subscriptionStatusService",
     "$document", "$compile", "$rootScope", "STORE_URL", "ACCOUNT_PATH",
-      function ($templateCache, subscriptionStatusService, $document, $compile, 
+      function ($templateCache, $modal, subscriptionStatusService, $document, $compile, 
         $rootScope, STORE_URL, ACCOUNT_PATH) {
       return {
         restrict: "AE",
@@ -235,8 +183,6 @@
         },
         template: $templateCache.get("subscription-status-template.html"),
         link: function($scope, elm, attrs, ctrl) {
-          var storeModalInitialized = false;
-
           $scope.subscriptionStatus = {"status": "N/A", "statusCode": "na", "subscribed": false, "expiry": null};
 
           var updateStoreAccountUrl = function() {
@@ -280,41 +226,34 @@
             });
           }
 
-          var watch = $scope.$watch("showStoreModal", function(show) {
+          $scope.$watch("showStoreModal", function(show) {
             if (show) {
-              initStoreModal();
-
-              watch();
-            }
-          });
-
-          $scope.$on("store-dialog-save", function() {
-            checkSubscriptionStatus();
-          });
-
-          $scope.$on("store-dialog-close", function() {
-            checkSubscriptionStatus();
-          });
-
-          function initStoreModal() {
-            if (!storeModalInitialized) {
-              var body = $document.find("body").eq(0);
-              
-              var angularDomEl = angular.element("<div store-modal></div>");
-              angularDomEl.attr({
-                "id": "store-modal",
-                "animate": "animate",
-                "show-store-modal": "showStoreModal",
-                "company-id": "{{companyId}}",
-                "product-id": "{{productId}}"
+              var modalInstance = $modal.open({
+                templateUrl: "store-iframe-template.html",
+                controller: "StoreModalController",
+                size: "lg",
+                resolve: {
+                  productId: function () {
+                    return $scope.productId;
+                  },
+                  companyId: function() {
+                    return $scope.companyId;
+                  }
+                }
               });
-              
-              var modalDomEl = $compile(angularDomEl)($scope);
-              body.append(modalDomEl);
-              
-              storeModalInitialized = true;
+
+              modalInstance.result.then(function () {
+                checkSubscriptionStatus();
+
+              }, function () {
+                checkSubscriptionStatus();
+
+              })
+              .finally(function() {
+                $scope.showStoreModal = false;
+              });
             }
-          }
+          });
         }
       };
     }])
@@ -472,17 +411,9 @@ try { module = angular.module("risevision.widget.common.subscription-status"); }
 catch(err) { module = angular.module("risevision.widget.common.subscription-status", []); }
 module.run(["$templateCache", function($templateCache) {
   "use strict";
-  $templateCache.put("store-modal-template.html",
-    "<div class=\"widget\" ng-show=\"showStoreModal\">\n" +
-    "  <div class=\"overlay\" ng-click=\"showStoreModal = false\"></div>\n" +
-    "  <div class=\"settings-center\">\n" +
-    "    <div class=\"wrapper container modal-content\">\n" +
-    "      <iframe id=\"store-modal-frame\" name=\"store-modal-frame\" class=\"full-screen-modal\">\n" +
-    "        \n" +
-    "      </iframe>\n" +
-    "    </div>\n" +
-    "  </div>\n" +
-    "</div>");
+  $templateCache.put("store-iframe-template.html",
+    "<iframe id=\"store-modal-iframe\" name=\"store-modal-iframe\" class=\"modal-dialog\" scrolling=\"no\" marginwidth=\"0\" src=\"{{ url }}\"></iframe>\n" +
+    "");
 }]);
 })();
 
@@ -508,9 +439,9 @@ module.run(["$templateCache", function($templateCache) {
     "    </button>\n" +
     "  </span>\n" +
     "  <span ng-show=\"['suspended'].indexOf(subscriptionStatus.statusCode) >= 0\">\n" +
-    "    <button class=\"btn btn-primary btn-xs\" ng-click=\"showStoreAccountModal = true;\">\n" +
+    "    <a type=\"button\" class=\"btn btn-primary btn-xs\" ng-href=\"{{storeAccountUrl}}\" target=\"_blank\">\n" +
     "      <span translate=\"subscription-status.view-account\"></span>\n" +
-    "    </button>\n" +
+    "    </a>\n" +
     "  </span>\n" +
     "</div>\n" +
     "\n" +

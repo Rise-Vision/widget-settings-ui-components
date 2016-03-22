@@ -2,9 +2,9 @@
   "use strict";
 
   angular.module("risevision.widget.common.subscription-status")
-    .directive("appSubscriptionStatus", ["$templateCache", "subscriptionStatusService",
-    "$document", "$compile",
-      function ($templateCache, subscriptionStatusService, $document, $compile) {
+    .directive("appSubscriptionStatus", ["$templateCache", "$modal", 
+    "subscriptionStatusService",
+      function ($templateCache, $modal, subscriptionStatusService) {
       return {
         restrict: "AE",
         require: "?ngModel",
@@ -16,9 +16,6 @@
         },
         template: $templateCache.get("app-subscription-status-template.html"),
         link: function($scope, elm, attrs, ctrl) {
-          var storeModalInitialized = false;
-          var storeAccountModalInitialized = false;
-
           $scope.subscriptionStatus = {"status": "N/A", "statusCode": "na", "subscribed": false, "expiry": null};
 
           $scope.$watch("companyId", function() {
@@ -44,65 +41,34 @@
             });
           }
 
-          var watch = $scope.$watch("showStoreModal", function(show) {
+          $scope.$watch("showStoreModal", function(show) {
             if (show) {
-              initStoreModal();
-
-              watch();
-            }
-          });
-
-          var watchAccount = $scope.$watch("showStoreAccountModal", function(show) {
-            if (show) {
-              initStoreAccountModal();
-
-              watchAccount();
-            }
-          });
-
-          $scope.$on("store-dialog-save", function() {
-            checkSubscriptionStatus();
-          });
-
-          function initStoreModal() {
-            if (!storeModalInitialized) {
-              var body = $document.find("body").eq(0);
-
-              var angularDomEl = angular.element("<div store-modal></div>");
-              angularDomEl.attr({
-                "id": "store-modal",
-                "animate": "animate",
-                "show-store-modal": "showStoreModal",
-                "company-id": "{{companyId}}",
-                "product-id": "{{productId}}"
+              var modalInstance = $modal.open({
+                templateUrl: "store-iframe-template.html",
+                controller: "StoreModalController",
+                size: "lg",
+                resolve: {
+                  productId: function () {
+                    return $scope.productId;
+                  },
+                  companyId: function() {
+                    return $scope.companyId;
+                  }
+                }
               });
 
-              var modalDomEl = $compile(angularDomEl)($scope);
-              body.append(modalDomEl);
+              modalInstance.result.then(function () {
+                checkSubscriptionStatus();
 
-              storeModalInitialized = true;
-            }
-          }
+              }, function () {
+                checkSubscriptionStatus();
 
-          function initStoreAccountModal() {
-            if (!storeAccountModalInitialized) {
-              var body = $document.find("body").eq(0);
-
-              var angularDomEl = angular.element("<div store-account-modal></div>");
-              angularDomEl.attr({
-                "id": "store-account-modal",
-                "animate": "animate",
-                "show-store-account-modal": "showAccountStoreModal",
-                "company-id": "{{companyId}}",
-                "product-id": "{{productId}}"
+              })
+              .finally(function() {
+                $scope.showStoreModal = false;
               });
-
-              var modalDomEl = $compile(angularDomEl)($scope);
-              body.append(modalDomEl);
-
-              storeAccountModalInitialized = true;
             }
-          }
+          });
         }
       };
     }])

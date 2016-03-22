@@ -212,10 +212,10 @@ msgid "download.linux64"
 msgstr "Download Player for Ubuntu 14.04 LTS [64-bit]"
 
 msgid "download.win32"
-msgstr "Download Player for Windows 7+ [32-bit]"
+msgstr "Download Player for Windows 10 [32-bit]"
 
 msgid "download.win64"
-msgstr "Download Player for Windows 7+ [64-bit]"
+msgstr "Download Player for Windows 10 [64-bit]"
 
 msgid "fields.address.city"
 msgstr "City"

@@ -1,6 +1,6 @@
 {
   "name": "component-subscription-status",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "homepage": "https://github.com/Rise-Vision/component-subscription-status",
   "authors": [
     "Alex Deaconu <alex.deaconu@risevision.com>"
@@ -18,9 +18,10 @@
   "devDependencies": {},
   "dependencies": {
     "jquery": "1.11.0",
-    "angular": "1.2.18",
-    "angular-mocks": "1.2.18",
-    "angular-sanitize": "1.2.18",
+    "angular": "~1.3.0",
+    "angular-bootstrap": "^0.13.0",
+    "angular-mocks": "~1.3.0",
+    "angular-sanitize": "~1.3.0",
     "q": "1.0.1",
     "widget-settings-ui-core": "https://github.com/Rise-Vision/widget-settings-ui-core.git",
     "common-style": "https://github.com/Rise-Vision/common-style.git",
@@ -28,6 +29,8 @@
   },
   "resolutions": {
     "angular-translate-loader-static-files": "~2.4.2",
-    "angular-translate": "~2.4.2"
+    "angular-translate": "~2.4.2",
+    "angular": "~1.3.0",
+    "angular-mocks": "~1.3.0"
   }
 }

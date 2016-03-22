@@ -329,15 +329,17 @@ angular.module("risevision.widget.common")
       this.getAdditionalParams = function () {
         var deferred = $q.defer();
         var defaultAdditionalParams = defaultSettings.additionalParams || {};
+
         gadgetsApi.rpc.call("", "rscmd_getAdditionalParams", function (result) {
-          if(result) {
+          if (result) {
             result = settingsParser.parseAdditionalParams(result);
           }
           else {
             result = {};
           }
+
           $log.debug("getAdditionalParams returns ", result);
-          deferred.resolve(angular.extend(defaultAdditionalParams, result));
+          deferred.resolve($.extend(true, defaultAdditionalParams, result));
         });
 
         return deferred.promise;

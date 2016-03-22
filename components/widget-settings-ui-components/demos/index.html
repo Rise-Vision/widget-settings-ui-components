@@ -72,6 +72,7 @@
 <script src="dist/js/angular/position-setting.js"></script>
 <script src="dist/js/angular/scroll-setting.js"></script>
 <script src="dist/js/angular/table-setting.js"></script>
+<script src="dist/js/angular/transition-setting.js"></script>
 <script src="dist/js/angular/tooltip.js"></script>
 <script src="dist/js/angular/video-setting.js"></script>
 <script src="dist/js/angular/widget-button-toolbar.js"></script>
@@ -94,6 +95,7 @@
     "risevision.widget.common.position-setting",
     "risevision.widget.common.scroll-setting",
     "risevision.widget.common.table-setting",
+    "risevision.widget.common.transition-setting",
     "risevision.widget.common.tooltip",
     "risevision.widget.common.url-field",
     "risevision.widget.common.video-setting",
@@ -168,6 +170,11 @@
             templateUrl: 'table-setting-demo.html',
             url: '/table-setting',
             controller: "tableSettingController"
+          })
+          .state('transitionSetting', {
+            templateUrl: 'transition-setting-demo.html',
+            url: '/transition-setting',
+            controller: "transitionSettingController"
           })
           .state('tooltip', {
             templateUrl: 'tooltip-demo.html',
@@ -343,6 +350,13 @@
         additionalParams: {
           table: {
           }
+        }
+      };
+    }])
+    .controller("transitionSettingController", ["$scope", function ($scope) {
+      $scope.settings = {
+        additionalParams: {
+          transition: {}
         }
       };
     }])

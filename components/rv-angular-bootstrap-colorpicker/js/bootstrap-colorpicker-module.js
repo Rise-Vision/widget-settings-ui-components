@@ -11,13 +11,10 @@ angular.module('colorpicker.module', [])
         },
         getOffset: function (elem, fixedPosition) {
           var
-              x = 0,
-              y = 0,
-              scrollX = 0,
-              scrollY = 0;
+            scrollX = 0,
+            scrollY = 0,
+            rect = elem.getBoundingClientRect();
           while (elem && !isNaN(elem.offsetLeft) && !isNaN(elem.offsetTop)) {
-            x += elem.offsetLeft;
-            y += elem.offsetTop;
             if (!fixedPosition && elem.tagName === 'BODY') {
               scrollX += document.documentElement.scrollLeft || elem.scrollLeft;
               scrollY += document.documentElement.scrollTop || elem.scrollTop;
@@ -28,8 +25,8 @@ angular.module('colorpicker.module', [])
             elem = elem.offsetParent;
           }
           return {
-            top: y,
-            left: x,
+            top: rect.top + window.pageYOffset,
+            left: rect.left + window.pageXOffset,
             scrollX: scrollX,
             scrollY: scrollY
           };
@@ -124,7 +121,7 @@ angular.module('colorpicker.module', [])
 
         //parse a string to HSB
         setColor: function (val) {
-          val = val.toLowerCase();
+          val = (val) ? val.toLowerCase() : val;
           for (var key in Helper.stringParsers) {
             if (Helper.stringParsers.hasOwnProperty(key)) {
               var parser = Helper.stringParsers[key];
@@ -276,9 +273,7 @@ angular.module('colorpicker.module', [])
               fixedPosition = angular.isDefined(attrs.colorpickerFixedPosition) ? attrs.colorpickerFixedPosition : false,
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
-              inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '';
-
-          var
+              inputTemplate = withInput ? '<input type="text" name="colorpicker-input" spellcheck="false">' : '',
               closeButton = !inline ? '<button type="button" class="close close-colorpicker">&times;</button>' : '',
               template = isBackgroundSetting ?
                   '<div class="colorpicker dropdown">' +
@@ -316,24 +311,20 @@ angular.module('colorpicker.module', [])
                 .on('mousedown', function(event) {
                   event.stopPropagation();
                 })
-                .on('keyup', function(event) {
-                  var newColor = this.value;
-                  elem.val(newColor);
-                  if(ngModel) {
-                    $scope.$apply(ngModel.$setViewValue(newColor));
-                  }
-                  event.stopPropagation();
-                  event.preventDefault();
-                });
-            elem.on('keyup', function() {
-              pickerColorInput.val(elem.val());
-            });
+              .on('keyup', function() {
+                var newColor = this.value;
+                elem.val(newColor);
+                if (ngModel && ngModel.$modelValue !== newColor) {
+                  $scope.$apply(ngModel.$setViewValue(newColor));
+                  update(true);
+                }
+              });
           }
 
-          var bindMouseEvents = function() {
+          function bindMouseEvents() {
             $document.on('mousemove', mousemove);
             $document.on('mouseup', mouseup);
-          };
+          }
 
           if (thisFormat === 'rgba') {
             colorpickerTemplate.addClass('alpha');
@@ -392,24 +383,23 @@ angular.module('colorpicker.module', [])
 
           target.append(colorpickerTemplate);
 
-          if(ngModel) {
+          if (ngModel) {
             ngModel.$render = function () {
               elem.val(ngModel.$viewValue);
-            };
-            $scope.$watch(attrs.ngModel, function(newVal) {
-              update();
 
-              if (withInput) {
-                pickerColorInput.val(newVal);
-              }
-            });
+              update();
+            };
           }
+
+          elem.on('blur keyup change', function() {
+            update();
+          });
 
           elem.on('$destroy', function() {
             colorpickerTemplate.remove();
           });
 
-          var previewColor = function () {
+          function previewColor() {
             try {
               colorpickerPreview.css('backgroundColor', pickerColor[thisFormat]());
             } catch (e) {
@@ -419,10 +409,10 @@ angular.module('colorpicker.module', [])
             if (thisFormat === 'rgba') {
               sliderAlpha.css.backgroundColor = pickerColor.toHex();
             }
-          };
+          }
 
-          var mousemove = function (event) {
-            var
+          function mousemove(event) {
+            var 
                 left = Slider.getLeftPosition(event),
                 top = Slider.getTopPosition(event),
                 slider = Slider.getSlider();
@@ -438,23 +428,26 @@ angular.module('colorpicker.module', [])
             previewColor();
             var newColor = pickerColor[thisFormat]();
             elem.val(newColor);
-            if(ngModel) {
+            if (ngModel) {
               $scope.$apply(ngModel.$setViewValue(newColor));
             }
             if (withInput) {
               pickerColorInput.val(newColor);
             }
             return false;
-          };
+          }
 
-          var mouseup = function () {
+          function mouseup() {
             emitEvent('colorpicker-selected');
             $document.off('mousemove', mousemove);
             $document.off('mouseup', mouseup);
-          };
+          }
 
-          var update = function () {
+          function update(omitInnerInput) {
             pickerColor.setColor(elem.val());
+            if (withInput && !omitInnerInput) {
+              pickerColorInput.val(elem.val());
+            }
             pickerColorPointers.eq(0).css({
               left: pickerColor.value.s * 100 + 'px',
               top: 100 - pickerColor.value.b * 100 + 'px'
@@ -462,9 +455,9 @@ angular.module('colorpicker.module', [])
             pickerColorPointers.eq(1).css('top', 100 * (1 - pickerColor.value.h) + 'px');
             pickerColorPointers.eq(2).css('top', 100 * (1 - pickerColor.value.a) + 'px');
             previewColor();
-          };
+          }
 
-          var getColorpickerTemplatePosition = function() {
+          function getColorpickerTemplatePosition() {
             var
                 positionValue,
                 positionOffset = Helper.getOffset(elem[0]);
@@ -499,13 +492,13 @@ angular.module('colorpicker.module', [])
               'top': positionValue.top + 'px',
               'left': positionValue.left + 'px'
             };
-          };
+          }
 
-          var documentMousedownHandler = function() {
+          function documentMousedownHandler() {
             hideColorpickerTemplate();
-          };
+          }
 
-          var showColorpickerTemplate = function() {
+          function showColorpickerTemplate() {
 
             if (!colorpickerTemplate.hasClass('colorpicker-visible')) {
               update();
@@ -526,10 +519,9 @@ angular.module('colorpicker.module', [])
                 }
               }
             }
+          }
 
-          };
-
-          if(inline === false) {
+          if (inline === false) {
             elem.on('click', showColorpickerTemplate);
           } else {
             showColorpickerTemplate();
@@ -540,16 +532,16 @@ angular.module('colorpicker.module', [])
             event.preventDefault();
           });
 
-          var emitEvent = function(name) {
-            if(ngModel) {
+          function emitEvent(name) {
+            if (ngModel) {
               $scope.$emit(name, {
                 name: attrs.ngModel,
                 value: ngModel.$modelValue
               });
             }
-          };
+          }
 
-          var hideColorpickerTemplate = function() {
+          function hideColorpickerTemplate() {
             if (colorpickerTemplate.hasClass('colorpicker-visible')) {
               colorpickerTemplate.removeClass('colorpicker-visible');
               emitEvent('colorpicker-closed');
@@ -563,7 +555,7 @@ angular.module('colorpicker.module', [])
                 }
               }
             }
-          };
+          }
 
           colorpickerTemplate.find('button').on('click', function () {
             hideColorpickerTemplate();
@@ -580,7 +572,6 @@ angular.module('colorpicker.module', [])
 
             });
           }
-
         }
       };
     }]);

@@ -2,9 +2,9 @@
   "use strict";
 
   angular.module("risevision.widget.common.subscription-status")
-    .directive("subscriptionStatus", ["$templateCache", "subscriptionStatusService",
+    .directive("subscriptionStatus", ["$templateCache", "$modal", "subscriptionStatusService",
     "$document", "$compile", "$rootScope", "STORE_URL", "ACCOUNT_PATH",
-      function ($templateCache, subscriptionStatusService, $document, $compile, 
+      function ($templateCache, $modal, subscriptionStatusService, $document, $compile, 
         $rootScope, STORE_URL, ACCOUNT_PATH) {
       return {
         restrict: "AE",
@@ -18,8 +18,6 @@
         },
         template: $templateCache.get("subscription-status-template.html"),
         link: function($scope, elm, attrs, ctrl) {
-          var storeModalInitialized = false;
-
           $scope.subscriptionStatus = {"status": "N/A", "statusCode": "na", "subscribed": false, "expiry": null};
 
           var updateStoreAccountUrl = function() {
@@ -63,41 +61,34 @@
             });
           }
 
-          var watch = $scope.$watch("showStoreModal", function(show) {
+          $scope.$watch("showStoreModal", function(show) {
             if (show) {
-              initStoreModal();
-
-              watch();
-            }
-          });
-
-          $scope.$on("store-dialog-save", function() {
-            checkSubscriptionStatus();
-          });
-
-          $scope.$on("store-dialog-close", function() {
-            checkSubscriptionStatus();
-          });
-
-          function initStoreModal() {
-            if (!storeModalInitialized) {
-              var body = $document.find("body").eq(0);
-              
-              var angularDomEl = angular.element("<div store-modal></div>");
-              angularDomEl.attr({
-                "id": "store-modal",
-                "animate": "animate",
-                "show-store-modal": "showStoreModal",
-                "company-id": "{{companyId}}",
-                "product-id": "{{productId}}"
+              var modalInstance = $modal.open({
+                templateUrl: "store-iframe-template.html",
+                controller: "StoreModalController",
+                size: "lg",
+                resolve: {
+                  productId: function () {
+                    return $scope.productId;
+                  },
+                  companyId: function() {
+                    return $scope.companyId;
+                  }
+                }
               });
-              
-              var modalDomEl = $compile(angularDomEl)($scope);
-              body.append(modalDomEl);
-              
-              storeModalInitialized = true;
+
+              modalInstance.result.then(function () {
+                checkSubscriptionStatus();
+
+              }, function () {
+                checkSubscriptionStatus();
+
+              })
+              .finally(function() {
+                $scope.showStoreModal = false;
+              });
             }
-          }
+          });
         }
       };
     }])

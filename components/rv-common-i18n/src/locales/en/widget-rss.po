@@ -64,33 +64,3 @@ msgstr "Title Style"
 msgid "title-format.text"
 msgstr "Title Style Sample Text"
 
-msgid "transition.PUDFailover"
-msgstr "PUD Failover"
-
-msgid "transition.PUDFailoverHelp"
-msgstr "If Play Until Done(PUD) is enabled, the amount of time to show the items(s) when all data us visible and no scrolling takes place."
-
-msgid "transition.duration"
-msgstr "Show Each Item for"
-
-msgid "transition.heading"
-msgstr "Transition"
-
-msgid "transition.resumePlay"
-msgstr "Resume Play"
-
-msgid "transition.resumePlayHelp"
-msgstr "If content is interacted with resume playing after this set duration."
-
-msgid "transition.type.fade"
-msgstr "Fade"
-
-msgid "transition.type.none"
-msgstr "None"
-
-msgid "transition.type.page"
-msgstr "Page"
-
-msgid "transition.type.scroll"
-msgstr "Scroll"
-
