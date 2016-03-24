@@ -26,10 +26,10 @@ msgid "data-selection.showTitle"
 msgstr "Show Title"
 
 msgid "data-selection.snippetLength"
-msgstr "Snippet length to show"
+msgstr "Length of Description Snippet"
 
 msgid "data-selection.snippetLengthMeasure"
-msgstr "Characters"
+msgstr "characters"
 
 msgid "item.itemsToShow"
 msgstr "Items to Show"

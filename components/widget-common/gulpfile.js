@@ -17,6 +17,7 @@
   var colors = require("colors");
   var minifyCSS = require("gulp-minify-css");
   var bower = require("gulp-bower");
+  var wct = require("web-component-tester").gulp.init(gulp);
 
   gulp.task("clean", function (cb) {
     del(["./dist/**"], cb);
@@ -131,6 +132,11 @@
       "test/unit/**/*spec.js"]}
   ));
 
+  // ***** Integration Testing ***** //
+  gulp.task("test:integration", function(cb) {
+    runSequence("test:local", cb);
+  });
+
   // ***** Primary Tasks ***** //
   gulp.task("bower-clean-install", ["clean-bower"], function(cb){
     return bower().on("error", function(err) {
@@ -144,7 +150,7 @@
   });
 
   gulp.task("test", function(cb) {
-    runSequence("test:unit", "test:e2e", cb)
+    runSequence("test:unit", "test:e2e", "test:integration", cb)
   });
 
   gulp.task("default", [], function() {

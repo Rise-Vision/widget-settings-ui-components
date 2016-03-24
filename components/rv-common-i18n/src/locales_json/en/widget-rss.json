@@ -11,8 +11,8 @@
     "showImage": "Show Image",
     "showTimestamp": "Show Timestamp",
     "showTitle": "Show Title",
-    "snippetLength": "Snippet length to show",
-    "snippetLengthMeasure": "Characters"
+    "snippetLength": "Length of Description Snippet",
+    "snippetLengthMeasure": "characters"
   },
   "item": {
     "itemsToShow": "Items to Show",

@@ -149,6 +149,14 @@ RiseVision.Common.Utilities = (function() {
     return errorMessage;
   }
 
+  function unescapeHTML(html) {
+    var div = document.createElement("div");
+
+    div.innerHTML = html;
+
+    return div.textContent;
+  }
+
   return {
     getQueryParameter: getQueryParameter,
     getFontCssStyle:  getFontCssStyle,
@@ -157,6 +165,7 @@ RiseVision.Common.Utilities = (function() {
     loadCustomFont:   loadCustomFont,
     loadGoogleFont:   loadGoogleFont,
     preloadImages:    preloadImages,
-    getRiseCacheErrorMessage: getRiseCacheErrorMessage
+    getRiseCacheErrorMessage: getRiseCacheErrorMessage,
+    unescapeHTML: unescapeHTML
   };
 })();
