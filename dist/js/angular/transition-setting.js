@@ -65,7 +65,7 @@ module.run(["$templateCache", function($templateCache) {
     "  </div>\n" +
     "</div>\n" +
     "<div class=\"row\">\n" +
-    "  <div class=\"col-md-3\" ng-if=\"transition.type !== 'none'\">\n" +
+    "  <div class=\"col-md-3\" ng-if=\"transition.type === 'fade' || transition.type === 'page'\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{\"transition.duration\" | translate }}</label>\n" +
     "      <div class=\"input-group\">\n" +
