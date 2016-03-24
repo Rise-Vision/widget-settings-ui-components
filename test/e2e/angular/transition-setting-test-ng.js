@@ -49,10 +49,11 @@
       it("Should display appropriate settings when scroll is selected", function () {
         element(by.cssContainingText("#main option", "Scroll")).click();
 
-        expect(element(by.css("#main input[name='transition-duration']")).getAttribute("value")).to.eventually.equal("10");
         expect(element(by.css("#main select[name='transition-speed']")).getAttribute("value")).to.eventually.equal("medium");
         expect(element(by.css("#main input[name='transition-resume']")).getAttribute("value")).to.eventually.equal("5");
         expect(element(by.css("#main input[name='transition-pud']")).getAttribute("value")).to.eventually.equal("10");
+
+        expect(element(by.css("#main input[name='transition-duration']")).isPresent()).to.eventually.be.false;
       });
 
       it("Should display appropriate settings when page is selected", function () {

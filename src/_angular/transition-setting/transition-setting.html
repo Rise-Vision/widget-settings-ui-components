@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-3" ng-if="transition.type !== 'none'">
+  <div class="col-md-3" ng-if="transition.type === 'fade' || transition.type === 'page'">
     <div class="form-group">
       <label class="control-label">{{"transition.duration" | translate }}</label>
       <div class="input-group">
