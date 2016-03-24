@@ -49,6 +49,10 @@
       it("Should display appropriate settings when scroll is selected", function () {
         element(by.cssContainingText("#main option", "Scroll")).click();
 
+        element.all(by.css("#main select[name='transition-speed'] option")).then(function (elements) {
+          expect(elements.length).to.equal(3);
+        });
+
         expect(element(by.css("#main select[name='transition-speed']")).getAttribute("value")).to.eventually.equal("medium");
         expect(element(by.css("#main input[name='transition-resume']")).getAttribute("value")).to.eventually.equal("5");
         expect(element(by.css("#main input[name='transition-pud']")).getAttribute("value")).to.eventually.equal("10");
