@@ -25,8 +25,8 @@
 
       <div class="modal-body">
         <form>
-          <transition-setting id="main" transition="settings.additionalParams.transition"></transition-setting>
-          <transition-setting id="no-fade" transition="settings.additionalParams.transition" hide-fade="true"></transition-setting>
+          <transition-setting id="main" transition="settings.additionalParams.transitionMain"></transition-setting>
+          <transition-setting id="no-fade" transition="settings.additionalParams.transitionNoFade" hide-fade="true"></transition-setting>
         </form>
       </div>
 
@@ -53,7 +53,8 @@
 
       $scope.settings = {
         additionalParams: {
-          transition: {}
+          "transitionMain": {},
+          "transitionNoFade": {}
         }
       };
 
