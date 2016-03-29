@@ -38,5 +38,9 @@
   "title-format": {
     "heading": "Title Style",
     "text": "Title Style Sample Text"
+  },
+  "warning": {
+    "anchor": "here",
+    "message": "Please note that one or more errors have been detected in the URL provided that could impact how your Content appears. You can view a summary of the errors detected"
   }
 }

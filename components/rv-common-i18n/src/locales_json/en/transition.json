@@ -1,4 +1,9 @@
 {
+  "direction": {
+    "label": "Direction",
+    "left": "Left",
+    "up": "Up"
+  },
   "duration": "Show Each Item for",
   "heading": "Transition",
   "pud": {

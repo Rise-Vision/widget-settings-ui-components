@@ -12,13 +12,22 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-3" ng-if="transition.type === 'fade' || transition.type === 'page'">
+  <div class="col-md-3" ng-if="transition.type !== 'scroll'">
     <div class="form-group">
       <label class="control-label">{{"transition.duration" | translate }}</label>
       <div class="input-group">
         <input name="transition-duration" type="number"  class="form-control" ng-model="transition.duration">
         <span class="input-group-addon">sec</span>
       </div>
+    </div>
+  </div>
+  <div class="col-md-3" ng-if="transition.type === 'scroll'">
+    <div class="form-group">
+      <label class="control-label">{{"transition.direction.label" | translate}}</label>
+      <select name="transition-direction" ng-model="transition.direction" class="form-control">
+        <option value="up">{{"transition.direction.up" | translate}}</option>
+        <option value="left">{{"transition.direction.left" | translate}}</option>
+      </select>
     </div>
   </div>
   <div class="col-md-3" ng-if="transition.type === 'scroll'">
@@ -31,7 +40,7 @@
       </select>
     </div>
   </div>
-  <div class="col-md-3" ng-if="transition.type === 'scroll' || transition.type === 'page'">
+  <div class="col-md-3" ng-if="transition.type === 'scroll' && transition.direction === 'up' || transition.type === 'page'">
     <div class="form-group">
       <label class="control-label">{{"transition.resume.label" | translate}}</label>
       <span popover="{{'transition.resume.tooltip' | translate}}" popover-trigger="click"
@@ -42,7 +51,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-3" ng-if="transition.type === 'scroll' || transition.type === 'page'">
+  <div class="col-md-3" ng-if="transition.type === 'scroll' && transition.direction === 'up' || transition.type === 'page'">
     <div class="form-group">
       <label class="control-label">{{"transition.pud.label" | translate}}</label>
       <span popover="{{'transition.pud.tooltip' | translate}}" popover-trigger="click"

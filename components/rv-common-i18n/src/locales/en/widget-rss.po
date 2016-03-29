@@ -70,3 +70,9 @@ msgstr "Title Style"
 msgid "title-format.text"
 msgstr "Title Style Sample Text"
 
+msgid "warning.anchor"
+msgstr "here"
+
+msgid "warning.message"
+msgstr "Please note that one or more errors have been detected in the URL provided that could impact how your Content appears. You can view a summary of the errors detected"
+
