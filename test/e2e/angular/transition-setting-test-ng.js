@@ -28,8 +28,9 @@
         });
 
         expect(element(by.css("#main select[name='transition-by']")).getAttribute("value")).to.eventually.equal("none");
+        expect(element(by.css("#main input[name='transition-duration']")).getAttribute("value")).to.eventually.equal("10");
 
-        expect(element(by.css("#main input[name='transition-duration']")).isPresent()).to.eventually.be.false;
+        expect(element(by.css("#main select[name='transition-direction']")).isPresent()).to.eventually.be.false;
         expect(element(by.css("#main select[name='transition-speed']")).isPresent()).to.eventually.be.false;
         expect(element(by.css("#main input[name='transition-resume']")).isPresent()).to.eventually.be.false;
         expect(element(by.css("#main input[name='transition-pud']")).isPresent()).to.eventually.be.false;
@@ -41,6 +42,7 @@
 
         expect(element(by.css("#main input[name='transition-duration']")).getAttribute("value")).to.eventually.equal("10");
 
+        expect(element(by.css("#main select[name='transition-direction']")).isPresent()).to.eventually.be.false;
         expect(element(by.css("#main select[name='transition-speed']")).isPresent()).to.eventually.be.false;
         expect(element(by.css("#main input[name='transition-resume']")).isPresent()).to.eventually.be.false;
         expect(element(by.css("#main input[name='transition-pud']")).isPresent()).to.eventually.be.false;
@@ -49,15 +51,36 @@
       it("Should display appropriate settings when scroll is selected", function () {
         element(by.cssContainingText("#main option", "Scroll")).click();
 
+        // 3 options for speed selection
         element.all(by.css("#main select[name='transition-speed'] option")).then(function (elements) {
           expect(elements.length).to.equal(3);
         });
+
+        // 2 options for direction selection
+        element.all(by.css("#main select[name='transition-direction'] option")).then(function (elements) {
+          expect(elements.length).to.equal(2);
+        });
+
+        // direction defaults on 'up'
+        expect(element(by.css("#main select[name='transition-direction']")).getAttribute("value")).to.eventually.equal("up");
 
         expect(element(by.css("#main select[name='transition-speed']")).getAttribute("value")).to.eventually.equal("medium");
         expect(element(by.css("#main input[name='transition-resume']")).getAttribute("value")).to.eventually.equal("5");
         expect(element(by.css("#main input[name='transition-pud']")).getAttribute("value")).to.eventually.equal("10");
 
         expect(element(by.css("#main input[name='transition-duration']")).isPresent()).to.eventually.be.false;
+
+      });
+
+      it("Should display appropriate settings when 'Left' is selected from direction", function () {
+        element(by.cssContainingText("#main option", "Scroll")).click();
+        element(by.cssContainingText("#main option", "Left")).click();
+
+        expect(element(by.css("#main select[name='transition-speed']")).getAttribute("value")).to.eventually.equal("medium");
+
+        expect(element(by.css("#main input[name='transition-duration']")).isPresent()).to.eventually.be.false;
+        expect(element(by.css("#main input[name='transition-resume']")).isPresent()).to.eventually.be.false;
+        expect(element(by.css("#main input[name='transition-pud']")).isPresent()).to.eventually.be.false;
       });
 
       it("Should display appropriate settings when page is selected", function () {
@@ -67,6 +90,7 @@
         expect(element(by.css("#main input[name='transition-resume']")).getAttribute("value")).to.eventually.equal("5");
         expect(element(by.css("#main input[name='transition-pud']")).getAttribute("value")).to.eventually.equal("10");
 
+        expect(element(by.css("#main select[name='transition-direction']")).isPresent()).to.eventually.be.false;
         expect(element(by.css("#main select[name='transition-speed']")).isPresent()).to.eventually.be.false;
       });
 
