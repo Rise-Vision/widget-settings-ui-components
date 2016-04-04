@@ -1,4 +1,4 @@
-/* global gadgets */
+/* global WIDGET_COMMON_CONFIG */
 
 var RiseVision = RiseVision || {};
 RiseVision.Common = RiseVision.Common || {};

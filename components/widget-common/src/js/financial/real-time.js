@@ -5,8 +5,6 @@ RiseVision.Common.Financial = RiseVision.Common.Financial || {};
 RiseVision.Common.Financial.RealTime = {};
 
 RiseVision.Common.Financial.RealTime = function(displayID, instruments, store_auth) {
-  var self = this;
-
   this.instruments = instruments;
   this.isLoading = true;
   this.conditions = {};
@@ -29,7 +27,7 @@ RiseVision.Common.Financial.RealTime = function(displayID, instruments, store_au
   };
 
   this._saveCollectionTimes = function() {
-    var numRows, timeZoneOffset, startTime, endTime;
+    var numRows;
 
     numRows = this.data.getNumberOfRows();
 
@@ -52,6 +50,8 @@ RiseVision.Common.Financial.RealTime = function(displayID, instruments, store_au
   };
 
   this._saveCollectionTime = function(row) {
+    var timeZoneOffset, startTime, endTime;
+
     if (this.data.getValue(row, 0) !== "INVALID_SYMBOL") {
       // If the data is stale, then force collection times to be saved again later.
       if (this.data.getValue(row, 0) === "...") {
@@ -79,7 +79,7 @@ RiseVision.Common.Financial.RealTime.prototype.setInstruments = function(instrum
   //Trim any whitespace from instruments.
   instruments = instruments.split(",");
 
-  $.each(instruments, function(index, value) {
+  $.each(instruments, function(index) {
     instruments[index] = $.trim(instruments[index]);
   });
 
@@ -109,12 +109,9 @@ RiseVision.Common.Financial.RealTime.prototype.getData = function(fields, loadLo
   $.each(fields, function(index, field) {
     duplicateFound = false;
 
-    //Do nothing as instrument is already being requested.
-    if (field === "instrument") {
-    }
-    else {
+    if (field !== "instrument") {
       //Visualization API doesn't allow requesting the same field more than once.
-      $.each(self.dataFields, function(i, dataField) {
+      $.each(self.dataFields, function(i) {
         if (i === field) {
           duplicateFound = true;
           return false;
@@ -259,9 +256,9 @@ RiseVision.Common.Financial.RealTime.prototype.onLogoLoaded = function(toLoad) {
 
 /* Conditions */
 RiseVision.Common.Financial.RealTime.prototype.checkSigns = function(field) {
-  var row = 0, signs = [], current, sign;
+  var row = 0, numRows = 0, signs = [], current, sign;
 
-  for ( row = 0, numRows = this.data.getNumberOfRows(); row < numRows; row++) {
+  for (row = 0, numRows = this.data.getNumberOfRows(); row < numRows; row++) {
     current = this.data.getValue(row, this.dataFields[field]);
 
     if (isNaN(current)) {
@@ -288,14 +285,14 @@ RiseVision.Common.Financial.RealTime.prototype.checkSigns = function(field) {
  Return 0 if both values are equal.
  Return -1 if current value is less than the previous value. */
 RiseVision.Common.Financial.RealTime.prototype.compare = function(field) {
-  var self = this, current = 0, previous = 0, result = [], matchFound = false;
+  var self = this, row = 0, numRows = 0, current = 0, previous = 0, result = [], matchFound = false;
 
   if (this.conditions[field]) {
     for ( row = 0, numRows = this.data.getNumberOfRows(); row < numRows; row++) {
       current = this.data.getValue(row, this.dataFields[field]);
       matchFound = false;
 
-      $.each(this.conditions[field], function(index, value) {
+      $.each(this.conditions[field], function(index, value) { // jshint ignore:line
         //Instrument is used to ensure that the rows that are being compared are for the same stock.
         //In chains, rows may be added or deleted.
         if (value.instrument === self.data.getValue(row, 0)) {
@@ -314,7 +311,7 @@ RiseVision.Common.Financial.RealTime.prototype.compare = function(field) {
           //The data type of a column can still be a number even if there is string data in it.
           //To be sure, let's check that the values we are comparing are numbers.
           if (!isNaN(current) && !isNaN(previous)) {
-            if (current != previous) {
+            if (current != previous) {  // jshint ignore:line
               if (current > previous) {
                 result.push(1);
               }

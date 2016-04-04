@@ -1,3 +1,6 @@
+/* global RiseVision */
+/* exported CollectionTimes */
+
 /*
  * Singleton object to handle retrieving collection times for a historical instrument.
  */
@@ -11,7 +14,7 @@ var CollectionTimes = (function() {
       var updateInterval = 60000, viz = new RiseVision.Common.Visualization(), options;
 
       //Start a timer in case there is a problem loading the data (i.e. Internet has been disconnected).
-      collectionTimesTimer = setTimeout(function() {
+      var collectionTimesTimer = setTimeout(function() {
         loadCollectionTimes(instrument, callback);
       }, updateInterval);
 

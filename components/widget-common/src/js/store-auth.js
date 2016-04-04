@@ -1,4 +1,5 @@
 // Implements http://www.risevision.com/help/developers/store-authorization/
+/* global WIDGET_COMMON_CONFIG */
 
 var RiseVision = RiseVision || {};
 RiseVision.Common = RiseVision.Common || {};
@@ -49,8 +50,7 @@ RiseVision.Common.Store.Auth = function() {
     });
   };
 
-  this.onSuccess = function(data, textStatus) {
-    var self = this;
+  this.onSuccess = function(data) {
     if (data && data.authorized) {
       this.authorized = true;
 

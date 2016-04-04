@@ -27,10 +27,10 @@ RiseVision.Common.Financial.Helper.prototype.getInstruments = function(isLoading
           var startTime = collectionTimes[j].startTime, endTime = collectionTimes[j].endTime, daysOfWeek = collectionTimes[j].daysOfWeek;
 
           //Check if the instrument should be requested again based on its collection data.
-          $.each(daysOfWeek, function(j, day) {
+          $.each(daysOfWeek, function(j, day) { // jshint ignore:line
             //Check collection day.
             // TODO: Use strict type comparison (===)
-            if (day == dayOfWeek) {
+            if (day == dayOfWeek) { // jshint ignore:line
               //Check collection time.
               if (new Date().between(startTime, endTime)) {
                 instruments.push(self.instruments[i]);

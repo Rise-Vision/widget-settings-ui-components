@@ -1,3 +1,5 @@
+/* global CollectionTimes */
+
 var RiseVision = RiseVision || {};
 RiseVision.Common = RiseVision.Common || {};
 RiseVision.Common.Financial = RiseVision.Common.Financial || {};
@@ -6,8 +8,6 @@ RiseVision.Common.Financial.Historical = {};
 RiseVision.Common.Financial.Historical.CollectionTimes = {};
 
 RiseVision.Common.Financial.Historical = function(displayID, instrument, duration) {
-  var self = this;
-
   if (displayID) {
     this.displayID = displayID;
   }

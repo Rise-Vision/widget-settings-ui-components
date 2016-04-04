@@ -125,7 +125,7 @@ RiseVision.Common.Utilities = (function() {
     for (var i = 0; i < vars.length; i++) {
       pair = vars[i].split("=");
 
-      if (pair[0] == param) {
+      if (pair[0] == param) { // jshint ignore:line
         return decodeURIComponent(pair[1]);
       }
     }

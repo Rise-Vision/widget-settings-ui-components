@@ -1,3 +1,4 @@
+/* exported WIDGET_COMMON_CONFIG */
 var WIDGET_COMMON_CONFIG = {
   AUTH_PATH_URL: "v1/widget/auth",
   LOGGER_CLIENT_ID: "1088527147109-6q1o2vtihn34292pjt4ckhmhck0rk0o7.apps.googleusercontent.com",

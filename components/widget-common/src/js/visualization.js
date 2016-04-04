@@ -1,3 +1,5 @@
+/* global google */
+
 var RiseVision = RiseVision || {};
 RiseVision.Common = RiseVision.Common || {};
 
