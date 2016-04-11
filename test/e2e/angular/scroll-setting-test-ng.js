@@ -30,11 +30,30 @@
 
       expect(element(by.id("scroll-by")).getAttribute("value")).to.eventually.equal("continuous");
 
+      expect(element(by.id("scroll-direction")).getAttribute("value")).to.eventually.equal("up");
+
       expect(element(by.id("scroll-speed")).getAttribute("value")).to.eventually.equal("medium");
 
       expect(element(by.id("scroll-pause")).getAttribute("value")).to.eventually.equal("5");
 
       expect(element(by.id("scroll-pud")).getAttribute("value")).to.eventually.equal("10");
+    });
+
+    it("Should only show speed when direction is set to left", function () {
+
+      element(by.cssContainingText('option', 'Continuously')).click();
+
+      element(by.cssContainingText('option', 'Left')).click();
+
+      expect(element(by.id("scroll-by")).getAttribute("value")).to.eventually.equal("continuous");
+
+      expect(element(by.id("scroll-direction")).getAttribute("value")).to.eventually.equal("left");
+
+      expect(element(by.id("scroll-speed")).getAttribute("value")).to.eventually.equal("medium");
+
+      expect(element(by.id("scroll-pause")).isDisplayed()).to.eventually.be.false;
+
+      expect(element(by.id("scroll-pud")).isDisplayed()).to.eventually.be.false;
     });
 
   });
