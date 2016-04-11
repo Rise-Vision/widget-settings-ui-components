@@ -60,7 +60,7 @@ module.run(["$templateCache", function($templateCache) {
     "      </select>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"col-md-2\" ng-show=\"scroll.by != 'none'\">\n" +
+    "  <div class=\"col-md-2\" ng-show=\"scroll.by == 'continuous'\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{\"transition.direction.label\" | translate}}</label>\n" +
     "      <select id=\"scroll-direction\" name=\"scroll-direction\" ng-model=\"scroll.direction\" class=\"form-control\">\n" +
@@ -73,11 +73,9 @@ module.run(["$templateCache", function($templateCache) {
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{'scroll.speed.label' | translate}}</label>\n" +
     "      <select id=\"scroll-speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
-    "        <option value=\"slowest\">{{'scroll.speed.slowest' | translate}}</option>\n" +
     "        <option value=\"slow\">{{'scroll.speed.slow' | translate}}</option>\n" +
     "        <option value=\"medium\">{{'scroll.speed.medium' | translate}}</option>\n" +
     "        <option value=\"fast\">{{'scroll.speed.fast' | translate}}</option>\n" +
-    "        <option value=\"fastest\">{{'scroll.speed.fastest' | translate}}</option>\n" +
     "      </select>\n" +
     "    </div>\n" +
     "  </div>\n" +
