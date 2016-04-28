@@ -5,6 +5,7 @@ var colors = require('colors');
 var minifyCSS = require('gulp-minify-css');
 var watch = require('gulp-watch');
 var rename = require('gulp-rename');
+var bump = require("gulp-bump");
 
 var paths = {
   sass: ['./src/**/*.scss', './src/*.scss'],
@@ -14,6 +15,12 @@ var paths = {
   distCss: './dist/css',
   fonts: ['./bower_components/font-awesome/fonts/*.*','./bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.*']
 };
+
+gulp.task("bump", function(){
+  return gulp.src(["./package.json", "./bower.json"])
+  .pipe(bump({ type:"patch" }))
+  .pipe(gulp.dest("./"));
+});
 
 gulp.task('build-alignment', function () {
   return gulp.src(paths.alignmentSass)

@@ -156,10 +156,19 @@ angular.module("risevision.widget.common")
         // Get list of Google fonts sorted alphabetically.
         return $http.get("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBXxVK_IOV7LNQMuVVo_l7ZvN53ejN86zY&sort=alpha", { cache: true })
           .then(function(resp) {
+            var item = null;
+
             if (resp.data && resp.data.items) {
-              // Save all Google fonts.
               for (var i = 0, length = resp.data.items.length; i < length; i++) {
-                allFonts.push(resp.data.items[i].family);
+                item = resp.data.items[i];
+
+                // Don't return those fonts that have a subset of "khmer".
+                if (item.subsets && (item.subsets.length === 1) &&
+                  (item.subsets[0].toLowerCase() === "khmer")) {
+                    continue;
+                }
+
+                allFonts.push(item.family);
               }
 
               return loadFonts();

@@ -1,5 +1,6 @@
 {
   "access-denied": "You don't have access to that action. Please contact your Administrator to give you the access you need.",
+  "blocked-file": "This file is being requested too many times and is blocked.",
   "cancel-uploads": "Cancel All",
   "delete-files-folders-plural": "{{count}} files and folders are about to be permanently deleted.",
   "delete-files-plural": "{{count}} files are about to be permanently deleted.",

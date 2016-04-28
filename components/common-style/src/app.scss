@@ -86,6 +86,7 @@
 @import "ui-components/filters";
 @import "ui-components/subscription";
 @import "ui-components/file-selector";
+@import "ui-components/google-drive-picker";
 
 /* Sections/Views
    ========================================================================== */
@@ -102,7 +103,6 @@
 @import "sections/store-products";
 @import "sections/store-product-details";
 @import "sections/store-cart";
-@import "sections/store-promotion";
 @import "sections/website";
 @import "sections/blog";
 @import "sections/schedules";

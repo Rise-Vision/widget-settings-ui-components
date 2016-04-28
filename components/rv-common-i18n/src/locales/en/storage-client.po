@@ -1,6 +1,9 @@
 msgid "access-denied"
 msgstr "You don't have access to that action. Please contact your Administrator to give you the access you need."
 
+msgid "blocked-file"
+msgstr "This file is being requested too many times and is blocked."
+
 msgid "cancel-uploads"
 msgstr "Cancel All"
 

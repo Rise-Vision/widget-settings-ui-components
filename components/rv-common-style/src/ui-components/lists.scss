@@ -191,39 +191,40 @@
   }
 }
 
-  // For RV Store Only
-  .store.grid-list {
-    .content-box {
-      min-height: 323px;
-    }
-     /* Small devices  */
-    @media (min-width: $screen-sm-min) { 
-          .content-box {
-            min-height: 408px;
-            }
-     }
-
-    /* Medium devices  */
-    @media (min-width: $screen-md-min) { 
-          .content-box {
-            min-height: 363px;
-            }
-     }
+// For RV Store Only
+.store.grid-list {
+  .content-box {
+    min-height: 323px;
   }
-  .store-front.grid-list {
-    /* Small devices  */
-    @media (min-width: $screen-sm-min) { 
-          .content-box {
-            min-height: 405px;
-            }
-     }
+   /* Small devices  */
+  @media (min-width: $screen-sm-min) { 
+        .content-box {
+          min-height: 408px;
+          }
+   }
 
-    /* Medium devices  */
-    @media (min-width: $screen-md-min) { 
-          .content-box {
-            min-height: 290px;
-            }
-     }
+  /* Medium devices  */
+  @media (min-width: $screen-md-min) { 
+        .content-box {
+          min-height: 363px;
+          }
+   }
 }
+.store-front.grid-list {
+  /* Small devices  */
+  @media (min-width: $screen-sm-min) { 
+        .content-box {
+          min-height: 405px;
+          }
+   }
 
-
+  /* Medium devices  */
+  @media (min-width: $screen-md-min) { 
+        .content-box {
+          min-height: 290px;
+          }
+   }
+}
+.store.grid-list-text {
+  color: #333;
+}

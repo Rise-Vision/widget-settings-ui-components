@@ -1,4 +1,7 @@
 {
+  "authentication-warning": {
+    "message": "The feed at the URL provided cannot be shown because it is protected and requires authentication"
+  },
   "author-format": {
     "heading": "Author Style",
     "text": "Author Style Sample Text"
@@ -21,6 +24,9 @@
   "layout": {
     "custom": "Custom Layout URL",
     "heading": "Layout"
+  },
+  "not-a-feed-warning": {
+    "message": "The URL provided is not an RSS feed"
   },
   "separator": {
     "heading": "Separator",

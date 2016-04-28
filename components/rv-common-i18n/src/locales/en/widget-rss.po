@@ -1,3 +1,6 @@
+msgid "authentication-warning.message"
+msgstr "The feed at the URL provided cannot be shown because it is protected and requires authentication"
+
 msgid "author-format.heading"
 msgstr "Author Style"
 
@@ -42,6 +45,9 @@ msgstr "Custom Layout URL"
 
 msgid "layout.heading"
 msgstr "Layout"
+
+msgid "not-a-feed-warning.message"
+msgstr "The URL provided is not an RSS feed"
 
 msgid "separator.heading"
 msgstr "Separator"

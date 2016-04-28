@@ -4,8 +4,9 @@
   angular.module("risevision.widget.common.subscription-status.service",
     ["risevision.common.config",
      "risevision.widget.common.subscription-status.config"])
-    .service("subscriptionStatusService", ["$http", "$q", "STORE_SERVER_URL", "PATH_URL",
-    function ($http, $q, STORE_SERVER_URL, PATH_URL) {
+    .service("subscriptionStatusService", ["$http", "$q", "STORE_SERVER_URL", 
+    "PATH_URL", "AUTH_PATH_URL",
+    function ($http, $q, STORE_SERVER_URL, PATH_URL, AUTH_PATH_URL) {
       var responseType = ["On Trial", "Trial Expired", "Subscribed", "Suspended", "Cancelled", "Free", "Not Subscribed", "Product Not Found", "Company Not Found", "Error"];
       var responseCode = ["on-trial", "trial-expired", "subscribed", "suspended", "cancelled", "free", "not-subscribed", "product-not-found", "company-not-found", "error"];
       var _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -14,8 +15,27 @@
       function dateDiffInDays(a, b) {
         return Math.floor((b.getTime() - a.getTime()) / _MS_PER_DAY);
       }
+      
+      var checkAuthorizedStatus = function(productCode, companyId) {
+        var deferred = $q.defer();
 
-      this.get = function (productCode, companyId) {
+        var url = STORE_SERVER_URL +
+          AUTH_PATH_URL.replace("companyId", companyId) +
+          productCode;
+
+        $http.get(url).then(function (response) {
+          if (response && response.data) {
+            deferred.resolve(response.data.authorized);
+          }
+          else {
+            deferred.resolve(false);
+          }
+        });
+
+        return deferred.promise;
+      };
+      
+      var checkSubscriptionStatus = function(productCode, companyId) {
         var deferred = $q.defer();
 
         var url = STORE_SERVER_URL +
@@ -68,15 +88,32 @@
                 subscriptionStatus.plural = "-many";
               }
             }
-
             deferred.resolve(subscriptionStatus);
           }
           else {
             deferred.reject("No response");
           }
         });
-
+        
         return deferred.promise;
+      };
+
+      this.get = function (productCode, companyId) {
+        return checkSubscriptionStatus(productCode, companyId)
+          .then(function(subscriptionStatus) {
+            if (subscriptionStatus.subscribed === false) {
+              // double check store authorization in case they're authorized
+              return checkAuthorizedStatus(productCode, companyId)
+                .then(function(authorized) {
+                  subscriptionStatus.subscribed = authorized;
+
+                  return subscriptionStatus;
+                });
+            }
+            else {
+              return subscriptionStatus;
+            }
+        });
       };
 
     }]);

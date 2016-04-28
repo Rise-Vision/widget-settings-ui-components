@@ -1,4 +1,4 @@
-/* global WebFont, TweenLite, Linear */
+/* global TweenLite, Linear */
 
 var RiseVision = RiseVision || {};
 RiseVision.Common = RiseVision.Common || {};
@@ -20,92 +20,6 @@ RiseVision.Common.Scroller = function (params) {
   /*
    *  Private Methods
    */
-
-  /* Load custom and Google fonts. */
-  function loadFonts() {
-    var families = null,
-      googleFamilies = [],
-      customFamilies = [],
-      customUrls = [];
-
-    // Google fonts
-    for (var i = 0; i < _items.length; i++) {
-      if (_items[i].fontStyle && _items[i].fontStyle.font.type &&
-        (_items[i].fontStyle.font.type === "google")) {
-        // Remove fallback font.
-        families = _items[i].fontStyle.font.family.split(",");
-
-        googleFamilies.push(families[0]);
-      }
-    }
-
-    // Custom Fonts
-    for (i = 0; i < _items.length; i++) {
-      if (_items[i].fontStyle && _items[i].fontStyle.font.type &&
-        (_items[i].fontStyle.font.type === "custom")) {
-        customFamilies.push(_items[i].fontStyle.font.family);
-        customUrls.push(_items[i].fontStyle.font.url);
-      }
-    }
-
-    if (customFamilies.length > 0) {
-      loadCustomFonts(customFamilies, customUrls, function() {
-        if (googleFamilies.length > 0) {
-          loadGoogleFonts(googleFamilies, onFontsLoaded);
-        }
-        else {
-          onFontsLoaded();
-        }
-      });
-    }
-    else if (googleFamilies.length > 0) {
-      loadGoogleFonts(googleFamilies, onFontsLoaded);
-    }
-    else {
-      onFontsLoaded();
-    }
-  }
-
-  /* Load custom fonts. */
-  function loadCustomFonts(families, urls, cb) {
-    WebFont.load({
-      custom: {
-        families: families,
-        urls: urls
-      },
-      active: function() {
-        cb();
-      },
-      inactive: function() {
-        cb();
-      },
-      timeout: 2000
-    });
-  }
-
-  /* Load Google fonts. */
-  function loadGoogleFonts(families, cb) {
-    WebFont.load({
-      google: {
-        families: families
-      },
-      active: function() {
-        cb();
-      },
-      inactive: function() {
-        cb();
-      },
-      timeout: 2000
-    });
-  }
-
-  /* Handler for when custom and Google fonts have been loaded. */
-  function onFontsLoaded() {
-    initSecondaryCanvas();
-
-    TweenLite.ticker.addEventListener("tick", draw);
-    _scroller.dispatchEvent(new CustomEvent("ready", { "bubbles": true }));
-  }
 
   /* Initialize the secondary canvas from which text will be copied to the scroller. */
   function initSecondaryCanvas() {
@@ -308,9 +222,10 @@ RiseVision.Common.Scroller = function (params) {
     _scrollerCtx = initCanvas(_scroller);
 
     createSecondaryCanvas();
+    initSecondaryCanvas();
 
-    // Fonts need to be loaded before drawing to the canvas.
-    loadFonts();
+    TweenLite.ticker.addEventListener("tick", draw);
+    _scroller.dispatchEvent(new CustomEvent("ready", { "bubbles": true }));
   }
 
   function refresh(items) {

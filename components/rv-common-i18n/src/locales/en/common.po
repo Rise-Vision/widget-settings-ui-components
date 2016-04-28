@@ -106,6 +106,9 @@ msgstr "May"
 msgid "monday"
 msgstr "Monday"
 
+msgid "need-help"
+msgstr "If you need assistance please click the <strong>"Need Help?"</strong> menu item above."
+
 msgid "nov"
 msgstr "Nov"
 

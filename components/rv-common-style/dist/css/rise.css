@@ -11528,6 +11528,9 @@ a[data-wysihtml5-command=underline].active {
     .store-front.grid-list .content-box, .store-front.grid-list .content-box-editable, .store-front.grid-list .card {
       min-height: 290px; } }
 
+.store.grid-list-text {
+  color: #333; }
+
 .table-2 {
   width: 100%; }
   .table-2 > thead > tr > th {
@@ -11611,6 +11614,14 @@ a[data-wysihtml5-command=underline].active {
     width: 16px;
     height: 18px;
     text-align: center; }
+
+.table-selector > tbody > tr.disabled-row {
+  background: #f5f5f5; }
+  .table-selector > tbody > tr.disabled-row td, .table-selector > tbody > tr.disabled-row td a {
+    cursor: not-allowed;
+    color: #999; }
+  .table-selector > tbody > tr.disabled-row:hover a {
+    color: #999; }
 
 .table-selector > tbody > tr.back-btn td:first-child:before {
   content: '\f060' !important; }
@@ -12136,6 +12147,9 @@ ul.tree ul li:last-child:before {
   text-align: left; }
   .file-selector .subscription-status.trial, .file-selector .subscription-status.cancelled, .file-selector .subscription-status.expired, .file-selector .subscription-status.suspended {
     border: none; }
+
+.google-drive-picker img {
+  height: 16px; }
 
 /* Sections/Views
    ========================================================================== */
@@ -14903,150 +14917,6 @@ a.mfp-iframe:hover:after {
 
 .couponStart .col-md-12 {
   text-align: right; }
-
-/* ==========================================================================
-   COMPACT BANNER
-   ========================================================================== */
-.tiny-hero {
-  width: 100%;
-  height: 95px;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-  background: #f5f6f8 bottom center;
-  background-color: #FFF;
-  background-image: url("https://s3.amazonaws.com/Store-Products/Featured+Products/featured_tiny_march_madness_2016.jpg");
-  background-size: cover;
-  background-position: 96%; }
-  .tiny-hero h1 {
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 2px; }
-  .tiny-hero div {
-    width: 33%;
-    height: 100%;
-    margin-bottom: 0;
-    padding: 6px;
-    line-height: 17px;
-    position: relative;
-    background: #3D3437;
-    /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(right top, #413036, #2F2F2F);
-    /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom left, #413036, #2F2F2F);
-    /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom left, #413036, #2F2F2F);
-    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom left, #413036, #2F2F2F);
-    /* Standard syntax (must be last) */
-    font-size: 18px; }
-  .tiny-hero .btn, .tiny-hero .icon-nav label, .icon-nav .tiny-hero label {
-    padding: 2px 12px;
-    position: absolute;
-    bottom: 8px;
-    transform: translateX(-50%);
-    color: black;
-    background-color: white; }
-  .tiny-hero .fa {
-    margin-left: 5px; }
-
-@media (max-width: 1200px) {
-  .tiny-hero {
-    background-position: 83%; } }
-
-@media (max-width: 992px) {
-  .tiny-hero {
-    background-position: 88%; }
-    .tiny-hero div {
-      width: 39%; } }
-
-@media (max-width: 768px) {
-  .tiny-hero div {
-    width: 100%; } }
-
-@media (max-width: 566px) {
-  .tiny-hero div {
-    width: 100%; } }
-
-/* ==========================================================================
-   FEATURED BANNER
-   ========================================================================== */
-.featured-hero {
-  position: relative;
-  width: 100%;
-  height: 408px;
-  margin-top: 19px;
-  cursor: pointer;
-  border: 1px solid #0bd397;
-  background-image: url("https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_march_madness_2016.jpg"); }
-  .featured-hero h1 {
-    font-size: 36px;
-    font-weight: 500;
-    color: white;
-    margin-top: 0; }
-  .featured-hero p {
-    color: #fff;
-    font-size: 24px; }
-  .featured-hero div {
-    background: #3D3437;
-    /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(right top, #413036, #2F2F2F);
-    /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom left, #413036, #2F2F2F);
-    /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom left, #413036, #2F2F2F);
-    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom left, #413036, #2F2F2F);
-    /* Standard syntax (must be last) */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 28%;
-    min-width: 405px;
-    height: 100%;
-    padding: 13px 31px; }
-  .featured-hero .btn, .featured-hero .icon-nav label, .icon-nav .featured-hero label {
-    color: black;
-    background-color: white; }
-  .featured-hero .fa {
-    margin-left: 5px; }
-
-@media (max-width: 1200px) {
-  .featured-hero {
-    background-position: 40% center;
-    background-image: url("https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_march_madness_2016.jpg"); } }
-
-@media (max-width: 992px) {
-  .featured-hero {
-    background-position: 30% center;
-    background-image: url("https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_march_madness_2016.jpg"); }
-    .featured-hero h1 {
-      font-size: 32px; }
-    .featured-hero div {
-      width: 50%;
-      min-width: 353px; } }
-
-@media (max-width: 768px) {
-  .featured-hero h1 {
-    line-height: 44px; }
-    .featured-hero h1 div {
-      width: 28%;
-      min-width: 200px; } }
-
-@media (max-width: 480px) {
-  .featured-hero {
-    background-image: url("https://s3.amazonaws.com/Store-Products/Featured+Products/featured_splash_march_madness_2016.jpg");
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: 168% auto; }
-    .featured-hero div {
-      width: 100%; } }
-
-table.subtotals {
-  text-align: right; }
-  table.subtotals .btn, table.subtotals .icon-nav label, .icon-nav table.subtotals label {
-    margin-right: 5px; }
 
 .website {
   font-size: 18px;

@@ -114,7 +114,7 @@
     runSequence(["clean", "config"], ["js-uglify", "css-min", "i18n"], cb);
   });
 
-  gulp.task("test:unit:ng", factory.testUnitAngular({
+  gulp.task("test:unit", factory.testUnitAngular({
     testFiles: [
       "components/q/q.js",
       "components/angular/angular.js",
@@ -138,18 +138,17 @@
   gulp.task("e2e:server-close", factory.testServerClose());
 
   gulp.task("webdriver_update", factory.webdriveUpdate());
-  gulp.task("test:e2e:ng:core", factory.testE2EAngular({
+  gulp.task("test:e2e:core", factory.testE2EAngular({
     testFiles: path.join(__dirname, "test", "e2e", "*scenarios.js")
   }));
   gulp.task("metrics", factory.metrics());
 
-  // Test the Angular version
-  gulp.task("test:e2e:ng", ["webdriver_update"], function (cb) {
-    return runSequence("e2e:server", "test:e2e:ng:core", "e2e:server-close", cb);
+  gulp.task("test:e2e", ["webdriver_update"], function (cb) {
+    return runSequence("e2e:server", "test:e2e:core", "e2e:server-close", cb);
   });
 
   gulp.task("test", ["build"], function (cb) {
-    return runSequence("test:unit:ng", "test:e2e:ng", "metrics", cb);
+    return runSequence("test:unit", "test:e2e", "metrics", cb);
   });
 
   gulp.task("default", ["build"]);
