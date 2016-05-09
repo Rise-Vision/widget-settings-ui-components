@@ -14,6 +14,7 @@
         link: function($scope) {
           $scope.defaultSetting = {
             by: "none",
+            direction: "up",
             speed: "medium",
             pause: 5,
             pud: 10
@@ -49,7 +50,7 @@ module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/scroll-setting/scroll-setting.html",
     "<div class=\"row\">\n" +
-    "  <div class=\"col-md-3\">\n" +
+    "  <div class=\"col-md-2\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{\"scroll.heading\" | translate}}</label>\n" +
     "      <select id=\"scroll-by\" ng-model=\"scroll.by\" class=\"form-control\">\n" +
@@ -59,19 +60,26 @@ module.run(["$templateCache", function($templateCache) {
     "      </select>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"col-md-3\" ng-show=\"scroll.by != 'none'\">\n" +
+    "  <div class=\"col-md-2\" ng-show=\"scroll.by == 'continuous'\">\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label class=\"control-label\">{{'scroll.speed.label' | translate}}</label>\n" +
-    "      <select id=\"scroll-speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
-    "        <option value=\"slowest\">{{'scroll.speed.slowest' | translate}}</option>\n" +
-    "        <option value=\"slow\">{{'scroll.speed.slow' | translate}}</option>\n" +
-    "        <option value=\"medium\">{{'scroll.speed.medium' | translate}}</option>\n" +
-    "        <option value=\"fast\">{{'scroll.speed.fast' | translate}}</option>\n" +
-    "        <option value=\"fastest\">{{'scroll.speed.fastest' | translate}}</option>\n" +
+    "      <label class=\"control-label\">{{\"transition.direction.label\" | translate}}</label>\n" +
+    "      <select id=\"scroll-direction\" name=\"scroll-direction\" ng-model=\"scroll.direction\" class=\"form-control\">\n" +
+    "        <option value=\"up\">{{\"transition.direction.up\" | translate}}</option>\n" +
+    "        <option value=\"left\">{{\"transition.direction.left\" | translate}}</option>\n" +
     "      </select>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"col-md-3\" ng-show=\"scroll.by != 'none'\">\n" +
+    "  <div class=\"col-md-2\" ng-show=\"scroll.by != 'none'\">\n" +
+    "    <div class=\"form-group\">\n" +
+    "      <label class=\"control-label\">{{'scroll.speed.label' | translate}}</label>\n" +
+    "      <select id=\"scroll-speed\" ng-model=\"scroll.speed\" class=\"form-control\">\n" +
+    "        <option value=\"slow\">{{'scroll.speed.slow' | translate}}</option>\n" +
+    "        <option value=\"medium\">{{'scroll.speed.medium' | translate}}</option>\n" +
+    "        <option value=\"fast\">{{'scroll.speed.fast' | translate}}</option>\n" +
+    "      </select>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"col-md-2\" ng-show=\"scroll.by != 'none' && scroll.direction == 'up'\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{'scroll.pause.label' | translate}}</label>\n" +
     "      <div class=\"input-group\">\n" +
@@ -80,7 +88,7 @@ module.run(["$templateCache", function($templateCache) {
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"col-md-3\" ng-show=\"scroll.by != 'none'\">\n" +
+    "  <div class=\"col-md-2\" ng-show=\"scroll.by != 'none' && scroll.direction == 'up'\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{'scroll.pud.label' | translate}}</label>\n" +
     "      <span popover=\"{{'scroll.pud.tooltip' | translate}}\" popover-trigger=\"click\"\n" +
