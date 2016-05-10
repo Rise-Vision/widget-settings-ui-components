@@ -1,3 +1,38 @@
 {
-  "settings": "Google Spreadsheet Settings"
+  "format": {
+    "evenRow": "Even Row Color",
+    "header": {
+      "label": "Header Format",
+      "text": "Column Header Sample Text"
+    },
+    "heading": "Format",
+    "oddRow": "Odd Row Color",
+    "spreadsheet": "Spreadsheet Format"
+  },
+  "settings": "Google Spreadsheet Settings",
+  "spreadsheet": {
+    "cells": {
+      "range": "Show Range",
+      "sheet": "Show Entire Sheet"
+    },
+    "first-row-as-header": "Use First Row as Header",
+    "key": {
+      "placeholder": "Enter your Key",
+      "select": "Enter Spreadsheet Key"
+    },
+    "preview": "Open Spreadsheet",
+    "publish": {
+      "text1": "To use this Google Spreadsheet it must be published to the web. To publish, open the Google Spreadsheet and select",
+      "text2": "File > Publish to the web",
+      "text3": "then click",
+      "text4": "Publish"
+    },
+    "range": {
+      "end": "Ending Cell (Bottom Right)",
+      "start": "Starting Cell (Top Left)"
+    },
+    "refresh": "Data Refresh Interval",
+    "retry": "Check Again",
+    "sheet": "Select Worksheet"
+  }
 }

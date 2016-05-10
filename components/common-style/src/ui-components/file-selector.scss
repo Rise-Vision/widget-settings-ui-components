@@ -14,5 +14,21 @@
     }
   }
 
+  .clear-selection
+  {
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 8px;
+      right: 13px;
+      z-index: 3;
+      cursor: pointer;
+      width: 17px;
+      text-align: center;
+      display: block;
+      height: 17px;
+    }
+  }
 
 }

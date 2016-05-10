@@ -14,6 +14,7 @@
         link: function($scope) {
           $scope.defaultSetting = {
             by: "none",
+            direction: "up",
             speed: "medium",
             pause: 5,
             pud: 10

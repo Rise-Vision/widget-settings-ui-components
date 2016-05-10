@@ -3,23 +3,19 @@
   margin-bottom: 0;
   padding: 8px 0;
   .navbar-header {
+    width: 100%;
     height: auto;
     li {
       margin-right: 0;
       vertical-align: top;
       >a {
-        line-height: 33px;
-        font-size: 13px;
-        padding: 1px 11px;
-        margin-right: 3px;
-        border-radius: 3px;
-        white-space: nowrap;
         &:hover {
-          color: $rise-blue;
+          background:none;
         }
-        &.selected {
-          color: $rise-blue;
-          background: $brand-bg;
+        &.btn-primary {
+          &:hover {
+            background: $rise-green;
+          }
         }
       }
     }
@@ -29,30 +25,42 @@
         margin-right: 0;
       }
     }
+    .navbar-left {
+      a {
+        line-height: 33px;
+        font-size: 13px;
+        padding: 1px 11px;
+        margin-right: 3px;
+        border-radius: 3px;
+        white-space: nowrap;
+        &:hover {
+          color: $rise-blue;
+          background: $lighter-gray;
+        }
+        &.selected {
+          color: $rise-blue;
+          background: $brand-bg;
+        }
+      }
+    }
     .navbar-right {
       margin:0;
       >li {
         display: inline-block;
         margin-left: 5px;
         float: none;
-        >a {
-          display: block;
-          padding: 0;
-          margin-left: 0;
-          font-size: 24px;
-          &:hover {}
-          &:focus {}
-          >.fa {
-            display: block;
-            line-height: 33px;
-            padding: 0 10px;
+        >a.btn {
+          color: #FFF;
+          height: auto;
+          padding: 6px 12px;
+          &:hover {
+            background: darker(5%, $rise-green)!important;
           }
         }
-        @media (max-width: 768px) {
-          margin-left: 0;
-          margin-right: 0;
-          .btn {
-            padding: 6px 8px;
+        >a.btn.btn-link {
+          color: $gray;
+          &:hover {
+            background: none;
           }
         }
       }

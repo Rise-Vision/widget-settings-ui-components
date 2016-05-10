@@ -16,6 +16,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
 }
 
 /**    
@@ -37,15 +38,6 @@ a:focus, button:focus {
 a:hover {
   text-decoration: none;
 }
-
-h1 {
-}
-
-h2 {
-  font-weight: 400;
-}
-
-
 
 /* Actions Menu
    ========================================================================== */
@@ -345,8 +337,6 @@ a.btn-primary:hover {
 
 .btn-github {
   @extend .btn-sm;
-  @extend .btn-rv-help;
-  @extend .rounded;
 }
 
 .btn-remove .fa::before,

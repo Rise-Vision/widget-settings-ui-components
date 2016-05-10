@@ -118,6 +118,9 @@ msgstr "Oct"
 msgid "ok"
 msgstr "Okay"
 
+msgid "or"
+msgstr "or"
+
 msgid "previous-folder"
 msgstr "Previous Folder"
 

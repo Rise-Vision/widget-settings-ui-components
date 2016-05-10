@@ -1,3 +1,66 @@
+msgid "format.evenRow"
+msgstr "Even Row Color"
+
+msgid "format.header.label"
+msgstr "Header Format"
+
+msgid "format.header.text"
+msgstr "Column Header Sample Text"
+
+msgid "format.heading"
+msgstr "Format"
+
+msgid "format.oddRow"
+msgstr "Odd Row Color"
+
+msgid "format.spreadsheet"
+msgstr "Spreadsheet Format"
+
 msgid "settings"
 msgstr "Google Spreadsheet Settings"
+
+msgid "spreadsheet.cells.range"
+msgstr "Show Range"
+
+msgid "spreadsheet.cells.sheet"
+msgstr "Show Entire Sheet"
+
+msgid "spreadsheet.first-row-as-header"
+msgstr "Use First Row as Header"
+
+msgid "spreadsheet.key.placeholder"
+msgstr "Enter your Key"
+
+msgid "spreadsheet.key.select"
+msgstr "Enter Spreadsheet Key"
+
+msgid "spreadsheet.preview"
+msgstr "Open Spreadsheet"
+
+msgid "spreadsheet.publish.text1"
+msgstr "To use this Google Spreadsheet it must be published to the web. To publish, open the Google Spreadsheet and select"
+
+msgid "spreadsheet.publish.text2"
+msgstr "File > Publish to the web"
+
+msgid "spreadsheet.publish.text3"
+msgstr "then click"
+
+msgid "spreadsheet.publish.text4"
+msgstr "Publish"
+
+msgid "spreadsheet.range.end"
+msgstr "Ending Cell (Bottom Right)"
+
+msgid "spreadsheet.range.start"
+msgstr "Starting Cell (Top Left)"
+
+msgid "spreadsheet.refresh"
+msgstr "Data Refresh Interval"
+
+msgid "spreadsheet.retry"
+msgstr "Check Again"
+
+msgid "spreadsheet.sheet"
+msgstr "Select Worksheet"
 

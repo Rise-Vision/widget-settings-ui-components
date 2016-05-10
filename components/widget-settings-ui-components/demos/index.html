@@ -59,14 +59,11 @@
 <script type="text/javascript" src="dist/js/angular/background-setting.js"></script>
 <script type="text/javascript" src="dist/js/angular/column-setting.js"></script>
 <script type="text/javascript" src="dist/js/angular/column-selector.js"></script>
-<script type="text/javascript" src="dist/js/url-field.js"></script>
 <script type="text/javascript" src="components/rv-bootstrap-formhelpers/dist/js/rv-bootstrap-formhelpers.js"></script>
 <script type="text/javascript" src="components/bootstrap-form-components/dist/js/bootstrap-font-picker.js"></script>
 <script type="text/javascript" src="components/bootstrap-form-components/dist/js/angular/bootstrap-font-picker.js"></script>
 <script type="text/javascript" src="components/bootstrap-form-components/dist/js/bootstrap-font-size-picker.js"></script>
 <script type="text/javascript" src="components/bootstrap-form-components/dist/js/angular/bootstrap-font-size-picker.js"></script>
-<script src="dist/js/font-style.js"></script>
-<script src="dist/js/angular/font-style.js"></script>
 <script src="dist/js/angular/font-setting.js"></script>
 <script src="dist/js/angular/order.js"></script>
 <script src="dist/js/angular/position-setting.js"></script>
@@ -90,7 +87,6 @@
     "risevision.widget.common.column-setting",
     "risevision.widget.common.file-selector",
     "risevision.widget.common.font-setting",
-    "risevision.widget.common.font-style",
     "risevision.widget.common.order",
     "risevision.widget.common.position-setting",
     "risevision.widget.common.scroll-setting",
@@ -145,11 +141,6 @@
             templateUrl: 'font-setting-demo.html',
             url: '/font-setting',
             controller: "fontSettingController"
-          })
-          .state('fontStyle', {
-            templateUrl: 'font-style-demo.html',
-            url: '/font-style',
-            controller: "fontStyleController"
           })
           .state('order', {
             templateUrl: 'order-demo.html',

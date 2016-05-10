@@ -1068,13 +1068,13 @@ h6, .h6 {
 p {
   margin: 0 0 10px; }
 
-.lead {
+.lead, .post h2 + p {
   margin-bottom: 20px;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.4; }
   @media (min-width: 768px) {
-    .lead {
+    .lead, .post h2 + p {
       font-size: 21px; } }
 
 small,
@@ -1173,7 +1173,7 @@ a.bg-info:hover {
 a.bg-warning:hover {
   background-color: #f7ecb5; }
 
-.bg-danger {
+.bg-danger, .entries p:first-child {
   background-color: #f2dede; }
 
 a.bg-danger:hover {
@@ -7461,7 +7461,8 @@ body {
   background: #fcfcfc;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased; }
+  font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%; }
 
 /**    
 * Start of workaround for Bootstrap bug where content shifts when modal   
@@ -7478,9 +7479,6 @@ a:focus, button:focus {
 
 a:hover {
   text-decoration: none; }
-
-h2 {
-  font-weight: 400; }
 
 /* Actions Menu
    ========================================================================== */
@@ -10493,48 +10491,49 @@ a[data-wysihtml5-command=underline].active {
   margin-bottom: 0;
   padding: 8px 0; }
   .navbar.navbar-default .navbar-header {
+    width: 100%;
     height: auto; }
     .navbar.navbar-default .navbar-header li {
       margin-right: 0;
       vertical-align: top; }
-      .navbar.navbar-default .navbar-header li > a {
-        line-height: 33px;
-        font-size: 13px;
-        padding: 1px 11px;
-        margin-right: 3px;
-        border-radius: 3px;
-        white-space: nowrap; }
-        .navbar.navbar-default .navbar-header li > a:hover {
-          color: #0081BA; }
-        .navbar.navbar-default .navbar-header li > a.selected {
-          color: #0081BA;
-          background: #f4f4f4; }
+      .navbar.navbar-default .navbar-header li > a:hover {
+        background: none; }
+      .navbar.navbar-default .navbar-header li > a.btn-primary:hover {
+        background: #4ab767; }
     .navbar.navbar-default .navbar-header .navbar-brand {
       margin-right: 10px; }
       @media (max-width: 768px) {
         .navbar.navbar-default .navbar-header .navbar-brand {
           margin-right: 0; } }
+    .navbar.navbar-default .navbar-header .navbar-left a {
+      line-height: 33px;
+      font-size: 13px;
+      padding: 1px 11px;
+      margin-right: 3px;
+      border-radius: 3px;
+      white-space: nowrap; }
+      .navbar.navbar-default .navbar-header .navbar-left a:hover {
+        color: #0081BA;
+        background: #f2f2f2; }
+      .navbar.navbar-default .navbar-header .navbar-left a.selected {
+        color: #0081BA;
+        background: #f4f4f4; }
     .navbar.navbar-default .navbar-header .navbar-right {
       margin: 0; }
       .navbar.navbar-default .navbar-header .navbar-right > li {
         display: inline-block;
         margin-left: 5px;
         float: none; }
-        .navbar.navbar-default .navbar-header .navbar-right > li > a {
-          display: block;
-          padding: 0;
-          margin-left: 0;
-          font-size: 24px; }
-          .navbar.navbar-default .navbar-header .navbar-right > li > a > .fa {
-            display: block;
-            line-height: 33px;
-            padding: 0 10px; }
-        @media (max-width: 768px) {
-          .navbar.navbar-default .navbar-header .navbar-right > li {
-            margin-left: 0;
-            margin-right: 0; }
-            .navbar.navbar-default .navbar-header .navbar-right > li .btn, .navbar.navbar-default .navbar-header .navbar-right > li .icon-nav label, .icon-nav .navbar.navbar-default .navbar-header .navbar-right > li label {
-              padding: 6px 8px; } }
+        .navbar.navbar-default .navbar-header .navbar-right > li > a.btn {
+          color: #FFF;
+          height: auto;
+          padding: 6px 12px; }
+          .navbar.navbar-default .navbar-header .navbar-right > li > a.btn:hover {
+            background: darker(5%, #4ab767) !important; }
+        .navbar.navbar-default .navbar-header .navbar-right > li > a.btn.btn-link {
+          color: #555; }
+          .navbar.navbar-default .navbar-header .navbar-right > li > a.btn.btn-link:hover {
+            background: none; }
       .navbar.navbar-default .navbar-header .navbar-right .profile-pic {
         width: 33px;
         height: 33px;
@@ -12148,8 +12147,23 @@ ul.tree ul li:last-child:before {
   .file-selector .subscription-status.trial, .file-selector .subscription-status.cancelled, .file-selector .subscription-status.expired, .file-selector .subscription-status.suspended {
     border: none; }
 
-.google-drive-picker img {
-  height: 16px; }
+.file-selector .clear-selection {
+  position: relative; }
+  .file-selector .clear-selection span {
+    position: absolute;
+    top: 8px;
+    right: 13px;
+    z-index: 3;
+    cursor: pointer;
+    width: 17px;
+    text-align: center;
+    display: block;
+    height: 17px; }
+
+.google-drive-picker {
+  display: inline-block; }
+  .google-drive-picker img {
+    height: 16px; }
 
 /* Sections/Views
    ========================================================================== */
@@ -14854,7 +14868,7 @@ a.mfp-iframe:hover:after {
     margin-bottom: 15px; }
   .product-intro strong {
     font-weight: 500; }
-  .product-intro .lead {
+  .product-intro .lead, .product-intro .post h2 + p, .post .product-intro h2 + p {
     font-size: 18px;
     margin-bottom: 8px; }
   .product-intro .text-muted {
@@ -16361,3 +16375,48 @@ div#css-slider figure {
     margin: 0; }
   .suggest-template:hover:before {
     display: none !important; }
+
+.post {
+  line-height: 1.6;
+  padding-bottom: 120px;
+  font-size: 15px; }
+  .post .post-title {
+    margin-bottom: 32px;
+    margin-top: 0;
+    font-weight: 300;
+    font-size: 44px; }
+  .post p {
+    margin-bottom: 16px; }
+    .post p + h3 {
+      margin-top: 32px; }
+  .post h2 + p {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f2f2f2; }
+  .post h4 {
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #333; }
+  .post .table {
+    background: #FFF;
+    border: 2px solid #d4d4d4; }
+    .post .table tbody tr td > a {
+      color: #0081BA !important; }
+
+.entries p:first-child {
+  padding: 10px;
+  border-radius: 4px; }
+
+.entries article {
+  padding: 0; }
+
+.entries a {
+  display: block;
+  padding: 8px;
+  border-bottom: 1px solid #d4d4d4; }
+  .entries a:hover {
+    background: #f5f5f5; }
+    .entries a:hover h4 {
+      color: #0081BA; }
+  .entries a h4 {
+    color: #555; }
