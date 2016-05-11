@@ -60,7 +60,7 @@ module.run(["$templateCache", function($templateCache) {
     "      </select>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"col-md-2\" ng-show=\"scroll.by == 'continuous'\">\n" +
+    "  <div class=\"col-md-2\" ng-show=\"scroll.by != 'none'\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{\"transition.direction.label\" | translate}}</label>\n" +
     "      <select id=\"scroll-direction\" name=\"scroll-direction\" ng-model=\"scroll.direction\" class=\"form-control\">\n" +
