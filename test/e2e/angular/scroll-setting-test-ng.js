@@ -39,6 +39,14 @@
       expect(element(by.id("scroll-pud")).getAttribute("value")).to.eventually.equal("10");
     });
 
+    it("Should display direction setting when scroll is page", function () {
+      expect(element(by.id("scroll-by")).getAttribute("value")).to.eventually.equal("none");
+
+      element(by.cssContainingText('option', 'Page')).click();
+
+      expect(element(by.id("scroll-direction")).isDisplayed()).to.eventually.be.true;
+    });
+
     it("Should only show speed when direction is set to left", function () {
 
       element(by.cssContainingText('option', 'Continuously')).click();
