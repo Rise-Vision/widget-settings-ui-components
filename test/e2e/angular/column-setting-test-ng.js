@@ -19,77 +19,93 @@
       browser.get("/test/e2e/angular/column-setting-test-ng.html");
     });
 
-    it("Should correctly load default (string) settings", function () {
-      expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent()).
-        to.eventually.be.true;
+    describe("Initialization", function() {
+      it("Should collapse panel", function () {
+        expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent()).
+          to.eventually.be.true;
 
-      expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
-        .to.eventually.equal("none");
+        expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
+          .to.eventually.equal("none");
+      });
 
-      expect(element(by.css(".btn-alignment[data-wysihtml5-command-value='left']")).isPresent()).
-        to.eventually.be.true;
+      it("Should load font setting component", function () {
+        expect(element(by.css("font-setting")).isPresent()).to.eventually.be.true;
+      });
 
-      expect(element(by.id("column-width")).getAttribute("value")).
-      to.eventually.equal("100");
+      it("Should disable Decimals", function () {
+        expect(element(by.model("column.decimals")).isEnabled()).to.eventually.be.false;
+      });
+
+      it("Should disable Sign", function () {
+        expect(element(by.model("column.sign")).isEnabled()).to.eventually.be.false;
+      });
+
+      it("Should disable Color Conditions", function () {
+        expect(element(by.model("column.colorCondition")).isEnabled()).to.eventually.be.false;
+      });
     });
 
-    it("Should correctly load text/string column type", function () {
-      element(by.id("setTextColumn")).click();
+    describe("Defaults", function() {
+      it("Should set Width", function() {
+        expect(element(by.model("column.width")).getAttribute("value")).to.eventually.equal("100");
+      });
 
-      expect(element(by.id("column-decimals")).isPresent()).
-        to.eventually.be.false;
+      it("Should set Decimals", function() {
+        expect(element(by.model("column.decimals")).getAttribute("value")).to.eventually.equal("0");
+      });
 
-      expect(element(by.id("column-sign")).isPresent()).
-        to.eventually.be.false;
+      it("Should set Sign", function() {
+        expect(element(by.model("column.sign")).getAttribute("value")).to.eventually.equal("none");
+      });
 
-      expect(element(by.id("column-color-condition")).isPresent()).
-        to.eventually.be.false;
-
-      expect(element(by.id("column-date")).isPresent()).
-        to.eventually.be.false;
+      it("Should set Color Conditions", function() {
+        expect(element(by.model("column.colorCondition")).getAttribute("value")).to.eventually.equal("none");
+      });
     });
 
-    it("Should correctly load int/number column type", function () {
-      element(by.id("setIntColumn")).click();
+    describe("Visibility", function() {
+      it("Should show panel when clicked", function () {
+        element(by.css(".panel a.panel-heading.collapsed")).click();
 
-      expect(element(by.id("column-date")).isPresent()).
-        to.eventually.be.false;
+        expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent()).
+          to.eventually.be.false;
+        expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
+          .to.eventually.equal("block");
+      });
+
+      it("Should hide panel when clicked", function () {
+        element(by.css(".panel a.panel-heading")).click();
+        element(by.css(".panel a.panel-heading")).click();
+
+        expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent())
+          .to.eventually.be.true;
+        expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
+          .to.eventually.equal("none");
+      });
     });
 
-    it("Should correctly load date column type", function () {
-      element(by.id("setDateColumn")).click();
+    describe("Enabling", function() {
+      it("Should enable Decimals", function () {
+        element(by.css(".panel a.panel-heading.collapsed")).click();
+        element(by.model("column.numeric")).click();
 
-      expect(element(by.id("column-decimals")).isPresent()).
-        to.eventually.be.false;
+        expect(element(by.model("column.decimals")).isEnabled()).to.eventually.be.true;
+      });
 
-      expect(element(by.id("column-sign")).isPresent()).
-        to.eventually.be.false;
+      it("Should enable Sign", function () {
+        element(by.css(".panel a.panel-heading.collapsed")).click();
+        element(by.model("column.numeric")).click();
 
-      expect(element(by.id("column-color-condition")).isPresent()).
-        to.eventually.be.false;
+        expect(element(by.model("column.sign")).isEnabled()).to.eventually.be.true;
+      });
+
+      it("Should enable Color Conditions", function () {
+        element(by.css(".panel a.panel-heading.collapsed")).click();
+        element(by.model("column.numeric")).click();
+
+        expect(element(by.model("column.colorCondition")).isEnabled()).to.eventually.be.true;
+      });
     });
-
-    it("Should show panel when clicked", function () {
-      element(by.css(".panel a.panel-heading.collapsed")).click();
-
-      expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent()).
-        to.eventually.be.false;
-
-      expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
-        .to.eventually.equal("block");
-    });
-
-    it("Should hide panel when clicked", function () {
-      element(by.css(".panel a.panel-heading")).click();
-      element(by.css(".panel a.panel-heading")).click();
-
-      expect(element(by.css(".panel a.panel-heading.collapsed")).isPresent())
-        .to.eventually.be.true;
-
-      expect(element(by.css(".panel-collapse.collapse")).getCssValue("display"))
-        .to.eventually.equal("none");
-    });
-
   });
 
 })();

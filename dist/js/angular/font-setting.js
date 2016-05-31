@@ -448,7 +448,9 @@ module.run(["$templateCache", function($templateCache) {
     "<div class=\"font-setting\">\n" +
     "  <div class=\"row\">\n" +
     "    <div class=\"col-md-12\">\n" +
-    "      <textarea ui-tinymce=\"tinymceOptions\" ng-model=\"tinymceModel\" ng-if=\"tinymceOptions\"></textarea>\n" +
+    "      <div ng-class=\"{'form-group': !previewText}\">\n" +
+    "        <textarea ui-tinymce=\"tinymceOptions\" ng-model=\"tinymceModel\" ng-if=\"tinymceOptions\"></textarea>\n" +
+    "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
     "  <div class=\"row\" ng-if=\"previewText\">\n" +
