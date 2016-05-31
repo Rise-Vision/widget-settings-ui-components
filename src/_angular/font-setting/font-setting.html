@@ -1,7 +1,9 @@
 <div class="font-setting">
   <div class="row">
     <div class="col-md-12">
-      <textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel" ng-if="tinymceOptions"></textarea>
+      <div ng-class="{'form-group': !previewText}">
+        <textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel" ng-if="tinymceOptions"></textarea>
+      </div>
     </div>
   </div>
   <div class="row" ng-if="previewText">
