@@ -58,6 +58,12 @@ msgstr "Name"
 msgid "list.no-results"
 msgstr "Your search didn't return any results"
 
+msgid "list.noSchedules"
+msgstr "No Schedules"
+
+msgid "list.viewAll"
+msgstr "View All Schedules"
+
 msgid "playlist.add-playlist-item"
 msgstr "Add Playlist Item"
 

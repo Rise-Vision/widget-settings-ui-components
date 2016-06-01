@@ -227,6 +227,26 @@ RiseVision.Common.Utilities = (function() {
     }
   }
 
+  /**
+   * Check if chrome version is under a certain version
+   */
+  function isLegacy() {
+    var legacyVersion = 25;
+
+    var match = navigator.userAgent.match(/Chrome\/(\S+)/);
+    var version = match ? match[1] : 0;
+
+    if (version) {
+      version = parseInt(version.substring(0,version.indexOf(".")));
+
+      if (version <= legacyVersion) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   return {
     getQueryParameter: getQueryParameter,
     getFontCssStyle:  getFontCssStyle,
@@ -237,6 +257,7 @@ RiseVision.Common.Utilities = (function() {
     preloadImages:    preloadImages,
     getRiseCacheErrorMessage: getRiseCacheErrorMessage,
     unescapeHTML: unescapeHTML,
-    hasInternetConnection: hasInternetConnection
+    hasInternetConnection: hasInternetConnection,
+    isLegacy: isLegacy
   };
 })();

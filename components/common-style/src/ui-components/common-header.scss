@@ -49,6 +49,9 @@
         display: inline-block;
         margin-left: 5px;
         float: none;
+        >a {
+          padding: 0;
+        }
         >a.btn {
           color: #FFF;
           height: auto;

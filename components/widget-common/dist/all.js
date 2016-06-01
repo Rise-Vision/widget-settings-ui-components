@@ -351,6 +351,26 @@ RiseVision.Common.Utilities = (function() {
     }
   }
 
+  /**
+   * Check if chrome version is under a certain version
+   */
+  function isLegacy() {
+    var legacyVersion = 25;
+
+    var match = navigator.userAgent.match(/Chrome\/(\S+)/);
+    var version = match ? match[1] : 0;
+
+    if (version) {
+      version = parseInt(version.substring(0,version.indexOf(".")));
+
+      if (version <= legacyVersion) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   return {
     getQueryParameter: getQueryParameter,
     getFontCssStyle:  getFontCssStyle,
@@ -361,7 +381,8 @@ RiseVision.Common.Utilities = (function() {
     preloadImages:    preloadImages,
     getRiseCacheErrorMessage: getRiseCacheErrorMessage,
     unescapeHTML: unescapeHTML,
-    hasInternetConnection: hasInternetConnection
+    hasInternetConnection: hasInternetConnection,
+    isLegacy: isLegacy
   };
 })();
 
@@ -1055,7 +1076,8 @@ RiseVision.Common.LoggerUtils = (function() {
   "use strict";
 
    var displayId = "",
-    companyId = "";
+     companyId = "",
+     version = null;
 
   /*
    *  Private Methods
@@ -1075,6 +1097,10 @@ RiseVision.Common.LoggerUtils = (function() {
 
       json.company_id = companyId;
       json.display_id = displayId;
+
+      if (version) {
+        json.version = version;
+      }
 
       cb(json);
     }
@@ -1159,11 +1185,16 @@ RiseVision.Common.LoggerUtils = (function() {
     displayId = display;
   }
 
+  function setVersion(value) {
+    version = value;
+  }
+
   return {
     "getInsertData": getInsertData,
     "getFileFormat": getFileFormat,
     "logEvent": logEvent,
-    "setIds": setIds
+    "setIds": setIds,
+    "setVersion": setVersion
   };
 })();
 
@@ -1282,7 +1313,7 @@ RiseVision.Common.Message = function (mainContainer, messageContainer) {
       messageContainer.style.display = "none";
 
       // show main container
-      mainContainer.style.visibility = "visible";
+      mainContainer.style.display = "block";
 
       _active = false;
     }
@@ -1294,7 +1325,7 @@ RiseVision.Common.Message = function (mainContainer, messageContainer) {
 
     if (!_active) {
       // hide main container
-      mainContainer.style.visibility = "hidden";
+      mainContainer.style.display = "none";
 
       messageContainer.style.display = "block";
 

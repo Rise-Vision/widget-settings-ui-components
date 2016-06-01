@@ -400,8 +400,14 @@ msgstr "Status"
 msgid "list.no-results"
 msgstr "Your search didn't return any results"
 
+msgid "list.noDisplays"
+msgstr "No Displays"
+
 msgid "list.searchNotification"
 msgstr "Search results may include Displays that belong to your sub-companies."
+
+msgid "list.viewAll"
+msgstr "View All Displays"
 
 msgid "title"
 msgstr "Displays"

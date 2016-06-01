@@ -4,17 +4,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   max-height: calc(100vh - 240px);
-  border: 1px solid #CCC;
-  border-radius: 4px;
   min-height: 240px;
-}
-
-.content-box {
-  overflow: hidden;
-  position: relative;
-  .scrollable-list {
-    border: none;
-  }
 }
 
 .scrollable-list::-webkit-scrollbar {
@@ -43,6 +33,57 @@
 /* List-Group
    ========================================================================== */
 
+.editor-playlist {
+  .editor-playlist-item {
+    overflow: hidden;
+    background: #FFF;
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    padding: 6px;
+    &:hover {
+      border: 1px solid #bcbcbc;
+    }
+    p, h4 { 
+      margin: 0;
+      line-height: 22px;
+      font-weight: 400;
+    }
+    .playlist-item-name {
+      span {
+        @extend .ellipsis;
+        font-weight: 500;
+        display: inline-block;
+        vertical-align: top;
+        max-width: 125px;
+        padding-right: 5px;
+      }
+    }
+  }
+  .arrows {
+    float: left;
+    width: 24px;
+    margin-right: 6px;
+    .btn {
+      margin: 0;
+      &:first-child {
+        border-radius: 3px 3px 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 3px 3px;
+      }
+    }
+  }
+  .actions {
+    float: right;
+  }
+}
+
+
+
+/* List-Group
+   ========================================================================== */
+
 .list-group {
   margin-bottom: 0;
 }
@@ -51,6 +92,10 @@
   background-color: none;
   border:none;
   border-bottom: 1px solid $lighter-gray;
+}
+
+.select-subcompany-modal .list-group {
+  @extend .content-box;
 }
 
 /* Box list

@@ -8,84 +8,53 @@
   </div>
   <div ng-class="{'panel-collapse':true, collapse:true, in:collapse}">
     <div class="panel-body">
-     <!-- header -->
+
+      <!-- Numeric data column -->
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="column.numeric">{{'column.numeric' | translate}}
+        </label>
+        <span class="text-danger" style="float:right">
+          {{'column.note' | translate}}
+        </span>
+      </div>
+
+      <font-setting font-data="column.fontStyle">
+      </font-setting>
+
       <div class="row">
-        <div class="col-md-3">
+
+        <!-- Header Text -->
+        <div class="col-sm-6 col-xs-12">
           <div class="form-group">
             <label for="column-header-text">
               {{'column.header-text.label' | translate}}
             </label>
-            <input id="column-header-text" type="text" ng-model="column.headerText" class="form-control" />
+            <input type="text" ng-model="column.headerText" class="form-control">
           </div>
         </div>
-      </div>
-      <!-- width -->
-      <div class="row">
-        <div class="col-md-3">
+
+        <!-- Width -->
+        <div class="col-sm-3 col-xs-12">
           <div class="form-group">
             <label for="column-width">
               {{'column.width' | translate}}
             </label>
             <div class="input-group">
-              <input id="column-width" type="number" ng-model="column.width" class="form-control" />
+              <input type="number" ng-model="column.width" class="form-control">
               <span class="input-group-addon">{{'common.units.pixels' | translate}}</span>
             </div>
           </div>
         </div>
-      </div>
-      <!-- align -->
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>
-              {{'column.alignment.label' | translate}}
-            </label> <br/>
-            <alignment align="column.align"></alignment>
-          </div>
-        </div>
-      </div>
-      <!-- decimal -->
-      <div class="row" ng-if="column.type === 'int' || column.type === 'number'">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="column-decimals">
-              {{'column.decimals.label' | translate}}
-            </label>
-            <select id="column-decimals" ng-model="column.decimals" class="form-control">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <!-- sign -->
-      <div class="row" ng-if="column.type === 'int' || column.type === 'number'">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="column-sign">
-              {{'column.sign.label' | translate}}
-            </label>
-            <select id="column-sign" ng-model="column.sign" class="form-control">
-              <option value="none">{{'column.sign.none' | translate}}</option>
-              <option value="neg">-</option>
-              <option value="pos-neg">+/-</option>
-              <option value="bracket">()</option>
-              <option value="arrow">{{'column.sign.arrow' | translate}}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <!-- color-condition -->
-      <div class="row" ng-if="column.type === 'int' || column.type === 'number'">
-        <div class="col-md-3">
+
+        <!-- Color Conditions -->
+        <div class="col-sm-3 col-xs-12">
           <div class="form-group">
             <label for="column-color-condition">
-              {{'column.color-condition.label' | translate}}
-            </label>
-            <select id="column-color-condition" ng-model="column.colorCondition" class="form-control">
+                {{'column.color-condition.label' | translate}}
+              </label>
+            <select class="form-control" ng-model="column.colorCondition"
+              ng-disabled="!column.numeric">
               <option value="none">{{'column.color-condition.none' | translate}}</option>
               <option value="change-up">{{'column.color-condition.change-up' | translate}}</option>
               <option value="change-down">{{'column.color-condition.change-down' | translate}}</option>
@@ -94,23 +63,9 @@
             </select>
           </div>
         </div>
+
       </div>
-      <!-- date -->
-      <div class="row" ng-if="column.type === 'date' || column.type === 'datetime'">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="column-date">
-              {{'column.date.label' | translate}}
-            </label>
-            <select id="column-date" ng-model="column.date" class="form-control">
-              <option value="short">{{'column.date.short' | translate}}</option>
-              <option value="medium">{{'column.date.medium' | translate}}</option>
-              <option value="long">{{'column.date.long' | translate}}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <!-- END options -->
+
     </div>
   </div>
 </div>

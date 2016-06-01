@@ -35,7 +35,7 @@ msgid "details.removePlaylistItem"
 msgstr "Remove Item"
 
 msgid "details.removePlaylistItemWarning"
-msgstr "Are you sure you want to remove this Content from the Playlist?"
+msgstr "Are you sure you want to remove this Widget from the Playlist?"
 
 msgid "details.revised"
 msgstr "Revised"
@@ -97,14 +97,20 @@ msgstr "Status"
 msgid "list.no-results"
 msgstr "Your search didn't return any results"
 
+msgid "list.noPresentations"
+msgstr "No Presentations"
+
 msgid "list.title"
 msgstr "Presentations"
 
+msgid "list.viewAll"
+msgstr "View All Presentations"
+
 msgid "playlistItem.add"
-msgstr "Add Content"
+msgstr "Add Widget"
 
 msgid "playlistItem.content"
-msgstr "Content"
+msgstr "Widget"
 
 msgid "playlistItem.duration"
 msgstr "Duration"
@@ -227,10 +233,10 @@ msgid "storeProduct.add"
 msgstr "Add"
 
 msgid "storeProduct.content.search"
-msgstr "Search for Content"
+msgstr "Search for Widget"
 
 msgid "storeProduct.content.title"
-msgstr "Add Content"
+msgstr "Add Widget"
 
 msgid "storeProduct.details"
 msgstr "Details"
@@ -262,6 +268,9 @@ msgstr "Retail"
 msgid "storeProduct.productTags.worship"
 msgstr "Worship"
 
+msgid "storeProduct.templates.back"
+msgstr "Back to all Templates"
+
 msgid "storeProduct.templates.blank"
 msgstr "Blank"
 
@@ -270,6 +279,9 @@ msgstr "Can’t find what you’re looking for?"
 
 msgid "storeProduct.templates.search"
 msgstr "Search for Templates"
+
+msgid "storeProduct.templates.start"
+msgstr "Start with this Template"
 
 msgid "storeProduct.templates.suggest"
 msgstr "Suggest a Template!"

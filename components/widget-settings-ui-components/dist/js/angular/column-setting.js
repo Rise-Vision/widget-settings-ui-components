@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.alignment", "risevision.common.i18n"])
+  angular.module("risevision.widget.common.column-setting", ["risevision.common.i18n", "risevision.widget.common.font-setting"])
     .directive("columnSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
@@ -12,25 +12,25 @@
         template: $templateCache.get("_angular/column-setting/column-setting.html"),
         transclude: false,
         link: function($scope) {
-
-          var defaultNumberSettings = {
-            type: "int",
-            align: "left",
+          var defaultSettings = {
+            fontStyle: {
+              font: {
+                "family":"verdana,geneva,sans-serif",
+                "type":"standard",
+                "url":""
+              },
+              size: "18px",
+              customSize: "",
+              align: "left",
+              bold: false,
+              italic: false,
+              underline: false,
+              forecolor: "black",
+              backcolor: "transparent"
+            },
+            header: "",
             width: 100,
-            decimals: 0,
-            sign: "none",
             colorCondition: "none"
-          };
-          var defaultStringSettings = {
-            type: "string",
-            align: "left",
-            width: 100
-          };
-          var defaultDateSettings = {
-            type: "date",
-            align: "left",
-            width: 100,
-            date: "medium"
           };
 
           $scope.defaults = function(obj) {
@@ -48,31 +48,20 @@
             return obj;
           };
 
-          $scope.$watch("column", function(column) {
-            var defaultSetting;
-
-            if (typeof column.type !== "undefined") {
-              switch (column.type) {
-                case "int":
-                case "number":
-                  defaultSetting = defaultNumberSettings;
-                  break;
-                case "string":
-                case "text":
-                  defaultSetting = defaultStringSettings;
-                  break;
-                case "date":
-                  defaultSetting = defaultDateSettings;
-                  break;
-                default:
-                  defaultSetting = defaultStringSettings;
+          $scope.$watch("column.numeric", function(value) {
+            if (typeof value !== "undefined" && value !== "") {
+              if (value) {
+                defaultSettings.type = "int";
               }
-
-              $scope.defaults(column, defaultSetting);
+              else {
+                defaultSettings.type = "string";
+              }
             }
             else {
-              $scope.defaults(column, defaultStringSettings);
+              defaultSettings.type = "string";
             }
+
+            $scope.defaults($scope.column, defaultSettings);
           });
 
           $scope.remove = function() {
@@ -99,84 +88,53 @@ module.run(["$templateCache", function($templateCache) {
     "  </div>\n" +
     "  <div ng-class=\"{'panel-collapse':true, collapse:true, in:collapse}\">\n" +
     "    <div class=\"panel-body\">\n" +
-    "     <!-- header -->\n" +
+    "\n" +
+    "      <!-- Numeric data column -->\n" +
+    "      <div class=\"checkbox\">\n" +
+    "        <label>\n" +
+    "          <input type=\"checkbox\" ng-model=\"column.numeric\">{{'column.numeric' | translate}}\n" +
+    "        </label>\n" +
+    "        <span class=\"text-danger\" style=\"float:right\">\n" +
+    "          {{'column.note' | translate}}\n" +
+    "        </span>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <font-setting font-data=\"column.fontStyle\">\n" +
+    "      </font-setting>\n" +
+    "\n" +
     "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-3\">\n" +
+    "\n" +
+    "        <!-- Header Text -->\n" +
+    "        <div class=\"col-sm-6 col-xs-12\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-header-text\">\n" +
     "              {{'column.header-text.label' | translate}}\n" +
     "            </label>\n" +
-    "            <input id=\"column-header-text\" type=\"text\" ng-model=\"column.headerText\" class=\"form-control\" />\n" +
+    "            <input type=\"text\" ng-model=\"column.headerText\" class=\"form-control\">\n" +
     "          </div>\n" +
     "        </div>\n" +
-    "      </div>\n" +
-    "      <!-- width -->\n" +
-    "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-3\">\n" +
+    "\n" +
+    "        <!-- Width -->\n" +
+    "        <div class=\"col-sm-3 col-xs-12\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-width\">\n" +
     "              {{'column.width' | translate}}\n" +
     "            </label>\n" +
     "            <div class=\"input-group\">\n" +
-    "              <input id=\"column-width\" type=\"number\" ng-model=\"column.width\" class=\"form-control\" />\n" +
+    "              <input type=\"number\" ng-model=\"column.width\" class=\"form-control\">\n" +
     "              <span class=\"input-group-addon\">{{'common.units.pixels' | translate}}</span>\n" +
     "            </div>\n" +
     "          </div>\n" +
     "        </div>\n" +
-    "      </div>\n" +
-    "      <!-- align -->\n" +
-    "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-3\">\n" +
-    "          <div class=\"form-group\">\n" +
-    "            <label>\n" +
-    "              {{'column.alignment.label' | translate}}\n" +
-    "            </label> <br/>\n" +
-    "            <alignment align=\"column.align\"></alignment>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
-    "      <!-- decimal -->\n" +
-    "      <div class=\"row\" ng-if=\"column.type === 'int' || column.type === 'number'\">\n" +
-    "        <div class=\"col-md-3\">\n" +
-    "          <div class=\"form-group\">\n" +
-    "            <label for=\"column-decimals\">\n" +
-    "              {{'column.decimals.label' | translate}}\n" +
-    "            </label>\n" +
-    "            <select id=\"column-decimals\" ng-model=\"column.decimals\" class=\"form-control\">\n" +
-    "              <option value=\"0\">0</option>\n" +
-    "              <option value=\"1\">1</option>\n" +
-    "              <option value=\"2\">2</option>\n" +
-    "              <option value=\"3\">3</option>\n" +
-    "              <option value=\"4\">4</option>\n" +
-    "            </select>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
-    "      <!-- sign -->\n" +
-    "      <div class=\"row\" ng-if=\"column.type === 'int' || column.type === 'number'\">\n" +
-    "        <div class=\"col-md-3\">\n" +
-    "          <div class=\"form-group\">\n" +
-    "            <label for=\"column-sign\">\n" +
-    "              {{'column.sign.label' | translate}}\n" +
-    "            </label>\n" +
-    "            <select id=\"column-sign\" ng-model=\"column.sign\" class=\"form-control\">\n" +
-    "              <option value=\"none\">{{'column.sign.none' | translate}}</option>\n" +
-    "              <option value=\"neg\">-</option>\n" +
-    "              <option value=\"pos-neg\">+/-</option>\n" +
-    "              <option value=\"bracket\">()</option>\n" +
-    "              <option value=\"arrow\">{{'column.sign.arrow' | translate}}</option>\n" +
-    "            </select>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
-    "      <!-- color-condition -->\n" +
-    "      <div class=\"row\" ng-if=\"column.type === 'int' || column.type === 'number'\">\n" +
-    "        <div class=\"col-md-3\">\n" +
+    "\n" +
+    "        <!-- Color Conditions -->\n" +
+    "        <div class=\"col-sm-3 col-xs-12\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-color-condition\">\n" +
-    "              {{'column.color-condition.label' | translate}}\n" +
-    "            </label>\n" +
-    "            <select id=\"column-color-condition\" ng-model=\"column.colorCondition\" class=\"form-control\">\n" +
+    "                {{'column.color-condition.label' | translate}}\n" +
+    "              </label>\n" +
+    "            <select class=\"form-control\" ng-model=\"column.colorCondition\"\n" +
+    "              ng-disabled=\"!column.numeric\">\n" +
     "              <option value=\"none\">{{'column.color-condition.none' | translate}}</option>\n" +
     "              <option value=\"change-up\">{{'column.color-condition.change-up' | translate}}</option>\n" +
     "              <option value=\"change-down\">{{'column.color-condition.change-down' | translate}}</option>\n" +
@@ -185,23 +143,9 @@ module.run(["$templateCache", function($templateCache) {
     "            </select>\n" +
     "          </div>\n" +
     "        </div>\n" +
+    "\n" +
     "      </div>\n" +
-    "      <!-- date -->\n" +
-    "      <div class=\"row\" ng-if=\"column.type === 'date' || column.type === 'datetime'\">\n" +
-    "        <div class=\"col-md-3\">\n" +
-    "          <div class=\"form-group\">\n" +
-    "            <label for=\"column-date\">\n" +
-    "              {{'column.date.label' | translate}}\n" +
-    "            </label>\n" +
-    "            <select id=\"column-date\" ng-model=\"column.date\" class=\"form-control\">\n" +
-    "              <option value=\"short\">{{'column.date.short' | translate}}</option>\n" +
-    "              <option value=\"medium\">{{'column.date.medium' | translate}}</option>\n" +
-    "              <option value=\"long\">{{'column.date.long' | translate}}</option>\n" +
-    "            </select>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
-    "      <!-- END options -->\n" +
+    "\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +

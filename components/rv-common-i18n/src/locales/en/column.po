@@ -17,7 +17,7 @@ msgid "color-condition.change-up"
 msgstr "Change up green change down red"
 
 msgid "color-condition.label"
-msgstr "Color Condition"
+msgstr "Color Conditions"
 
 msgid "color-condition.none"
 msgstr "None"
@@ -49,8 +49,14 @@ msgstr "Header Text"
 msgid "heading"
 msgstr "Columns"
 
+msgid "note"
+msgstr "Note: Column formatting overrides Body Format options (above)"
+
+msgid "numeric"
+msgstr "Numeric data column"
+
 msgid "select-title"
-msgstr "Select Columns To Format"
+msgstr "Per Column Format"
 
 msgid "sign.arrow"
 msgstr "Arrow"

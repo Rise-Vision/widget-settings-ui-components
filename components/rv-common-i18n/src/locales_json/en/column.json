@@ -8,7 +8,7 @@
   "color-condition": {
     "change-down": "Change down green change up red",
     "change-up": "Change up green change down red",
-    "label": "Color Condition",
+    "label": "Color Conditions",
     "none": "None",
     "value-negative": "Positive value red negative green",
     "value-positive": "Positive value green negative red"
@@ -26,7 +26,9 @@
     "label": "Header Text"
   },
   "heading": "Columns",
-  "select-title": "Select Columns To Format",
+  "note": "Note: Column formatting overrides Body Format options (above)",
+  "numeric": "Numeric data column",
+  "select-title": "Per Column Format",
   "sign": {
     "arrow": "Arrow",
     "label": "Sign",

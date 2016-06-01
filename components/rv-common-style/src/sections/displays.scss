@@ -1,3 +1,6 @@
+/* Display Settings
+   ========================================================================== */
+
 .reboot-time {
   margin-bottom: 0;
   table.time-picker {
@@ -14,35 +17,12 @@
   }
 }
 
-.offline {
-  &:before {
-    color:#e74c3c;
+.download-buttons {
+  img {
+    height: 32px;
   }
-}
-.notinstalled {
-  &:before {
-    color:#444;
-  }
-}
-.online {
-  &:before {
-    color:$rise-green;
-  }
-}
-
-.display-name {
-  font-weight: 500;
-  span {
-    max-width: 240px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
-
-.display-address {
-  span {
-    max-width: 320px;
-    display: block;
+  .row:nth-child(2) {
+    margin-top: 6px;
   }
 }
 
@@ -64,11 +44,42 @@
   }
 }
 
-.download-buttons {
-  img {
-    height: 32px;
+/* Display Status Circle
+   ========================================================================== */
+
+.offline {
+  &:before {
+    color:#e74c3c;
   }
-  .row:nth-child(2) {
-    margin-top: 6px;
+}
+.notinstalled {
+  &:before {
+    color:#444;
+  }
+}
+.online {
+  &:before {
+    color:$rise-green;
+  }
+}
+
+/* Display Table
+   ========================================================================== */
+
+.display-name {
+  span {
+    @extend .ellipsis;
+    max-width: 240px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.display-address {
+  span {
+    @extend .ellipsis;
+    max-width: 320px;
+    display: inline-block;
+    vertical-align: middle;
   }
 }

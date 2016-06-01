@@ -1,56 +1,69 @@
+/* Deprecate table-2
+   ========================================================================== */
 .table-2 {
+  @extend .table;
+}
+
+/* Official table style
+   ========================================================================== */
+.table {
   width: 100%;
+  margin-top: 0;
   > thead > tr > th {
+
     border-bottom: 1px solid $light-gray;
     color: $gray;
-    padding: 10px;
+    padding: 12px;
     white-space: nowrap;
     a {
       color: $gray;
+      display: inline-block;
     }
   }  
   > tbody > tr > td {
+    border-top: none;
     border-bottom: 1px solid $lighter-gray;
     color: $gray;
-    padding: 10px;
+    padding: 12px;
     vertical-align: top;
     strong {
       font-weight: 500;
     }
     a {
       color: $gray;
-      display: block;
+      display: inline-block;
+    }
+    &:first-child {
+      font-weight: 500;
+    }
+    span {
+      white-space: nowrap;
     }
   }
   > tbody > tr {
     &:last-child td {
       border-bottom: none;
     }
-  }
-  > tbody > tr:hover {
-    &.clickable-row {
-      cursor: pointer;
-      td {color: $rise-blue;}    
-    }
-    > td a {
-      color: $rise-blue;
-    }
-    > td a.non-clickable-file {
-      color: $gray;
-    }
-  }
-  > tbody > tr:hover {
-    &.text-clickable-row {
-      cursor: auto;
-      td {color: $rise-blue;}    
-    }
-    > td a {
-      cursor: pointer;
-      display: inline-block;
-      color: $rise-blue;
-    }
-    > td a.non-clickable-file {
-      color: $gray;
+    &:hover {
+      > td a {
+        cursor: pointer;
+        display: inline-block;
+        color: $rise-blue;
+      }
+      > td a.non-clickable-file {
+        color: $gray;
+      }
+      &.clickable-row {
+        cursor: pointer;
+        td {color: $rise-blue;}    
+      }
+      &.text-clickable-row {
+        cursor: auto;
+        td {color: $rise-blue;}    
+      }
+      > td a.non-clickable-file {
+        color: $gray;
+      }
     }
   }
 }
@@ -203,7 +216,9 @@
 
 .table-2 {
   > tbody > tr > td:first-child {
-      input {display: inline-block;}
+      input {
+        display: inline-block;
+      }
       span a {
         display: inline-block;
         vertical-align: middle;
@@ -211,12 +226,11 @@
       }
     }
   }
-
-tr.blocked-file {
-  >td {
-  background: #f7f7f7;
-  cursor: pointer;
-  position: relative;
+  tr.blocked-file {
+    >td {
+    background: #f7f7f7;
+    cursor: pointer;
+    position: relative;
     .callout {
       top:45px;
       left: 0;
@@ -224,8 +238,70 @@ tr.blocked-file {
   }
 }
 
-  tr {
-    td {
-      a {color: $gray}
+/* DEPRECATE */
+/* Presentation Selector */
+
+.presentation-selector {
+  margin-top: 20px;
+
+  /* Styled the same as navbar-left. */
+  .selector-header {
+    /* Positioning */
+    float: left;
+
+    /* Display & Box Model */
+    width: 100%;
+    padding: 5px 15px 5px 0;
+    border-bottom: $light-border;
+    margin: 0;
+
+    li {
+      /* Positioning */
+      float: left;
+
+      /* Display & Box Model */
+      display: block;
+      margin-left: 5px;
+    }
+
+    a {
+      /* Display & Box Model */
+      display: block;
+      padding: 3px 10px;
+      border: 1px solid #fff;
+
+      /* Visual */
+      font-weight: bold;
+      line-height: 32px;
+      color: $gray;
+    }
+
+    a:hover,
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
+      /* Display & Box Model */
+      border: 1px solid $light-gray;
+
+      /* Visual */
+      color: $rise-blue;
+      background-color: $lighter-gray;
+    }
+
+    .close-button {
+      float: right;
+    }
+
+    .close {
+      line-height: 32px;
     }
   }
+
+  .search {
+    margin-bottom: 20px;
+  }
+
+  .panel-body {
+    clear: both;
+  }
+}

@@ -194,7 +194,9 @@
       "status": "Status"
     },
     "no-results": "Your search didn't return any results",
-    "searchNotification": "Search results may include Displays that belong to your sub-companies."
+    "noDisplays": "No Displays",
+    "searchNotification": "Search results may include Displays that belong to your sub-companies.",
+    "viewAll": "View All Displays"
   },
   "title": "Displays"
 }

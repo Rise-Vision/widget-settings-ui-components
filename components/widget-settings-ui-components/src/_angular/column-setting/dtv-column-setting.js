@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.column-setting", ["risevision.widget.common.alignment", "risevision.common.i18n"])
+  angular.module("risevision.widget.common.column-setting", ["risevision.common.i18n", "risevision.widget.common.font-setting"])
     .directive("columnSetting", ["$templateCache", function ($templateCache) {
       return {
         restrict: "E",
@@ -12,25 +12,25 @@
         template: $templateCache.get("_angular/column-setting/column-setting.html"),
         transclude: false,
         link: function($scope) {
-
-          var defaultNumberSettings = {
-            type: "int",
-            align: "left",
+          var defaultSettings = {
+            fontStyle: {
+              font: {
+                "family":"verdana,geneva,sans-serif",
+                "type":"standard",
+                "url":""
+              },
+              size: "18px",
+              customSize: "",
+              align: "left",
+              bold: false,
+              italic: false,
+              underline: false,
+              forecolor: "black",
+              backcolor: "transparent"
+            },
+            header: "",
             width: 100,
-            decimals: 0,
-            sign: "none",
             colorCondition: "none"
-          };
-          var defaultStringSettings = {
-            type: "string",
-            align: "left",
-            width: 100
-          };
-          var defaultDateSettings = {
-            type: "date",
-            align: "left",
-            width: 100,
-            date: "medium"
           };
 
           $scope.defaults = function(obj) {
@@ -48,31 +48,20 @@
             return obj;
           };
 
-          $scope.$watch("column", function(column) {
-            var defaultSetting;
-
-            if (typeof column.type !== "undefined") {
-              switch (column.type) {
-                case "int":
-                case "number":
-                  defaultSetting = defaultNumberSettings;
-                  break;
-                case "string":
-                case "text":
-                  defaultSetting = defaultStringSettings;
-                  break;
-                case "date":
-                  defaultSetting = defaultDateSettings;
-                  break;
-                default:
-                  defaultSetting = defaultStringSettings;
+          $scope.$watch("column.numeric", function(value) {
+            if (typeof value !== "undefined" && value !== "") {
+              if (value) {
+                defaultSettings.type = "int";
               }
-
-              $scope.defaults(column, defaultSetting);
+              else {
+                defaultSettings.type = "string";
+              }
             }
             else {
-              $scope.defaults(column, defaultStringSettings);
+              defaultSettings.type = "string";
             }
+
+            $scope.defaults($scope.column, defaultSettings);
           });
 
           $scope.remove = function() {

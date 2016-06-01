@@ -1,3 +1,9 @@
+msgid "format.body.label"
+msgstr "Body Format"
+
+msgid "format.body.text"
+msgstr "Data Sample Text"
+
 msgid "format.evenRow"
 msgstr "Even Row Color"
 
@@ -12,6 +18,9 @@ msgstr "Format"
 
 msgid "format.oddRow"
 msgstr "Odd Row Color"
+
+msgid "format.rowHeight"
+msgstr "Row Height"
 
 msgid "format.spreadsheet"
 msgstr "Spreadsheet Format"

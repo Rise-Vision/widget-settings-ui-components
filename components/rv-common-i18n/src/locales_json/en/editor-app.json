@@ -16,7 +16,7 @@
     "removePlaceholder": "Remove Placeholder",
     "removePlaceholderWarning": "Are you sure you want to remove this Placeholder from the Presentation?",
     "removePlaylistItem": "Remove Item",
-    "removePlaylistItemWarning": "Are you sure you want to remove this Content from the Playlist?",
+    "removePlaylistItemWarning": "Are you sure you want to remove this Widget from the Playlist?",
     "revised": "Revised",
     "saved": "Saved",
     "unsavedTitle": "Unsaved Changes",
@@ -49,11 +49,13 @@
       "status": "Status"
     },
     "no-results": "Your search didn't return any results",
-    "title": "Presentations"
+    "noPresentations": "No Presentations",
+    "title": "Presentations",
+    "viewAll": "View All Presentations"
   },
   "playlistItem": {
-    "add": "Add Content",
-    "content": "Content",
+    "add": "Add Widget",
+    "content": "Widget",
     "duration": "Duration",
     "legacyWarningPart1": "This is a Gadget and it is not supported in this Editor. To configure a Gadget please use the",
     "legacyWarningPart2": "previous version",
@@ -107,8 +109,8 @@
   "storeProduct": {
     "add": "Add",
     "content": {
-      "search": "Search for Content",
-      "title": "Add Content"
+      "search": "Search for Widget",
+      "title": "Add Widget"
     },
     "details": "Details",
     "productTags": {
@@ -123,9 +125,11 @@
       "worship": "Worship"
     },
     "templates": {
+      "back": "Back to all Templates",
       "blank": "Blank",
       "cantFind": "Can’t find what you’re looking for?",
       "search": "Search for Templates",
+      "start": "Start with this Template",
       "suggest": "Suggest a Template!",
       "title": "Add a New Presentation"
     }

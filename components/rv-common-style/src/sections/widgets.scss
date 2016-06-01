@@ -123,5 +123,14 @@
       color: $rise-blue;
     }
   }
+}
 
+.date-range {
+  * {
+    display: inline-block;
+    margin-right: 4px;
+  }
+  .form-control {
+    width: 80px;
+  }
 }

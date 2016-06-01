@@ -1,5 +1,9 @@
 {
   "format": {
+    "body": {
+      "label": "Body Format",
+      "text": "Data Sample Text"
+    },
     "evenRow": "Even Row Color",
     "header": {
       "label": "Header Format",
@@ -7,6 +11,7 @@
     },
     "heading": "Format",
     "oddRow": "Odd Row Color",
+    "rowHeight": "Row Height",
     "spreadsheet": "Spreadsheet Format"
   },
   "settings": "Google Spreadsheet Settings",

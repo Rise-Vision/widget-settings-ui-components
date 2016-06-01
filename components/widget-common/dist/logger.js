@@ -7,7 +7,8 @@ RiseVision.Common.LoggerUtils = (function() {
   "use strict";
 
    var displayId = "",
-    companyId = "";
+     companyId = "",
+     version = null;
 
   /*
    *  Private Methods
@@ -27,6 +28,10 @@ RiseVision.Common.LoggerUtils = (function() {
 
       json.company_id = companyId;
       json.display_id = displayId;
+
+      if (version) {
+        json.version = version;
+      }
 
       cb(json);
     }
@@ -111,11 +116,16 @@ RiseVision.Common.LoggerUtils = (function() {
     displayId = display;
   }
 
+  function setVersion(value) {
+    version = value;
+  }
+
   return {
     "getInsertData": getInsertData,
     "getFileFormat": getFileFormat,
     "logEvent": logEvent,
-    "setIds": setIds
+    "setIds": setIds,
+    "setVersion": setVersion
   };
 })();
 

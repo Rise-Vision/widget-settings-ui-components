@@ -25,6 +25,8 @@
 .close {
   font-size: 14px;
   margin-top: 0px;
+  height: 55px;
+  width: 55px;
 }
 
 .modal-header {
@@ -32,10 +34,6 @@
   background: $lighter-gray;
   overflow: hidden;
   border-radius: 4px 4px 0 0;
-  .close {
-    height: 55px;
-    width: 55px;
-  }
 }
 
 .modal-title {

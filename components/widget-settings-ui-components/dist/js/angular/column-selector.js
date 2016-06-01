@@ -101,7 +101,6 @@ module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("_angular/column-selector/column-selector.html",
     "<div class=\"section\">\n" +
-    "	<h5>{{'column.heading' | translate}}</h5>\n" +
     "	<div class=\"row\">\n" +
     "		<div class=\"col-md-12\">\n" +
     "			<div class=\"form-group\">\n" +
