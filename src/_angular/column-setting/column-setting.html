@@ -35,7 +35,7 @@
         </div>
 
         <!-- Width -->
-        <div class="col-sm-6 col-xs-12">
+        <div class="col-sm-3 col-xs-12">
           <div class="form-group">
             <label for="column-width">
               {{'column.width' | translate}}
@@ -47,46 +47,8 @@
           </div>
         </div>
 
-      </div>
-
-      <div class="row">
-
-        <!-- Decimals -->
-        <div class="col-sm-4 col-xs-12">
-          <div class="form-group">
-            <label for="column-decimals">
-              {{'column.decimals.label' | translate}}
-            </label>
-            <select class="form-control" ng-model="column.decimals"
-              ng-disabled="!column.numeric">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Sign -->
-        <div class="col-sm-4 col-xs-12">
-          <div class="form-group">
-            <label for="column-sign">
-              {{'column.sign.label' | translate}}
-            </label>
-            <select class="form-control" ng-model="column.sign"
-              ng-disabled="!column.numeric">
-              <option value="none">{{'column.sign.none' | translate}}</option>
-              <option value="neg">-</option>
-              <option value="pos-neg">+/-</option>
-              <option value="bracket">()</option>
-              <option value="arrow">{{'column.sign.arrow' | translate}}</option>
-            </select>
-          </div>
-        </div>
-
         <!-- Color Conditions -->
-        <div class="col-sm-4 col-xs-12">
+        <div class="col-sm-3 col-xs-12">
           <div class="form-group">
             <label for="column-color-condition">
                 {{'column.color-condition.label' | translate}}
@@ -103,6 +65,7 @@
         </div>
 
       </div>
+
     </div>
   </div>
 </div>

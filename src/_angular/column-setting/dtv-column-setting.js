@@ -28,9 +28,8 @@
               forecolor: "black",
               backcolor: "transparent"
             },
+            header: "",
             width: 100,
-            decimals: 0,
-            sign: "none",
             colorCondition: "none"
           };
 
