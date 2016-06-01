@@ -29,8 +29,6 @@
               backcolor: "transparent"
             },
             width: 100,
-            decimals: 0,
-            sign: "none",
             colorCondition: "none"
           };
 
@@ -116,7 +114,7 @@ module.run(["$templateCache", function($templateCache) {
     "        </div>\n" +
     "\n" +
     "        <!-- Width -->\n" +
-    "        <div class=\"col-sm-6 col-xs-12\">\n" +
+    "        <div class=\"col-sm-3 col-xs-12\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-width\">\n" +
     "              {{'column.width' | translate}}\n" +
@@ -128,46 +126,8 @@ module.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "        </div>\n" +
     "\n" +
-    "      </div>\n" +
-    "\n" +
-    "      <div class=\"row\">\n" +
-    "\n" +
-    "        <!-- Decimals -->\n" +
-    "        <div class=\"col-sm-4 col-xs-12\">\n" +
-    "          <div class=\"form-group\">\n" +
-    "            <label for=\"column-decimals\">\n" +
-    "              {{'column.decimals.label' | translate}}\n" +
-    "            </label>\n" +
-    "            <select class=\"form-control\" ng-model=\"column.decimals\"\n" +
-    "              ng-disabled=\"!column.numeric\">\n" +
-    "              <option value=\"0\">0</option>\n" +
-    "              <option value=\"1\">1</option>\n" +
-    "              <option value=\"2\">2</option>\n" +
-    "              <option value=\"3\">3</option>\n" +
-    "              <option value=\"4\">4</option>\n" +
-    "            </select>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "\n" +
-    "        <!-- Sign -->\n" +
-    "        <div class=\"col-sm-4 col-xs-12\">\n" +
-    "          <div class=\"form-group\">\n" +
-    "            <label for=\"column-sign\">\n" +
-    "              {{'column.sign.label' | translate}}\n" +
-    "            </label>\n" +
-    "            <select class=\"form-control\" ng-model=\"column.sign\"\n" +
-    "              ng-disabled=\"!column.numeric\">\n" +
-    "              <option value=\"none\">{{'column.sign.none' | translate}}</option>\n" +
-    "              <option value=\"neg\">-</option>\n" +
-    "              <option value=\"pos-neg\">+/-</option>\n" +
-    "              <option value=\"bracket\">()</option>\n" +
-    "              <option value=\"arrow\">{{'column.sign.arrow' | translate}}</option>\n" +
-    "            </select>\n" +
-    "          </div>\n" +
-    "        </div>\n" +
-    "\n" +
     "        <!-- Color Conditions -->\n" +
-    "        <div class=\"col-sm-4 col-xs-12\">\n" +
+    "        <div class=\"col-sm-3 col-xs-12\">\n" +
     "          <div class=\"form-group\">\n" +
     "            <label for=\"column-color-condition\">\n" +
     "                {{'column.color-condition.label' | translate}}\n" +
@@ -184,6 +144,7 @@ module.run(["$templateCache", function($templateCache) {
     "        </div>\n" +
     "\n" +
     "      </div>\n" +
+    "\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +

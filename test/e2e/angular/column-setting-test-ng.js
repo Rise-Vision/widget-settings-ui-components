@@ -32,14 +32,6 @@
         expect(element(by.css("font-setting")).isPresent()).to.eventually.be.true;
       });
 
-      it("Should disable Decimals", function () {
-        expect(element(by.model("column.decimals")).isEnabled()).to.eventually.be.false;
-      });
-
-      it("Should disable Sign", function () {
-        expect(element(by.model("column.sign")).isEnabled()).to.eventually.be.false;
-      });
-
       it("Should disable Color Conditions", function () {
         expect(element(by.model("column.colorCondition")).isEnabled()).to.eventually.be.false;
       });
@@ -48,14 +40,6 @@
     describe("Defaults", function() {
       it("Should set Width", function() {
         expect(element(by.model("column.width")).getAttribute("value")).to.eventually.equal("100");
-      });
-
-      it("Should set Decimals", function() {
-        expect(element(by.model("column.decimals")).getAttribute("value")).to.eventually.equal("0");
-      });
-
-      it("Should set Sign", function() {
-        expect(element(by.model("column.sign")).getAttribute("value")).to.eventually.equal("none");
       });
 
       it("Should set Color Conditions", function() {
@@ -85,20 +69,6 @@
     });
 
     describe("Enabling", function() {
-      it("Should enable Decimals", function () {
-        element(by.css(".panel a.panel-heading.collapsed")).click();
-        element(by.model("column.numeric")).click();
-
-        expect(element(by.model("column.decimals")).isEnabled()).to.eventually.be.true;
-      });
-
-      it("Should enable Sign", function () {
-        element(by.css(".panel a.panel-heading.collapsed")).click();
-        element(by.model("column.numeric")).click();
-
-        expect(element(by.model("column.sign")).isEnabled()).to.eventually.be.true;
-      });
-
       it("Should enable Color Conditions", function () {
         element(by.css(".panel a.panel-heading.collapsed")).click();
         element(by.model("column.numeric")).click();

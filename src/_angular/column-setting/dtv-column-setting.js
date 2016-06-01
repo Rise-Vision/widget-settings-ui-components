@@ -29,8 +29,6 @@
               backcolor: "transparent"
             },
             width: 100,
-            decimals: 0,
-            sign: "none",
             colorCondition: "none"
           };
 
