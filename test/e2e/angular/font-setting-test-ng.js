@@ -29,7 +29,7 @@
       describe("Font Family", function() {
         it("should load all fonts", function() {
           element(by.css("#font1  .mce-btn[aria-label='Font Family']")).click();
-          element.all(by.css("#mceu_39-body div")).then(function(elements) {
+          element.all(by.css("#mceu_42-body div")).then(function(elements) {
             expect(elements.length).to.equal(746);
           });
         });
@@ -37,7 +37,7 @@
 
         it("should show 'Use Custom Font' first", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          expect(element(by.css("#mceu_40-text")).getText()).to.eventually.equal("Use Custom Font");
+          expect(element(by.css("#mceu_43-text")).getText()).to.eventually.equal("Use Custom Font");
         });
 
         it("should show font family", function() {
@@ -90,6 +90,24 @@
 
          it("should set correct alignment for preview text", function() {
           expect(element(by.css("#font1 .text-container")).getCssValue("text-align")).to.eventually.equal("left");
+        });
+      });
+
+      describe("Vertical Alignment", function() {
+        it("should show align top", function() {
+          expect(element(by.css("#font1 .mce-btn[aria-label='Align Top']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should show align middle", function() {
+          expect(element(by.css("#font1 .mce-btn[aria-label='Align Middle']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should show align bottom", function() {
+          expect(element(by.css("#font1 .mce-btn[aria-label='Align Bottom']")).isDisplayed()).to.eventually.be.true;
+        });
+
+        it("should set vertical alignment to align middle", function() {
+          expect(element(by.css("#font1 .mce-active[aria-label='Align Middle']")).isDisplayed()).to.eventually.be.true;
         });
       });
 
@@ -168,7 +186,7 @@
       describe("Font Family", function() {
         it("should update font family for preview text", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_41-text")).click();
+          element(by.css("#mceu_44-text")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'andale mono', monospace");
         });
@@ -177,7 +195,7 @@
       describe("Font Sizes", function() {
         it("should update font size for preview text", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Sizes']")).click();
-          element(by.css("#mceu_41-text")).click();
+          element(by.css("#mceu_44-text")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-size")).to.eventually.equal("8px");
         });
@@ -191,17 +209,26 @@
         });
       });
 
+      describe("Vertical Alignment", function() {
+        it("should toggle button states", function() {
+          element(by.css("#font1 .mce-btn[aria-label='Align Bottom']")).click();
+
+          expect(element(by.css("#font1 .mce-active[aria-label='Align Bottom']")).isDisplayed()).to.eventually.be.true;
+          expect(element(by.css("#font1 .mce-active[aria-label='Align Middle']")).isPresent()).to.eventually.be.false;
+        });
+      });
+
       describe("Text Color", function() {
         it("should update color for preview text", function() {
           element(by.css("#font1 .mce-colorbutton[aria-label='Text color'] .mce-open")).click();
-          element(by.css("#mceu_39-16")).click();
+          element(by.css("#mceu_42-16")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("color")).to.eventually.equal("rgba(255, 0, 0, 1)");
         });
 
         it("should remove color for preview text", function() {
           element(by.css("#font1 .mce-colorbutton[aria-label='Text color'] .mce-open")).click();
-          element(by.css("#mceu_39-39")).click();
+          element(by.css("#mceu_42-0")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("color")).to.eventually.equal("rgba(0, 0, 0, 1)");
         });
@@ -210,14 +237,14 @@
       describe("Background Color", function() {
         it("should update background color for preview text", function() {
           element(by.css("#font1 .mce-colorbutton[aria-label='Background color'] .mce-open")).click();
-          element(by.css("#mceu_39-16")).click();
+          element(by.css("#mceu_42-16")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("background-color")).to.eventually.equal("rgba(255, 0, 0, 1)");
         });
 
         it("should remove color for preview text", function() {
           element(by.css("#font1 .mce-colorbutton[aria-label='Background color'] .mce-open")).click();
-          element(by.css("#mceu_39-39")).click();
+          element(by.css("#mceu_42-39")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("background-color")).to.eventually.equal("rgba(0, 0, 0, 0)");
         });
@@ -250,14 +277,14 @@
       describe("Google Font", function() {
         it("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_631-text")).click();
+          element(by.css("#mceu_634-text")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("Roboto, sans-serif");
         });
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_691-text")).click();
+          element(by.css("#mceu_694-text")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'Slabo 27px', sans-serif");
         });
@@ -271,7 +298,7 @@
           url = browser.findElement(by.model("url"));
 
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_40-text")).click();
+          element(by.css("#mceu_43-text")).click();
         });
 
         describe("Modal visibility", function() {
@@ -321,7 +348,7 @@
           size = browser.findElement(by.model("customFontSize"));
 
           element(by.css("#font1 .mce-btn[aria-label='Font Sizes']")).click();
-          element(by.css("#mceu_40-text")).click();
+          element(by.css("#mceu_43-text")).click();
         });
 
         describe("Modal visibility", function() {
@@ -370,7 +397,7 @@
 
         it("should load all fonts", function() {
           element(by.css("#font2  .mce-btn[aria-label='Font Family']")).click();
-          element.all(by.css("#mceu_39-body div")).then(function(elements) {
+          element.all(by.css("#mceu_42-body div")).then(function(elements) {
             expect(elements.length).to.equal(746);
           });
         });
@@ -378,7 +405,7 @@
         it("should show 'Use Custom Font' first", function() {
           element(by.css("#font2 .mce-btn[aria-label='Font Family']")).click();
 
-          expect(element(by.css("#mceu_40-text")).getText()).to.eventually.equal("Use Custom Font");
+          expect(element(by.css("#mceu_43-text")).getText()).to.eventually.equal("Use Custom Font");
         });
 
         it("should show font family", function() {
@@ -391,6 +418,18 @@
 
         it("should set correct font family for preview text", function() {
           expect(element(by.css("#font2 .text")).getCssValue("font-family")).to.eventually.equal("verdana, geneva, sans-serif");
+        });
+
+        it("should not show align top", function() {
+          expect(element(by.css("#font2 .mce-btn[aria-label='Align Top']")).isPresent()).to.eventually.be.false;
+        });
+
+        it("should not show align middle", function() {
+          expect(element(by.css("#font2 .mce-btn[aria-label='Align Middle']")).isPresent()).to.eventually.be.false;
+        });
+
+        it("should not show align bottom", function() {
+          expect(element(by.css("#font2 .mce-btn[aria-label='Align Bottom']")).isPresent()).to.eventually.be.false;
         });
       });
 
