@@ -10,6 +10,18 @@ msgstr "Add Widget by URL"
 msgid "addWidget.url"
 msgstr "URL"
 
+msgid "autoSchedule.areYouReady"
+msgstr "Are you ready to add a Display?"
+
+msgid "autoSchedule.congrats"
+msgstr "Congrats!"
+
+msgid "autoSchedule.maybeLater"
+msgstr "Maybe Later"
+
+msgid "autoSchedule.message"
+msgstr "You've saved "{{presentationName}}". Since you're a new user, we've added it to a Schedule."
+
 msgid "details.deleteTitle"
 msgstr "Deleting Presentation"
 
