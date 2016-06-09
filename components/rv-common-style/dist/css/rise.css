@@ -13711,6 +13711,15 @@ body.in-rva-iframe {
 .print-only {
   display: none; }
 
+.navbar-right > li > a.shopping-cart-button {
+  font-size: 24px;
+  display: block;
+  margin-left: 0; }
+  .navbar-right > li > a.shopping-cart-button .fa-shopping-cart {
+    line-height: 33px;
+    display: block;
+    padding: 0 10px; }
+
 /* ==========================================================================
    Products
    ========================================================================== */

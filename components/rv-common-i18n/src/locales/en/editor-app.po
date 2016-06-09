@@ -364,12 +364,21 @@ msgstr "Placeholders"
 msgid "workspace.toolbar.addPlaceholder"
 msgstr "Add Placeholder"
 
+msgid "workspace.toolbar.changeTemplate"
+msgstr "Change Template"
+
 msgid "workspace.toolbar.mode.design"
-msgstr "Design"
+msgstr "View Design"
 
 msgid "workspace.toolbar.mode.html"
-msgstr "HTML"
+msgstr "View HTML"
+
+msgid "workspace.toolbar.or"
+msgstr "or"
 
 msgid "workspace.toolbar.preview"
 msgstr "Preview"
+
+msgid "workspace.toolbar.saveAndPreview"
+msgstr "Save & Preview"
 

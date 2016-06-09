@@ -175,11 +175,14 @@
     },
     "toolbar": {
       "addPlaceholder": "Add Placeholder",
+      "changeTemplate": "Change Template",
       "mode": {
-        "design": "Design",
-        "html": "HTML"
+        "design": "View Design",
+        "html": "View HTML"
       },
-      "preview": "Preview"
+      "or": "or",
+      "preview": "Preview",
+      "saveAndPreview": "Save & Preview"
     }
   }
 }

@@ -12,6 +12,10 @@
     "heading": "Format",
     "oddRow": "Odd Row Color",
     "rowHeight": "Row Height",
+    "separator": {
+      "heading": "Separator",
+      "show": "Show Separator Between Cells"
+    },
     "spreadsheet": "Spreadsheet Format"
   },
   "settings": "Google Spreadsheet Settings",

@@ -16,6 +16,9 @@ msgstr "Back"
 msgid "cancel"
 msgstr "Cancel"
 
+msgid "changesWillBeLost"
+msgstr "Your changes will be lost if you don’t save them."
+
 msgid "close"
 msgstr "Close"
 
@@ -39,6 +42,9 @@ msgstr "Delete Forever"
 
 msgid "discard"
 msgstr "Discard"
+
+msgid "dontSave"
+msgstr "Don't Save"
 
 msgid "edit"
 msgstr "Edit"
@@ -144,6 +150,9 @@ msgstr "Saturday"
 
 msgid "save"
 msgstr "Save"
+
+msgid "saveBeforeLeave"
+msgstr "Do you want to save changes before leaving?"
 
 msgid "saving"
 msgstr "Saving"
