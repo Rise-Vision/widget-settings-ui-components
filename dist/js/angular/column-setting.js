@@ -28,6 +28,7 @@
               forecolor: "black",
               backcolor: "transparent"
             },
+            numeric: false,
             headerText: "",
             width: 100,
             colorCondition: "none"

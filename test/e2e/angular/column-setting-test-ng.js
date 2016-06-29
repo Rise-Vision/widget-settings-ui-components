@@ -38,6 +38,10 @@
     });
 
     describe("Defaults", function() {
+      it("Should set Numeric data column", function() {
+        expect(element(by.model("column.numeric")).isSelected()).to.eventually.equal(false);
+      });
+
       it("Should set Width", function() {
         expect(element(by.model("column.width")).getAttribute("value")).to.eventually.equal("100");
       });
