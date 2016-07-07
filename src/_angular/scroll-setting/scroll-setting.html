@@ -9,7 +9,7 @@
       </select>
     </div>
   </div>
-  <div class="col-md-2" ng-show="scroll.by != 'none'">
+  <div class="col-md-2" ng-show="scroll.by == 'continuous'">
     <div class="form-group">
       <label class="control-label">{{"transition.direction.label" | translate}}</label>
       <select id="scroll-direction" name="scroll-direction" ng-model="scroll.direction" class="form-control">
@@ -28,7 +28,7 @@
       </select>
     </div>
   </div>
-  <div class="col-md-2" ng-show="scroll.by != 'none' && scroll.direction == 'up'">
+  <div class="col-md-2" ng-show="scroll.by != 'none' && scroll.direction != 'left'">
     <div class="form-group">
       <label class="control-label">{{'scroll.pause.label' | translate}}</label>
       <div class="input-group">
@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-2" ng-show="scroll.by != 'none' && scroll.direction == 'up'">
+  <div class="col-md-2" ng-show="scroll.by != 'none' && scroll.direction != 'left'">
     <div class="form-group">
       <label class="control-label">{{'scroll.pud.label' | translate}}</label>
       <span popover="{{'scroll.pud.tooltip' | translate}}" popover-trigger="click"

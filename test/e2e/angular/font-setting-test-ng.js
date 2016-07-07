@@ -30,7 +30,7 @@
         it("should load all fonts", function() {
           element(by.css("#font1  .mce-btn[aria-label='Font Family']")).click();
           element.all(by.css("#mceu_42-body div")).then(function(elements) {
-            expect(elements.length).to.equal(746);
+            expect(elements.length).to.equal(817);
           });
         });
 
@@ -188,7 +188,7 @@
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
           element(by.css("#mceu_44-text")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'andale mono', monospace");
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('\'andale mono\', monospace');
         });
       });
 
@@ -277,14 +277,14 @@
       describe("Google Font", function() {
         it("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_634-text")).click();
+          element(by.css("#mceu_695-text")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("Roboto, sans-serif");
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Roboto, sans-serif');
         });
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_694-text")).click();
+          element(by.css("#mceu_758-text")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'Slabo 27px', sans-serif");
         });
@@ -398,7 +398,7 @@
         it("should load all fonts", function() {
           element(by.css("#font2  .mce-btn[aria-label='Font Family']")).click();
           element.all(by.css("#mceu_42-body div")).then(function(elements) {
-            expect(elements.length).to.equal(746);
+            expect(elements.length).to.equal(817);
           });
         });
 
