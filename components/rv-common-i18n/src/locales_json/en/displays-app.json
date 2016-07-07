@@ -3,7 +3,27 @@
     "new": "Add Display"
   },
   "add": {
-    "error": "Failed to create display!"
+    "download": {
+      "linux32": "Download Ubuntu 14.04 LTS [32-bit]",
+      "linux64": "Download Ubuntu 14.04 LTS [64-bit]",
+      "win32": "Download Windows 10 [32-bit]",
+      "win64": "Download Windows 10 [64-bit]"
+    },
+    "error": "Failed to create display!",
+    "instructions": {
+      "anotherEmail": "Send To Another E-Mail",
+      "emailInfo": "We’ve also emailed these instructions to",
+      "emailPlaceholder": "Enter Email Address",
+      "step1": "1. Install Rise Player on your Media Player",
+      "step2": "2. When prompted, enter this Display ID to complete the installation",
+      "title": "Complete '{{displayName}}' Display by installing Rise Player"
+    },
+    "name": {
+      "name": "Name Your Display",
+      "placeholder": "Display Name"
+    },
+    "next": "Next",
+    "title": "Add a Display"
   },
   "alerts": {
     "acceptTerms": "Please accept Terms and Conditions to enable Alerts",
@@ -120,6 +140,7 @@
       "download": "Download Player",
       "error": "Error:",
       "howto": "How do I show Presentations on my device?",
+      "howtoInstall": "How do I install Rise Player?",
       "reboot": {
         "name": "Reboot Player",
         "success": "Reboot signal sent",
@@ -132,6 +153,10 @@
         "title": "Restarting Display",
         "warning": "The Rise Player on the Display's Computer will restart and the currently Scheduled Content will be interrupted. Do you wish to proceed?"
       }
+    },
+    "email": {
+      "failed": "Failed to send e-mail",
+      "invalid": "Invalid e-mail address"
     },
     "id": "Display Id:",
     "monitor": {

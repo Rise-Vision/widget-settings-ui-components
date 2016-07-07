@@ -1,8 +1,50 @@
 msgid "actions.new"
 msgstr "Add Display"
 
+msgid "add.download.linux32"
+msgstr "Download Ubuntu 14.04 LTS [32-bit]"
+
+msgid "add.download.linux64"
+msgstr "Download Ubuntu 14.04 LTS [64-bit]"
+
+msgid "add.download.win32"
+msgstr "Download Windows 10 [32-bit]"
+
+msgid "add.download.win64"
+msgstr "Download Windows 10 [64-bit]"
+
 msgid "add.error"
 msgstr "Failed to create display!"
+
+msgid "add.instructions.anotherEmail"
+msgstr "Send To Another E-Mail"
+
+msgid "add.instructions.emailInfo"
+msgstr "We’ve also emailed these instructions to"
+
+msgid "add.instructions.emailPlaceholder"
+msgstr "Enter Email Address"
+
+msgid "add.instructions.step1"
+msgstr "1. Install Rise Player on your Media Player"
+
+msgid "add.instructions.step2"
+msgstr "2. When prompted, enter this Display ID to complete the installation"
+
+msgid "add.instructions.title"
+msgstr "Complete '{{displayName}}' Display by installing Rise Player"
+
+msgid "add.name.name"
+msgstr "Name Your Display"
+
+msgid "add.name.placeholder"
+msgstr "Display Name"
+
+msgid "add.next"
+msgstr "Next"
+
+msgid "add.title"
+msgstr "Add a Display"
 
 msgid "alerts.acceptTerms"
 msgstr "Please accept Terms and Conditions to enable Alerts"
@@ -265,6 +307,9 @@ msgstr "Error:"
 msgid "fields.controls.howto"
 msgstr "How do I show Presentations on my device?"
 
+msgid "fields.controls.howtoInstall"
+msgstr "How do I install Rise Player?"
+
 msgid "fields.controls.reboot.name"
 msgstr "Reboot Player"
 
@@ -288,6 +333,12 @@ msgstr "Restarting Display"
 
 msgid "fields.controls.restart.warning"
 msgstr "The Rise Player on the Display's Computer will restart and the currently Scheduled Content will be interrupted. Do you wish to proceed?"
+
+msgid "fields.email.failed"
+msgstr "Failed to send e-mail"
+
+msgid "fields.email.invalid"
+msgstr "Invalid e-mail address"
 
 msgid "fields.id"
 msgstr "Display Id:"

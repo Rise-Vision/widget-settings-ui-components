@@ -13,8 +13,9 @@
     "oddRow": "Odd Row Color",
     "rowHeight": "Row Height",
     "separator": {
+      "column": "Show Separator Between Columns",
       "heading": "Separator",
-      "show": "Show Separator Between Cells"
+      "row": "Show Separator Between Rows"
     },
     "spreadsheet": "Spreadsheet Format"
   },

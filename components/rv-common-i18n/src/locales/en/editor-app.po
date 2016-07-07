@@ -86,7 +86,7 @@ msgid "list.actions.new"
 msgstr "New"
 
 msgid "list.empty"
-msgstr "You haven't created any Presentation yet"
+msgstr "You haven't created any Presentations yet"
 
 msgid "list.error"
 msgstr "Failed to load presentation. Please try again later."

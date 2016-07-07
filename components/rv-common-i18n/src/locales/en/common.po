@@ -160,6 +160,9 @@ msgstr "Saving"
 msgid "select"
 msgstr "Select"
 
+msgid "send"
+msgstr "Send"
+
 msgid "sep"
 msgstr "Sep"
 

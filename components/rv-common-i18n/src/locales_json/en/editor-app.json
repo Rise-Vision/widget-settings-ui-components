@@ -43,7 +43,7 @@
       "fromTemplate": "From Template",
       "new": "New"
     },
-    "empty": "You haven't created any Presentation yet",
+    "empty": "You haven't created any Presentations yet",
     "error": "Failed to load presentation. Please try again later.",
     "filter": {
       "filters": "Filters",

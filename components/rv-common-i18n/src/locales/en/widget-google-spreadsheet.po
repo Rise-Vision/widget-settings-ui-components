@@ -22,11 +22,14 @@ msgstr "Odd Row Color"
 msgid "format.rowHeight"
 msgstr "Row Height"
 
+msgid "format.separator.column"
+msgstr "Show Separator Between Columns"
+
 msgid "format.separator.heading"
 msgstr "Separator"
 
-msgid "format.separator.show"
-msgstr "Show Separator Between Cells"
+msgid "format.separator.row"
+msgstr "Show Separator Between Rows"
 
 msgid "format.spreadsheet"
 msgstr "Spreadsheet Format"
