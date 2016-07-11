@@ -64,6 +64,23 @@
       expect(element(by.id("scroll-pud")).isDisplayed()).to.eventually.be.false;
     });
 
+
+    it("Should NOT display direction setting when scroll is set to hide direction and clicked on Continuously", function () {
+      expect(element(by.css("#direction-hidden #scroll-by")).getAttribute("value")).to.eventually.equal("none");
+
+      element(by.cssContainingText('option', 'Continuously')).click();
+
+      expect(element(by.css("#direction-hidden #scroll-direction")).isDisplayed()).to.eventually.be.false;
+    });
+
+    it("Should NOT display direction setting when scroll is set to hide direction and clicked on By Page", function () {
+      expect(element(by.css("#direction-hidden #scroll-by")).getAttribute("value")).to.eventually.equal("none");
+
+      element(by.cssContainingText('option', 'Page')).click();
+
+      expect(element(by.css("#direction-hidden #scroll-direction")).isDisplayed()).to.eventually.be.false;
+    });
+
   });
 
 })();

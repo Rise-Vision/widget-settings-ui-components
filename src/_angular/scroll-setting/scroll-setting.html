@@ -9,7 +9,7 @@
       </select>
     </div>
   </div>
-  <div class="col-md-2" ng-show="scroll.by == 'continuous'">
+  <div class="col-md-2" ng-show="!hideDirection && scroll.by == 'continuous'">
     <div class="form-group">
       <label class="control-label">{{"transition.direction.label" | translate}}</label>
       <select id="scroll-direction" name="scroll-direction" ng-model="scroll.direction" class="form-control">
