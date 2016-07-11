@@ -7,7 +7,8 @@
       return {
         restrict: "E",
         scope: {
-          scroll: "="
+          scroll: "=",
+          hideDirection: "@"
         },
         template: $templateCache.get("_angular/scroll-setting/scroll-setting.html"),
         transclude: false,

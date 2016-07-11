@@ -31,6 +31,7 @@
         <div class="modal-body">
           <form>
             <scroll-setting scroll="settings.additionalParams.scroll"></scroll-setting>
+            <scroll-setting id="direction-hidden" hide-direction="true" scroll="settings2.additionalParams.scroll"></scroll-setting>
           </form>
         </div>
       </div>
@@ -57,6 +58,13 @@
             scroll: {}
           }
         };
+
+        $scope.settings2 = {
+          additionalParams: {
+            scroll: {}
+          }
+        };
+
 
         $scope.getAdditionalParams = function (val, defaultVal) {
           //always return defaultVal for now
