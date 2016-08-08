@@ -30,7 +30,9 @@
         <!-- Start Modal Body-->
         <div class="modal-body">
           <form role="form" name="settingsForm">
-            <column-selector columns="columns" column-names="columnNames" ng-model="columnselector" required></column-selector>
+            <column-selector class="enabled" columns="columns" column-names="columnNames" ng-model="columnselector" required></column-selector>
+
+            <column-selector class="disabled" columns="columns" column-names="columnNames" ng-model="columnselector" ng-disabled="true" required></column-selector>
           </form>
         </div>
       </div>
