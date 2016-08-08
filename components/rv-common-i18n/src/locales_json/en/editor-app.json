@@ -61,6 +61,10 @@
   },
   "playlistItem": {
     "add": "Add Widget",
+    "add-image": "Image",
+    "add-more": "More",
+    "add-text": "Text",
+    "add-video": "Video",
     "content": "Widget",
     "duration": "Duration",
     "legacyWarningPart1": "This is a Gadget and it is not supported in this Editor. To configure a Gadget please use the",

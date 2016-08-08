@@ -1,6 +1,9 @@
 msgid "access-denied"
 msgstr "You don't have access to that action. Please contact your Administrator to give you the access you need."
 
+msgid "add-by-url"
+msgstr "By URL"
+
 msgid "blocked-file"
 msgstr "This file is being requested too many times and is blocked."
 
@@ -91,11 +94,32 @@ msgstr "Select a File"
 msgid "select-multiple-file"
 msgstr "Select one or more Files"
 
+msgid "select-multiple-files-folders"
+msgstr "Select Files and Folders"
+
+msgid "select-multiple-files-folders-images"
+msgstr "Select Images and/or Folders of Images"
+
+msgid "select-multiple-files-folders-videos"
+msgstr "Select Videos and/or Folders of Videos"
+
 msgid "select-single-file"
 msgstr "Select a File"
 
+msgid "select-single-file-images"
+msgstr "Select an Image"
+
+msgid "select-single-file-videos"
+msgstr "Select a Video"
+
 msgid "select-single-folder"
 msgstr "Select a Folder"
+
+msgid "select-single-folder-images"
+msgstr "Select a Folder of Images"
+
+msgid "select-single-folder-videos"
+msgstr "Select a Folder of Videos"
 
 msgid "selected-items"
 msgstr "{{count}} Selected"
@@ -105,18 +129,6 @@ msgstr "Download failed.  Please try again."
 
 msgid "signed-url-verify-company"
 msgstr "The download failed because your account {{username}} does not have access to this company.  Please log in with a different account and try again."
-
-msgid "tag-definition-confirm-delete"
-msgstr "One tag definition is about to be permanently deleted"
-
-msgid "tagging"
-msgstr "Tagging"
-
-msgid "tagging-inactive-subscription"
-msgstr "You cannot modify tags because you don't have an active subscription.  Please purchase a subscription and try again."
-
-msgid "tagging-verify-company"
-msgstr "You cannot modify tags because your account {{username}} doesn't have access to this company.  Please login with a different account and try again."
 
 msgid "title"
 msgstr "Rise Vision Storage"

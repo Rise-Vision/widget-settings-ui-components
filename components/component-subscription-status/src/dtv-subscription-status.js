@@ -2,10 +2,10 @@
   "use strict";
 
   angular.module("risevision.widget.common.subscription-status")
-    .directive("subscriptionStatus", ["$templateCache", "$modal", "subscriptionStatusService",
-    "$document", "$compile", "$rootScope", "STORE_URL", "ACCOUNT_PATH",
-      function ($templateCache, $modal, subscriptionStatusService, $document, $compile, 
-        $rootScope, STORE_URL, ACCOUNT_PATH) {
+    .directive("subscriptionStatus", ["$rootScope", "$templateCache", 
+    "subscriptionStatusService", "STORE_URL", "ACCOUNT_PATH", "IN_RVA_PATH",
+      function ($rootScope, $templateCache, subscriptionStatusService, 
+        STORE_URL, ACCOUNT_PATH, IN_RVA_PATH) {
       return {
         restrict: "AE",
         require: "?ngModel",
@@ -20,15 +20,19 @@
         link: function($scope, elm, attrs, ctrl) {
           $scope.subscriptionStatus = {"status": "N/A", "statusCode": "na", "subscribed": false, "expiry": null};
 
-          var updateStoreAccountUrl = function() {
+          var updateUrls = function() {
             $scope.storeAccountUrl = STORE_URL + ACCOUNT_PATH
                               .replace("companyId", $scope.companyId);
-          };
 
+            $scope.storeUrl = STORE_URL + IN_RVA_PATH
+                .replace("productId", $scope.productId)
+                .replace("companyId", $scope.companyId);
+          };
+          
           $scope.$watch("companyId", function() {
             checkSubscriptionStatus();
             
-            updateStoreAccountUrl();
+            updateUrls();
           });
 
           $rootScope.$on("refreshSubscriptionStatus", function(event, data) {
@@ -60,35 +64,6 @@
               ctrl.$setViewValue(subscriptionStatus);
             });
           }
-
-          $scope.$watch("showStoreModal", function(show) {
-            if (show) {
-              var modalInstance = $modal.open({
-                templateUrl: "store-iframe-template.html",
-                controller: "StoreModalController",
-                size: "lg",
-                resolve: {
-                  productId: function () {
-                    return $scope.productId;
-                  },
-                  companyId: function() {
-                    return $scope.companyId;
-                  }
-                }
-              });
-
-              modalInstance.result.then(function () {
-                checkSubscriptionStatus();
-
-              }, function () {
-                checkSubscriptionStatus();
-
-              })
-              .finally(function() {
-                $scope.showStoreModal = false;
-              });
-            }
-          });
         }
       };
     }])

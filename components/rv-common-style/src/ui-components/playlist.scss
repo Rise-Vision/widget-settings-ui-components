@@ -1,0 +1,16 @@
+  .btn-group-justified {
+    a span {
+      font-size: 13px;
+      display: block;
+      text-align: center;
+      line-height: 15px;
+    }
+    a svg {
+      height: 33px;
+      width: 30px;
+      margin-right: 2px;
+      & path {
+        fill: #333;
+      }
+    }
+  }

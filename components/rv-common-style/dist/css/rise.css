@@ -12470,6 +12470,19 @@ ul.tree ul li:last-child:before {
   background: none;
   cursor: pointer; }
 
+.btn-group-justified a span {
+  font-size: 13px;
+  display: block;
+  text-align: center;
+  line-height: 15px; }
+
+.btn-group-justified a svg {
+  height: 33px;
+  width: 30px;
+  margin-right: 2px; }
+  .btn-group-justified a svg path {
+    fill: #333; }
+
 /* Sections/Views
    ========================================================================== */
 /* ==========================================================================

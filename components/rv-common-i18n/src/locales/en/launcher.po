@@ -7,6 +7,9 @@ msgstr "I don't have a google account."
 msgid "haveAccount"
 msgstr "Have an Account?"
 
+msgid "hideAnimation"
+msgstr "Hide Animation"
+
 msgid "howToShow"
 msgstr "How do I show Presentations and Web Pages?"
 

@@ -9,9 +9,9 @@
     </button>
   </span>
   <span ng-show="['on-trial', 'trial-expired', 'cancelled', 'not-subscribed'].indexOf(subscriptionStatus.statusCode) >= 0">
-    <button class="btn btn-primary btn-xs" ng-click="showStoreModal = true;">
+    <a class="btn btn-primary btn-xs" ng-href="{{storeUrl}}" target="_blank">
       <span translate="subscription-status.subscribe"></span>
-    </button>
+    </a>
   </span>
   <span ng-show="['suspended'].indexOf(subscriptionStatus.statusCode) >= 0">
     <a type="button" class="btn btn-primary btn-xs" ng-href="{{storeAccountUrl}}" target="_blank">
@@ -23,21 +23,21 @@
 <div ng-show="expandedFormat">
   <div class="subscription-status trial" ng-show="subscriptionStatus.statusCode === 'on-trial'">
     <span ng-bind-html="'subscription-status.expanded-' + subscriptionStatus.statusCode + subscriptionStatus.plural | translate:subscriptionStatus | to_trusted"></span>
-    <button type="button" class="btn btn-primary add-left" ng-click="showStoreModal = true;">
+    <a type="button" class="btn btn-primary add-left" ng-href="{{storeUrl}}" target="_blank">
       <span translate="subscription-status.subscribe-now"></span>
-    </button>
+    </a>
   </div>
   <div class="subscription-status expired" ng-show="subscriptionStatus.statusCode === 'trial-expired'">
     <span translate="subscription-status.expanded-expired"></span>
-    <button type="button" class="btn btn-primary add-left" ng-click="showStoreModal = true;">
+    <a type="button" class="btn btn-primary add-left" ng-href="{{storeUrl}}" target="_blank">
       <span translate="subscription-status.subscribe-now"></span>
-    </button>
+    </a>
   </div>
   <div class="subscription-status cancelled" ng-show="subscriptionStatus.statusCode === 'cancelled'">
    <span translate="subscription-status.expanded-cancelled"></span>
-    <button type="button" class="btn btn-primary add-left" ng-click="showStoreModal = true;">
+    <a type="button" class="btn btn-primary add-left" ng-href="{{storeUrl}}" target="_blank">
       <span translate="subscription-status.subscribe-now"></span>
-    </button>
+    </a>
   </div>
   <div class="subscription-status suspended" ng-show="subscriptionStatus.statusCode === 'suspended'">
     <span translate="subscription-status.expanded-suspended"></span>

@@ -18,8 +18,8 @@
   ;
 
   angular.module("risevision.widget.common.subscription-status.config", [])
-    .value("IN_RVA_PATH", "/product/productId/?up_id=iframeId&parent=parentUrl&inRVA=true&cid=companyId")
-    .value("ACCOUNT_PATH", "/account?cid=companyId")
+    .value("IN_RVA_PATH", "product/productId/?cid=companyId")
+    .value("ACCOUNT_PATH", "account?cid=companyId")
     .value("PATH_URL", "v1/company/companyId/product/status?pc=")
     .value("AUTH_PATH_URL", "v1/widget/auth?cid=companyId&pc=")
   ;
