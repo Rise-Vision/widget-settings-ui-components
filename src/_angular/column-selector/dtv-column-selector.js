@@ -9,7 +9,8 @@
         require: "?ngModel",
         scope: {
           columns: "=",
-          columnNames: "="
+          columnNames: "=",
+          disabled: "=ngDisabled"
         },
         template: $templateCache.get("_angular/column-selector/column-selector.html"),
         transclude: false,

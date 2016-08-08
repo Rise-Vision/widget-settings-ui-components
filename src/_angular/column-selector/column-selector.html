@@ -4,9 +4,9 @@
 			<div class="form-group">
 				<label for="columns" class="control-label">{{'column.select-title' | translate}}</label>
 				<p>{{'column.description' | translate}}</p>
-				<select id="column-selector" class="form-control" ng-model="selectedColumn"
+				<select class="column-selector form-control" ng-model="selectedColumn"
 				ng-options="column.name | translate for column in columnNames | filter:show track by column.id"
-				ng-change="addColumn()"></select>
+				ng-change="addColumn()" ng-disabled="disabled"></select>
 			</div>
 		</div>
 	</div>
