@@ -7734,6 +7734,7 @@ a.btn-primary:hover .fa::before {
 /* Boxed content
    ========================================================================== */
 .content-box, .select-subcompany-modal .list-group, .content-box-editable, .card, #appLauncherContainer .scrollable-list, #appLauncherContainer .template-grid {
+  position: relative;
   border: 1px solid #d4d4d4;
   background: #FFF;
   border-radius: 4px; }
@@ -11572,7 +11573,8 @@ a[data-wysihtml5-command=underline].active {
   /* Small devices  */
   /* Medium devices  */ }
   .store.grid-list .content-box, .store.grid-list .select-subcompany-modal .list-group, .select-subcompany-modal .store.grid-list .list-group, .store.grid-list .content-box-editable, .store.grid-list .card, .store.grid-list #appLauncherContainer .scrollable-list, #appLauncherContainer .store.grid-list .scrollable-list, .store.grid-list #appLauncherContainer .template-grid, #appLauncherContainer .store.grid-list .template-grid {
-    min-height: 323px; }
+    min-height: 323px;
+    position: static; }
   @media (min-width: 768px) {
     .store.grid-list .content-box, .store.grid-list .select-subcompany-modal .list-group, .select-subcompany-modal .store.grid-list .list-group, .store.grid-list .content-box-editable, .store.grid-list .card, .store.grid-list #appLauncherContainer .scrollable-list, #appLauncherContainer .store.grid-list .scrollable-list, .store.grid-list #appLauncherContainer .template-grid, #appLauncherContainer .store.grid-list .template-grid {
       min-height: 408px; } }
@@ -12625,9 +12627,6 @@ ul.tree ul li:last-child:before {
 #intercom-container .intercom-launcher-inactive {
   visibility: hidden !important; }
 
-#intercom-container .intercom-launcher-enabled {
-  visibility: hidden !important; }
-
 #intercom-container .intercom-launcher-preview:after {
   background-color: #79807B; }
 
@@ -12648,14 +12647,11 @@ ul.tree ul li:last-child:before {
   background: none;
   cursor: pointer; }
 
-<<<<<<< c59ee73243e25952bd6151cc947826a3e03b2556
-=======
 .editor-playlist .editor-playlist-item {
   box-shadow: 0 2px 2px rgba(40, 40, 40, 0.1); }
   .editor-playlist .editor-playlist-item .playlist-item-name span {
     max-width: 100px; }
 
->>>>>>> Tag Release for feature/no-playlist-items
 .btn-group-justified a span {
   font-size: 13px;
   display: block;
@@ -12669,8 +12665,6 @@ ul.tree ul li:last-child:before {
   .btn-group-justified a svg path {
     fill: #333; }
 
-<<<<<<< c59ee73243e25952bd6151cc947826a3e03b2556
-=======
 .playlist-item-thumbnail {
   overflow: hidden;
   height: 44px;
@@ -12883,7 +12877,6 @@ ul.tree ul li:last-child:before {
   border-width: 8px 0 0 8px;
   border-color: transparent transparent transparent #4ab767; }
 
->>>>>>> Tag Release for feature/no-playlist-items
 /* Sections/Views
    ========================================================================== */
 /* ==========================================================================

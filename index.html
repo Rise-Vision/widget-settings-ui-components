@@ -224,50 +224,45 @@
     .controller("columnSelectorController", ["$scope", function ($scope) {
       $scope.columnNames = [
         {
-          id: "instrument",
-          name: "Instrument",
-          type: "text"
+          id: 0,
+          name: "A"
         },
         {
-          id: "instrument-logo",
-          name: "Instrument Logo",
-          type: "text"
+          id: 1,
+          name: "B"
         },
         {
-          id: "last-price",
-          name: "Last Price",
-          type: "int"
+          id: 2,
+          name: "C"
         },
         {
-          id: "change",
-          name: "Change",
-          type: "int"
+          id: 3,
+          name: "D"
         },
         {
-          id: "percent-change",
-          name: "Percent change",
-          type: "int"
+          id: 4,
+          name: "E"
         },
         {
-          id: "day-high",
-          name: "Day High",
-          type: "int"
+          id: 5,
+          name: "F"
         },
         {
-          id: "day-low",
-          name: "Day Low",
-          type: "int"
+          id: 6,
+          name: "G"
         }
       ];
 
 
       $scope.columns = [
         {
-          id: "instrument",
-          alignment: "right"
+          id: 0,
+          fontStyle: {
+            align: "right"
+          }
         },
         {
-          id: "instrument-logo"
+          id: 1
         }
       ];
     }])

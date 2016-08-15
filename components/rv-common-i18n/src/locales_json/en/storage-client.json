@@ -11,6 +11,13 @@
   "delete-verify-company": "You cannot delete a file because your account {{username}} doesn't have access to this company.  Please login with a different account and try again.",
   "download-status": "Download Status",
   "duplicate-folder": "A Folder already uses that name, please choose a different one",
+  "empty-state": {
+    "no-uploads": "You haven't uploaded any files yet!",
+    "or": "or",
+    "select": "Select",
+    "select-file": "Or just select single Images and Videos to add and order them in your Playlist",
+    "select-folder": "Select a Folder to show and update Images and Videos as you add or remove them from the Folder."
+  },
   "failed-delete": "Delete failed.  Please try again.",
   "failed-restore": "Restore failed.  Please try again.",
   "failed-trash": "Move to trash failed.  Please try again.",
@@ -19,7 +26,7 @@
   "header": "Storage",
   "loading-files": "Loading...",
   "loading-functions": "Loading...",
-  "new-folder": "Add Folder",
+  "new-folder": "Create Folder",
   "not-authorized": "Your account {{username}} doesn't have access to this company.  Please login with a different account and try again.",
   "open-in-storage-app": "Open in Storage App",
   "pending-delete": "Deleting...",
@@ -43,6 +50,12 @@
   "selected-items": "{{count}} Selected",
   "signed-download-uri-request-failed": "Download failed.  Please try again.",
   "signed-url-verify-company": "The download failed because your account {{username}} does not have access to this company.  Please log in with a different account and try again.",
+  "start-trial": {
+    "cta": "Start Your Free Trial",
+    "free-30-days": "Free 30 days trial. No credit card required.",
+    "price": "$10 per Company per Month.",
+    "tagline": "Manage and deliver media to your digital signage displays, anywhere, anytime."
+  },
   "title": "Rise Vision Storage",
   "trash": "Trash",
   "trash-inactive-subscription": "You cannot move the file to trash because you don't have an active subscription.  Please purchase a subscription and try again.",

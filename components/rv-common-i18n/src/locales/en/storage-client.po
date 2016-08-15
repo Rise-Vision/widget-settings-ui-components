@@ -34,6 +34,21 @@ msgstr "Download Status"
 msgid "duplicate-folder"
 msgstr "A Folder already uses that name, please choose a different one"
 
+msgid "empty-state.no-uploads"
+msgstr "You haven't uploaded any files yet!"
+
+msgid "empty-state.or"
+msgstr "or"
+
+msgid "empty-state.select"
+msgstr "Select"
+
+msgid "empty-state.select-file"
+msgstr "Or just select single Images and Videos to add and order them in your Playlist"
+
+msgid "empty-state.select-folder"
+msgstr "Select a Folder to show and update Images and Videos as you add or remove them from the Folder."
+
 msgid "failed-delete"
 msgstr "Delete failed.  Please try again."
 
@@ -59,7 +74,7 @@ msgid "loading-functions"
 msgstr "Loading..."
 
 msgid "new-folder"
-msgstr "Add Folder"
+msgstr "Create Folder"
 
 msgid "not-authorized"
 msgstr "Your account {{username}} doesn't have access to this company.  Please login with a different account and try again."
@@ -129,6 +144,18 @@ msgstr "Download failed.  Please try again."
 
 msgid "signed-url-verify-company"
 msgstr "The download failed because your account {{username}} does not have access to this company.  Please log in with a different account and try again."
+
+msgid "start-trial.cta"
+msgstr "Start Your Free Trial"
+
+msgid "start-trial.free-30-days"
+msgstr "Free 30 days trial. No credit card required."
+
+msgid "start-trial.price"
+msgstr "$10 per Company per Month."
+
+msgid "start-trial.tagline"
+msgstr "Manage and deliver media to your digital signage displays, anywhere, anytime."
 
 msgid "title"
 msgstr "Rise Vision Storage"

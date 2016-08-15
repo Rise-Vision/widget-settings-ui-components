@@ -30,7 +30,8 @@
             },
             headerText: "",
             width: 100,
-            colorCondition: "none"
+            colorCondition: "none",
+            numeric: false
           };
 
           $scope.defaults = function(obj) {
@@ -48,20 +49,8 @@
             return obj;
           };
 
-          $scope.$watch("column.numeric", function(value) {
-            if (typeof value !== "undefined" && value !== "") {
-              if (value) {
-                defaultSettings.type = "int";
-              }
-              else {
-                defaultSettings.type = "string";
-              }
-            }
-            else {
-              defaultSettings.type = "string";
-            }
-
-            $scope.defaults($scope.column, defaultSettings);
+          $scope.$watch("column", function(value) {
+            $scope.defaults(value, defaultSettings);
           });
 
           $scope.remove = function() {

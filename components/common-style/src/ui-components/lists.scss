@@ -241,6 +241,7 @@
 .store.grid-list {
   .content-box {
     min-height: 323px;
+    position: static;
   }
    /* Small devices  */
   @media (min-width: $screen-sm-min) { 
