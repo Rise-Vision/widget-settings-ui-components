@@ -37,7 +37,6 @@
           $scope.show = function(v){return !v.show;};
 
           $scope.addColumn = function(){
-            console.log($scope.selectedColumn);
             $scope.add($scope.selectedColumn);
             $scope.selectedColumn = null;
           };
@@ -83,7 +82,6 @@
             for (var i = 0; i < $scope.columns.length; i++) {
               for (var j = 0; j < $scope.columnNames.length; j++) {
                 if ($scope.columns[i].id === $scope.columnNames[j].id) {
-                  $scope.columns[i].type = $scope.columnNames[j].type;
                   $scope.columns[i].name = $scope.columnNames[j].name;
                   $scope.columnNames[j].show = true;
                 }
