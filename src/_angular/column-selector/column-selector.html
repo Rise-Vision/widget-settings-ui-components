@@ -3,7 +3,6 @@
 		<div class="col-md-12">
 			<div class="form-group">
 				<label for="columns" class="control-label">{{'column.select-title' | translate}}</label>
-				<p>{{'column.description' | translate}}</p>
 				<select class="column-selector form-control" ng-model="selectedColumn"
 				ng-options="column.name | translate for column in columnNames | filter:show track by column.id"
 				ng-change="addColumn()" ng-disabled="disabled"></select>
