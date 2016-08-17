@@ -152,10 +152,13 @@ msgid "playlistItem.name"
 msgstr "Name"
 
 msgid "playlistItem.no-playlistItem"
-msgstr "No Playlist Items"
+msgstr "Click Image, Video, Text or More to add to this Playlist"
 
 msgid "playlistItem.playUntilDone"
 msgstr "Play Until Done"
+
+msgid "playlistItem.playUntilDone-short"
+msgstr "PUD"
 
 msgid "playlistItem.presentation"
 msgstr "Presentation"
@@ -165,6 +168,9 @@ msgstr "Required"
 
 msgid "playlistItem.seconds"
 msgstr "seconds"
+
+msgid "playlistItem.seconds-short"
+msgstr "s"
 
 msgid "playlistItem.select"
 msgstr "Select"

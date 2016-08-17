@@ -104,7 +104,6 @@ module.run(["$templateCache", function($templateCache) {
     "		<div class=\"col-md-12\">\n" +
     "			<div class=\"form-group\">\n" +
     "				<label for=\"columns\" class=\"control-label\">{{'column.select-title' | translate}}</label>\n" +
-    "				<p>{{'column.description' | translate}}</p>\n" +
     "				<select class=\"column-selector form-control\" ng-model=\"selectedColumn\"\n" +
     "				ng-options=\"column.name | translate for column in columnNames | filter:show track by column.id\"\n" +
     "				ng-change=\"addColumn()\" ng-disabled=\"disabled\"></select>\n" +

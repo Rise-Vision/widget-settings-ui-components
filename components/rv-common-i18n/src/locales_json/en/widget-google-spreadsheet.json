@@ -29,6 +29,9 @@
       "range": "Show Range",
       "sheet": "Show Entire Sheet"
     },
+    "data": {
+      "error": "There was an error accessing your spreadsheet data."
+    },
     "first-row-as-header": "Use First Row as Header",
     "key": {
       "placeholder": "Enter your Key",
@@ -46,6 +49,7 @@
     },
     "range": {
       "end": "Ending Cell (Bottom Right)",
+      "invalid": "Please ensure a valid range.",
       "start": "Starting Cell (Top Left)"
     },
     "refresh": "Data Refresh Interval",

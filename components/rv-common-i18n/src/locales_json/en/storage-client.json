@@ -37,6 +37,7 @@
   "restore-verify-company": "You cannot restore the file from trash because your account {{username}} doesn't have access to this company.  Please login with a different account and try again.",
   "retry-failed-uploads": "Retry failed uploads",
   "select-file": "Select a File",
+  "select-folder-to-update": "Select a Folder to show and update Images and Videos as you add or remove them from the Folder.",
   "select-multiple-file": "Select one or more Files",
   "select-multiple-files-folders": "Select Files and Folders",
   "select-multiple-files-folders-images": "Select Images and/or Folders of Images",

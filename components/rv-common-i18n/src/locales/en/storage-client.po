@@ -106,6 +106,9 @@ msgstr "Retry failed uploads"
 msgid "select-file"
 msgstr "Select a File"
 
+msgid "select-folder-to-update"
+msgstr "Select a Folder to show and update Images and Videos as you add or remove them from the Folder."
+
 msgid "select-multiple-file"
 msgstr "Select one or more Files"
 
