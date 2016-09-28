@@ -24,16 +24,31 @@
 }
 
 .pt-media-list li {
-  height: 100px;
-  width: 100px;
+  height: 107px;
+  width: 107px;
   display: inline-block;
   text-align: center;
   overflow: hidden;
   position: relative;
+  margin-left: 4px;
+  border: 1px solid #ddd;
+  -o-transition: border .2s ease-out;
+  -ms-transition: border .2s ease-out;
+  -moz-transition: border .2s ease-out;
+  -webkit-transition: border .2s ease-out;
+  transition: border .2s ease-out;
 }
 
-.selectedBorder {
-  border: 5px solid #4ab767;
+.selected-border {
+  border: 5px solid #4ab767 !important;
+}
+
+// Add to Utility Classes later
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
 }
 
 .pt-media-list img {
@@ -74,7 +89,7 @@
 
 .pt-media-list li.folder,
 .pt-media-list li.placeholder-item {
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .pt-media-list li.folder {
@@ -82,7 +97,7 @@
 }
 
 .pt-media-list li.folder-extended {
-  width: 305px;
+  width: 329px;
   span.image-folder-info {
     top: 21px !important;
   }
@@ -119,6 +134,17 @@
   }
 }
 
+.pt-media-list li.folder span.ellipsis {
+  font-size: 11px;
+}
+
+// .pt-media-list li.throttled-item span.ellipsis {
+//   color:red;
+// }
+.pt-media-list li.folder-extended span.ellipsis {
+  width: 29%;
+}
+
 .pt-media-list li.folder span.image-folder-info {
   position: absolute;
   left: 105px;
@@ -134,9 +160,40 @@
   margin-top: 19px;
   position: relative;
   top: 6px;
-  &:hover path {
-    fill: rgba(0, 0, 0, .4);
+  & path {
+    fill: #4ab767;
   }
+}
+
+.pt-media-list li.disabled-item {
+  cursor: not-allowed;
+  svg {
+    width: 38px;
+    height: 38px;
+    margin-top: 19px;
+    position: relative;
+    top: 6px;
+  }
+  & path {
+    fill: #ddd;
+  }
+}
+
+.pt-media-list li.folder svg {
+  width: 38px;
+  height: 38px;
+  margin-top: 19px;
+  position: relative;
+  top: 6px;
+  & path {
+    fill: #4ab767;
+  }
+}
+
+.pt-media-list li.folder-extended svg {
+  float: left;
+  margin-left: 30px;
+  top: 3px;
 }
 
 // REPLACE ABOVE WITH SCROLLING THUMBS IMGS
@@ -154,4 +211,10 @@
 .btn-upload i {
   margin-top: 20px;
   font-size: 28px;
+}
+
+#storageSelectorModal, .storage-app  {
+  .btn-group {
+    display: inline;
+  }
 }

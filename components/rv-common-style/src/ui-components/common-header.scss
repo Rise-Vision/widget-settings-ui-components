@@ -1,5 +1,6 @@
 .navbar.navbar-default {
   background: #FFF;
+  border-bottom: none !important;
   margin-bottom: 0;
   padding: 8px 0;
   .navbar-header {
@@ -29,6 +30,7 @@
       a {
         line-height: 33px;
         font-size: 13px;
+        font-weight: 500;
         padding: 1px 11px;
         margin-right: 3px;
         border-radius: 3px;

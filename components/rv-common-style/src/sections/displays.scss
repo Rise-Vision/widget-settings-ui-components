@@ -1,70 +1,60 @@
 /* Display Settings
    ========================================================================== */
 
-.reboot-time {
-  margin-bottom: 0;
-  table.time-picker {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  label, .checkbox {
-    display: inline-block;
-  }
-  @media (max-width: 768px) {
-    .checkbox {
-      display: block;
-    }
-  }
-}
+// .reboot-time {
+//   margin-bottom: 0;
+//   table.time-picker {
+//     display: inline-block;
+//     vertical-align: middle;
+//   }
+//   label, .checkbox {
+//     display: inline-block;
+//   }
+//   @media (max-width: 768px) {
+//     .checkbox {
+//       display: block;
+//     }
+//   }
+// }
 
-.download-buttons {
-  img {
-    height: 32px;
-  }
-  .row:nth-child(2) {
-    margin-top: 6px;
-  }
-}
+// .download-buttons {
+//   img {
+//     height: 32px;
+//   }
+//   .row:nth-child(2) {
+//     margin-top: 6px;
+//   }
+// }
 
-.display-panel {
-  text-align: center;
-  width: 80%;
-  margin: 0 auto;
-  .panel-heading {
-    padding: 4px;
-    border-left: 0;
-  }
-  h3.panel-title {
-    margin-right: 0;
-  }
-  .panel-body {
-    padding: 4px;
-    font-size: 22px;
-    font-weight: 800;
-  }
-}
+// .display-panel {
+  // text-align: center;
+  // width: 80%;
+  // margin: 0 auto;
+  // .panel-heading {
+  //   padding: 4px;
+  //   border-left: 0;
+  // }
+  // h3.panel-title {
+  //   margin-right: 0;
+  // }
+//   .panel-body {
+//     padding: 4px;
+//     font-size: 22px;  // !!NEED A STRONG TYPE TAG ASK GHISLAINE
+//     font-weight: 800;
+//   }
+// }
+
 
 /* Display Status Circle
    ========================================================================== */
 
-.offline {
-  &:before {
-    color:#e74c3c;
-  }
-}
-.notinstalled {
-  &:before {
-    color:#444;
-  }
-}
-.online {
-  &:before {
-    color:$rise-green;
-  }
-}
 
-/* Display Table
-   ========================================================================== */
+/* Deprecate
+ +   ========================================================================== 
+ +   ========================================================================== 
+ +   ========================================================================== 
+ +   ========================================================================== 
+ +   ========================================================================== */
 
 .display-name {
   span {
@@ -83,3 +73,19 @@
     vertical-align: middle;
   }
 }
+
+.offline {
+   &:before {
+    color:#e74c3c;
+   }
+}
+ .notinstalled {
+   &:before {
+     color:#444;
+   }
+ }
+ .online {
+   &:before {
+     color:$rise-green;
+   }
+ }

@@ -1,76 +1,101 @@
-/* Deprecate table-2
-   ========================================================================== */
-.table-2 {
-  @extend .table;
-}
-
-/* Official table style
+/* Standard Table
    ========================================================================== */
 .table {
   width: 100%;
-  margin-top: 0;
-  > thead > tr > th {
-
-    border-bottom: 1px solid $light-gray;
-    color: $gray;
-    padding: 12px;
-    white-space: nowrap;
-    a {
+  .table-header {
+    .table-header__row > .table-header__cell {
+      >a {
+        color: $gray;
+        display: block;
+      }
+      >span {
+        display: block;
+      }
+    } 
+  }
+  .table-body {
+    .table-body__row > .table-body__cell {
+      vertical-align: middle;
       color: $gray;
-      display: inline-block;
-    }
-  }  
-  > tbody > tr > td {
-    border-top: none;
-    border-bottom: 1px solid $lighter-gray;
-    color: $gray;
-    padding: 12px;
-    vertical-align: top;
-    strong {
-      font-weight: 500;
-    }
-    a {
-      color: $gray;
-      display: inline-block;
-    }
-    &:first-child {
-      font-weight: 500;
-    }
-    span {
-      white-space: nowrap;
+      >a {
+        display: block;
+      }
+      >span {
+        display: inline-block;
+        vertical-align: middle;
+      }
     }
   }
-  > tbody > tr {
-    &:last-child td {
-      border-bottom: none;
-    }
-    &:hover {
-      > td a {
+  &.table--selector {
+    .table-body {
+      .table-body__row > .table-body__cell {
         cursor: pointer;
-        display: inline-block;
-        color: $rise-blue;
+        &:first-child:before {
+          @extend .selector-icon;
+        }
+        &:first-child i {
+          margin: 0 4px;
+        }
       }
-      > td a.non-clickable-file {
-        color: $gray;
-      }
-      &.clickable-row {
-        cursor: pointer;
-        td {color: $rise-blue;}    
-      }
-      &.text-clickable-row {
-        cursor: auto;
-        td {color: $rise-blue;}    
-      }
-      > td a.non-clickable-file {
-        color: $gray;
+      .table-body__row--is-selected > .table-body__cell {
+        background: $rise-green;
+        color: #FFF;
+        &:first-child:before {
+          @extend .selector-icon--selected;
+        }
       }
     }
   }
 }
 
-.table-middle {
-  > tbody > tr > td {
-    vertical-align: middle;
+/* Table Selector Icon
+   ========================================================================== */
+.selector-icon {
+  font-family: FontAwesome;
+  font-size: 16px;
+  content:'\f096';
+  height: 16px;
+  display: inline-block;
+  margin-right: 4px;
+  margin-left: 4px;
+  vertical-align: middle;
+  &.selector-icon--selected {
+    content:'\f14a';
+  }
+}
+
+/* Deprecate
+   ========================================================================== 
+   ========================================================================== 
+   ========================================================================== 
+   ========================================================================== 
+   ========================================================================== */
+
+.table-2 {
+  @extend .table;
+  thead {
+    tr>th {
+      padding: 8px;
+    }
+  }
+  tbody {
+    tr {
+      &:hover {
+        cursor:pointer;
+        a {
+          color:$rise-blue;
+        }
+      }
+    }
+    tr>td {
+      padding: 12px 8px;
+      >a {
+        color: $dark-gray;
+        &:hover {
+          text-decoration:none;
+        }
+      }
+    }
   }
 }
 
@@ -314,3 +339,4 @@
     clear: both;
   }
 }
+

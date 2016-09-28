@@ -1,24 +1,36 @@
-.storage-full, .storage-modal {
+.storage-full,
+.storage-modal {
   .table-2 {
-    .folder,.file {
+    .folder,
+    .file {
       &:before {
         font-family: FontAwesome;
       }
     }
     .back-btn .folder {
-      &:before {content:'\f07c'; color: $rise-green;}
+      &:before {
+        content: '\f07c';
+        color: $rise-green;
+      }
     }
     .folder {
-      &:before {content:'\f07b'; color: $rise-green; margin-right: 10px;}
+      &:before {
+        content: '\f07b';
+        color: $rise-green;
+        margin-right: 10px;
+      }
     }
     .file {
-      &:before {content:'\f15b'; color: #d4d4d4;}
+      &:before {
+        content: '\f15b';
+        color: #d4d4d4;
+      }
     }
     .sub-folder {
       margin-left: 22px;
       position: relative;
       &:after {
-        content:'';
+        content: '';
         width: 15px;
         height: 6px;
         display: block;
@@ -44,10 +56,9 @@
 
 .storage-full {
   .scrollable-list {
-    overflow-y: auto;
-    max-height: calc(100vh - 320px);
-    border-radius: 4px;
-    min-height: 240px;
+    padding: 4px;
+    max-height: calc(100vh - 300px);
+    width: 100%;
   }
 }
 
@@ -58,5 +69,3 @@
   width: 100%;
   height: 100%;
 }
-
-

@@ -12,7 +12,6 @@ body {
 
 html,
 body {
-  background: #fcfcfc;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
@@ -36,9 +35,13 @@ a:focus, button:focus {
 }
 
 a:hover {
-  text-decoration: none;
 }
 
+/* Resets */
+ul {
+  list-style: none;
+  padding: 0;
+}
 
 /* Company Users
    ========================================================================== */
@@ -153,20 +156,6 @@ input[type=number]::-webkit-outer-spin-button {
       /* Visual */
       font-size: 16px;
     }
-  }
-}
-
-/* ==========================================================================
-   Tables
-   ========================================================================== */
-.table {
-  margin-top: 5px;
-
-  > thead > tr > th {
-    border-bottom-width: 0;
-  }
-  > tbody > tr > td {
-    padding: 10px 15px;
   }
 }
 
@@ -338,19 +327,6 @@ a.btn-primary:hover {
   fill: #666;
 }
 
-/* Boxed content
-   ========================================================================== */
-.content-box {
-  position: relative;
-  border: 1px solid #d4d4d4;
-  background: #FFF;
-  border-radius: 4px;
-}
-
-.content-box-body {
-  padding: 15px;
-}
-
 /* Horizontal rule
    ========================================================================== */
 .hr-thick {
@@ -362,66 +338,6 @@ a.btn-primary:hover {
   margin-bottom: 5px;
   border-top: 2px dashed #cbcbcb;
 }
-
-/* ==========================================================================
-   Upload Panel
-   ========================================================================== */
-
-  .upload-panel {
-    overflow: hidden;
-    .content-box-body {
-      border-left: 3px solid #d4d4d4;
-    }
-    .content-box-header {
-      background: #f7f7f7;
-      border-left: 3px solid #d4d4d4;
-      padding: 10px 15px;
-      color: $gray;
-      cursor: pointer;
-      overflow: hidden;
-      p {
-        float: left;
-      }
-      @media (max-width: 768px) {
-        p {
-          float: none;
-        }
-        .actions-block {
-          text-align: left;
-        }
-      }
-    }
-    p {
-      overflow: hidden;
-      margin: 5px 0 5px 0;
-      a {
-        text-transform:capitalize;
-        float: right;
-      }
-    }
-    .ellipsed {  
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: inline-block;
-      vertical-align: top;
-      @media (max-width: 480px) {
-        width: 120px;
-      }
-      @media (max-width: 768px) {
-        width: 180px;
-      }
-    }
-    .actions-block {
-      text-align: right; 
-    }
-    .collapse-control {
-      line-height: 28px;
-      padding: 0 15px;
-      margin-right: -15px;
-      float: right;
-    }
-  }
-
 
 /* Other
    ========================================================================== */

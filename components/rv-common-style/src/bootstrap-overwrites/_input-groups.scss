@@ -1,3 +1,7 @@
+.form-group {
+  margin-bottom: 20px;
+}
+
 .custom-addon,.checkbox-addon,.storage-group {
   .input-group-addon {
     background: none;
@@ -14,17 +18,6 @@
 .input-group-addon {
   border-radius: $border-radius-base2;
 }
-
-.form-group {
-  .form-control-feedback {
-    top: 34px;
-  }
-  label span.required {
-    color: red;
-    margin-left: 4px;
-  }
-}
-
 
 .form-inline .form-control-static {
   display:inline-block;

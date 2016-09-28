@@ -7,26 +7,41 @@ RiseVision.Common.RiseCache = (function () {
   var BASE_CACHE_URL = "//localhost:9494/";
 
   var _pingReceived = false,
-    _isCacheRunning = false;
+    _isCacheRunning = false,
+    _isV2Running = false;
 
   function ping(callback) {
-    var r = new XMLHttpRequest();
+    var r = new XMLHttpRequest(),
+      /* jshint validthis: true */
+      self = this;
 
     if (!callback || typeof callback !== "function") {
       return;
     }
 
-    r.open("GET", BASE_CACHE_URL + "ping?callback=_", true);
+    if (!_isV2Running) {
+      r.open("GET", BASE_CACHE_URL + "ping?callback=_", true);
+    }
+    else {
+      r.open("GET", BASE_CACHE_URL, true);
+    }
+
     r.onreadystatechange = function () {
       try {
         if (r.readyState === 4 ) {
           // save this result for use in getFile()
           _pingReceived = true;
 
-          if(r.status === 200){
+          if(r.status === 200) {
             _isCacheRunning = true;
 
             callback(true, r.responseText);
+          } else if (r.status === 404) {
+            // Rise Cache V2 is running
+            _isV2Running = true;
+
+            // call ping again so correct ping URL is used for Rise Cache V2
+            return self.ping(callback);
           } else {
             console.debug("Rise Cache is not running");
             _isCacheRunning = false;
@@ -52,9 +67,13 @@ RiseVision.Common.RiseCache = (function () {
       var url, str, separator;
 
       if (_isCacheRunning) {
-        // configure url with cachebuster or not
-        url = (nocachebuster) ? BASE_CACHE_URL + "?url=" + encodeURIComponent(fileUrl) :
-        BASE_CACHE_URL + "cb=" + new Date().getTime() + "?url=" + encodeURIComponent(fileUrl);
+        if (_isV2Running) {
+          url = BASE_CACHE_URL + "files?url=" + encodeURIComponent(fileUrl);
+        } else {
+          // configure url with cachebuster or not
+          url = (nocachebuster) ? BASE_CACHE_URL + "?url=" + encodeURIComponent(fileUrl) :
+          BASE_CACHE_URL + "cb=" + new Date().getTime() + "?url=" + encodeURIComponent(fileUrl);
+        }
       } else {
         if (nocachebuster) {
           url = fileUrl;
@@ -111,6 +130,28 @@ RiseVision.Common.RiseCache = (function () {
 
   }
 
+  function getErrorMessage(statusCode) {
+    var errorMessage = "";
+    switch (statusCode) {
+      case 502:
+        errorMessage = "There was a problem retrieving the file.";
+        break;
+      case 504:
+        errorMessage = "Unable to download the file. The server is not responding.";
+        break;
+      case 507:
+        errorMessage = "There is not enough disk space to save the file on Rise Cache.";
+        break;
+      case 534:
+        errorMessage = "The file does not exist or cannot be accessed.";
+        break;
+      default:
+        errorMessage = "";
+    }
+
+    return errorMessage;
+  }
+
   function isRiseCacheRunning(callback) {
     if (!callback || typeof callback !== "function") {
       return;
@@ -126,9 +167,27 @@ RiseVision.Common.RiseCache = (function () {
     }
   }
 
+  function isV2Running(callback) {
+    if (!callback || typeof callback !== "function") {
+      return;
+    }
+
+    if (!_pingReceived) {
+      /* jshint validthis: true */
+      return this.ping(function () {
+        callback(_isV2Running);
+      });
+    }
+    else {
+      callback(_isV2Running);
+    }
+  }
+
   return {
+    getErrorMessage: getErrorMessage,
     getFile: getFile,
     isRiseCacheRunning: isRiseCacheRunning,
+    isV2Running: isV2Running,
     ping: ping
   };
 

@@ -66,6 +66,8 @@
     "add-text": "Text",
     "add-video": "Video",
     "content": "Widget",
+    "delete": "Delete",
+    "duplicate": "Duplicate",
     "duration": "Duration",
     "legacyWarningPart1": "This is a Gadget and it is not supported in this Editor. To configure a Gadget please use the",
     "legacyWarningPart2": "previous version",
@@ -177,10 +179,12 @@
         "title": "Edit Placeholder"
       },
       "no-placeholder": "You haven't added any Placeholders to your Presentation yet.",
+      "placeholderTooltip": "Click to change Images, Video, Text, and More",
       "title": "Placeholders"
     },
     "toolbar": {
       "addPlaceholder": "Add Placeholder",
+      "addPlaceholderTooltip": "Click to add Images, Video, Text, and More",
       "changeTemplate": "Change Template",
       "mode": {
         "design": "View Design",

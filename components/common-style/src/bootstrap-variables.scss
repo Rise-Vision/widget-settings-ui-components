@@ -13,19 +13,17 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 //## Gray and brand colors for use across Bootstrap.
 
 $gray-darker:            lighten(#000, 15%); // #222
-$gray-dark:              lighten(#000, 20%);   // #333
-$gray:                   lighten(#000, 33.5%); // #555
+$gray-dark:              lighten(#000, 25%);   // #333
+$gray:                   lighten(#000, 35.5%); // #555
 $gray-light:             lighten(#000, 46.7%); // #777
-$gray-lighter:           lighten(#000, 93.5%); // #eee
+$gray-lighter:           lighten(#000, 83.5%); // #eee
 
 $brand-primary:         #0081BA;
-$brand-primary2:        #0081BA;
 $brand-bg:              #f4f4f4;
-$brand-success:         #45b864;
-$brand-success2:        #5cb85c;
+$brand-success:         #4ab767;
 $brand-info:            #5bc0de;
 $brand-warning:         #f0ad4e;
-$brand-danger:          #d9534f;
+$brand-danger:          #c0392b;
 $btn-default-color: 	#444444;
 
 
@@ -41,7 +39,7 @@ $text-color:            $gray-dark;
 //** Global textual link color.
 $link-color:            $brand-primary;
 //** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%);
+$link-hover-color:      darken($link-color, 10%);
 
 
 //== Typography
@@ -108,8 +106,8 @@ $padding-xs-horizontal:     5px;
 $line-height-large:         1.33;
 $line-height-small:         1.5;
 
-$border-radius-base:        3px;
-$border-radius-base2:       3px;
+$border-radius-base:        4px;
+$border-radius-base2:       4px;
 $border-radius-large:       6px;
 $border-radius-small:       2px;
 
@@ -129,7 +127,7 @@ $caret-width-large:         5px;
 //## Customizes the `.table` component with basic values, each used across all table variations.
 
 //** Padding for `<th>`s and `<td>`s.
-$table-cell-padding:            10px;
+$table-cell-padding:            12px 8px;
 //** Padding for cells in `.table-condensed`.
 $table-condensed-cell-padding:  5px;
 
@@ -142,7 +140,7 @@ $table-bg-hover:                #f5f5f5;
 $table-bg-active:               $table-bg-hover;
 
 //** Border color for table and cell borders.
-$table-border-color:            #ddd;
+$table-border-color:            #f2f2f2;
 
 
 //== Buttons
@@ -193,7 +191,7 @@ $input-color:                    $gray;
 //** `<input>` border color
 $input-border:                   #d4d4d4;
 //** `<input>` border radius
-$input-border-radius:            $border-radius-base2;
+$input-border-radius:            $border-radius-base;
 //** Border color for inputs on focus
 $input-border-focus:             #30a7fc;
 
@@ -314,7 +312,7 @@ $screen-md-max:              ($screen-lg-min - 1);
 //** Number of columns in the grid.
 $grid-columns:              12;
 //** Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:         30px;
+$grid-gutter-width:         15px;
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
 $grid-float-breakpoint:     $screen-sm-min;
@@ -492,7 +490,7 @@ $jumbotron-font-size:            ceil(($font-size-base * 1.5));
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-$state-success-text:             #3c763d;
+$state-success-text:             $brand-success;
 $state-success-bg:               #dff0d8;
 $state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%);
 
@@ -504,7 +502,7 @@ $state-warning-text:             #8a6d3b;
 $state-warning-bg:               #fcf8e3;
 $state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%);
 
-$state-danger-text:              #a94442;
+$state-danger-text:              #c0392b;
 $state-danger-bg:                #f2dede;
 $state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%);
 
@@ -565,7 +563,7 @@ $label-default-bg:            $gray-light;
 //** Primary label background color
 $label-primary-bg:            $brand-primary;
 //** Success label background color
-$label-success-bg:            $brand-success2;
+$label-success-bg:            $brand-success;
 //** Info label background color
 $label-info-bg:               $brand-info;
 //** Warning label background color
@@ -654,7 +652,7 @@ $progress-bar-color:          #fff;
 //** Default progress bar color
 $progress-bar-bg:             $brand-primary;
 //** Success progress bar color
-$progress-bar-success-bg:     $brand-success2;
+$progress-bar-success-bg:     $brand-success;
 //** Warning progress bar color
 $progress-bar-warning-bg:     $brand-warning;
 //** Danger progress bar color
@@ -743,13 +741,13 @@ $panel-danger-heading-bg:     $state-danger-bg;
 //##
 
 //** Padding around the thumbnail image
-$thumbnail-padding:           4px;
+$thumbnail-padding:           0;
 //** Thumbnail background color
 $thumbnail-bg:                $body-bg;
 //** Thumbnail border color
 $thumbnail-border:            #ddd;
 //** Thumbnail border radius
-$thumbnail-border-radius:     $border-radius-base2;
+$thumbnail-border-radius:     0;
 
 //** Custom text color for thumbnail captions
 $thumbnail-caption-color:     $text-color;

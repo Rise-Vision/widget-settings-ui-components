@@ -136,6 +136,12 @@ msgstr "Video"
 msgid "playlistItem.content"
 msgstr "Widget"
 
+msgid "playlistItem.delete"
+msgstr "Delete"
+
+msgid "playlistItem.duplicate"
+msgstr "Duplicate"
+
 msgid "playlistItem.duration"
 msgstr "Duration"
 
@@ -376,11 +382,17 @@ msgstr "Edit Placeholder"
 msgid "workspace.sidebar.no-placeholder"
 msgstr "You haven't added any Placeholders to your Presentation yet."
 
+msgid "workspace.sidebar.placeholderTooltip"
+msgstr "Click to change Images, Video, Text, and More"
+
 msgid "workspace.sidebar.title"
 msgstr "Placeholders"
 
 msgid "workspace.toolbar.addPlaceholder"
 msgstr "Add Placeholder"
+
+msgid "workspace.toolbar.addPlaceholderTooltip"
+msgstr "Click to add Images, Video, Text, and More"
 
 msgid "workspace.toolbar.changeTemplate"
 msgstr "Change Template"
