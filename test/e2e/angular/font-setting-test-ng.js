@@ -30,7 +30,7 @@
         it("should load all fonts", function() {
           element(by.css("#font1  .mce-btn[aria-label='Font Family']")).click();
           element.all(by.css("#mceu_42-body div")).then(function(elements) {
-            expect(elements.length).to.equal(815);
+            expect(elements.length).to.equal(819);
           });
         });
 
@@ -277,14 +277,14 @@
       describe("Google Font", function() {
         it("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_693-text")).click();
+          element(by.css("#mceu_697-text")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Roboto, sans-serif');
         });
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_756-text")).click();
+          element(by.css("#mceu_760-text")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'Slabo 27px', sans-serif");
         });
@@ -292,7 +292,8 @@
 
       describe("Custom Font", function() {
         var url = "",
-          customFontUrl = "https://my.custom.font/BrushScriptStd.otf";
+          customFontUrl = "https://my.custom.font/BrushScriptStd.otf",
+          customFontUrlSpaces = "https://my.custom.font/Trade%20Gothic%20LT%20Bold.ttf";
 
         beforeEach(function () {
           url = browser.findElement(by.model("url"));
@@ -336,6 +337,14 @@
             element(by.css("#font1 .custom-font .select")).click();
 
             expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("BrushScriptStd");
+          });
+
+          it("should set correct font family for preview text when font name has spaces", function() {
+            url.clear();
+            url.sendKeys(customFontUrlSpaces);
+            element(by.css("#font1 .custom-font .select")).click();
+
+            expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'Trade Gothic LT Bold'");
           });
         });
       });
@@ -398,7 +407,7 @@
         it("should load all fonts", function() {
           element(by.css("#font2  .mce-btn[aria-label='Font Family']")).click();
           element.all(by.css("#mceu_42-body div")).then(function(elements) {
-            expect(elements.length).to.equal(815);
+            expect(elements.length).to.equal(819);
           });
         });
 
