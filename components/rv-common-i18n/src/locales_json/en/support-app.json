@@ -27,7 +27,7 @@
     "unknown": "currently unknown"
   },
   "list": {
-    "empty": "You haven't created any tickets yet",
+    "empty": "You haven't created any tickets yet.",
     "filter": "Filter tickets by status",
     "heading": {
       "id": "ID",

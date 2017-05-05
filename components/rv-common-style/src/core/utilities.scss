@@ -2,6 +2,7 @@
 All utilities have a prefix u_ added to them
 */
 
+
 /* Line Height Utilities
    ==========================================================================
    To be used with forms and buttons
@@ -12,16 +13,79 @@ All utilities have a prefix u_ added to them
   line-height: 33px;
 }
 
+
+/* Ellipsis Utilities
+   ==========================================================================
+   To be used with forms and buttons
+*/
+.u_ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.u_ellipsis-md {
+  @extend .u_ellipsis;
+  @media(max-width:767px){
+    width: 100px;
+  }
+  @media(min-width:768px){
+    max-width: 140px;
+  }
+  @media(min-width:992px){
+    max-width: 180px;
+  }
+  @media(min-width:1200px){
+    max-width: 240px;
+  }
+}
+
+.u_ellipsis-lg {
+  @extend .u_ellipsis;
+  @media(max-width:767px){
+    width: 200px;
+  }
+  @media(min-width:768px){
+    max-width: 260px;
+  }
+  @media(min-width:992px){
+    max-width: 320px;
+  }
+  @media(min-width:1200px){
+    max-width: 340px;
+  }
+}
+
+
 /* Styling Utilities
-   ========================================================================== */
+   ==========================================================================
+*/
 
 .u_bordered {
   border: 1px solid $gray-lighter;
   border-radius: $border-radius-base;
 }
 
+.fa.u_icon-gray:before {
+    color: #BBB;
+}
+
+.fa.u_icon-red:before {
+    color: #cf371f;
+}
+
+.fa.u_icon-green:before {
+    color: $rise-green;
+}
+
+.fa.u_icon-white:before {
+    color: $white;
+}
+
+
 /* Text Utilities
- */
+   ========================================================================== 
+*/
 
 .u_text-ellipsis {
   overflow: hidden;
@@ -40,97 +104,172 @@ All utilities have a prefix u_ added to them
   }
 }
 
-/* 
-==========================================================================
-==========================================================================
-==========================================================================
-DEPRECATE Old Utilities
-   ========================================================================== */
+/* Padding Utilities
+   ========================================================================== 
+*/
 
-.nowrap {
-  white-space: nowrap;
+.u_padding-lg {
+  padding: 32px;
 }
 
-.clickable {
+.u_padding-md {
+  padding: 16px;
+}
+
+.u_padding-sm {
+  padding: 8px;
+}
+
+.u_padding-lg-horizontal {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.u_padding-md-horizontal {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.u_padding-sm-horizontal {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.u_padding-lg-vertical {  
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.u_padding-md-vertical {  
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.u_padding-sm-vertical {  
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Margin Utilities
+   ========================================================================== 
+*/
+
+.u_margin-xs {
+    margin: 3px !important;
+}
+
+.u_margin-sm {
+    margin: 10px !important;
+}
+
+.u_margin-md {
+    margin: 20px !important;
+}
+
+.u_margin-lg {
+    margin: 40px !important;
+}
+
+.u_margin-left {
+    margin-left: 10px !important;
+}
+
+.u_margin-right {
+    margin-right: 10px !important;
+}
+
+.u_margin-xs-top {
+    margin-top: 3px !important;
+}
+
+.u_margin-sm-top {
+    margin-top: 10px !important;
+}
+
+.u_margin-md-top {
+    margin-top: 20px !important;
+}
+
+.u_margin-lg-top {
+    margin-top: 40px !important;
+}
+
+.u_margin-xs-bottom {
+    margin-bottom: 3px !important;
+}
+
+.u_margin-sm-bottom {
+    margin-bottom: 10px !important;
+}
+
+.u_margin-md-bottom {
+    margin-bottom: 20px !important;
+}
+
+.u_margin-lg-bottom {
+    margin-bottom: 40px !important;
+}
+
+
+/* Clearing Utilities
+   ========================================================================== 
+*/
+
+.u_remove-radius {
+    border-radius: 0 !important;
+}
+
+.u_remove-margin {
+    margin: 0 !important;
+}
+
+.u_remove-padding {
+    padding: 0 !important;
+}
+
+.u_remove-top {
+    margin-top: 0 !important;
+}
+
+.u_remove-bottom {
+    margin-bottom: 0 !important;
+}
+
+/* Alignment Utilities
+   ========================================================================== 
+*/
+
+%vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/* Misc Utilities
+   ========================================================================== 
+*/
+
+.u_nowrap {
+    white-space: nowrap;
+}
+
+.u_clickable {
   cursor: pointer;
 }
 
-.ellipsis {
-  @extend .u_text-ellipsis;
+.u_link-disabled {
+    color: #AAAAAA;
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
 }
-
-.ahrefdisabled {
-  color: #AAAAAA;
-  cursor: default;
-  pointer-events: none;
-  text-decoration: none;
-}
-.highlighted {
+.u_highlighted {
   background: #FFFFE0;
   text-transform: uppercase;
   font-weight: bold;
   display: inline-block;
-}
-
-%vertical-align {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.radio-vertical-align {
-  display: inline-block;
-}
-		
-.radio-vertical-align input,
-.radio-vertical-align label {
-  display: inline-block;
-  vertical-align: middle;	
-}
-
-.app-navigation svg {
-  width: 24px;
-  height: 24px;
-  background: red;
-}
-
-.app-navigation path:first-child {
-  fill:#4AB767;
-}
-.app-navigation path:last-child {
-  fill:#2D60AD;
-}
-
-.file-empty-state path {
-  fill:#969595;
-  opacity: .65;
-}
-
-svg:hover path {
-  fill: rgba(0,0,0,.7);
-}
-
-path {
-  fill: rgba(0,0,0,.4);
-}
-
-.fa.icon-gray:before {
-  color: #BBB;
-}
-.fa.icon-red:before {
-  color: #cf371f;
-}
-.fa.icon-green:before {
-  color: $rise-green;
-}
-.fa.icon-white:before {
-  color: $white;
-}
-
-.text-white {
-  color: #FFF;
 }
 
 .row.sm-gutter {
@@ -153,47 +292,4 @@ path {
 .row.no-gutter [class*='col-']:not(:last-child) {
   padding-right: 0px;
   padding-left: 0px;
-}
-
-.padding-large {
-  padding: 30px;
-}
-
-.padding-large-horizontal {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-.padding-small-vertical {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.img-icon {
-  height: 24px;
-  width: 24px;
-  margin-top: -4px;
-  margin-right: -4px;
-  vertical-align: bottom;
-  display: inline-block;
-  margin-left: 5px;
-  background-size: 100%;
-  &.img-icon-google-calendar {
-    background-image: url('https://s3.amazonaws.com/Rise-Images/Icons/logo_calendar_32px.png');
-  }
-}
-
-/* Deprecate
- ========================================================================== 
- ========================================================================== 
- ========================================================================== 
- ========================================================================== 
- ========================================================================== */
-.button-row {
-  @media (max-width: 768px) {
-    .btn {
-      display:block;
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
 }

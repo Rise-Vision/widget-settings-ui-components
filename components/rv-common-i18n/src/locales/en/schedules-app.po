@@ -38,7 +38,7 @@ msgid "landing.manageSchedulesText"
 msgstr "Schedule delivery of HTML content to your digital signage displays, anywhere, anytime."
 
 msgid "list.empty"
-msgstr "You haven't created any Schedules yet"
+msgstr "You haven't created any Schedules yet."
 
 msgid "list.error"
 msgstr "Failed to load schedules. Please try again later."

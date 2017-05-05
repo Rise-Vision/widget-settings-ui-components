@@ -42,7 +42,12 @@
           };
 
           $scope.add = function(column) {
-            column.show = true;
+            for (var i = 0; i < $scope.columnNames.length; i++) {
+              if (column.id === $scope.columnNames[i].id) {
+                $scope.columnNames[i].show = true;
+                break;
+              }
+            }
             $scope.columns.push(column);
 
             setValidity();

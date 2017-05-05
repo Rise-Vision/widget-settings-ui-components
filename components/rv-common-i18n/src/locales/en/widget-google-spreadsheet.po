@@ -38,7 +38,7 @@ msgid "settings"
 msgstr "Google Spreadsheet Settings"
 
 msgid "spreadsheet.apiKey"
-msgstr "API key"
+msgstr "API Key"
 
 msgid "spreadsheet.apiKeyDescription"
 msgstr "The default refresh interval is 60 minutes. To use a different refresh interval you must provide an API Key. For more information on how to obtain an API Key, please review the article"

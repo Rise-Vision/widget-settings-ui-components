@@ -48,6 +48,7 @@
     border-color: #ebccd1;
   }
 }
+
 .tag-selector {
   padding: 5px;
   margin-bottom: 10px;
@@ -66,8 +67,8 @@
   padding: 0;
 }
 
-.content-box-editable {
-  @extend .content-box;
+.panel-editable {
+  @extend .panel;
   min-height: 34px;
   padding: 0;
   position: relative;
@@ -96,11 +97,12 @@
   }
 }
 
-.content-box-filters {
-  background: #fcfcfc;
-  padding: 10px 10px 5px;
-  margin-top: 5px;
-}
+//TODO: Still in use?
+// .content-box-filters {
+//   background: #fcfcfc;
+//   padding: 10px 10px 5px;
+//   margin-top: 5px;
+// }
 
 .select-tags {
   padding: 3px;
@@ -110,9 +112,10 @@
   }
 }
 
-.content-box-disabled {
-  pointer-events: none !important;
-  background: $light-gray !important;
-}
+//TODO: Still in use?
+// .content-box-disabled {
+//   pointer-events: none !important;
+//   background: $light-gray !important;
+// }
 
 

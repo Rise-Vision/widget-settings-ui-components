@@ -66,9 +66,15 @@
     margin-top: 0px;
   }
   .subscriptions .btn,
-  .purchases .buttons .btn {
-    width: 204px;
-    margin-top: 4px;
+  .purchases {
+        & .table-body__row > .table-body__cell {
+          vertical-align: top;
+        }
+        & .buttons .btn {
+        width: 204px;
+        margin-top: 4px;
+      }
+
   }
 }
 
@@ -177,6 +183,7 @@
   .product-name {
     padding-left: 25px;
   }
+
   table.invoice-due-summary {
     td {
       width: 50%;
@@ -398,7 +405,7 @@
   font-size: 11px;
 }
 
-.table-2 {
+.table {
   .store-block {
     margin-top: 0;
     border: none;
@@ -465,7 +472,7 @@
 }
 
 .card {
-  @extend .content-box;
+  @extend .panel;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .23);
   .card-body {
     padding: 15px;
@@ -767,11 +774,11 @@
   margin: 0 10px;
 }
 
-.table-2 .store-block {
+.table .store-block {
   margin-bottom: 0;
 }
 
-.table-2 .description {
+.table .description {
   margin-top: 0;
 }
 

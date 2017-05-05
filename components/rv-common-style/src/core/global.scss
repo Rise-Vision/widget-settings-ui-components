@@ -4,6 +4,7 @@
 html{
   height: 100%;
   -ms-overflow-style: scrollbar; 
+  overflow-y: scroll;
 }
 body {
   min-height: 100%;
@@ -34,14 +35,14 @@ a:focus, button:focus {
   text-decoration: none !important;
 }
 
-a:hover {
-}
-
 /* Resets */
 ul {
   list-style: none;
   padding: 0;
 }
+
+/* Image
+   ========================================================================== */
 
 /* Company Users
    ========================================================================== */
@@ -74,14 +75,6 @@ ul {
   .expiry {
     color: $gray;
   }
-}
-
-/* ==========================================================================
-   Content
-   ========================================================================== */
-.wrapper {
-  padding-bottom: 20px;
-  /*background-color: $lighter-gray; Moved to body. */
 }
 
 /* ==========================================================================
@@ -243,17 +236,6 @@ ul.social {
   padding: 0 7px;
 }
 
-a.btn-primary:hover {
-  .fa::before {
-      color:$white;
-  }
-}
-
-.btn-primary {
-  -webkit-font-smoothing: subpixel-antialiased;
-  .fa::before, .glyphicons::before { color: $white; }
-}
-
 .btn-github {
   @extend .btn-sm;
 }
@@ -383,27 +365,6 @@ a.btn-primary:hover {
 .label-disabled {
   color: $light-gray;
 }
-
-.add-padding {padding: 10px !important;}
-
-.add-left { margin-left: 10px !important; }
-.add-right { margin-right: 10px !important; }
-
-.remove-bottom { margin-bottom: 0 !important; }
-.small-bottom { margin-bottom: 3px !important; }
-.half-bottom { margin-bottom: 10px !important; }
-.add-bottom { margin-bottom: 20px !important; }
-.add-bottom-double { margin-bottom: 40px !important; }
-
-.remove-top { margin-top: 0 !important; }
-.small-top { margin-top: 3px !important; }
-.half-top { margin-top: 10px !important; }
-.add-top { margin-top: 20px !important; }
-.add-top-double { margin-top: 40px !important; }
-
-.remove-radius { border-radius: 0 !important; }
-.remove-margin { margin: 0 !important }
-.remove-padding { padding: 0 !important }
 
 .btn-google-drive,
 .btn-google-drive:active

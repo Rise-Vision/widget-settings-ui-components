@@ -5,7 +5,7 @@ msgid "addWidget.settingsUrl"
 msgstr "Settings URL"
 
 msgid "addWidget.title"
-msgstr "Add Widget by URL"
+msgstr "Add a Custom Rise Widget"
 
 msgid "addWidget.url"
 msgstr "URL"
@@ -73,6 +73,12 @@ msgstr "Premium Template"
 msgid "goToStore.view"
 msgstr "View In Store"
 
+msgid "json-error.message"
+msgstr "The content of your Presentation could not be parsed. Please check the syntax in HTML mode."
+
+msgid "json-error.title"
+msgstr "Invalid presentation data"
+
 msgid "landing.manageEditorText"
 msgstr "Create and manage HTML content for your digital signage displays, anywhere, anytime."
 
@@ -86,7 +92,7 @@ msgid "list.actions.new"
 msgstr "New"
 
 msgid "list.empty"
-msgstr "You haven't created any Presentations yet"
+msgstr "You haven't created any Presentations yet."
 
 msgid "list.error"
 msgstr "Failed to load presentation. Please try again later."
@@ -166,8 +172,32 @@ msgstr "Play Until Done"
 msgid "playlistItem.playUntilDone-short"
 msgstr "PUD"
 
-msgid "playlistItem.presentation"
-msgstr "Presentation"
+msgid "playlistItem.presentation.enterId"
+msgstr "Enter Presentation ID"
+
+msgid "playlistItem.presentation.error.invalidId"
+msgstr "Presentation ID is not valid. Please enter a valid ID."
+
+msgid "playlistItem.presentation.error.noAccess"
+msgstr "There was an error accessing the Presentation. This could indicate it does not exist or you cannot access it."
+
+msgid "playlistItem.presentation.error.noId"
+msgstr "Please enter a Presentation ID"
+
+msgid "playlistItem.presentation.error.noneSelected"
+msgstr "No Presentation selected. Please select a Presentation or enter an ID."
+
+msgid "playlistItem.presentation.name"
+msgstr "Embedded Presentation"
+
+msgid "playlistItem.presentation.open"
+msgstr "Open Presentation"
+
+msgid "playlistItem.presentation.select"
+msgstr "Select Presentation"
+
+msgid "playlistItem.presentation.title"
+msgstr "Embedded Presentation Settings"
 
 msgid "playlistItem.required"
 msgstr "Required"

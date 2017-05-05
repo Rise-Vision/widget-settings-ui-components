@@ -4,6 +4,7 @@
   },
   "add": {
     "download": {
+      "armv7l": "[BETA] Download Raspbian 8.0 [ARMv7]",
       "linux32": "Download Ubuntu 14.04 LTS [32-bit]",
       "linux64": "Download Ubuntu 14.04 LTS [64-bit]",
       "win32": "Download Windows 10 [32-bit]",
@@ -108,9 +109,12 @@
     "unsavedTitle": "Unsaved Changes",
     "unsavedWarning": "You have unsaved changes. Do you want to Save or Discard them?"
   },
+  "displayDetails": "Display Details",
   "download": {
+    "armv7l": "[BETA] Download Player for Raspbian 8.0 [ARMv7]",
     "linux32": "Download Player for Ubuntu 14.04 LTS [32-bit]",
     "linux64": "Download Player for Ubuntu 14.04 LTS [64-bit]",
+    "player": "Download Player",
     "win32": "Download Player for Windows 10 [32-bit]",
     "win64": "Download Player for Windows 10 [64-bit]"
   },
@@ -137,18 +141,18 @@
       "useCompany": "Use Company Address"
     },
     "controls": {
-      "download": "Download Player",
+      "download": "Download Rise Player",
       "error": "Error:",
       "howto": "How do I show Presentations on my device?",
       "howtoInstall": "How do I install Rise Player?",
       "reboot": {
-        "name": "Reboot Player",
+        "name": "Reboot Media Player",
         "success": "Reboot signal sent",
         "title": "Rebooting Display",
         "warning": "The Rise Player on the Display's Computer will reboot and the currently Scheduled Content will be interrupted. Do you wish to proceed?"
       },
       "restart": {
-        "name": "Restart Player",
+        "name": "Restart Rise Player",
         "success": "Restart signal sent",
         "title": "Restarting Display",
         "warning": "The Rise Player on the Display's Computer will restart and the currently Scheduled Content will be interrupted. Do you wish to proceed?"
@@ -177,13 +181,17 @@
           "userManaged": "User Managed"
         }
       },
+      "browserVersion": "Browser Version",
+      "id": "Display ID",
       "install": {
         "heading": "Install Rise Player",
         "id": "Your Display ID is"
       },
-      "ipAddress": "IP Address:",
-      "localIpAddress": "Local IP Address:",
-      "operatingSystem": "Operating System:",
+      "ipAddress": "IP Address",
+      "lastConnection": "Last Connection",
+      "localIpAddress": "Local IP Address",
+      "macAddress": "MAC Address",
+      "operatingSystem": "Operating System",
       "orientation": {
         "0": "Landscape",
         "90": "Portrait",
@@ -191,12 +199,37 @@
         "270": "Portrait (flipped)",
         "name": "Rotation:"
       },
-      "playerVersion": "Player Version:",
+      "playerVersion": "Player Version",
       "playerWarning": "A Player has not been configured for your Display. To configure your Display, select your Operating System below and install the software <b>on the device</b> that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID (above) to link the Player with the Display that you have setup here. Further setup details can be <a href=\"http://help.risevision.com/user/create-a-display/\" target=\"_blank\">found here</a>.",
-      "resolution": "Resolution:",
-      "viewerVersion": "Viewer Version:"
+      "resolution": "Resolution",
+      "schedule": {
+        "addToSchedule": "Add To Schedule",
+        "label": "Schedule",
+        "notScheduled": "This Display is not scheduled."
+      },
+      "serialNumber": "Serial Number",
+      "status": "Status",
+      "viewerVersion": "Viewer Version"
     },
     "reboot": "Reboot:",
+    "screenshot": {
+      "error1": "There was a problem requesting the screenshot.",
+      "error2": "Please check connectivity.",
+      "learnSupportedOS1": "Learn more about supported",
+      "learnSupportedOS2": "operating systems.",
+      "missing1": "No Screenshot to show.",
+      "missing2": "Click 'Update' above.",
+      "notAvailable": "Screenshot not available.",
+      "notScheduled": "This Display is not scheduled.",
+      "osNotSupported": "Media Player operating system not supported.",
+      "playerInstall": "Install Rise Player",
+      "playerNotInstalled": "Rise Player not installed.",
+      "playerOffline": "This Display is Offline.",
+      "title": "Display Screenshot",
+      "updateScreenshot": "Update",
+      "upgradePlayer": "Upgrade Rise Player",
+      "upgradeRequired": "Rise Player software must be upgraded."
+    },
     "status": {
       "active": "Active",
       "inactive": "Inactive",
@@ -207,7 +240,7 @@
     "manageDisplaysText": "Manage and monitor your digital signage displays, anywhere, anytime."
   },
   "list": {
-    "empty": "You haven't created any Displays yet",
+    "empty": "You haven't created any Displays yet.",
     "filter": {
       "filters": "Filters",
       "placeholder": "Search for Displays"
@@ -216,11 +249,21 @@
       "address": "Address",
       "lastConnection": "Last Connection",
       "name": "Name",
+      "schedule": "Schedule",
       "status": "Status"
     },
     "no-results": "Your search didn't return any results",
     "noDisplays": "No Displays",
+    "schedule": {
+      "add": "Add to Schedule"
+    },
     "searchNotification": "Search results may include Displays that belong to your sub-companies.",
+    "status": {
+      "error": "Error",
+      "install": "Install Player",
+      "offline": "Offline",
+      "online": "Online"
+    },
     "viewAll": "View All Displays"
   },
   "title": "Displays"

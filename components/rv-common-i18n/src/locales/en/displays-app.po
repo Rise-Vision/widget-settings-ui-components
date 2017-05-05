@@ -1,6 +1,9 @@
 msgid "actions.new"
 msgstr "Add Display"
 
+msgid "add.download.armv7l"
+msgstr "[BETA] Download Raspbian 8.0 [ARMv7]"
+
 msgid "add.download.linux32"
 msgstr "Download Ubuntu 14.04 LTS [32-bit]"
 
@@ -247,11 +250,20 @@ msgstr "Unsaved Changes"
 msgid "details.unsavedWarning"
 msgstr "You have unsaved changes. Do you want to Save or Discard them?"
 
+msgid "displayDetails"
+msgstr "Display Details"
+
+msgid "download.armv7l"
+msgstr "[BETA] Download Player for Raspbian 8.0 [ARMv7]"
+
 msgid "download.linux32"
 msgstr "Download Player for Ubuntu 14.04 LTS [32-bit]"
 
 msgid "download.linux64"
 msgstr "Download Player for Ubuntu 14.04 LTS [64-bit]"
+
+msgid "download.player"
+msgstr "Download Player"
 
 msgid "download.win32"
 msgstr "Download Player for Windows 10 [32-bit]"
@@ -299,7 +311,7 @@ msgid "fields.address.useCompany"
 msgstr "Use Company Address"
 
 msgid "fields.controls.download"
-msgstr "Download Player"
+msgstr "Download Rise Player"
 
 msgid "fields.controls.error"
 msgstr "Error:"
@@ -311,7 +323,7 @@ msgid "fields.controls.howtoInstall"
 msgstr "How do I install Rise Player?"
 
 msgid "fields.controls.reboot.name"
-msgstr "Reboot Player"
+msgstr "Reboot Media Player"
 
 msgid "fields.controls.reboot.success"
 msgstr "Reboot signal sent"
@@ -323,7 +335,7 @@ msgid "fields.controls.reboot.warning"
 msgstr "The Rise Player on the Display's Computer will reboot and the currently Scheduled Content will be interrupted. Do you wish to proceed?"
 
 msgid "fields.controls.restart.name"
-msgstr "Restart Player"
+msgstr "Restart Rise Player"
 
 msgid "fields.controls.restart.success"
 msgstr "Restart signal sent"
@@ -370,6 +382,12 @@ msgstr "Browser Upgrade:"
 msgid "fields.player.browser.upgrade.userManaged"
 msgstr "User Managed"
 
+msgid "fields.player.browserVersion"
+msgstr "Browser Version"
+
+msgid "fields.player.id"
+msgstr "Display ID"
+
 msgid "fields.player.install.heading"
 msgstr "Install Rise Player"
 
@@ -377,13 +395,19 @@ msgid "fields.player.install.id"
 msgstr "Your Display ID is"
 
 msgid "fields.player.ipAddress"
-msgstr "IP Address:"
+msgstr "IP Address"
+
+msgid "fields.player.lastConnection"
+msgstr "Last Connection"
 
 msgid "fields.player.localIpAddress"
-msgstr "Local IP Address:"
+msgstr "Local IP Address"
+
+msgid "fields.player.macAddress"
+msgstr "MAC Address"
 
 msgid "fields.player.operatingSystem"
-msgstr "Operating System:"
+msgstr "Operating System"
 
 msgid "fields.player.orientation.0"
 msgstr "Landscape"
@@ -401,19 +425,82 @@ msgid "fields.player.orientation.name"
 msgstr "Rotation:"
 
 msgid "fields.player.playerVersion"
-msgstr "Player Version:"
+msgstr "Player Version"
 
 msgid "fields.player.playerWarning"
 msgstr "A Player has not been configured for your Display. To configure your Display, select your Operating System below and install the software <b>on the device</b> that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID (above) to link the Player with the Display that you have setup here. Further setup details can be <a href="http://help.risevision.com/user/create-a-display/" target="_blank">found here</a>."
 
 msgid "fields.player.resolution"
-msgstr "Resolution:"
+msgstr "Resolution"
+
+msgid "fields.player.schedule.addToSchedule"
+msgstr "Add To Schedule"
+
+msgid "fields.player.schedule.label"
+msgstr "Schedule"
+
+msgid "fields.player.schedule.notScheduled"
+msgstr "This Display is not scheduled."
+
+msgid "fields.player.serialNumber"
+msgstr "Serial Number"
+
+msgid "fields.player.status"
+msgstr "Status"
 
 msgid "fields.player.viewerVersion"
-msgstr "Viewer Version:"
+msgstr "Viewer Version"
 
 msgid "fields.reboot"
 msgstr "Reboot:"
+
+msgid "fields.screenshot.error1"
+msgstr "There was a problem requesting the screenshot."
+
+msgid "fields.screenshot.error2"
+msgstr "Please check connectivity."
+
+msgid "fields.screenshot.learnSupportedOS1"
+msgstr "Learn more about supported"
+
+msgid "fields.screenshot.learnSupportedOS2"
+msgstr "operating systems."
+
+msgid "fields.screenshot.missing1"
+msgstr "No Screenshot to show."
+
+msgid "fields.screenshot.missing2"
+msgstr "Click 'Update' above."
+
+msgid "fields.screenshot.notAvailable"
+msgstr "Screenshot not available."
+
+msgid "fields.screenshot.notScheduled"
+msgstr "This Display is not scheduled."
+
+msgid "fields.screenshot.osNotSupported"
+msgstr "Media Player operating system not supported."
+
+msgid "fields.screenshot.playerInstall"
+msgstr "Install Rise Player"
+
+msgid "fields.screenshot.playerNotInstalled"
+msgstr "Rise Player not installed."
+
+msgid "fields.screenshot.playerOffline"
+msgstr "This Display is Offline."
+
+msgid "fields.screenshot.title"
+msgstr "Display Screenshot"
+
+msgid "fields.screenshot.updateScreenshot"
+msgstr "Update"
+
+msgid "fields.screenshot.upgradePlayer"
+msgstr "Upgrade Rise Player"
+
+msgid "fields.screenshot.upgradeRequired"
+msgstr "Rise Player software must be upgraded."
 
 msgid "fields.status.active"
 msgstr "Active"
@@ -428,7 +515,7 @@ msgid "landing.manageDisplaysText"
 msgstr "Manage and monitor your digital signage displays, anywhere, anytime."
 
 msgid "list.empty"
-msgstr "You haven't created any Displays yet"
+msgstr "You haven't created any Displays yet."
 
 msgid "list.filter.filters"
 msgstr "Filters"
@@ -445,6 +532,9 @@ msgstr "Last Connection"
 msgid "list.heading.name"
 msgstr "Name"
 
+msgid "list.heading.schedule"
+msgstr "Schedule"
+
 msgid "list.heading.status"
 msgstr "Status"
 
@@ -454,8 +544,23 @@ msgstr "Your search didn't return any results"
 msgid "list.noDisplays"
 msgstr "No Displays"
 
+msgid "list.schedule.add"
+msgstr "Add to Schedule"
+
 msgid "list.searchNotification"
 msgstr "Search results may include Displays that belong to your sub-companies."
+
+msgid "list.status.error"
+msgstr "Error"
+
+msgid "list.status.install"
+msgstr "Install Player"
+
+msgid "list.status.offline"
+msgstr "Offline"
+
+msgid "list.status.online"
+msgstr "Online"
 
 msgid "list.viewAll"
 msgstr "View All Displays"

@@ -158,6 +158,13 @@ RiseVision.Common.Utilities = (function() {
     });
   }
 
+  function loadScript( src ) {
+    var script = document.createElement( "script" );
+
+    script.src = src;
+    document.body.appendChild( script );
+  }
+
   function preloadImages(urls) {
     var length = urls.length,
       images = [];
@@ -168,9 +175,18 @@ RiseVision.Common.Utilities = (function() {
     }
   }
 
+  /**
+   * Get the current URI query param
+   */
   function getQueryParameter(param) {
-    var query = window.location.search.substring(1),
-      vars = query.split("&"),
+    return getQueryStringParameter(param, window.location.search.substring(1));
+  }
+
+  /**
+   * Get the query parameter from a query string
+   */
+  function getQueryStringParameter(param, query) {
+    var vars = query.split("&"),
       pair;
 
     for (var i = 0; i < vars.length; i++) {
@@ -182,6 +198,25 @@ RiseVision.Common.Utilities = (function() {
     }
 
     return "";
+  }
+
+  /**
+   * Get date object from player version string
+   */
+  function getDateObjectFromPlayerVersionString(playerVersion) {
+    var reggie = /(\d{4})\.(\d{2})\.(\d{2})\.(\d{2})\.(\d{2})/;
+    var dateArray = reggie.exec(playerVersion);
+    if (dateArray) {
+      return new Date(
+        (+dateArray[1]),
+          (+dateArray[2])-1, // Careful, month starts at 0!
+        (+dateArray[3]),
+        (+dateArray[4]),
+        (+dateArray[5])
+      );
+    } else {
+      return;
+    }
   }
 
   function getRiseCacheErrorMessage(statusCode) {
@@ -258,18 +293,21 @@ RiseVision.Common.Utilities = (function() {
   }
 
   return {
-    addProtocol: addProtocol,
-    getQueryParameter: getQueryParameter,
-    getFontCssStyle:  getFontCssStyle,
-    addCSSRules:      addCSSRules,
-    loadFonts:        loadFonts,
-    loadCustomFont:   loadCustomFont,
-    loadGoogleFonts:   loadGoogleFonts,
-    preloadImages:    preloadImages,
+    addProtocol:              addProtocol,
+    getQueryParameter:        getQueryParameter,
+    getQueryStringParameter:  getQueryStringParameter,
+    getFontCssStyle:          getFontCssStyle,
+    addCSSRules:              addCSSRules,
+    loadFonts:                loadFonts,
+    loadCustomFont:           loadCustomFont,
+    loadGoogleFonts:          loadGoogleFonts,
+    loadScript:               loadScript,
+    preloadImages:            preloadImages,
     getRiseCacheErrorMessage: getRiseCacheErrorMessage,
-    unescapeHTML: unescapeHTML,
-    hasInternetConnection: hasInternetConnection,
-    isLegacy: isLegacy
+    unescapeHTML:             unescapeHTML,
+    hasInternetConnection:    hasInternetConnection,
+    isLegacy:                 isLegacy,
+    getDateObjectFromPlayerVersionString: getDateObjectFromPlayerVersionString
   };
 })();
 
@@ -1010,7 +1048,7 @@ RiseVision.Common.LoggerUtils = (function() {
       day = "0" + day;
     }
 
-    return year + month + day;
+    return "" + year + month + day;
   }
 
   /*
@@ -1111,8 +1149,12 @@ RiseVision.Common.Logger = (function(utils) {
 
     xhr.open("POST", REFRESH_URL, true);
     xhr.onloadend = function() {
-      var resp = JSON.parse(xhr.response);
-
+      var resp = {};
+      try {
+        resp = JSON.parse(xhr.response);
+      } catch(e) {
+        console.warn("Can't refresh logger token - ", e.message);
+      }
       cb({ token: resp.access_token, refreshedAt: new Date() });
     };
 
@@ -1169,6 +1211,7 @@ RiseVision.Common.Logger = (function(utils) {
     "log": log
   };
 })(RiseVision.Common.LoggerUtils);
+
 var RiseVision = RiseVision || {};
 RiseVision.Common = RiseVision.Common || {};
 
@@ -1245,11 +1288,12 @@ RiseVision.Common = RiseVision.Common || {};
 RiseVision.Common.RiseCache = (function () {
   "use strict";
 
-  var BASE_CACHE_URL = "//localhost:9494/";
+  var BASE_CACHE_URL = "http://localhost:9494/";
 
   var _pingReceived = false,
     _isCacheRunning = false,
-    _isV2Running = false;
+    _isV2Running = false,
+    _utils = RiseVision.Common.Utilities;
 
   function ping(callback) {
     var r = new XMLHttpRequest(),
@@ -1304,6 +1348,8 @@ RiseVision.Common.RiseCache = (function () {
       return;
     }
 
+    var totalCacheRequests = 0;
+
     function fileRequest() {
       var url, str, separator;
 
@@ -1340,8 +1386,14 @@ RiseVision.Common.RiseCache = (function () {
 
         xhr.addEventListener("loadend", function () {
           var status = xhr.status || 0;
-
-          if (status >= 200 && status < 300) {
+          if (status === 202) {
+              totalCacheRequests++;
+              if (totalCacheRequests < 3) {
+                setTimeout(function(){ makeRequest(method, url); }, 3000);
+              } else {
+                  callback(request, new Error("File is downloading"));
+              }
+          } else if (status >= 200 && status < 300) {
             callback(request);
           } else {
             // Server may not support HEAD request. Fallback to a GET request.
@@ -1424,12 +1476,52 @@ RiseVision.Common.RiseCache = (function () {
     }
   }
 
+  function isRCV2Player(callback) {
+    if (!callback || typeof callback !== "function") {
+      return;
+    }
+    /* jshint validthis: true */
+    return this.isV2Running(function (isV2Running) {
+      if (isV2Running) {
+        callback(isV2Running);
+      } else {
+        callback(isV3PlayerVersionWithRCV2());
+      }
+    });
+  }
+
+  function isV3PlayerVersionWithRCV2() {
+    var RC_V2_FIRST_PLAYER_VERSION_DATE = _utils.getDateObjectFromPlayerVersionString("2016.10.10.00.00");
+
+    var sysInfoViewerParameter = _utils.getQueryParameter("sysInfo");
+    if (!sysInfoViewerParameter) {
+      // when the widget is loaded into an iframe the search has a parameter called parent which represents the parent url
+      var parentParameter = _utils.getQueryParameter("parent");
+      sysInfoViewerParameter = _utils.getQueryStringParameter("sysInfo", parentParameter);
+    }
+    if (sysInfoViewerParameter) {
+      var playerVersionString = _utils.getQueryStringParameter("pv", sysInfoViewerParameter);
+      var playerVersionDate = _utils.getDateObjectFromPlayerVersionString(playerVersionString);
+      return playerVersionDate >= RC_V2_FIRST_PLAYER_VERSION_DATE;
+    } else {
+      return false;
+    }
+  }
+
+  function reset() {
+    _pingReceived = false;
+     _isCacheRunning = false;
+     _isV2Running = false;
+  }
+
   return {
     getErrorMessage: getErrorMessage,
     getFile: getFile,
     isRiseCacheRunning: isRiseCacheRunning,
     isV2Running: isV2Running,
-    ping: ping
+    isRCV2Player: isRCV2Player,
+    ping: ping,
+    reset: reset
   };
 
 })();
@@ -1451,7 +1543,8 @@ RiseVision.Common.Scroller = function (params) {
     _items = [],
     _xpos = 0,
     _originalXpos = 0,
-    _utils = RiseVision.Common.Utilities;
+    _utils = RiseVision.Common.Utilities,
+    MAX_CANVAS_SIZE = 32767;
 
   /*
    *  Private Methods
@@ -1462,12 +1555,21 @@ RiseVision.Common.Scroller = function (params) {
     drawItems();
     fillScroller();
 
+    if (_xpos > MAX_CANVAS_SIZE) {
+      throwOversizedCanvesError();
+    }
+
     // Width of the secondary canvas needs to equal the width of all of the text.
     _secondary.width = _xpos;
 
     // Setting the width again resets the canvas so it needs to be redrawn.
     drawItems();
     fillScroller();
+  }
+
+  function throwOversizedCanvesError() {
+    var event = new Event("scroller-oversized-canvas");
+    _scroller.dispatchEvent(event);
   }
 
   function drawItems() {

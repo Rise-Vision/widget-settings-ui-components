@@ -11,7 +11,7 @@
 		}
 	}
 	.scrollable-list {
-		@extend .content-box;
+		@extend .panel;
 		padding: 0;
 		height: auto;
 	}
@@ -21,7 +21,7 @@
 		&.help-active {
 			height: calc(100vh - 977px);
 		}
-		@media (max-width: 768px) {
+		@media (max-width: $screen-sm) {
 			height: auto;
 		}
 		.list-item {
@@ -35,7 +35,7 @@
 				text-overflow: ellipsis;
 				overflow: hidden;
 				width: 260px;
-				@media (max-width: 992px){
+				@media (max-width: $screen-md){
 					width: 180px;
 				}
 			}
@@ -149,12 +149,13 @@
     }
 }
 
+//TODO: IS this still in use?
 .apps-launcher {
 	text-align: center;
 	font-size: 18px;
 	.apps-launcher-tour {
 		padding: 64px 32px;
-		.content-box {
+		.panel {
 			overflow: hidden;
 			margin: 2px;
 			-webkit-box-shadow:0 1px 4px rgba(50, 50, 50, 0.1);
@@ -243,7 +244,7 @@
 	h1 {
 		margin-top: 0;
 	}
-	.content-box {
+	.panel {
 		padding: 32px;
 	}
 	.rise-logo {
@@ -253,7 +254,7 @@
 		img {
 			width: 150px;
 		}
-		@media (max-width: 768px){
+		@media (max-width: $screen-sm){
 			border-right: none;
 			text-align: left;
 			padding:0;

@@ -15,7 +15,8 @@ RiseVision.Common.Scroller = function (params) {
     _items = [],
     _xpos = 0,
     _originalXpos = 0,
-    _utils = RiseVision.Common.Utilities;
+    _utils = RiseVision.Common.Utilities,
+    MAX_CANVAS_SIZE = 32767;
 
   /*
    *  Private Methods
@@ -26,12 +27,21 @@ RiseVision.Common.Scroller = function (params) {
     drawItems();
     fillScroller();
 
+    if (_xpos > MAX_CANVAS_SIZE) {
+      throwOversizedCanvesError();
+    }
+
     // Width of the secondary canvas needs to equal the width of all of the text.
     _secondary.width = _xpos;
 
     // Setting the width again resets the canvas so it needs to be redrawn.
     drawItems();
     fillScroller();
+  }
+
+  function throwOversizedCanvesError() {
+    var event = new Event("scroller-oversized-canvas");
+    _scroller.dispatchEvent(event);
   }
 
   function drawItems() {

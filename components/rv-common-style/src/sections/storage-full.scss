@@ -1,6 +1,6 @@
 .storage-full,
 .storage-modal {
-  .table-2 {
+  .table {
     .folder,
     .file {
       &:before {
@@ -60,6 +60,11 @@
     max-height: calc(100vh - 300px);
     width: 100%;
   }
+}
+
+.file-empty-state path {
+    fill: #969595;
+    opacity: .65;
 }
 
 #store-modal-frame {

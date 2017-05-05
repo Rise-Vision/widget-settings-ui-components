@@ -6,7 +6,7 @@ $panel-width: 290px;
   position: relative;
   background: #d4d4d4;
   .workspace-toolbar {
-    width: calc(100% - 5px);
+    width: calc(100% - 12px);
     white-space: nowrap;
     position: absolute;
     z-index: 100;
@@ -250,7 +250,7 @@ $panel-width: 290px;
 }
 
 .placeholder-item-name {
-  @extend .ellipsis;
+  @extend .u_ellipsis-md;
   width: 180px;
   font-weight: 500;
   line-height: 24px;

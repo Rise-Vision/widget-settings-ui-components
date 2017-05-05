@@ -1,6 +1,5 @@
 /* Modal scrollable list
    ========================================================================== */
-
 .scrollable-list {
   overflow-x: hidden;
   overflow-y: auto;
@@ -43,7 +42,7 @@
     border: 1px solid $light-gray;
     border-radius: 4px;
     margin-bottom: 5px;
-    padding: 8px;
+    padding: 8px 8px 3px 8px;
     &:hover {
       border: 1px solid #bcbcbc;
     }
@@ -52,12 +51,9 @@
       margin: 0;
       line-height: 22px;
     }
-    // a > p > span {
-    //   border-bottom: 1px dotted #000;
-    // }
     .playlist-item-name {
       span {
-        @extend .ellipsis;
+        @extend .u_ellipsis-md;
         font-weight: 500;
         display: inline-block;
         vertical-align: top;
@@ -143,7 +139,7 @@
 }
 
 .select-subcompany-modal .list-group {
-  @extend .content-box;
+  @extend .panel;
 }
 
 
@@ -172,10 +168,10 @@
   .title {
     margin: 0;
     line-height: 1.5;
-    @extend .ellipsed;
+    @extend .u_ellipsis-md;
   }
   p {
-    @extend .ellipsed;
+    @extend .u_ellipsis-md;
     font-size: 85%;
     line-height: 1.1;
     margin: 5px 0 0 0;
@@ -185,25 +181,23 @@
   }
   .box-list-body {
     padding-right: 40px;
-    @extend .ellipsed;
+    @extend .u_ellipsis-md;
   }
   .box-list-aside {
     float: right;
-    @extend .ellipsed;
+    @extend .u_ellipsis-md;
   }
 }
 
 
 /* Grid List
    ========================================================================== */
-
 .grid-list {
   h4 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 30px;
-    font-size: 16px;
     margin-bottom: 0;
     width: 100%;
   }
@@ -217,18 +211,27 @@
     position: relative;
     & > * {
       display: inline-block;
-      border: solid 2px #fff;
     }
     img {
-      width: 100%;
       height: 100%;
+      width: 100%;
       box-sizing: border-box;
     }
   }
-  .content-box {
-    margin: 8px;
-    padding: 8px;
-    border: 1px solid $light-gray;
+  .grid-list-image-featured {
+    height: 280px;
+    img {
+      height: auto;
+    }
+  }
+  .grid-list-text {
+    color: #333;
+    min-height: 180px;
+    overflow: hidden;
+  }
+  .panel {
+    margin: 4px;
+    padding: 12px;
     -webkit-box-shadow: inset 0 -1px 0 #d5d1cb, 0 1px 4px rgba(113, 108, 102, .1), transparent 0 0 0;
     box-shadow: inset 0 -1px 0 #d5d1cb, 0 1px 4px rgba(113, 108, 102, .1), transparent 0 0 0;
     cursor: pointer;
@@ -239,7 +242,7 @@
     transition: border .2s ease-out;
     & .product-pricing {
       position: absolute;
-      bottom: 0;
+      bottom: 4px;
       span {
         color: #3C7BDA;
         font-weight: bold;
@@ -247,7 +250,8 @@
     }
     & .info {
       position: absolute;
-      float: left;
+      top:0;
+      left: 0;
       width: 100%;
       height: 100%;
       opacity: 0;
@@ -268,58 +272,50 @@
   }
   @media only screen and (max-width: $screen-md) {
     .grid-list-image {
-      height: 284px;
+      height: 200px;
     }
   }
-  @media (max-width: 768px) {
-    .grid-list-image {
-      height: 300px;
-    }
+  @media (max-width: $screen-sm) {
     h4 {
       font-size: 14px;
-    }
-    .content-box {
-      padding: 5px;
-      margin: 5px;
     }
   }
 }
 
 // For RV Store Only
 .store.grid-list {
-  .content-box {
-    min-height: 323px;
-    position: static;
-  }
   /* Small devices  */
   @media (min-width: $screen-sm-min) {
-    .content-box {
-      min-height: 408px;
+    .grid-list-text {
+      min-height: 160px;
     }
   }
   /* Medium devices  */
   @media (min-width: $screen-md-min) {
-    .content-box {
-      min-height: 363px;
+    .grid-list-text {
+      min-height: 200px;
+    }
+  }
+  /* Large devices  */
+  @media (min-width: $screen-lg-min) {
+    .grid-list-text {
+      min-height: 160px;
     }
   }
 }
 
-.store-front.grid-list {
-  /* Small devices  */
-  @media (min-width: $screen-sm-min) {
-    .content-box {
-      min-height: 405px;
-    }
+.submit-product-cta {
+  .panel-default {
+    background-color: lighten($rise-green, 35%);
+    border: 1px solid $rise-green;
   }
-  /* Medium devices  */
-  @media (min-width: $screen-md-min) {
-    .content-box {
-      min-height: 290px;
-    }
+  h3 {
+    margin-top: 10px;
   }
+  &:hover {
+    color: #FFF;
+    text-decoration: none;
+  }
+  color: #FFF;
 }
 
-.store.grid-list-text {
-  color: #333;
-}

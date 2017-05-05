@@ -3,7 +3,7 @@
   height: auto;
   max-height: 75%;
   background-color: #FFF;
-  position: absolute;
+  position: fixed;
   left: 0px;
   bottom: 0px;
   z-index: $zindex-off-canvas;
@@ -46,7 +46,9 @@
     list-style: none;
     display: list-item;
     margin: 0;
-    padding: 0 15px;
+    > a {
+      padding: 8px;
+    }
     &.system-message {
       padding-bottom: 10px !important;
     }
@@ -58,9 +60,14 @@
       color: $text-color !important;
     }
   }
-  .dropdown-header, .dropdown-footer {
-    padding: 15px;
-  }
+}
+
+li.dropdown-footer {
+  padding: 0 8px 0;
+}
+
+li.dropdown-header {
+  padding: 8px;
 }
 
 #action-sheet-backdrop.modal-backdrop {

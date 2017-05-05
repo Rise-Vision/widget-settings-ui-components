@@ -50,7 +50,7 @@ msgid "hours.unknown"
 msgstr "currently unknown"
 
 msgid "list.empty"
-msgstr "You haven't created any tickets yet"
+msgstr "You haven't created any tickets yet."
 
 msgid "list.filter"
 msgstr "Filter tickets by status"

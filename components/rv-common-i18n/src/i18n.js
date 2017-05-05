@@ -17,9 +17,9 @@ angular.module("pascalprecht.translate").factory("$translateStaticFilesLoader", 
         ].join(""),
         method: "GET",
         params: ""
-      }, options.$http)).success(function (data) {
-        deferred.resolve(data);
-      }).error(function () {
+      }, options.$http)).then(function (response) {
+        deferred.resolve(response.data);
+      }, function () {
         if(options.key.indexOf("_") >= 0) {
           var key = options.key.substr(0, options.key.lastIndexOf("_"));
           var opts = angular.extend({}, options, { key: key });
@@ -57,5 +57,6 @@ angular.module("risevision.common.i18n", ["pascalprecht.translate", "risevision.
   
   $translateProvider
     .determinePreferredLanguage()
-    .fallbackLanguage("en");
+    .fallbackLanguage("en")
+    .useSanitizeValueStrategy(null);
 }]);

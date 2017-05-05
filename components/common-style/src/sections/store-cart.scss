@@ -66,9 +66,12 @@
     margin-top: 0px;
   }
   .subscriptions .btn,
-  .purchases .buttons .btn {
-    width: 204px;
-    margin-top: 4px;
+  .purchases {
+        & .buttons .btn {
+        width: 204px;
+        margin-top: 4px;
+      }
+
   }
 }
 
@@ -177,6 +180,7 @@
   .product-name {
     padding-left: 25px;
   }
+
   table.invoice-due-summary {
     td {
       width: 50%;
@@ -199,7 +203,7 @@
 /* Media queries
    ========================================================================== */
 
-@media (min-width: 768px) {
+@media (min-width: $screen-sm) {
   .subscription-confirmation,
   .purchase-invoice {
     padding-left: 100px;
@@ -362,7 +366,7 @@
       margin: 0;
       line-height: 20px;
       display: block;
-      @media (max-width: 768px) {
+      @media (max-width: $screen-sm) {
         text-overflow: ellipsis;
         width: 180px;
         overflow: hidden;
@@ -383,7 +387,7 @@
     .description {
       margin: 0;
       p {
-        @media (max-width: 480px) {
+        @media (max-width: $screen-xs) {
           text-overflow: ellipsis;
           width: 100px;
           white-space: nowrap;
@@ -398,7 +402,7 @@
   font-size: 11px;
 }
 
-.table-2 {
+.table {
   .store-block {
     margin-top: 0;
     border: none;
@@ -423,7 +427,7 @@
     display: inline-block;
   }
   line-height: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: $screen-sm) {
     display: block;
     float: none !important;
     width: 100%;
@@ -449,7 +453,7 @@
     width: 1%;
     display: table-cell;
   }
-  @media (max-width: 768px) {
+  @media (max-width: $screen-sm) {
     display: block;
     .card {
       display: block;
@@ -465,7 +469,7 @@
 }
 
 .card {
-  @extend .content-box;
+  @extend .panel;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .23);
   .card-body {
     padding: 15px;
@@ -626,7 +630,7 @@
       color: #777;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: $screen-sm) {
     tbody {
       tr>td {
         font-size: 13px;
@@ -767,11 +771,11 @@
   margin: 0 10px;
 }
 
-.table-2 .store-block {
+.table .store-block {
   margin-bottom: 0;
 }
 
-.table-2 .description {
+.table .description {
   margin-top: 0;
 }
 

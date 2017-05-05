@@ -1,14 +1,18 @@
-@mixin alert-variant($background, $border, $text-color, $link-text-color: darken($text-color, 10%) ) {
-  background-color: $background;
-  border-color: $border;
-  color: $text-color;
-  hr {
-    border-top-color: darken($border, 5%);
-  }
-  .alert-link {
-    color: $link-text-color;
-  }
-}
+// Note: Core Cleanup
+
+// @mixin alert-variant($background, $border, $text-color, $link-text-color: darken($text-color, 10%) ) {
+//   background-color: $background;
+//   border-color: $border;
+//   color: $text-color;
+//   hr {
+//     border-top-color: darken($border, 5%);
+//   }
+//   .alert-link {
+//     color: $link-text-color;
+//   }
+// }
+
+
 
 @mixin nav-divider($color: #e5e5e5, $margin-top: (($line-height-computed / 2) - 1)) {
   height: 1px;
@@ -21,6 +25,7 @@
   color: $color;
   background-color: $background;
   border-color: $border;
+
   &:hover,
   &:focus,
   &:active,
@@ -47,6 +52,14 @@
       border-color: $border-disabled;
     }
   }
+}
+
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius, $font-weight) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+  font-weight: $font-weight;
 }
 
 @mixin label-variant($color, $bg-color-hover: darken($color, 10%)) {

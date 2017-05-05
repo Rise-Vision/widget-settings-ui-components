@@ -18,34 +18,13 @@
     .btn {
       margin-bottom: 0;
     }
-    .btn-group {
-      .dropdown-menu {
-        left: auto;
-        right: 0;
-        label {
-          margin-left: 8px;
-          display: block;
-          padding: 10px;
-          font-weight: 400;
-          cursor: pointer;
-          &:hover {
-            color: $rise-blue;
-          }
-        }
-      }
-    }
+
     @media (max-width: 768px) {
       margin-top: 10px;
       .btn {
         width: 100%;
         margin: 0 0 5px;
         padding: 8px 0;
-      }
-      .btn-group {
-        width: 100%;
-        .dropdown-menu {
-          width: 100%;
-        }
       }
     }
   }

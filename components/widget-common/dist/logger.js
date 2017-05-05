@@ -55,7 +55,7 @@ RiseVision.Common.LoggerUtils = (function() {
       day = "0" + day;
     }
 
-    return year + month + day;
+    return "" + year + month + day;
   }
 
   /*
@@ -156,8 +156,12 @@ RiseVision.Common.Logger = (function(utils) {
 
     xhr.open("POST", REFRESH_URL, true);
     xhr.onloadend = function() {
-      var resp = JSON.parse(xhr.response);
-
+      var resp = {};
+      try {
+        resp = JSON.parse(xhr.response);
+      } catch(e) {
+        console.warn("Can't refresh logger token - ", e.message);
+      }
       cb({ token: resp.access_token, refreshedAt: new Date() });
     };
 

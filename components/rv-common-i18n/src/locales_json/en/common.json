@@ -78,5 +78,9 @@
     "pixels": "px",
     "seconds": "sec"
   },
+  "warning": {
+    "hide-warning": "Do not show this warning again.",
+    "title": "Warning!"
+  },
   "wednesday": "Wednesday"
 }

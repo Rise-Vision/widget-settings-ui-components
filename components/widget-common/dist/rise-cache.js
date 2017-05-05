@@ -4,11 +4,12 @@ RiseVision.Common = RiseVision.Common || {};
 RiseVision.Common.RiseCache = (function () {
   "use strict";
 
-  var BASE_CACHE_URL = "//localhost:9494/";
+  var BASE_CACHE_URL = "http://localhost:9494/";
 
   var _pingReceived = false,
     _isCacheRunning = false,
-    _isV2Running = false;
+    _isV2Running = false,
+    _utils = RiseVision.Common.Utilities;
 
   function ping(callback) {
     var r = new XMLHttpRequest(),
@@ -63,6 +64,8 @@ RiseVision.Common.RiseCache = (function () {
       return;
     }
 
+    var totalCacheRequests = 0;
+
     function fileRequest() {
       var url, str, separator;
 
@@ -99,8 +102,14 @@ RiseVision.Common.RiseCache = (function () {
 
         xhr.addEventListener("loadend", function () {
           var status = xhr.status || 0;
-
-          if (status >= 200 && status < 300) {
+          if (status === 202) {
+              totalCacheRequests++;
+              if (totalCacheRequests < 3) {
+                setTimeout(function(){ makeRequest(method, url); }, 3000);
+              } else {
+                  callback(request, new Error("File is downloading"));
+              }
+          } else if (status >= 200 && status < 300) {
             callback(request);
           } else {
             // Server may not support HEAD request. Fallback to a GET request.
@@ -183,12 +192,52 @@ RiseVision.Common.RiseCache = (function () {
     }
   }
 
+  function isRCV2Player(callback) {
+    if (!callback || typeof callback !== "function") {
+      return;
+    }
+    /* jshint validthis: true */
+    return this.isV2Running(function (isV2Running) {
+      if (isV2Running) {
+        callback(isV2Running);
+      } else {
+        callback(isV3PlayerVersionWithRCV2());
+      }
+    });
+  }
+
+  function isV3PlayerVersionWithRCV2() {
+    var RC_V2_FIRST_PLAYER_VERSION_DATE = _utils.getDateObjectFromPlayerVersionString("2016.10.10.00.00");
+
+    var sysInfoViewerParameter = _utils.getQueryParameter("sysInfo");
+    if (!sysInfoViewerParameter) {
+      // when the widget is loaded into an iframe the search has a parameter called parent which represents the parent url
+      var parentParameter = _utils.getQueryParameter("parent");
+      sysInfoViewerParameter = _utils.getQueryStringParameter("sysInfo", parentParameter);
+    }
+    if (sysInfoViewerParameter) {
+      var playerVersionString = _utils.getQueryStringParameter("pv", sysInfoViewerParameter);
+      var playerVersionDate = _utils.getDateObjectFromPlayerVersionString(playerVersionString);
+      return playerVersionDate >= RC_V2_FIRST_PLAYER_VERSION_DATE;
+    } else {
+      return false;
+    }
+  }
+
+  function reset() {
+    _pingReceived = false;
+     _isCacheRunning = false;
+     _isV2Running = false;
+  }
+
   return {
     getErrorMessage: getErrorMessage,
     getFile: getFile,
     isRiseCacheRunning: isRiseCacheRunning,
     isV2Running: isV2Running,
-    ping: ping
+    isRCV2Player: isRCV2Player,
+    ping: ping,
+    reset: reset
   };
 
 })();

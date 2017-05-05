@@ -57,7 +57,7 @@
     // }
     .playlist-item-name {
       span {
-        @extend .ellipsis;
+        @extend .u_ellipsis-md;
         font-weight: 500;
         display: inline-block;
         vertical-align: top;
@@ -143,7 +143,7 @@
 }
 
 .select-subcompany-modal .list-group {
-  @extend .content-box;
+  @extend .panel;
 }
 
 
@@ -225,7 +225,7 @@
       box-sizing: border-box;
     }
   }
-  .content-box {
+  .panel {
     margin: 8px;
     padding: 8px;
     border: 1px solid $light-gray;
@@ -278,7 +278,7 @@
     h4 {
       font-size: 14px;
     }
-    .content-box {
+    .panel {
       padding: 5px;
       margin: 5px;
     }
@@ -287,19 +287,19 @@
 
 // For RV Store Only
 .store.grid-list {
-  .content-box {
+  .panel {
     min-height: 323px;
     position: static;
   }
   /* Small devices  */
   @media (min-width: $screen-sm-min) {
-    .content-box {
+    .panel {
       min-height: 408px;
     }
   }
   /* Medium devices  */
   @media (min-width: $screen-md-min) {
-    .content-box {
+    .panel {
       min-height: 363px;
     }
   }
@@ -308,13 +308,13 @@
 .store-front.grid-list {
   /* Small devices  */
   @media (min-width: $screen-sm-min) {
-    .content-box {
+    .panel {
       min-height: 405px;
     }
   }
   /* Medium devices  */
   @media (min-width: $screen-md-min) {
-    .content-box {
+    .panel {
       min-height: 290px;
     }
   }

@@ -211,6 +211,12 @@ msgstr "px"
 msgid "units.seconds"
 msgstr "sec"
 
+msgid "warning.hide-warning"
+msgstr "Do not show this warning again."
+
+msgid "warning.title"
+msgstr "Warning!"
+
 msgid "wednesday"
 msgstr "Wednesday"
 

@@ -4,7 +4,12 @@
     left: auto;
     right: 0;
     padding: 0;
-    border-radius: $border-radius-base2 !important;
+    overflow: hidden;
+    >li {
+      >a {
+        padding: 8px;
+      }
+    }
     .divider {
       @include nav-divider($dropdown-divider-bg, 0);
     }
@@ -69,3 +74,4 @@
     background-color: #357ebd
   }
 }
+

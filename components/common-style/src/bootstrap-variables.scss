@@ -13,10 +13,11 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 //## Gray and brand colors for use across Bootstrap.
 
 $gray-darker:            lighten(#000, 15%); // #222
-$gray-dark:              lighten(#000, 25%);   // #333
+$gray-dark:              #020621; // #333
 $gray:                   lighten(#000, 35.5%); // #555
 $gray-light:             lighten(#000, 46.7%); // #777
-$gray-lighter:           lighten(#000, 83.5%); // #eee
+$gray-lighter:           lighten(#000, 83.5%); // #D5D5D5
+$gray-lightest:           lighten(#000, 90%); // #EEE
 
 $brand-primary:         #0081BA;
 $brand-bg:              #f4f4f4;
@@ -32,9 +33,9 @@ $btn-default-color: 	#444444;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #fff;
+$body-bg:               #F7F7F9;
 //** Global text color on `<body>`.
-$text-color:            $gray-dark;
+$text-color:            #020621;
 
 //** Global textual link color.
 $link-color:            $brand-primary;
@@ -107,15 +108,14 @@ $line-height-large:         1.33;
 $line-height-small:         1.5;
 
 $border-radius-base:        4px;
-$border-radius-base2:       4px;
+$border-radius-base2:       $border-radius-base;
 $border-radius-large:       6px;
 $border-radius-small:       2px;
 
 //** Global color for active items (e.g., navs or dropdowns).
-$component-active-color:    #fff;
 //** Global background color for active items (e.g., navs or dropdowns).
 $component-active-bg:       $brand-primary;
-
+$component-active-color:    $gray;
 //** Width of the `border` for generating carets that indicator dropdowns.
 $caret-width-base:          4px;
 //** Carets increase slightly in size for larger components.
@@ -140,7 +140,7 @@ $table-bg-hover:                #f5f5f5;
 $table-bg-active:               $table-bg-hover;
 
 //** Border color for table and cell borders.
-$table-border-color:            #f2f2f2;
+$table-border-color:            #F1EEEA;
 
 
 //== Buttons
@@ -189,7 +189,7 @@ $input-bg-disabled:              $gray-lighter;
 //** Text color for `<input>`s
 $input-color:                    $gray;
 //** `<input>` border color
-$input-border:                   #d4d4d4;
+$input-border:                   #dad7d4;
 //** `<input>` border radius
 $input-border-radius:            $border-radius-base;
 //** Border color for inputs on focus
@@ -228,9 +228,9 @@ $dropdown-fallback-border:       #ccc;
 $dropdown-divider-bg:            #e5e5e5;
 
 //** Dropdown link text color.
-$dropdown-link-color:            $gray-dark;
+$dropdown-link-color:            $brand-primary;
 //** Hover color for dropdown links.
-$dropdown-link-hover-color:      darken($gray-dark, 5%);
+$dropdown-link-hover-color:      darken($brand-primary, 5%);
 //** Hover background for dropdown links.
 $dropdown-link-hover-bg:         #f5f5f5;
 
@@ -246,7 +246,7 @@ $dropdown-link-disabled-color:   $gray-light;
 $dropdown-header-color:          $gray-dark;
 
 //** Deprecated `$dropdown-caret-color` as of v3.1.0
-$dropdown-caret-color:           #000;
+$dropdown-caret-color:           #444;
 
 
 //-- Z-index master list
@@ -358,10 +358,10 @@ $navbar-default-border:            #e5e5e5;
 
 
 // Navbar links
-$navbar-default-link-color:                #777;
-$navbar-default-link-hover-color:          #fff;
+$navbar-default-link-color:                $gray-dark;
+$navbar-default-link-hover-color:          $gray-dark;
 $navbar-default-link-hover-bg:             $brand-bg;
-$navbar-default-link-active-color:         #fff;
+$navbar-default-link-active-color:         $gray-dark;
 $navbar-default-link-active-bg:            #2d60ad;
 $navbar-default-link-disabled-color:       #ccc;
 $navbar-default-link-disabled-bg:          transparent;
@@ -638,6 +638,10 @@ $alert-warning-border:        $state-warning-border;
 $alert-danger-bg:             $state-danger-bg;
 $alert-danger-text:           #333;
 $alert-danger-border:         $state-danger-border;
+
+$alert-premium-bg:            $rise-premium;
+$alert-premium-text:          #333;
+$alert-premium-border:        $rise-green;
 
 
 //== Progress bars

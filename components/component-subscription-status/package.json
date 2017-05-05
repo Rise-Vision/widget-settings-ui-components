@@ -1,6 +1,6 @@
 {
   "name": "component-subscription-status",
-  "version": "0.5.1",
+  "version": "0.5.3",
   "description": "Displays Store Subscription Status for a particular Product",
   "main": "gulpfile.js",
   "scripts": {

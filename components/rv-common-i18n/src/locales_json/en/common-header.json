@@ -1,0 +1,9 @@
+{
+  "user": {
+    "error": {
+      "add-user": "User could not be added",
+      "duplicate-user": "A User with the Username '{{username}}' already belongs to another Company. To add them to this Company, they must sign in and delete themselves from their current Company by opening their User Settings and clicking the Delete button.",
+      "update-user": "User could not be updated"
+    }
+  }
+}
