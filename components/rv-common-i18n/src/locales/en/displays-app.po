@@ -2,7 +2,7 @@ msgid "actions.new"
 msgstr "Add Display"
 
 msgid "add.download.armv7l"
-msgstr "[BETA] Download Raspbian 8.0 [ARMv7]"
+msgstr "Download Raspbian 8.0 [ARMv7]"
 
 msgid "add.download.linux32"
 msgstr "Download Ubuntu 14.04 LTS [32-bit]"
@@ -244,17 +244,29 @@ msgstr "Are you sure you want to delete this Display?"
 msgid "details.error"
 msgstr "Failed to update display!"
 
+msgid "details.startPlayerProTrial"
+msgstr "Start Rise Player Professional Trial"
+
+msgid "details.subscribePlayerPro"
+msgstr "Subscribe to Rise Player Professional"
+
+msgid "details.title"
+msgstr "Display Settings"
+
 msgid "details.unsavedTitle"
 msgstr "Unsaved Changes"
 
 msgid "details.unsavedWarning"
 msgstr "You have unsaved changes. Do you want to Save or Discard them?"
 
+msgid "details.whatIsPlayerPro"
+msgstr "What is Rise Player Professional?"
+
 msgid "displayDetails"
 msgstr "Display Details"
 
 msgid "download.armv7l"
-msgstr "[BETA] Download Player for Raspbian 8.0 [ARMv7]"
+msgstr "Download Player for Raspbian 8.0 [ARMv7]"
 
 msgid "download.linux32"
 msgstr "Download Player for Ubuntu 14.04 LTS [32-bit]"
@@ -428,7 +440,7 @@ msgid "fields.player.playerVersion"
 msgstr "Player Version"
 
 msgid "fields.player.playerWarning"
-msgstr "A Player has not been configured for your Display. To configure your Display, select your Operating System below and install the software <b>on the device</b> that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID (above) to link the Player with the Display that you have setup here. Further setup details can be <a href="http://help.risevision.com/user/create-a-display/" target="_blank">found here</a>."
+msgstr "A Player has not been configured for your Display. To configure your Display, select your Operating System below and install the software <b>on the device</b> that will operate your Display. When the Player starts for the first time you will be prompted to enter the Display ID (above) to link the Player with the Display that you have setup here. Further setup details can be <a href="https://help.risevision.com/hc/en-us/articles/115000860926-Displays" target="_blank">found here</a>."
 
 msgid "fields.player.resolution"
 msgstr "Resolution"
@@ -447,6 +459,21 @@ msgstr "Serial Number"
 
 msgid "fields.player.status"
 msgstr "Status"
+
+msgid "fields.player.version.howGetHelp"
+msgstr "How do I get help?"
+
+msgid "fields.player.version.notCurrent"
+msgstr "Player Version Not Current"
+
+msgid "fields.player.version.thirdParty"
+msgstr "(3rd Party Player)"
+
+msgid "fields.player.version.unsupported"
+msgstr "Unsupported"
+
+msgid "fields.player.version.upgrade"
+msgstr "Upgrade"
 
 msgid "fields.player.viewerVersion"
 msgstr "Viewer Version"
@@ -532,6 +559,9 @@ msgstr "Last Connection"
 msgid "list.heading.name"
 msgstr "Name"
 
+msgid "list.heading.playerType"
+msgstr "Player Type"
+
 msgid "list.heading.schedule"
 msgstr "Schedule"
 
@@ -543,6 +573,45 @@ msgstr "Your search didn't return any results"
 
 msgid "list.noDisplays"
 msgstr "No Displays"
+
+msgid "list.player.cta.checkStore"
+msgstr "Check Store Account"
+
+msgid "list.player.cta.getSupport"
+msgstr "Get Support"
+
+msgid "list.player.cta.subscribeNow"
+msgstr "Subscribe Now"
+
+msgid "list.player.cta.subscribePro"
+msgstr "Subscribe To Professional"
+
+msgid "list.player.cta.tryPro"
+msgstr "Try Professional"
+
+msgid "list.player.cta.upgrade"
+msgstr "Upgrade"
+
+msgid "list.player.type.3rdParty"
+msgstr "3rd Party Player"
+
+msgid "list.player.type.cancelled"
+msgstr "Professional (Cancelled)"
+
+msgid "list.player.type.professional"
+msgstr "Professional"
+
+msgid "list.player.type.professionalSuspended"
+msgstr "Professional (Suspended)"
+
+msgid "list.player.type.professionalTrial"
+msgstr "Professional (Trial)"
+
+msgid "list.player.type.standard"
+msgstr "Standard"
+
+msgid "list.player.type.unsupported"
+msgstr "Unsupported"
 
 msgid "list.schedule.add"
 msgstr "Add to Schedule"
@@ -562,8 +631,23 @@ msgstr "Offline"
 msgid "list.status.online"
 msgstr "Online"
 
+msgid "list.status.whyOffline"
+msgstr "Why is my Display offline?"
+
 msgid "list.viewAll"
 msgstr "View All Displays"
+
+msgid "playerProTrial.description"
+msgstr "Rise Player Professional is a self-contained application that eliminates having to be connected to the internet in order to start and show your content."
+
+msgid "playerProTrial.description2"
+msgstr "30 days FREE trial for all Displays in your Company. No credit card required."
+
+msgid "playerProTrial.price"
+msgstr "$9 USD/CAD Per Display Per Month"
+
+msgid "playerProTrial.title"
+msgstr "Rise Player Professional"
 
 msgid "title"
 msgstr "Displays"

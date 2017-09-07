@@ -1,6 +1,6 @@
 {
   "name": "widget-common",
-  "version": "3.4.5",
+  "version": "3.4.10",
   "homepage": "https://github.com/Rise-Vision/widget-common",
   "authors": [
     "Rise Vision Inc <support@risevision.com>"
@@ -17,7 +17,7 @@
   ],
   "devDependencies": {
     "Canteen": "https://github.com/platfora/Canteen.git",
-    "web-component-tester": "*"
+    "web-component-tester": "5.0.0"
   },
   "dependencies": {
     "jquery": "1.11.0",

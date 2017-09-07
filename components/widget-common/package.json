@@ -1,6 +1,6 @@
 {
   "name": "widget-common",
-  "version": "3.4.5",
+  "version": "3.4.10",
   "description": "Common functionality for Widgets not using Angular JS.",
   "main": "gulpfile.js",
   "scripts": {
@@ -35,7 +35,7 @@
     "gulp-watch": "^0.6.8",
     "jshint-stylish": "^0.2.0",
     "run-sequence": "^0.3.2",
-    "web-component-tester": "*",
+    "web-component-tester": "5.0.0",
     "widget-tester": "git://github.com/Rise-Vision/widget-tester.git"
   }
 }

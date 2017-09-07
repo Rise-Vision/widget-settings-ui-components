@@ -130,6 +130,9 @@
       "required": "Required"
     }
   },
+  "selector-modal": {
+    "title": "Select Presentation"
+  },
   "sharedTemplates": {
     "name": "Name",
     "preview": "Preview",
@@ -172,6 +175,45 @@
       "premium": "Premium"
     },
     "viewAccount": "View Account"
+  },
+  "templatesLibrary": {
+    "details": {
+      "details-list-1": "Get access to all Premium Templates with a 30 day trial, and $15 per month thereafter.",
+      "details-list-2": "There's no contract, and you can cancel at any time.",
+      "details-list-3": "All the Templates are yours to keep, even if you cancel!",
+      "details-list-4": "New Templates added every month.",
+      "details-list-title": "Subscription Details",
+      "free": "FREE",
+      "freeWithTrial": "with 30-Day Template Library Trial",
+      "preview": "Preview this Template",
+      "purchase": "Purchase in Store"
+    },
+    "subscription": {
+      "cancelled": "Subscription Cancelled",
+      "expanded-cancelled": "Your Template Library subscription was cancelled",
+      "expanded-expired": "Your Template Library subscription has expired!",
+      "expanded-on-trial": "{{expiry}} day remaining on your Template Library trial!",
+      "expanded-on-trial-many": "{{expiry}} days remaining on your Template Library trial!",
+      "expanded-on-trial-zero": "{{expiry}} days remaining on your Template Library trial!",
+      "expanded-suspended": "Your account is suspended",
+      "expires-in": "Expiring in {{days}} Days",
+      "expires-today": "Expiring Today",
+      "free": "Free",
+      "na": "N/A",
+      "not-subscribed": "Not Subscribed",
+      "on-trial": "<strong>{{expiry}} day</strong> left on trial",
+      "on-trial-many": "<strong>{{expiry}} days</strong> remaining on your Template Library subscription!",
+      "on-trial-zero": "<strong>{{expiry}} days</strong> remaining on your Template Library subscription!",
+      "start-trial": "Start Trial",
+      "subscribe": "Subscribe",
+      "subscribe-now": "Subscribe Now!",
+      "subscribed": "Subscribed",
+      "suspended": "Subscription Suspended",
+      "trial-available": "Free {{trialPeriod}} Day Trial Available",
+      "trial-expired": "Trial Expired",
+      "view-account": "View Account",
+      "view-invoices": "View Invoices"
+    }
   },
   "title": "Editor",
   "workspace": {

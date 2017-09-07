@@ -94,24 +94,6 @@ msgstr "URL"
 msgid "playlist.title"
 msgstr "Playlist"
 
-msgid "presentation-modal.presentation-list.heading.name"
-msgstr "Name"
-
-msgid "presentation-modal.presentation-list.heading.status"
-msgstr "Status"
-
-msgid "presentation-modal.presentation-list.status.published"
-msgstr "Published"
-
-msgid "presentation-modal.presentation-list.status.revised"
-msgstr "Revised"
-
-msgid "presentation-modal.search.placeholder"
-msgstr "Search Presentations"
-
-msgid "presentation-modal.title"
-msgstr "Select Presentation"
-
 msgid "title"
 msgstr "Schedules"
 

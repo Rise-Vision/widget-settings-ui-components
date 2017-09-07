@@ -53,21 +53,5 @@
     },
     "title": "Playlist"
   },
-  "presentation-modal": {
-    "presentation-list": {
-      "heading": {
-        "name": "Name",
-        "status": "Status"
-      },
-      "status": {
-        "published": "Published",
-        "revised": "Revised"
-      }
-    },
-    "search": {
-      "placeholder": "Search Presentations"
-    },
-    "title": "Select Presentation"
-  },
   "title": "Schedules"
 }

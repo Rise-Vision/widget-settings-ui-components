@@ -1,8 +1,12 @@
 machine:
   node:
-    version: 4.2.2
+    version: 6.9.1
 dependencies:
   pre:
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list
+    - sudo apt-get update -qq
+    - sudo apt-get install -y google-chrome-stable
     - npm install -g gulp
     - npm install -g casperjs
   post:

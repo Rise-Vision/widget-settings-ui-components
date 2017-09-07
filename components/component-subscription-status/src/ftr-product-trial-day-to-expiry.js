@@ -29,7 +29,7 @@ angular.module("risevision.widget.common.subscription-status")
           msg = expiresToday !== null ? expiresToday(params) : "";
         }
       } catch (e) {
-        msg = expiresToday !== null ? expiresToday(params) : "";
+        // Nothing to do
       }
 
       return msg;

@@ -5,8 +5,8 @@
     ["risevision.common.config",
      "risevision.widget.common.subscription-status.config"])
     .service("subscriptionStatusService", ["$http", "$q", "STORE_SERVER_URL", 
-    "PATH_URL", "AUTH_PATH_URL",
-    function ($http, $q, STORE_SERVER_URL, PATH_URL, AUTH_PATH_URL) {
+    "PATH_URL", "AUTH_PATH_URL", "PATH_URL_BY_DISPLAY_ID",
+    function ($http, $q, STORE_SERVER_URL, PATH_URL, AUTH_PATH_URL, PATH_URL_BY_DISPLAY_ID) {
       var responseType = ["On Trial", "Trial Expired", "Subscribed", "Suspended", "Cancelled", "Free", "Not Subscribed", "Product Not Found", "Company Not Found", "Error"];
       var responseCode = ["on-trial", "trial-expired", "subscribed", "suspended", "cancelled", "free", "not-subscribed", "product-not-found", "company-not-found", "error"];
       var _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -35,12 +35,18 @@
         return deferred.promise;
       };
       
-      var checkSubscriptionStatus = function(productCode, companyId) {
+      var checkSubscriptionStatus = function(productCode, companyId, displayId) {
         var deferred = $q.defer();
 
         var url = STORE_SERVER_URL +
           PATH_URL.replace("companyId", companyId) +
           productCode;
+
+        if (displayId) {
+          url = STORE_SERVER_URL +
+          PATH_URL_BY_DISPLAY_ID.replace("productCode", productCode) +
+          displayId;
+        }
 
         $http.get(url).then(function (response) {
           if (response && response.data && response.data.length) {
@@ -98,8 +104,8 @@
         return deferred.promise;
       };
 
-      this.get = function (productCode, companyId) {
-        return checkSubscriptionStatus(productCode, companyId)
+      this.get = function (productCode, companyId, displayId) {
+        return checkSubscriptionStatus(productCode, companyId, displayId)
           .then(function(subscriptionStatus) {
             if (subscriptionStatus.subscribed === false) {
               // double check store authorization in case they're authorized
