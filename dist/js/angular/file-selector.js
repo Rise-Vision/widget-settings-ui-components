@@ -242,7 +242,7 @@ module.run(["$templateCache", function($templateCache) {
     "<div class=\"form-group file-selector\">\n" +
     "  <label ng-if=\"title\" class=\"control-label remove-bottom\">{{ title }}</label>\n" +
     "\n" +
-    "  <div class=\"row half-top half-bottom\">\n" +
+    "  <div class=\"row u_margin-sm-top u_margin-sm-bottom half-top half-bottom\">\n" +
     "    <div class=\"col-md-12\">\n" +
     "      <!-- Storage Single File - Button -->\n" +
     "      <storage-selector selected=\"fileBtnSelected\"\n" +
