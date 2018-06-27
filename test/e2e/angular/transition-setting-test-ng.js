@@ -53,7 +53,7 @@
 
         // 3 options for speed selection
         element.all(by.css("#main select[name='transition-speed'] option")).then(function (elements) {
-          expect(elements.length).to.equal(3);
+          expect(elements.length).to.equal(5);
         });
 
         // 2 options for direction selection
