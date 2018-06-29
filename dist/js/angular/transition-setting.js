@@ -88,11 +88,9 @@ module.run(["$templateCache", function($templateCache) {
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{\"transition.speed.label\" | translate}}</label>\n" +
     "      <select name=\"transition-speed\" ng-model=\"transition.speed\" class=\"form-control\">\n" +
-    "        <option value=\"slowest\">{{\"transition.speed.slowest\" | translate}}</option>\n" +
     "        <option value=\"slow\">{{\"transition.speed.slow\" | translate}}</option>\n" +
     "        <option value=\"medium\">{{\"transition.speed.medium\" | translate}}</option>\n" +
     "        <option value=\"fast\">{{\"transition.speed.fast\" | translate}}</option>\n" +
-    "        <option value=\"fastest\">{{\"transition.speed.fastest\" | translate}}</option>\n" +
     "      </select>\n" +
     "    </div>\n" +
     "  </div>\n" +
