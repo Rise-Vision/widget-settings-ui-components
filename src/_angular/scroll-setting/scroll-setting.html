@@ -22,11 +22,11 @@
     <div class="form-group">
       <label class="control-label">{{'scroll.speed.label' | translate}}</label>
       <select id="scroll-speed" ng-model="scroll.speed" class="form-control">
-        <option ng-show="showFastestSlowest" value="slowest">{{'scroll.speed.slowest' | translate}}</option>
+        <option ng-show="showFastestSlowest == true" value="slowest">{{'scroll.speed.slowest' | translate}}</option>
         <option value="slow">{{'scroll.speed.slow' | translate}}</option>
         <option value="medium">{{'scroll.speed.medium' | translate}}</option>
         <option value="fast">{{'scroll.speed.fast' | translate}}</option>
-        <option ng-show="showFastestSlowest" value="fastest">{{'scroll.speed.fastest' | translate}}</option>
+        <option ng-show="showFastestSlowest == true" value="fastest">{{'scroll.speed.fastest' | translate}}</option>
       </select>
     </div>
   </div>
