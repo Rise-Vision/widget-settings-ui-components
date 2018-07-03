@@ -18,7 +18,19 @@
       </select>
     </div>
   </div>
-  <div class="col-md-2" ng-show="scroll.by != 'none'">
+  <div class="col-md-2" ng-show="scroll.by != 'none'" ng-if="showFastestSlowest">
+    <div class="form-group">
+      <label class="control-label">{{'scroll.speed.label' | translate}}</label>
+      <select id="scroll-speed" ng-model="scroll.speed" class="form-control">
+        <option value="slowest">{{'scroll.speed.slowest' | translate}}</option>
+        <option value="slow">{{'scroll.speed.slow' | translate}}</option>
+        <option value="medium">{{'scroll.speed.medium' | translate}}</option>
+        <option value="fast">{{'scroll.speed.fast' | translate}}</option>
+        <option value="fastest">{{'scroll.speed.fastest' | translate}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-2" ng-show="scroll.by != 'none'" ng-if="!showFastestSlowest">
     <div class="form-group">
       <label class="control-label">{{'scroll.speed.label' | translate}}</label>
       <select id="scroll-speed" ng-model="scroll.speed" class="form-control">

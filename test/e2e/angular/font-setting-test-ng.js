@@ -30,7 +30,7 @@
         it("should load all fonts", function() {
           element(by.css("#font1  .mce-btn[aria-label='Font Family']")).click();
           element.all(by.css("#mceu_42-body div")).then(function(elements) {
-            expect(elements.length).to.equal(888);
+            expect(elements.length).to.be.above(800);
           });
         });
 
@@ -279,14 +279,14 @@
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
           element(by.css("#mceu_728-text")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Rajdhani, sans-serif');
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Radley, sans-serif');
         });
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
           element(by.css("#mceu_796-text")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'Sedgwick Ave', sans-serif");
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'Secular One', sans-serif");
         });
       });
 
@@ -407,7 +407,7 @@
         it("should load all fonts", function() {
           element(by.css("#font2  .mce-btn[aria-label='Font Family']")).click();
           element.all(by.css("#mceu_42-body div")).then(function(elements) {
-            expect(elements.length).to.equal(888);
+            expect(elements.length).to.be.above(800);
           });
         });
 
