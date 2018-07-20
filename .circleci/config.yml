@@ -8,9 +8,10 @@ jobs:
       - image: jenkinsrise/cci-v2-launcher-electron:0.0.6
     steps:
       - checkout
+      - run: pwd
       # - restore_cache:
       #     key: node-cache-v3{{ checksum "package.json" }}
-      - run: nvm install 4.2.2 && nvm alias default 4.2.2
+      # - run: nvm install 4.2.2 && nvm alias default 4.2.2
       # - run: npm install -g gulp bower
       # - run: npm install
       # - run: bower install
@@ -35,7 +36,7 @@ jobs:
       #     at: .
       # - restore_cache:
       #     key: node-cache-v3{{ checksum "package.json" }}
-      - run: nvm install 4.2.2 && nvm alias default 4.2.2
+      # - run: nvm install 4.2.2 && nvm alias default 4.2.2
       - run: npm install -g gulp bower casperjs@1.1.0-beta5
       - run: npm install
       - run: bower install
