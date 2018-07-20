@@ -12,7 +12,7 @@ jobs:
       - restore_cache:
           key: node-cache-v3{{ checksum "package.json" }}
       - run: nvm install 4.2.2 && nvm alias default 4.2.2
-      - run: npm install -g gulp bower casperjs@1.1.0-beta5
+      - run: npm install -g gulp bower
       - run: npm install
       - run: bower install
       - save_cache:
@@ -23,11 +23,6 @@ jobs:
           root: .
           paths:
             - components
-      - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
-      - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
-      - run: git config --global user.email "jenkins@risevision.com"
-      - run: git config --global user.name "jenkins-rise"
-      - run: NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
 
   test:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
@@ -39,6 +34,8 @@ jobs:
           at: .
       - restore_cache:
           key: node-cache-v3{{ checksum "package.json" }}
+      - run: nvm install 4.2.2 && nvm alias default 4.2.2
+      - run: npm install -g casperjs@1.1.0-beta5
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
