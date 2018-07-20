@@ -5,24 +5,23 @@ jobs:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: &DOCKERIMAGE
-      - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
-        command: /sbin/init
+      - image: jenkinsrise/cci-v2-launcher-electron:0.0.6
     steps:
       - checkout
-      - restore_cache:
-          key: node-cache-v3{{ checksum "package.json" }}
+      # - restore_cache:
+      #     key: node-cache-v3{{ checksum "package.json" }}
       - run: nvm install 4.2.2 && nvm alias default 4.2.2
-      - run: npm install -g gulp bower
-      - run: npm install
-      - run: bower install
-      - save_cache:
-          key: node-cache-v3{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-      - persist_to_workspace:
-          root: .
-          paths:
-            - components
+      # - run: npm install -g gulp bower
+      # - run: npm install
+      # - run: bower install
+      # - save_cache:
+      #     key: node-cache-v3{{ checksum "package.json" }}
+      #     paths:
+      #       - ./node_modules
+      # - persist_to_workspace:
+      #     root: .
+      #     paths:
+      #       - components
 
   test:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
@@ -32,10 +31,10 @@ jobs:
     docker: *DOCKERIMAGE
     steps:
       - checkout
-      - attach_workspace:
-          at: .
-      - restore_cache:
-          key: node-cache-v3{{ checksum "package.json" }}
+      # - attach_workspace:
+      #     at: .
+      # - restore_cache:
+      #     key: node-cache-v3{{ checksum "package.json" }}
       - run: nvm install 4.2.2 && nvm alias default 4.2.2
       - run: npm install -g gulp bower casperjs@1.1.0-beta5
       - run: npm install
