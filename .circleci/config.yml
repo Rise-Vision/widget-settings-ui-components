@@ -27,6 +27,8 @@ jobs:
   test:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
+    environment:
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
     docker: *DOCKERIMAGE
     steps:
       - checkout
@@ -35,7 +37,7 @@ jobs:
       - restore_cache:
           key: node-cache-v3{{ checksum "package.json" }}
       - run: nvm install 4.2.2 && nvm alias default 4.2.2
-      - run: npm install -g casperjs@1.1.0-beta5
+      - run: npm install -g gulp casperjs@1.1.0-beta5
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
