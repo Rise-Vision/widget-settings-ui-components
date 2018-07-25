@@ -36,7 +36,7 @@ jobs:
       - restore_cache:
          key: node-cache-x{{ checksum "package.json" }}
       # - run: nvm install 4.2.2 && nvm alias default 4.2.2
-      - run: npm install -g gulp bower casperjs@1.1.0-beta5
+      - run: sudo npm install -g gulp casperjs@1.1.0-beta5
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
