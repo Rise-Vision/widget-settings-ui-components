@@ -5,8 +5,7 @@ jobs:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: &BUILDIMAGE
-      - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
-        command: /sbin/init
+      - image: jenkinsrise/jenkinsrise-cci-image-launcher-electron-e2e:0.0.2
     steps:
       - checkout
       - restore_cache:
