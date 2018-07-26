@@ -5,13 +5,11 @@ jobs:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: &BUILDIMAGE
-      - image: jenkinsrise/cci-v2-launcher-electron:0.0.6
+      - image: santiagoarriaga/cci-v2-widgets:0.0.1
     steps:
       - checkout
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
-      - run: nvm install 4.2.2 && nvm alias default 4.2.2
-      - run: npm install -g gulp bower casperjs@1.1.0-beta5
       - run: npm install
       - run: bower install
       - save_cache:
@@ -35,8 +33,6 @@ jobs:
          at: .
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
-      - run: nvm install 4.2.2 && nvm alias default 4.2.2
-      - run: npm install -g gulp bower casperjs@1.1.0-beta5
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
@@ -53,7 +49,6 @@ jobs:
           at: .
       - restore_cache:
           key: node-cache-y{{ checksum "package.json" }}
-      - run: nvm install 4.2.2 && nvm alias default 4.2.2
       - run: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
             NODE_ENV=prod npm run build
@@ -71,7 +66,6 @@ jobs:
           at: .
       - restore_cache:
           key: node-cache-y{{ checksum "package.json" }}
-      - run: nvm install 4.2.2 && nvm alias default 4.2.2
       - run: npm run ci-build-demo
       - run: npm run ci-deploy-demo
 
