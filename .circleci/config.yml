@@ -10,12 +10,6 @@ jobs:
       - checkout
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
-     - run: |
-         echo $HOME
-         echo $NVM_DIR
-         ls ~/.nvm
-         echo $PATH
-         echo
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           npm install
