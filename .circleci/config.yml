@@ -2,6 +2,7 @@ version: 2
 
 jobs:
   setup:
+    working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: &BUILDIMAGE
       - image: santiagoarriaga/cci-v2-widgets:0.0.1
@@ -21,6 +22,7 @@ jobs:
            - components
 
   test:
+    working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     environment:
       CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
@@ -38,6 +40,7 @@ jobs:
       - run: NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
 
   build:
+    working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: *BUILDIMAGE
     steps:
@@ -54,6 +57,7 @@ jobs:
           fi
 
   build-demos:
+    working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: *BUILDIMAGE
     steps:
