@@ -14,6 +14,7 @@ jobs:
       - run: |
           source ~/.profile
           echo $PATH
+          nvm current
           bower install
       - save_cache:
          key: node-cache-y{{ checksum "package.json" }}
