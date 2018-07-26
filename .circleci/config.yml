@@ -7,12 +7,18 @@ jobs:
     docker: &BUILDIMAGE
       - image: santiagoarriaga/cci-v2-widgets:0.0.1
     environment:
-      - BASH_ENV: ~/.bashrc
       - PATH: /home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     steps:
       - checkout
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
+     - run: |
+         echo $HOME
+         echo $NVM_DIR
+         ls ~/.nvm
+         echo $PATH
+         export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+         echo $PATH
       - run: npm install
       - run: |
           echo $HOME
