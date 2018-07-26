@@ -6,26 +6,22 @@ jobs:
     shell: /bin/bash --login
     docker: &BUILDIMAGE
       - image: santiagoarriaga/cci-v2-widgets:0.0.1
-    environment:
-      - PATH: /home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     steps:
       - checkout
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
-      - run: |
+     - run: |
          echo $HOME
          echo $NVM_DIR
          ls ~/.nvm
          echo $PATH
-         export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-         echo $PATH
-      - run: npm install
+         echo
       - run: |
-          echo $HOME
-          echo $NVM_DIR
-          ls ~/.nvm
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          npm install
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           echo $PATH
-          nvm current
           bower install
       - save_cache:
          key: node-cache-y{{ checksum "package.json" }}
@@ -52,7 +48,9 @@ jobs:
       - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
       - run: git config --global user.name "jenkins-rise"
-      - run: NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots ~/.nvm/versions/node/v4.2.2/bin/npm run test
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots ~/.nvm/versions/node/v4.2.2/bin/npm run test
 
   build:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
@@ -65,10 +63,11 @@ jobs:
       - restore_cache:
           key: node-cache-y{{ checksum "package.json" }}
       - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            NODE_ENV=prod ~/.nvm/versions/node/v4.2.2/bin/npm run build
+            NODE_ENV=prod npm run build
           else
-            NODE_ENV=test ~/.nvm/versions/node/v4.2.2/bin/npm run build
+            NODE_ENV=test npm run build
           fi
 
   build-demos:
@@ -81,8 +80,12 @@ jobs:
           at: .
       - restore_cache:
           key: node-cache-y{{ checksum "package.json" }}
-      - run: ~/.nvm/versions/node/v4.2.2/bin/npm run ci-build-demo
-      - run: ~/.nvm/versions/node/v4.2.2/bin/npm run ci-deploy-demo
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          npm run ci-build-demo
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          npm run ci-deploy-demo
 
 workflows:
   version: 2
