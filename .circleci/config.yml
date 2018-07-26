@@ -4,17 +4,18 @@ jobs:
   setup:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
-    docker: &DOCKERIMAGE
-      - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
-        command: /sbin/init
+    docker: &BUILDIMAGE
+      - image: santiagoarriaga/cci-v2-widgets:0.0.1
     steps:
       - checkout
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
-      - run: nvm install 6.9.1 && nvm alias default 6.9.1
-      - run: npm install -g gulp bower casperjs@1.1.0-beta5
-      - run: npm install
-      - run: bower install
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          npm install
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          bower install
       - save_cache:
          key: node-cache-{{ checksum "package.json" }}
          paths:
@@ -29,37 +30,44 @@ jobs:
     shell: /bin/bash --login
     environment:
       CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
-    docker: *DOCKERIMAGE
+    docker: *BUILDIMAGE
     steps:
       - checkout
       - attach_workspace:
          at: .
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
-      - run: nvm install 6.9.1 && nvm alias default 6.9.1
-      - run: npm install -g gulp bower casperjs@1.1.0-beta5
+      - run: sudo apt-get install libappindicator3-1
+      # latest stable chrome
+      - run: curl -L -o google-chrome-stable.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - run: sudo dpkg -i google-chrome-stable.deb
+      # make chrome lxc-friendly
+      - run: sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
+      # selenium server
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
-      - run:  |
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
           nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
       - run: git config --global user.name "jenkins-rise"
       - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
-          NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
+          NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots ~/.nvm/versions/node/v4.2.2/bin/npm run test
 
   build:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
-    docker: *DOCKERIMAGE
+    docker: *BUILDIMAGE
     steps:
       - checkout
       - attach_workspace:
           at: .
       - restore_cache:
           key: node-cache-{{ checksum "package.json" }}
-      - run: nvm install 6.9.1 && nvm alias default 6.9.1
       - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
             NODE_ENV=prod npm run build
           else
@@ -69,16 +77,19 @@ jobs:
   build-demos:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
-    docker: *DOCKERIMAGE
+    docker: *BUILDIMAGE
     steps:
       - checkout
       - attach_workspace:
           at: .
       - restore_cache:
           key: node-cache-{{ checksum "package.json" }}
-      - run: nvm install 6.9.1 && nvm alias default 6.9.1
-      - run: npm run ci-build-demo
-      # - run: npm run ci-deploy-demo
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          npm run ci-build-demo
+      - run: |
+          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          npm run ci-deploy-demo
 
 workflows:
   version: 2
@@ -94,3 +105,7 @@ workflows:
       - build-demos:
           requires:
             - setup
+          # filters:
+            # branches:
+              # only:
+                # - master
