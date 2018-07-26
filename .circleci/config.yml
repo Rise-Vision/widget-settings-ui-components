@@ -3,6 +3,7 @@ version: 2
 jobs:
   setup:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
+    shell: /bin/bash --login
     docker: &BUILDIMAGE
       - image: santiagoarriaga/cci-v2-widgets:0.0.1
     steps:
@@ -10,7 +11,9 @@ jobs:
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
       - run: npm install
-      - run: bower install
+      - run: |
+          source ~/.profile
+          bower install
       - save_cache:
          key: node-cache-y{{ checksum "package.json" }}
          paths:
