@@ -15,7 +15,6 @@ jobs:
           npm install
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
-          echo $PATH
           bower install
       - save_cache:
          key: node-cache-y{{ checksum "package.json" }}
@@ -38,6 +37,12 @@ jobs:
          at: .
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
+      # latest stable chrome
+      - run: curl -L -o google-chrome-stable.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - run: sudo dpkg -i google-chrome-stable.deb
+      # make chrome lxc-friendly
+      - run: sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
+      # selenium server
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
