@@ -7,6 +7,7 @@ jobs:
     docker: &BUILDIMAGE
       - image: santiagoarriaga/cci-v2-widgets:0.0.1
     steps:
+      - nvm current
       - checkout
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
