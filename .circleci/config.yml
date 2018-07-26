@@ -39,10 +39,14 @@ jobs:
       - run: nvm install 4.2.2 && nvm alias default 4.2.2
       - run: npm install -g gulp bower casperjs@1.1.0-beta5
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
-      - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
+      - run:  |
+          export DBUS_SESSION_BUS_ADDRESS=/dev/null
+          nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
       - run: git config --global user.name "jenkins-rise"
-      - run: NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
+      - run: |
+          export DBUS_SESSION_BUS_ADDRESS=/dev/null
+          NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
 
   build:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
