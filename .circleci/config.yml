@@ -37,6 +37,7 @@ jobs:
          at: .
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
+      - run: sudo apt-get install libappindicator3-1
       # latest stable chrome
       - run: curl -L -o google-chrome-stable.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       - run: sudo dpkg -i google-chrome-stable.deb
