@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-         key: node-cache-y{{ checksum "package.json" }}
+         key: node-cache-{{ checksum "package.json" }}
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           npm install
@@ -17,7 +17,7 @@ jobs:
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           bower install
       - save_cache:
-         key: node-cache-y{{ checksum "package.json" }}
+         key: node-cache-{{ checksum "package.json" }}
          paths:
            - ./node_modules
       - persist_to_workspace:
@@ -36,7 +36,7 @@ jobs:
       - attach_workspace:
          at: .
       - restore_cache:
-         key: node-cache-y{{ checksum "package.json" }}
+         key: node-cache-{{ checksum "package.json" }}
       - run: sudo apt-get install libappindicator3-1
       # latest stable chrome
       - run: curl -L -o google-chrome-stable.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -61,7 +61,7 @@ jobs:
       - attach_workspace:
           at: .
       - restore_cache:
-          key: node-cache-y{{ checksum "package.json" }}
+          key: node-cache-{{ checksum "package.json" }}
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
@@ -79,7 +79,7 @@ jobs:
       - attach_workspace:
           at: .
       - restore_cache:
-          key: node-cache-y{{ checksum "package.json" }}
+          key: node-cache-{{ checksum "package.json" }}
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           npm run ci-build-demo
