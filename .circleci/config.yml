@@ -12,7 +12,7 @@ jobs:
          key: node-cache-y{{ checksum "package.json" }}
       - run: npm install
       - run: |
-          source ~/.bashrc
+          . ~/.bashrc
           echo $HOME
           echo $NVM_DIR
           ls ~/.nvm
