@@ -11,13 +11,13 @@ jobs:
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
       - run: npm install
-      - run: |
-          . ~/.bashrc
-          echo $HOME
-          echo $NVM_DIR
-          ls ~/.nvm
-          echo $PATH
-          nvm current
+      - run: >
+          \. ~/.bashrc;
+          echo $HOME;
+          echo $NVM_DIR;
+          ls ~/.nvm;
+          echo $PATH;
+          nvm current;
           bower install
       - save_cache:
          key: node-cache-y{{ checksum "package.json" }}
