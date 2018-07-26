@@ -51,6 +51,7 @@ jobs:
           nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
       - run: git config --global user.name "jenkins-rise"
+      - run: cat nohup.out
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
