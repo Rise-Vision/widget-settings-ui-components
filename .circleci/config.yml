@@ -12,7 +12,7 @@ jobs:
       - checkout
       - restore_cache:
          key: node-cache-y{{ checksum "package.json" }}
-     - run: |
+      - run: |
          echo $HOME
          echo $NVM_DIR
          ls ~/.nvm
