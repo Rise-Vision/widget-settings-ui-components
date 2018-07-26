@@ -15,9 +15,6 @@ jobs:
           npm install
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
-          npm run update-webdriver
-      - run: |
-          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           bower install
       - save_cache:
          key: node-cache-{{ checksum "package.json" }}
@@ -53,6 +50,7 @@ jobs:
       - run: git config --global user.name "jenkins-rise"
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          export DBUS_SESSION_BUS_ADDRESS=/dev/null
           NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots ~/.nvm/versions/node/v4.2.2/bin/npm run test
 
   build:
