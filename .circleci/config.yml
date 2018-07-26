@@ -12,7 +12,8 @@ jobs:
          key: node-cache-y{{ checksum "package.json" }}
       - run: npm install
       - run: |
-          source ~/.profile
+          cat ~/.bashrc
+          source ~/.bashrc
           echo $PATH
           nvm current
           bower install
