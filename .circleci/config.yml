@@ -5,17 +5,16 @@ jobs:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: &BUILDIMAGE
-      - image: santiagoarriaga/cci-v2-widgets:0.0.1
+      - image: santiagoarriaga/cci-v2-widgets:0.0.4
     steps:
       - checkout
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
       - run: |
-          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          export PATH=/home/circleci/.nvm/versions/node/v6.9.1/bin:/usr/local/sbin:$PATH
           npm install
-      #- run: npm run update-webdriver
       - run: |
-          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          export PATH=/home/circleci/.nvm/versions/node/v6.9.1/bin:/usr/local/sbin:$PATH
           bower install
       - save_cache:
          key: node-cache-{{ checksum "package.json" }}
@@ -38,26 +37,21 @@ jobs:
          at: .
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
-      - run: sudo apt-get purge openjdk-8-jre openjdk-8-jre-headless
-      - run: sudo apt-get install libappindicator3-1 openjdk-7-jre
-      # latest stable chrome
-      - run: curl -L -o google-chrome-stable.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      - run: sudo dpkg -i google-chrome-stable.deb
-      # make chrome lxc-friendly
-      - run: sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
+      # - run: sudo apt-get purge openjdk-8-jre openjdk-8-jre-headless
+      # - run: sudo apt-get install openjdk-7-jre
       # selenium server
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run: |
-          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
           nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
       - run: git config --global user.name "jenkins-rise"
+      - run: mkdir $CIRCLE_TEST_REPORTS
       - run: |
           bash -c "sleep 120; cat nohup.out" &
-          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          export PATH=/home/circleci/.nvm/versions/node/v6.9.1/bin:/usr/local/sbin:$PATH
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
-          NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots ~/.nvm/versions/node/v4.2.2/bin/npm run test
+          NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
 
   build:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
@@ -70,7 +64,7 @@ jobs:
       - restore_cache:
           key: node-cache-{{ checksum "package.json" }}
       - run: |
-          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          export PATH=/home/circleci/.nvm/versions/node/v6.9.1/bin:/usr/local/sbin:$PATH
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
             NODE_ENV=prod npm run build
           else
@@ -88,10 +82,10 @@ jobs:
       - restore_cache:
           key: node-cache-{{ checksum "package.json" }}
       - run: |
-          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          export PATH=/home/circleci/.nvm/versions/node/v6.9.1/bin:/usr/local/sbin:$PATH
           npm run ci-build-demo
       - run: |
-          export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
+          export PATH=/home/circleci/.nvm/versions/node/v6.9.1/bin:/usr/local/sbin:$PATH
           npm run ci-deploy-demo
 
 workflows:
