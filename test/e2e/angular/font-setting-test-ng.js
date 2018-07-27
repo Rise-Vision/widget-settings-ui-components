@@ -30,7 +30,7 @@
         it("should load all fonts", function() {
           element(by.css("#font1  .mce-btn[aria-label='Font Family']")).click();
           element.all(by.css("#mceu_42-body div")).then(function(elements) {
-            expect(elements.length).to.equal(888);
+            expect(elements.length).to.be.above(800);
           });
         });
 
