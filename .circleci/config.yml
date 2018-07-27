@@ -5,7 +5,7 @@ jobs:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: &DOCKERIMAGE
-      - image: santiagoarriaga/cci-v2-transitional-widgets:0.0.2
+      - image: jenkinsrise/cci-v2-transitional-widgets:0.0.1
         command: /sbin/init
     steps:
       - checkout
@@ -35,15 +35,11 @@ jobs:
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
-      - run: |
-          export DBUS_SESSION_BUS_ADDRESS=/dev/null
-          nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
+      - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
       - run: git config --global user.name "jenkins-rise"
       - run: mkdir $CIRCLE_TEST_REPORTS
-      - run: |
-          export DBUS_SESSION_BUS_ADDRESS=/dev/null
-          NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
+      - run: NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
 
   build:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
