@@ -44,6 +44,7 @@ jobs:
           nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
       - run: git config --global user.name "jenkins-rise"
+      - run: mkdir $CIRCLE_TEST_REPORTS
       - run: |
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
           NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
