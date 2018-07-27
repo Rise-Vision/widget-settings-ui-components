@@ -13,7 +13,7 @@ jobs:
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           npm install
-      - run: npm run update-webdriver
+      # - run: npm run update-webdriver
       - run: |
           export PATH=/home/circleci/.nvm/versions/node/v4.2.2/bin:/usr/local/sbin:$PATH
           bower install
