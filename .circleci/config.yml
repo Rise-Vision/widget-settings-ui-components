@@ -37,8 +37,8 @@ jobs:
          at: .
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
-      # - run: sudo apt-get purge openjdk-8-jre openjdk-8-jre-headless
-      # - run: sudo apt-get install openjdk-7-jre
+      - run: sudo apt-get purge openjdk-8-jre openjdk-8-jre-headless
+      - run: sudo apt-get install openjdk-7-jre
       # selenium server
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run: |
