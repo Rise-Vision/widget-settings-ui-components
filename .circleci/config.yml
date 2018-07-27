@@ -35,7 +35,7 @@ jobs:
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
-      - run:  |
+      - run: |
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
           nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
       - run: git config --global user.email "jenkins@risevision.com"
