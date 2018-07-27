@@ -7,8 +7,8 @@ jobs:
     docker: &BUILDIMAGE
       - image: santiagoarriaga/cci-v2-widgets:0.0.1
     steps:
-      - java -version
-      - env
+      - run: java -version
+      - run: env
       - checkout
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
