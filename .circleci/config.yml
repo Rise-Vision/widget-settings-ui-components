@@ -12,7 +12,7 @@ jobs:
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
       - run: nvm install 6.9.1 && nvm alias default 6.9.1
-      - run: npm install -g gulp bower casperjs@1.1.0-beta5
+      - run: npm install -g gulp bower casperjs
       - run: npm install
       - run: bower install
       - save_cache:
@@ -37,7 +37,7 @@ jobs:
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
       - run: nvm install 6.9.1 && nvm alias default 6.9.1
-      - run: npm install -g gulp bower casperjs@1.1.0-beta5
+      - run: npm install -g gulp bower casperjs
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run:  |
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
