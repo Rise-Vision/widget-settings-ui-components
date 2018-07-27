@@ -5,14 +5,12 @@ jobs:
     working_directory: ~/Rise-Vision/widget-settings-ui-components
     shell: /bin/bash --login
     docker: &DOCKERIMAGE
-      - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
+      - image: santiagoarriaga/cci-v2-transitional-widgets:0.0.2
         command: /sbin/init
     steps:
       - checkout
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
-      - run: nvm install 6.9.1 && nvm alias default 6.9.1
-      - run: npm install -g gulp bower casperjs
       - run: npm install
       - run: bower install
       - save_cache:
@@ -36,8 +34,6 @@ jobs:
          at: .
       - restore_cache:
          key: node-cache-{{ checksum "package.json" }}
-      - run: nvm install 6.9.1 && nvm alias default 6.9.1
-      - run: npm install -g gulp bower casperjs
       - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
       - run:  |
           export DBUS_SESSION_BUS_ADDRESS=/dev/null
@@ -59,7 +55,6 @@ jobs:
           at: .
       - restore_cache:
           key: node-cache-{{ checksum "package.json" }}
-      - run: nvm install 6.9.1 && nvm alias default 6.9.1
       - run: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
             NODE_ENV=prod npm run build
@@ -77,7 +72,6 @@ jobs:
           at: .
       - restore_cache:
           key: node-cache-{{ checksum "package.json" }}
-      - run: nvm install 6.9.1 && nvm alias default 6.9.1
       - run: npm run ci-build-demo
       # - run: npm run ci-deploy-demo
 
@@ -91,8 +85,12 @@ workflows:
             - setup
       - build:
           requires:
-            - setup
+            - test
       - build-demos:
           requires:
-            - setup
+            - build
+          # filters:
+            # branches:
+              # only:
+                # - master
 
