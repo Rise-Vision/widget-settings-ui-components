@@ -275,16 +275,16 @@
       });
 
       describe("Google Font", function() {
-        xit("should update font family for preview text if family name is one word", function() {
+        it("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_728-text")).click();
+          element(by.xpath("//span[contains(text(), 'Rajdhani')]")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Rajdhani, sans-serif');
         });
 
-        xit("should update font family for preview text if family name has spaces and numbers", function() {
+        it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.css("#mceu_796-text")).click();
+          element(by.xpath("//span[contains(text(), 'Sedgwick Ave')]")).click();
 
           expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'Sedgwick Ave', sans-serif");
         });
