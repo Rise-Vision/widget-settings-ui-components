@@ -1,0 +1,92 @@
+version: 2
+
+jobs:
+  setup:
+    working_directory: ~/Rise-Vision/widget-settings-ui-components
+    shell: /bin/bash --login
+    docker: &DOCKERIMAGE
+      - image: jenkinsrise/cci-v2-transitional-widgets:0.0.1
+        command: /sbin/init
+    steps:
+      - checkout
+      - restore_cache:
+         key: node-cache-{{ checksum "package.json" }}
+      - run: npm install
+      - run: bower install
+      - save_cache:
+         key: node-cache-{{ checksum "package.json" }}
+         paths:
+           - ./node_modules
+      - persist_to_workspace:
+         root: .
+         paths:
+           - components
+
+  test:
+    working_directory: ~/Rise-Vision/widget-settings-ui-components
+    shell: /bin/bash --login
+    environment:
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+    docker: *DOCKERIMAGE
+    steps:
+      - checkout
+      - attach_workspace:
+         at: .
+      - restore_cache:
+         key: node-cache-{{ checksum "package.json" }}
+      - run: wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
+      - run: nohup bash -c "java -jar selenium-server-standalone-2.44.0.jar &"
+      - run: git config --global user.email "jenkins@risevision.com"
+      - run: git config --global user.name "jenkins-rise"
+      - run: mkdir $CIRCLE_TEST_REPORTS
+      - run: NODE_ENV=prod XUNIT_FILE=$CIRCLE_TEST_REPORTS/angular-xunit.xml PROSHOT_DIR=$CIRCLE_TEST_REPORTS/screenshots npm run test
+
+  build:
+    working_directory: ~/Rise-Vision/widget-settings-ui-components
+    shell: /bin/bash --login
+    docker: *DOCKERIMAGE
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          key: node-cache-{{ checksum "package.json" }}
+      - run: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            NODE_ENV=prod npm run build
+          else
+            NODE_ENV=test npm run build
+          fi
+
+  build-demos:
+    working_directory: ~/Rise-Vision/widget-settings-ui-components
+    shell: /bin/bash --login
+    docker: *DOCKERIMAGE
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          key: node-cache-{{ checksum "package.json" }}
+      - run: npm run ci-build-demo
+      - run: npm run ci-deploy-demo
+
+workflows:
+  version: 2
+  workflow1:
+    jobs:
+      - setup
+      - test:
+          requires:
+            - setup
+      - build:
+          requires:
+            - test
+      - build-demos:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+
