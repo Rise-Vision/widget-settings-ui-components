@@ -277,16 +277,16 @@
       describe("Google Font", function() {
         it("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.xpath("//span[contains(text(), 'Rajdhani')]")).click();
+          element(by.xpath("//span[contains(text(), 'Arial')]")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Rajdhani, sans-serif');
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('arial,helvetica,sans-serif');
         });
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.xpath("//span[contains(text(), 'Sedgwick Ave')]")).click();
+          element(by.xpath("//span[contains(text(), 'Arial Black')]")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("'Sedgwick Ave', sans-serif");
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal("arial black,sans-serif");
         });
       });
 
