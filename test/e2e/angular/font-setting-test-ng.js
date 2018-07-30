@@ -281,7 +281,7 @@
           element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
           element(by.xpath("//span[contains(text(), 'Yrsa')]")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('"Yrsa", sans-serif');
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Yrsa, sans-serif');
         });
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
