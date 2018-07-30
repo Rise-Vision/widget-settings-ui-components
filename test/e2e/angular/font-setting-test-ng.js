@@ -3,6 +3,7 @@
 
   var chai = require("chai");
   var chaiAsPromised = require("chai-as-promised");
+  var webdriver = require("selenium-webdriver");
   var expect = chai.expect;
 
   chai.use(chaiAsPromised);
@@ -277,16 +278,18 @@
       describe("Google Font", function() {
         it("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.xpath("//span[contains(text(), 'Arial')]")).click();
+          element(by.css("#font1 .mce-floatpanel")).sendKeys(webdriver.Key.END);
+          element(by.xpath("//span[contains(text(), 'Yrsa')]")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('arial, helvetica, sans-serif');
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('"Yrsa", sans-serif');
         });
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
-          element(by.xpath("//span[contains(text(), 'Arial Black')]")).click();
+          element(by.css("#font1 .mce-floatpanel")).sendKeys(webdriver.Key.END);
+          element(by.xpath("//span[contains(text(), 'Zilla Slab')]")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('"arial black", sans-serif');
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('"Zilla Slab", sans-serif');
         });
       });
 
