@@ -15,7 +15,7 @@ jobs:
       - run: bower install
       - run: |
           cd node_modules/gulp-gh-pages
-          npm install --save gift@0.10.2    
+          npm install --save gift@0.10.2
       - save_cache:
          key: node-cache-{{ checksum "package.json" }}
          paths:
@@ -88,7 +88,7 @@ workflows:
       - build-demos:
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+            # branches:
+              # only:
+                # - master
