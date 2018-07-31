@@ -10,7 +10,9 @@ RiseVision.Common.RiseCache = (function () {
     _isCacheRunning = false,
     _isV2Running = false,
     _isHttps = true,
-    _utils = RiseVision.Common.Utilities;
+    _utils = RiseVision.Common.Utilities,
+    _RC_VERSION_WITH_ENCODE = "1.7.3",
+    _RC_VERSION = "";
 
   function ping(callback) {
     var r = new XMLHttpRequest(),
@@ -36,6 +38,16 @@ RiseVision.Common.RiseCache = (function () {
 
           if(r.status === 200) {
             _isCacheRunning = true;
+
+            try {
+              var responseObject = (r.responseText) ? JSON.parse(r.responseText) : "";
+              if (responseObject) {
+                _RC_VERSION = responseObject.version;
+              }
+            }
+            catch(e) {
+              console.log(e);
+            }
 
             callback(true, r.responseText);
           } else if (r.status === 404) {
@@ -85,7 +97,11 @@ RiseVision.Common.RiseCache = (function () {
 
       if (_isCacheRunning) {
         if (_isV2Running) {
-          url = BASE_CACHE_URL + "files?url=" + encodeURIComponent(fileUrl);
+          if ( _compareVersionNumbers( _RC_VERSION, _RC_VERSION_WITH_ENCODE ) > 0 ) {
+            url = BASE_CACHE_URL + "files?url=" + fileUrl;
+          } else {
+            url = BASE_CACHE_URL + "files?url=" + encodeURIComponent(fileUrl);
+          }
         } else {
           // configure url with cachebuster or not
           url = (nocachebuster) ? BASE_CACHE_URL + "?url=" + encodeURIComponent(fileUrl) :
@@ -102,6 +118,49 @@ RiseVision.Common.RiseCache = (function () {
       }
 
       makeRequest("HEAD", url);
+    }
+
+    function _compareVersionNumbers( v1, v2 ) {
+      var v1parts = v1.split( "." ),
+        v2parts = v2.split( "." ),
+        i = 0;
+
+      function isPositiveInteger( x ) {
+        return /^\d+$/.test( x );
+      }
+
+      // First, validate both numbers are true version numbers
+      function validateParts( parts ) {
+        for ( i = 0; i < parts.length; i++ ) {
+          if ( !isPositiveInteger( parts[ i ] ) ) {
+            return false;
+          }
+        }
+        return true;
+      }
+      if ( !validateParts( v1parts ) || !validateParts( v2parts ) ) {
+        return NaN;
+      }
+
+      for ( i = 0; i < v1parts.length; ++i ) {
+        if ( v2parts.length === i ) {
+          return 1;
+        }
+
+        if ( v1parts[ i ] === v2parts[ i ] ) {
+          continue;
+        }
+        if ( v1parts[ i ] > v2parts[ i ] ) {
+          return 1;
+        }
+        return -1;
+      }
+
+      if ( v1parts.length !== v2parts.length ) {
+        return -1;
+      }
+
+      return 0;
     }
 
     function makeRequest(method, url) {

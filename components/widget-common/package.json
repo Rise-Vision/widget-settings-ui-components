@@ -1,6 +1,6 @@
 {
   "name": "widget-common",
-  "version": "3.4.10",
+  "version": "3.7.0",
   "description": "Common functionality for Widgets not using Angular JS.",
   "main": "gulpfile.js",
   "scripts": {
@@ -37,5 +37,8 @@
     "run-sequence": "^0.3.2",
     "web-component-tester": "5.0.0",
     "widget-tester": "git://github.com/Rise-Vision/widget-tester.git"
+  },
+  "optionalDependencies": {
+    "wct-local": "<2.0.16"
   }
 }

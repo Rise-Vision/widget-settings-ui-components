@@ -283,6 +283,17 @@
   }
 }
 
+/* Bullet List
+   ========================================================================== */
+.bullet-list ul li {
+    list-style-type: disc;
+    margin-left: 30px;
+
+      &:first-child {
+        margin-top: 12px;
+      }
+}
+
 // For RV Store Only
 .store.grid-list {
   /* Small devices  */

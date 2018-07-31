@@ -23,7 +23,7 @@ RiseVision.Common.LoggerUtils = (function() {
       json = params;
 
       if (json.file_url) {
-        json.file_format = getFileFormat(json.file_url);
+        json.file_format = params.file_format || getFileFormat(json.file_url);
       }
 
       json.company_id = companyId;

@@ -312,6 +312,14 @@ $panel-width: 290px;
   }
   .workspace-sidebar {
     height: calc(100vh - 225px);
+    .ph-properties .scrollable-list {
+          max-height: calc(100vh - 450px);
+        }
+    @media (max-width: $screen-sm) {
+      .ph-properties .scrollable-list {
+          max-height: calc(100vh - 470px);
+        }
+    }
   }
 }
 

@@ -130,6 +130,12 @@
       "required": "Required"
     }
   },
+  "restore": {
+    "confirm": {
+      "message": "Are you sure you want to Restore this Presentation to it's Published version? All changes will be lost.",
+      "title": "Restoring Presentation"
+    }
+  },
   "selector-modal": {
     "title": "Select Presentation"
   },

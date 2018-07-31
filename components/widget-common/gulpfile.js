@@ -118,6 +118,7 @@
       "src/js/common.js",
       "src/js/rise-cache.js",
       "src/js/logger.js",
+      "src/js/ws-client.js",
       "test/unit/**/*spec.js"]}
   ));
 
