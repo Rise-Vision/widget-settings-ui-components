@@ -278,24 +278,20 @@
       describe("Google Font", function() {
         it("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
+          element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
+          element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
+          element(by.xpath("//span[contains(text(), 'Yrsa')]")).click();
 
-          return webdriver.wait(function() {
-            element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
-            element(by.xpath("//span[contains(text(), 'Yrsa')]")).click();
-
-            expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Yrsa, sans-serif');
-          }, 1000);
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Yrsa, sans-serif');
         });
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
+          element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
+          element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
+          element(by.xpath("//span[contains(text(), 'Zilla Slab')]")).click();
 
-          return webdriver.wait(function() {
-            element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
-            element(by.xpath("//span[contains(text(), 'Zilla Slab')]")).click();
-
-            expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('"Zilla Slab", sans-serif');
-          }, 1000);
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('"Zilla Slab", sans-serif');
         });
       });
 
