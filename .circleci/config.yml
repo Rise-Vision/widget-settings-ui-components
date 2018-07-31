@@ -69,7 +69,7 @@ jobs:
       - restore_cache:
           key: node-cache-{{ checksum "package.json" }}
       - run: npm run ci-build-demo
-      - run: npm run ci-deploy-demo
+      # - run: npm run ci-deploy-demo
 
 workflows:
   version: 2
@@ -89,4 +89,3 @@ workflows:
             branches:
               only:
                 - master
-
