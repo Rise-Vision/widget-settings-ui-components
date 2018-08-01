@@ -1641,68 +1641,76 @@ RiseVision.Common.Scroller = function (params) {
 
   var _scroller = null,
     _scrollerCtx = null,
+    _secondary = null,
+    _secondaryCtx = null,
     _tween = null,
     _items = [],
-    _itemsLength = [],
-    _itemsIdx = 0,
-    _xpos = 0, // xpos is changed within each frame
-    _originalXpos = 0, // originalXpos is saved across frames
-    _utils = RiseVision.Common.Utilities;
+    _xpos = 0,
+    _originalXpos = 0,
+    _oversizedCanvas = false,
+    _utils = RiseVision.Common.Utilities,
+    MAX_CANVAS_SIZE = 32767;
 
   /*
    *  Private Methods
    */
-  function setupItemsLength() {
+
+  /* Initialize the secondary canvas from which text will be copied to the scroller. */
+  function initSecondaryCanvas() {
+    drawItems();
+    fillScroller();
+
+    if (_xpos > MAX_CANVAS_SIZE) {
+      _oversizedCanvas = true;
+      _secondary.width = MAX_CANVAS_SIZE;
+      throwOversizedCanvesError();
+    } else {
+      _secondary.width = _xpos;
+    }
+
+    // Setting the width again resets the canvas so it needs to be redrawn.
+    drawItems();
+    fillScroller();
+  }
+
+  function throwOversizedCanvesError() {
+    var event = new Event("scroller-oversized-canvas");
+    _scroller.dispatchEvent(event);
+  }
+
+  function drawItems() {
     _xpos = 0;
 
     for (var i = 0; i < _items.length; i++) {
-      _itemsIdx = i;
       if (_items[i].separator) {
-        drawSeparator(_items[i], true);
+        drawSeparator(_items[i]);
       }
       else {
-        drawItem(_items[i], true);
+        drawItem(_items[i]);
       }
     }
   }
 
   /* Draw a separator between items. */
-  function drawSeparator(item, saveLength) {
-    var y = _scroller.height / 2,
+  function drawSeparator(item) {
+    var y = _secondary.height / 2,
       radius = item.size / 2;
 
-    _scrollerCtx.save();
+    _secondaryCtx.save();
 
-    _scrollerCtx.fillStyle = item.color;
+    _secondaryCtx.fillStyle = item.color;
 
     // Draw a circle.
-    _scrollerCtx.beginPath();
-    _scrollerCtx.arc(_xpos + radius, y, radius, 0, 2 * Math.PI);
-    _scrollerCtx.fill();
+    _secondaryCtx.beginPath();
+    _secondaryCtx.arc(_xpos + radius, y, radius, 0, 2 * Math.PI);
+    _secondaryCtx.fill();
 
-    var size = item.size + 10;
+    _xpos += item.size + 10;
 
-    _xpos += size;
-
-    if (saveLength) {
-      var start = _itemsIdx === 0 ? 0 : _itemsLength[_itemsIdx - 1].end;
-      var end = start + size;
-      _itemsLength[_itemsIdx] = {start: start, end: end, length: end - start };
-    }
-
-    _scrollerCtx.restore();
+    _secondaryCtx.restore();
   }
 
-  function drawItemIdx(idx) {
-    if (_items[idx].separator) {
-      drawSeparator(_items[idx], false);
-    }
-    else {
-      drawItem(_items[idx], false);
-    }
-  }
-
-  function drawItem(item, saveLength) {
+  function drawItem(item, isEllipsis) {
     var textObj = {},
       fontStyle;
 
@@ -1731,16 +1739,24 @@ RiseVision.Common.Scroller = function (params) {
         if (fontStyle.italic) {
           textObj.italic = fontStyle.italic;
         }
+
+        if (fontStyle.backcolor && isEllipsis) {
+          textObj.backcolor = fontStyle.backcolor;
+        }
       }
 
-      drawText(textObj, saveLength);
+      if (isEllipsis) {
+        drawEllipsis(textObj);
+      } else {
+        drawText(textObj);
+      }
     }
   }
 
-  function drawText(textObj, saveLength) {
+  function drawText(textObj) {
     var font = "";
 
-    _scrollerCtx.save();
+    _secondaryCtx.save();
 
     if (textObj.bold) {
       font = "bold ";
@@ -1759,55 +1775,90 @@ RiseVision.Common.Scroller = function (params) {
     }
 
     // Set the text formatting.
-    _scrollerCtx.font = font;
-    _scrollerCtx.fillStyle = textObj.foreColor;
-    _scrollerCtx.textBaseline = "middle";
+    _secondaryCtx.font = font;
+    _secondaryCtx.fillStyle = textObj.foreColor;
+    _secondaryCtx.textBaseline = "middle";
 
     // Draw the text onto the canvas.
-    _scrollerCtx.translate(0, _scroller.height / 2);
-    _scrollerCtx.fillText(textObj.text, _xpos, 0);
+    _secondaryCtx.translate(0, _secondary.height / 2);
+    _secondaryCtx.fillText(textObj.text, _xpos, 0);
 
-    var size = _scrollerCtx.measureText(textObj.text).width + 10;
-    _xpos += size;
+    _xpos += _secondaryCtx.measureText(textObj.text).width + 10;
 
-    if (saveLength) {
-      var start = _itemsIdx === 0 ? 0 : _itemsLength[_itemsIdx - 1].end;
-      var end = start + size;
-      _itemsLength[_itemsIdx] = {start: start, end: end, length: end - start };
+    _secondaryCtx.restore();
+  }
+
+  function drawEllipsis(ellipsisObj) {
+    var font = "",
+      ellipsisWidth,
+      rectHeight;
+
+    _secondaryCtx.save();
+
+    if (ellipsisObj.bold) {
+      font = "bold ";
     }
 
-    _scrollerCtx.restore();
+    if (ellipsisObj.italic) {
+      font += "italic ";
+    }
+
+    if (ellipsisObj.size) {
+      font += ellipsisObj.size + " ";
+    }
+
+    if (ellipsisObj.font) {
+      font += ellipsisObj.font;
+    }
+
+    // Set the text formatting.
+    _secondaryCtx.font = font;
+    _secondaryCtx.textBaseline = "middle";
+
+    ellipsisWidth = _secondaryCtx.measureText("  ...  ").width;
+    rectHeight = ellipsisObj.size ? ((ellipsisObj.size.indexOf("px") > 0) ? parseInt(ellipsisObj.size.slice(0, ellipsisObj.size.indexOf("px")), 10) : ellipsisObj.size) : 10;
+
+    _secondaryCtx.translate(0, _secondary.height / 2);
+
+    // Default background rect color to white if set to "transparent" so it forces to overlay text
+    _secondaryCtx.fillStyle = ellipsisObj.backcolor === "transparent" ? "#FFF" : ellipsisObj.backcolor;
+    // Draw the background rect onto the canvas so it overlays the text
+    _secondaryCtx.fillRect(MAX_CANVAS_SIZE - ellipsisWidth, -(rectHeight/2), ellipsisWidth, rectHeight);
+
+    // Draw the ellipsis text onto the canvas overlaying background rect
+    _secondaryCtx.fillStyle = ellipsisObj.foreColor;
+    _secondaryCtx.fillText("  ...  ", MAX_CANVAS_SIZE - ellipsisWidth, 0);
+
+    _secondaryCtx.restore();
   }
 
   function draw() {
-    // nothing to do here. The x position didn't move, so we don't need to redraw this frame
-    if (_originalXpos === _scrollerCtx.xpos) {
-      return;
-    }
-
     _scrollerCtx.clearRect(0, 0, _scroller.width, _scroller.height);
+    _scrollerCtx.drawImage(_secondary, _scrollerCtx.xpos, 0);
+  }
 
-    // scroller xpos is animated by Tween. We use this x position to select which items to draw
-    _xpos = _scrollerCtx.xpos;
+  function fillScroller() {
+    var width = 0,
+      index = 0;
 
-    // saving the original x position to avoid redraw on the next frame if possible
     _originalXpos = _xpos;
 
-    // find the index of the first item visible on the canvas
-    var index = 0;
-    while (_xpos < _itemsLength[index].start && index < _itemsLength.length) {
-      index++;
-    }
+    // Ensure there's enough text to fill the scroller.
+    if (_items.length > 0) {
+      while (width < _scroller.width) {
+        if (_items[index].separator) {
+          drawSeparator(_items[index]);
+        }
+        else {
+          drawItem(_items[index]);
+        }
 
-    // xpos should move backwards because we want to scroll to the left
-    _xpos = _itemsLength[index].start - _xpos;
+        width = _xpos - _originalXpos;
+        index = (index === _items.length - 1) ? 0 : index + 1;
+      }
 
-    // draw every item until xpos is outside the canvas width
-    while (_xpos < _scroller.width) {
-      drawItemIdx(index);
-      index++;
-      if (index >= _items.length) {
-        index = 0;
+      if (_oversizedCanvas) {
+        drawItem(_items[index], true);
       }
     }
   }
@@ -1832,7 +1883,7 @@ RiseVision.Common.Scroller = function (params) {
       }
     }
 
-    return _xpos / factor;
+    return _originalXpos / factor;
   }
 
   /* Scroller has completed a cycle. */
@@ -1841,6 +1892,15 @@ RiseVision.Common.Scroller = function (params) {
     _scrollerCtx.xpos = 0;
 
     _scroller.dispatchEvent(new CustomEvent("done", { "bubbles": true }));
+  }
+
+  function createSecondaryCanvas() {
+    _secondary = document.createElement("canvas");
+    _secondary.id = "secondary";
+    _secondary.style.display = "none";
+    _secondaryCtx = initCanvas(_secondary);
+
+    document.body.appendChild(_secondary);
   }
 
   function initCanvas(canvas) {
@@ -1861,7 +1921,8 @@ RiseVision.Common.Scroller = function (params) {
     _scroller = document.getElementById("scroller");
     _scrollerCtx = initCanvas(_scroller);
 
-    setupItemsLength();
+    createSecondaryCanvas();
+    initSecondaryCanvas();
 
     TweenLite.ticker.addEventListener("tick", draw);
     _scroller.dispatchEvent(new CustomEvent("ready", { "bubbles": true }));
@@ -1869,13 +1930,14 @@ RiseVision.Common.Scroller = function (params) {
 
   function refresh(items) {
     _items = items;
+    _oversizedCanvas = false;
 
-    setupItemsLength();
+    initSecondaryCanvas();
   }
 
   function play() {
     if (!_tween) {
-      _tween = TweenLite.to(_scrollerCtx, getDelay(), { xpos: _xpos , ease: Linear.easeNone, onComplete: onComplete });
+      _tween = TweenLite.to(_scrollerCtx, getDelay(), { xpos: -_originalXpos, ease: Linear.easeNone, onComplete: onComplete });
     }
 
     _tween.play();
