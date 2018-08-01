@@ -276,8 +276,18 @@
       });
 
       describe("Google Font", function() {
+        function wait(ms) {
+          var start = Date.now(), now = start;
+          while (now - start < ms) {
+            now = Date.now();
+          }
+        }
+
         it("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
+
+          wait(5000);
+
           element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
           element(by.xpath("//span[contains(text(), 'Yrsa')]")).click();
 
@@ -286,6 +296,9 @@
 
         it("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
+
+          wait(5000);
+
           element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
           element(by.xpath("//span[contains(text(), 'Zilla Slab')]")).click();
 
