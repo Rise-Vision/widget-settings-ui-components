@@ -1839,9 +1839,10 @@ RiseVision.Common.Scroller = function (params) {
 
   function fillScroller() {
     var width = 0,
+      lastIndex = 0,
       index = 0;
 
-    _originalXpos = _xpos;
+    _originalXpos = (_oversizedCanvas) ? MAX_CANVAS_SIZE : _xpos;
 
     // Ensure there's enough text to fill the scroller.
     if (_items.length > 0) {
@@ -1854,11 +1855,12 @@ RiseVision.Common.Scroller = function (params) {
         }
 
         width = _xpos - _originalXpos;
-        index = (index === _items.length - 1) ? 0 : index + 1;
+        lastIndex = index;
+        index = (lastIndex === _items.length - 1) ? 0 : lastIndex + 1;
       }
 
       if (_oversizedCanvas) {
-        drawItem(_items[index], true);
+        drawItem(_items[lastIndex], true);
       }
     }
   }
