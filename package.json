@@ -27,6 +27,7 @@
     "bower": "^1.5.3"
   },
   "devDependencies": {
+    "adm-zip": "^0.4.11",
     "chai": "~1.9.2",
     "chai-as-promised": "~4.1.1",
     "colors": "~1.0.3",
@@ -47,6 +48,7 @@
     "gulp-watch": "^0.6.8",
     "hoek": "5.0.3",
     "jshint-stylish": "^0.2.0",
+    "lodash": "^4.17.5",
     "minimist": "1.1.0",
     "run-sequence": "^0.3.2",
     "uglify-js": "^2.6.0",
