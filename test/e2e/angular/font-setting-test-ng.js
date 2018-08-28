@@ -300,9 +300,9 @@
           wait(5000);
 
           element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
-          element(by.xpath("//span[contains(text(), 'Zilla Slab')]")).click();
+          element(by.xpath("//span[contains(text(), 'Kosugi Maru')]")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('"Zilla Slab", sans-serif');
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('"Kosugi Maru", sans-serif');
         });
       });
 
