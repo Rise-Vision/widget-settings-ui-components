@@ -17,7 +17,7 @@
   describe("URL Field Component", function() {
 
     var validUrl = "https://www.example.com/foo/?bar=baz&inga=42&quux",
-      invalidUrl = "http://a.b--c.de/";
+      invalidUrl = "http://a.b%-c.de/";
 
     beforeEach(function (){
       browser.get("/test/e2e/angular/url-field-test-ng.html");
@@ -46,6 +46,16 @@
 
       it("Should provide checkbox to opt in or out of validating based on invalid URL entry", function () {
         element(by.css("#main input[name='url']")).sendKeys(invalidUrl);
+
+        // ensure validate checkbox is displayed
+        expect(element(by.css("#main input[name=validate-url]")).isDisplayed()).to.eventually.be.true;
+      });
+
+      it("Should not hang with invalid URL", function () {
+        // This was causing a hang with widget-web-page issue 98
+        var badUrl = "dfasfadfsadfsadfasdfafsadfsafsadfadfafaddsfasdfsdasfdadsafafafsdfs";
+
+        element(by.css("#main input[name='url']")).sendKeys(badUrl);
 
         // ensure validate checkbox is displayed
         expect(element(by.css("#main input[name=validate-url]")).isDisplayed()).to.eventually.be.true;
