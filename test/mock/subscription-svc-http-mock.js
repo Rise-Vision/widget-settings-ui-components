@@ -1,31 +1,51 @@
 (function () {
   "use strict";
 
-  angular.module("risevision.widget.common.subscription-status.service")
-    // $http service mock responds to subscription-status service requests
-    .service("$http", ["$q", "$log", function ($q, $log) {
+  angular.module("risevision.common.components.subscription-status.service")
+  // $http service mock responds to subscription-status service requests
+    .service("$http", ["$q", function ($q) {
       this.get = function(url) {
         var deferred = $q.defer();
 
         var response = {
           "data": [{
-            "pc":"b0cba08a4baa0c62b8cdc621b6f6a124f89a03db",
+            "pc":"1",
             "status":"",
             "expiry":null
           }]
         };
 
-        $log.debug(url);
+        console.log(url);
 
-        if (url && url.indexOf("/company/abc123/") !== -1) {
-          response.data[0].status = "Subscribed";
-          response.data[0].statusCode = "subscribed";
-          response.data[0].subscribed = true;
+        if (url && url.indexOf("/product/status?") !== -1) {
+          if (url.indexOf("/company/invalid/") !== -1) {
+            response.data[0].status = "";
+          }
+          else if (url.indexOf("pc=1,2,3") !== -1) {
+            response.data = [
+              { pc: 1, status: "Free" },
+              { pc: 2, status: "Trial Expired" },
+              { pc: 3, status: "Cancelled" }];
+          }
+          else if (url.indexOf("pc=1") !== -1) {
+            response.data[0].status = "Free";
+          }
+          else if (url.indexOf("pc=2") !== -1) {
+            response.data[0].status = "Trial Expired";
+          }
+          else if (url.indexOf("pc=3") !== -1) {
+            response.data[0].status = "Cancelled";
+          }
         }
-        else if (url && url.indexOf("/company/def456/") !== -1) {
-          response.data[0].status = "Trial Expired";
-          response.data[0].statusCode = "trial-expired";
-          response.data[0].subscribed = false;
+        else if (url && url.indexOf("widget/auth?") !== -1) {
+          response = {
+            data: {
+              authorized: false
+            }
+          };
+          if (url.indexOf("pc=3") !== -1) {
+            response.data.authorized = true;
+          }
         }
 
         deferred.resolve(response);
