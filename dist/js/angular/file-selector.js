@@ -5,7 +5,7 @@
       "risevision.common.i18n",
       "risevision.widget.common.storage-selector",
       "risevision.widget.common.url-field",
-      "risevision.widget.common.subscription-status"
+      "risevision.common.components.subscription-status"
     ])
     .directive("fileSelector", ["$templateCache", "$log", "$window", "$rootScope", function ($templateCache, $log, $window, $rootScope) {
       return {
