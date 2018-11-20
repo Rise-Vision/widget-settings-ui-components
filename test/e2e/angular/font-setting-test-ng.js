@@ -283,18 +283,18 @@
           }
         }
 
-        it("should update font family for preview text if family name is one word", function() {
+        xit("should update font family for preview text if family name is one word", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
 
           wait(5000);
 
           element(by.css(".mce-floatpanel")).sendKeys(webdriver.Key.END);
-          element(by.xpath("//span[contains(text(), 'Yrsa')]")).click();
+          element(by.xpath("//span[contains(text(), 'Yesteryear')]")).click();
 
-          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Yrsa, sans-serif');
+          expect(element(by.css("#font1 .text")).getCssValue("font-family")).to.eventually.equal('Yesteryear, sans-serif');
         });
 
-        it("should update font family for preview text if family name has spaces and numbers", function() {
+        xit("should update font family for preview text if family name has spaces and numbers", function() {
           element(by.css("#font1 .mce-btn[aria-label='Font Family']")).click();
 
           wait(5000);
