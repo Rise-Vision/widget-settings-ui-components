@@ -22,32 +22,26 @@
     "test"
   ],
   "devDependencies": {
-    "angular-mocks": "~1.4.0",
+    "angular-mocks": "~1.5.0",
     "q": "1.0.1",
     "sinon": "~1.10.2"
   },
   "dependencies": {
-    "angular": "~1.4.0",
-    "angular-bootstrap": "^0.13.0",
     "angular-bootstrap-slider": "~0.0.6",
     "angular-load": "~0.4.1",
-    "angular-sanitize": "~1.5.0",
-    "angular-ui-router": "^0.2.18",
     "angular-ui-tinymce": "0.0.18",
     "bootstrap-form-components": "https://github.com/Rise-Vision/bootstrap-form-components.git",
     "bootstrap-sass-official": "~3.2.0",
     "component-storage-selector": "https://github.com/Rise-Vision/component-storage-selector.git",
     "common-header": "https://github.com/Rise-Vision/common-header.git",
     "rv-angular-bootstrap-colorpicker": "https://github.com/Rise-Vision/angular-bootstrap-colorpicker.git",
-    "rv-common-i18n": "https://github.com/Rise-Vision/common-i18n.git",
-    "rv-common-style": "https://github.com/Rise-Vision/common-style.git",
     "spectrum": "https://github.com/Rise-Vision/spectrum.git"
   },
   "resolutions": {
-    "angular": "~1.4.0",
-    "angular-mocks": "~1.4.0",
-    "angular-ui-router": "^0.2.18",
+    "angular": "~1.5.0",
+    "angular-mocks": "~1.5.0",
     "angular-sanitize": "~1.5.0",
+    "angular-ui-router": "^0.2.18",
     "angular-ui-tinymce": "0.0.18",
     "jquery": "1.11.0"
   }
