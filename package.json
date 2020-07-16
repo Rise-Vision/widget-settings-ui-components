@@ -48,7 +48,7 @@
     "gulp-watch": "^0.6.8",
     "hoek": "5.0.3",
     "jshint-stylish": "^0.2.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.19",
     "minimist": "1.1.0",
     "run-sequence": "^0.3.2",
     "uglify-js": "^2.6.0",
