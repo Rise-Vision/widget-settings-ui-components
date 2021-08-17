@@ -121,6 +121,23 @@
             return name;
           }
 
+          function showWarnings(type) {
+            scope.folderIsEmpty = false;
+            if (type === "single-folder") {
+              fetch("https://storage-dot-rvaserver2.appspot.com/_ah/api/storage/v0.01/files?companyId=" + scope.companyId + "&folder=" + encodeURI(scope.selector.storageName))
+              .then(function(response) {
+                return response.json()
+              })
+              .then(function(data) {
+                // Note: the first item in the data.files is the folder itself
+                if (data && data.files && data.files.length < 2) {
+                  scope.folderIsEmpty = true;
+                  $rootScope.$apply();
+                }
+              });
+            }
+          }
+
           scope.defaultSetting = {
             selection: "", // "single-file", "single-folder", or "custom"
             storageName: "", // name of file or folder path
@@ -140,6 +157,8 @@
           scope.hideSubscription = (typeof attrs.hideSubscription !== "undefined");
           // a flag to toggle subscription status visibility (depends on selection type)
           scope.subscriptionOff = true;
+          // a flag to toggle "folder is empty" warning
+          scope.folderIsEmpty = false;
 
           scope.defaults = function(obj) {
             if (obj) {
@@ -170,6 +189,7 @@
             scope.selector.selection = type;
             scope.selector.storageName = getStorageName(data[0], scope.selector.selection);
             scope.selector.url = data[0];
+            showWarnings(scope.selector.selection);
           });
 
           scope.$watch("selectorValid", function (valid) {
@@ -185,6 +205,7 @@
           scope.$watch("selector.selection", function (selection) {
             if (typeof selection !== "undefined") {
               toggleButtons(selection);
+              showWarnings(selection);
 
               scope.subscriptionOff = (selection === "" || selection === "custom");
 

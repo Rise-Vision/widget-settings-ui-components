@@ -39,6 +39,7 @@
   <!-- Storage Single Folder - Input -->
   <div ng-if="selector.selection === 'single-folder'">
     <input name="storage-folder-name" type="text" class="form-control" ng-model="selector.storageName" readonly>
+    <p ng-if="folderIsEmpty" class="text-danger">The selected folder is empty</p>
   </div>
 
   <!-- Custom File - Input -->
