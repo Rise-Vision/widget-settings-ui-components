@@ -6,7 +6,6 @@ jobs:
     shell: /bin/bash --login
     docker: &DOCKERIMAGE
       - image: jenkinsrise/cci-v2-transitional-widgets:0.0.5
-        command: /sbin/init
     steps:
       - checkout
       - restore_cache:
