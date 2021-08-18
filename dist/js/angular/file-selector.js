@@ -124,19 +124,20 @@
           function showWarnings(type) {
             scope.folderIsEmpty = false;
             if (type === "single-folder") {
-
               fetch("https://storage-dot-rvaserver2.appspot.com/_ah/api/storage/v0.01/files?companyId=" + scope.companyId + "&folder=" + encodeURI(scope.selector.storageName))
               .then(function(response) {
-                return response.json()
+                return response.json();
               })
               .then(function(data) {
-                // Note: the first item in the data.files is the folder itself
-                if (data && data.files && data.files.length < 2) {
-                  scope.folderIsEmpty = true;
+                  scope.folderIsEmpty = isEmptyFolder(data);
                   $rootScope.$apply();
-                }
               });
             }
+          }
+
+          function isEmptyFolder( resp ) {
+            return ( resp.files !== undefined ) && ( resp.files.length === 1 ) &&
+              ( resp.files[ 0 ].name.slice( -1 ) === "/" );
           }
 
           scope.defaultSetting = {
