@@ -54,7 +54,7 @@
 
                 image.onerror = function() {
                   scope.valid = false;
-                  scope.invalidType = scope.fileType;
+                  scope.invalidType = "load-fail";
                   scope.$apply();
                 };
 

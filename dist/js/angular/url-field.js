@@ -54,7 +54,7 @@
 
                 image.onerror = function() {
                   scope.valid = false;
-                  scope.invalidType = scope.fileType;
+                  scope.invalidType = "load-fail";
                   scope.$apply();
                 };
 
@@ -172,6 +172,7 @@ module.run(["$templateCache", function($templateCache) {
     "  <p ng-if=\"!valid && invalidType === 'url'\" class=\"text-danger\">{{ \"url.errors.url\" | translate }}</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'image'\" class=\"text-danger\">{{ \"url.errors.image\" | translate }}</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'video'\" class=\"text-danger\">{{ \"url.errors.video\" | translate }}</p>\n" +
+    "  <p ng-if=\"!valid && invalidType === 'load-fail'\" class=\"text-danger\">The file could not be found using the URL provided. Please enter a different one. If you need help email <a href=\"mailto:support@risevision.com\">support@risevision.com</a>.</p>\n" +
     "  <div class=\"checkbox\" ng-show=\"forcedValid || !valid\">\n" +
     "    <label>\n" +
     "      <input name=\"validate-url\" ng-click=\"doValidation = !doValidation\" type=\"checkbox\"\n" +
