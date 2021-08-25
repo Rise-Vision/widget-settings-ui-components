@@ -5,7 +5,7 @@
     "risevision.common.i18n",
     "risevision.widget.common.tooltip"
   ])
-    .directive("urlField", ["$templateCache", "$log", function ($templateCache, $log) {
+    .directive("urlField", ["$templateCache", "$log", "$http", function ($templateCache, $log, $http) {
       return {
         restrict: "E",
         require: "?ngModel",
@@ -63,6 +63,18 @@
             }
           }
 
+          function testVideo() {
+            $http({
+              method: "HEAD",
+              url: scope.url
+            }).then(function successCallback() {
+              scope.valid = true;
+            }, function errorCallback() {
+              scope.valid = false;
+              scope.invalidType = "load-fail";
+            });
+          }
+
           function testUrl(value) {
             var urlRegExp,
               isValid;
@@ -95,7 +107,11 @@
             }
 
             if (isValid) {
-              testImage();
+              if (scope.fileType === "image") {
+                testImage();
+              } else if (scope.fileType === "video") {
+                testVideo();
+              }
             }
 
             return isValid;
