@@ -66,7 +66,7 @@
           function testVideo() {
             $http({
               method: "HEAD",
-              url: scope.url
+              url: "https://proxy.risevision.com/" + scope.url
             }).then(function successCallback() {
               scope.valid = true;
             }, function errorCallback() {
