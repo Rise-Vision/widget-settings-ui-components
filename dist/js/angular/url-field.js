@@ -17,6 +17,10 @@
         template: $templateCache.get("_angular/url-field/url-field.html"),
         link: function (scope, element, attrs, ctrl) {
 
+          function isSecureUrl( url ) {
+            return !!( url && url.startsWith( "https://" ) );
+          }
+
           function hasValidExtension(url, fileType) {
             var testUrl = url.toLowerCase(),
               extensions;
@@ -90,9 +94,9 @@
 
             urlRegExp = /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i; // jshint ignore:line
 
-            // Add http:// if no protocol parameter exists
+            // Add https:// if no protocol parameter exists
             if (value.indexOf("://") === -1) {
-              value = "http://" + value;
+              value = "https://" + value;
             }
 
             isValid = urlRegExp.test(value);
@@ -107,10 +111,15 @@
             }
 
             if (isValid) {
-              if (scope.fileType === "image") {
-                testImage();
-              } else if (scope.fileType === "video") {
-                testVideo();
+              if (isSecureUrl(value)) {
+                if (scope.fileType === "image") {
+                  testImage();
+                } else if (scope.fileType === "video") {
+                  testVideo();
+                }
+              } else {
+                isValid = false;
+                scope.invalidType = "insecure";
               }
             }
 
@@ -183,11 +192,12 @@ module.run(["$templateCache", function($templateCache) {
     "<div class=\"form-group\" >\n" +
     "  <label ng-if=\"!hideLabel\">{{ \"url.label\" | translate }}</label>\n" +
     "  <div>\n" +
-    "    <input name=\"url\" type=\"text\" ng-model=\"url\" ng-blur=\"blur()\" class=\"form-control\" placeholder=\"http://\">\n" +
+    "    <input name=\"url\" type=\"text\" ng-model=\"url\" ng-blur=\"blur()\" class=\"form-control\" placeholder=\"https://\">\n" +
     "  </div>\n" +
     "  <p ng-if=\"!valid && invalidType === 'url'\" class=\"text-danger\">{{ \"url.errors.url\" | translate }}</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'image'\" class=\"text-danger\">{{ \"url.errors.image\" | translate }}</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'video'\" class=\"text-danger\">{{ \"url.errors.video\" | translate }}</p>\n" +
+    "  <p ng-if=\"!valid && invalidType === 'insecure'\" class=\"text-danger\">We can't show this content because the URL is insecure. Make sure the URL begins with \"HTTPS\". If you need assistance, please email <a target=\"_blank\" href=\"mailto:support@risevision.com\">support@risevision.com</a>.</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'load-fail'\" class=\"text-danger\">The file could not be found using the URL provided. Please enter a different one. If you need help email <a href=\"mailto:support@risevision.com\">support@risevision.com</a>.</p>\n" +
     "  <div class=\"checkbox\" ng-show=\"forcedValid || !valid\">\n" +
     "    <label>\n" +
