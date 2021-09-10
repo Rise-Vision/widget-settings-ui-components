@@ -1,7 +1,7 @@
 <div class="form-group" >
   <label ng-if="!hideLabel">{{ "url.label" | translate }}</label>
   <div>
-    <input name="url" type="text" ng-model="url" ng-blur="blur()" class="form-control" placeholder="https://">
+    <input name="url" type="text" ng-model="url" ng-blur="blur()" ng-disabled="testingFile" class="form-control" placeholder="https://">
   </div>
   <p ng-if="!valid && invalidType === 'url'" class="text-danger">{{ "url.errors.url" | translate }}</p>
   <p ng-if="!valid && invalidType === 'image'" class="text-danger">{{ "url.errors.image" | translate }}</p>
