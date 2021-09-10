@@ -53,28 +53,35 @@
 
                 image.onload = function() {
                   scope.valid = true;
+                  scope.testingFile = false;
                   scope.$apply();
                 };
 
                 image.onerror = function() {
                   scope.valid = false;
+                  scope.testingFile = false;
                   scope.invalidType = "load-fail";
                   scope.$apply();
                 };
 
+                scope.testingFile = true;
                 image.src = scope.url;
               }
             }
           }
 
           function testVideo() {
+            scope.testingFile = true;
+
             $http({
               method: "HEAD",
               url: "https://proxy.risevision.com/" + scope.url
             }).then(function successCallback() {
               scope.valid = true;
+              scope.testingFile = false;
             }, function errorCallback() {
               scope.valid = false;
+              scope.testingFile = false;
               scope.invalidType = "load-fail";
             });
           }
@@ -132,6 +139,8 @@
           scope.forcedValid = false;
           // Validation state
           scope.valid = true;
+
+          scope.testingFile = false;
 
           scope.invalidType = "url";
 
@@ -192,7 +201,7 @@ module.run(["$templateCache", function($templateCache) {
     "<div class=\"form-group\" >\n" +
     "  <label ng-if=\"!hideLabel\">{{ \"url.label\" | translate }}</label>\n" +
     "  <div>\n" +
-    "    <input name=\"url\" type=\"text\" ng-model=\"url\" ng-blur=\"blur()\" class=\"form-control\" placeholder=\"https://\">\n" +
+    "    <input name=\"url\" type=\"text\" ng-model=\"url\" ng-blur=\"blur()\" ng-disabled=\"testingFile\" class=\"form-control\" placeholder=\"https://\">\n" +
     "  </div>\n" +
     "  <p ng-if=\"!valid && invalidType === 'url'\" class=\"text-danger\">{{ \"url.errors.url\" | translate }}</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'image'\" class=\"text-danger\">{{ \"url.errors.image\" | translate }}</p>\n" +
