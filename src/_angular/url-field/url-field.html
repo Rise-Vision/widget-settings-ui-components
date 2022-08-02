@@ -8,7 +8,7 @@
   <p ng-if="!valid && invalidType === 'video'" class="text-danger">{{ "url.errors.video" | translate }}</p>
   <p ng-if="!valid && invalidType === 'insecure'" class="text-danger">We can't show this content because the URL is insecure. Make sure the URL begins with "HTTPS". If you need assistance, please email <a target="_blank" href="mailto:support@risevision.com">support@risevision.com</a>.</p>
   <p ng-if="!valid && invalidType === 'load-fail'" class="text-danger">The file could not be found using the URL provided. Please enter a different one. If you need help email <a href="mailto:support@risevision.com">support@risevision.com</a>.</p>
-  <div class="checkbox" ng-show="forcedValid || !valid">
+  <div class="checkbox" ng-show="(forcedValid || !valid) && invalidType !== 'insecure'">
     <label>
       <input name="validate-url" ng-click="doValidation = !doValidation" type="checkbox"
              value="validate-url"> {{"url.validate.label" | translate}}
