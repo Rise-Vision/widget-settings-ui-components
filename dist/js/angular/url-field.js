@@ -106,27 +106,27 @@
               value = "https://" + value;
             }
 
-            isValid = urlRegExp.test(value);
-
-            if (isValid && typeof scope.fileType !== "undefined") {
-              isValid = hasValidExtension(value, scope.fileType);
-              if (!isValid) {
-                scope.invalidType = scope.fileType;
-              }
+            if (!isSecureUrl(value)) {
+              isValid = false;
+              scope.invalidType = "insecure";
             } else {
-              scope.invalidType = "url";
-            }
+              isValid = urlRegExp.test(value);
 
-            if (isValid) {
-              if (isSecureUrl(value)) {
+              if (isValid && typeof scope.fileType !== "undefined") {
+                isValid = hasValidExtension(value, scope.fileType);
+                if (!isValid) {
+                  scope.invalidType = scope.fileType;
+                }
+              } else {
+                scope.invalidType = "url";
+              }
+
+              if (isValid) {
                 if (scope.fileType === "image") {
                   testImage();
                 } else if (scope.fileType === "video") {
                   testVideo();
                 }
-              } else {
-                isValid = false;
-                scope.invalidType = "insecure";
               }
             }
 
@@ -161,6 +161,10 @@
 
               if (scope.doValidation && !scope.allowInitEmpty) {
                 scope.valid = testUrl(scope.url);
+              } else if (!scope.doValidation && !scope.allowInitEmpty) {
+                // enforce https protocol validity no matter if "Remove Validation" checked
+                scope.valid = isSecureUrl(scope.url);
+                scope.invalidType = !scope.valid ? "insecure" : "url"; // "url" is just a default
               }
             }
           });
@@ -208,7 +212,7 @@ module.run(["$templateCache", function($templateCache) {
     "  <p ng-if=\"!valid && invalidType === 'video'\" class=\"text-danger\">{{ \"url.errors.video\" | translate }}</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'insecure'\" class=\"text-danger\">We can't show this content because the URL is insecure. Make sure the URL begins with \"HTTPS\". If you need assistance, please email <a target=\"_blank\" href=\"mailto:support@risevision.com\">support@risevision.com</a>.</p>\n" +
     "  <p ng-if=\"!valid && invalidType === 'load-fail'\" class=\"text-danger\">The file could not be found using the URL provided. Please enter a different one. If you need help email <a href=\"mailto:support@risevision.com\">support@risevision.com</a>.</p>\n" +
-    "  <div class=\"checkbox\" ng-show=\"forcedValid || !valid\">\n" +
+    "  <div class=\"checkbox\" ng-show=\"(forcedValid || !valid) && invalidType !== 'insecure'\">\n" +
     "    <label>\n" +
     "      <input name=\"validate-url\" ng-click=\"doValidation = !doValidation\" type=\"checkbox\"\n" +
     "             value=\"validate-url\"> {{\"url.validate.label\" | translate}}\n" +

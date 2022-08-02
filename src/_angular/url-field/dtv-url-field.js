@@ -106,27 +106,27 @@
               value = "https://" + value;
             }
 
-            isValid = urlRegExp.test(value);
-
-            if (isValid && typeof scope.fileType !== "undefined") {
-              isValid = hasValidExtension(value, scope.fileType);
-              if (!isValid) {
-                scope.invalidType = scope.fileType;
-              }
+            if (!isSecureUrl(value)) {
+              isValid = false;
+              scope.invalidType = "insecure";
             } else {
-              scope.invalidType = "url";
-            }
+              isValid = urlRegExp.test(value);
 
-            if (isValid) {
-              if (isSecureUrl(value)) {
+              if (isValid && typeof scope.fileType !== "undefined") {
+                isValid = hasValidExtension(value, scope.fileType);
+                if (!isValid) {
+                  scope.invalidType = scope.fileType;
+                }
+              } else {
+                scope.invalidType = "url";
+              }
+
+              if (isValid) {
                 if (scope.fileType === "image") {
                   testImage();
                 } else if (scope.fileType === "video") {
                   testVideo();
                 }
-              } else {
-                isValid = false;
-                scope.invalidType = "insecure";
               }
             }
 
@@ -161,6 +161,10 @@
 
               if (scope.doValidation && !scope.allowInitEmpty) {
                 scope.valid = testUrl(scope.url);
+              } else if (!scope.doValidation && !scope.allowInitEmpty) {
+                // enforce https protocol validity no matter if "Remove Validation" checked
+                scope.valid = isSecureUrl(scope.url);
+                scope.invalidType = !scope.valid ? "insecure" : "url"; // "url" is just a default
               }
             }
           });
