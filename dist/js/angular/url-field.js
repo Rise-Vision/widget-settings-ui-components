@@ -75,7 +75,7 @@
 
             $http({
               method: "HEAD",
-              url: "https://proxy.risevision.com/" + scope.url
+              url: "https://services2.risevision.com/proxy/" + scope.url
             }).then(function successCallback() {
               scope.valid = true;
               scope.testingFile = false;
