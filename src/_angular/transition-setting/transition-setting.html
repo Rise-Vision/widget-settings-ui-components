@@ -43,7 +43,7 @@
   <div class="col-md-3" ng-if="transition.type === 'scroll' && transition.direction === 'up' || transition.type === 'page'">
     <div class="form-group">
       <label class="control-label">{{"transition.resume.label" | translate}}</label>
-      <span popover="{{'transition.resume.tooltip' | translate}}" popover-trigger="click"
+      <span [popover]="{{'transition.resume.tooltip' | translate}}" popover-trigger="click"
             popover-placement="right" rv-tooltip></span>
       <div class="input-group">
         <input name="transition-resume" type="number" ng-model="transition.resume" class="form-control" />
@@ -54,7 +54,7 @@
   <div class="col-md-3" ng-if="transition.type === 'scroll' && transition.direction === 'up' || transition.type === 'page'">
     <div class="form-group">
       <label class="control-label">{{"transition.pud.label" | translate}}</label>
-      <span popover="{{'transition.pud.tooltip' | translate}}" popover-trigger="click"
+      <span [popover]="{{'transition.pud.tooltip' | translate}}" popover-trigger="click"
             popover-placement="right" rv-tooltip></span>
       <div class="input-group">
         <input name="transition-pud" type="number" ng-model="transition.pud" class="form-control" />
