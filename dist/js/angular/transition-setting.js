@@ -97,8 +97,6 @@ module.run(["$templateCache", function($templateCache) {
     "  <div class=\"col-md-3\" ng-if=\"transition.type === 'scroll' && transition.direction === 'up' || transition.type === 'page'\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{\"transition.resume.label\" | translate}}</label>\n" +
-    "      <span popover=\"{{'transition.resume.tooltip' | translate}}\" popover-trigger=\"click\"\n" +
-    "            popover-placement=\"right\" rv-tooltip></span>\n" +
     "      <div class=\"input-group\">\n" +
     "        <input name=\"transition-resume\" type=\"number\" ng-model=\"transition.resume\" class=\"form-control\" />\n" +
     "        <span class=\"input-group-addon\">{{\"common.units.seconds\" | translate}}</span>\n" +
@@ -108,8 +106,6 @@ module.run(["$templateCache", function($templateCache) {
     "  <div class=\"col-md-3\" ng-if=\"transition.type === 'scroll' && transition.direction === 'up' || transition.type === 'page'\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{\"transition.pud.label\" | translate}}</label>\n" +
-    "      <span popover=\"{{'transition.pud.tooltip' | translate}}\" popover-trigger=\"click\"\n" +
-    "            popover-placement=\"right\" rv-tooltip></span>\n" +
     "      <div class=\"input-group\">\n" +
     "        <input name=\"transition-pud\" type=\"number\" ng-model=\"transition.pud\" class=\"form-control\" />\n" +
     "        <span class=\"input-group-addon\">{{\"common.units.seconds\" | translate}}</span>\n" +

@@ -92,8 +92,6 @@ module.run(["$templateCache", function($templateCache) {
     "  <div class=\"col-md-2\" ng-show=\"scroll.by != 'none' && scroll.direction != 'left'\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label class=\"control-label\">{{'scroll.pud.label' | translate}}</label>\n" +
-    "      <span popover=\"{{'scroll.pud.tooltip' | translate}}\" popover-trigger=\"click\"\n" +
-    "        popover-placement=\"right\" rv-tooltip></span>\n" +
     "      <div class=\"input-group\">\n" +
     "        <input id=\"scroll-pud\" type=\"number\" ng-model=\"scroll.pud\" class=\"form-control\" />\n" +
     "        <span class=\"input-group-addon\">{{'common.units.seconds' | translate}}</span>\n" +
